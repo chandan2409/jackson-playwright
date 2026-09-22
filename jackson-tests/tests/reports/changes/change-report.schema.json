@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JacksonFirelightChangeReport",
+  "description": "Day 8–9 change report emitted by /detect-changes against Firelight baseline",
+  "type": "object",
+  "required": ["generatedAt", "baselineId", "product", "jurisdiction", "changes", "summary"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "baselineId": { "type": "string" },
+    "baselinePath": { "type": "string" },
+    "product": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "caseName": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "required": ["total", "expected", "unexpected", "info"],
+      "properties": {
+        "total": { "type": "integer" },
+        "expected": { "type": "integer" },
+        "unexpected": { "type": "integer" },
+        "info": { "type": "integer" }
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "changeId",
+          "page",
+          "fieldOrLocator",
+          "changeType",
+          "severity",
+          "classification",
+          "evidenceScreenshot",
+          "requiresHumanAcceptance"
+        ],
+        "properties": {
+          "changeId": { "type": "string" },
+          "page": { "type": "string" },
+          "fieldOrLocator": { "type": "string" },
+          "changeType": {
+            "type": "string",
+            "enum": ["added", "removed", "modified", "relocated", "label-changed", "option-changed"]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "classification": {
+            "type": "string",
+            "enum": ["expected", "unexpected", "info"]
+          },
+          "matchedTicketId": { "type": ["string", "null"] },
+          "description": { "type": "string" },
+          "baselineValue": { "type": ["string", "null"] },
+          "currentValue": { "type": ["string", "null"] },
+          "evidenceScreenshot": { "type": "string" },
+          "requiresHumanAcceptance": { "type": "boolean" },
+          "acceptanceStatus": {
+            "type": "string",
+            "enum": ["pending", "accepted", "rejected"],
+            "default": "pending"
+          },
+          "healAction": {
+            "type": ["string", "null"],
+            "description": "Proposed heal: update-locator | update-assertion | file-defect | none"
+          }
+        }
+      }
+    }
+  }
+}

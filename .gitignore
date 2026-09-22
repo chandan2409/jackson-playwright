@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.auth/
+node_modules/
+dist/
+test-results/
+playwright-report/
+blob-report/
+*.log
+jackson-tests/tests/data/.snapshots/
+jackson-tests/tests/reports/changes/change-report-*.json
+jackson-tests/tests/reports/changes/latest-change-report.json
+jackson-tests/tests/reports/changes/evidence/

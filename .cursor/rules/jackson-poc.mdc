@@ -1,0 +1,41 @@
+---
+description: Jackson Firelight POC core constraints for Cursor agents
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Jackson Firelight POC
+
+This repository is the Bounteous handover for Jackson's Agentic QA POC on Firelight FLQANEXT.
+
+## Write boundaries
+
+- Generated tests, POMs, baselines, and reports → `jackson-tests/` only
+- Agent prompts/commands/templates → `playwright-agent/` only
+- Cursor-evaluated config → `.cursor/`
+
+## Product context
+
+- Platform: Firelight FLQANEXT sandbox
+- Product: Elite Access II
+- Jurisdiction: Colorado
+- Case: Boun (from `Boun_POCtestcase.xlsx`)
+- Two scripts required: happy path + variant path
+
+## Behavior
+
+- Prefer label-first Playwright locators for form fields
+- Use multi-strategy `*.locators.json` sidecars (`resolveLocator`)
+- Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
+- Day 6 baseline freeze under `jackson-tests/tests/data/baselines/`
+- Day 8 reports under `jackson-tests/tests/reports/changes/` matching `change-report.schema.json`
+- Self-heal only after explicit human acceptance of expected changes
+- Unexpected changes → defect notes, not silent locator patches
+
+## Forbidden
+
+- Jackson / AEM / GATestFramework / kkr-aem patterns
+- Inventing CSS selectors when live DOM can be scanned
+- Backend/API test scope
+- Xray integration (Excel/Markdown defects only)

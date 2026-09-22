@@ -1,0 +1,13 @@
+{
+  "announcedChanges": [],
+  "_comment": "Day 7: Jackson provides change tickets. Add announced (expected) changes here for Day 8 classification.",
+  "example": [
+    {
+      "ticketId": "CHG-001",
+      "page": "Owner",
+      "description": "Rename field label First Name → Given Name",
+      "field": "First Name",
+      "severity": "medium"
+    }
+  ]
+}

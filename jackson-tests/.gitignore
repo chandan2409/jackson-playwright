@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.auth/
+test-results/
+playwright-report/
+blob-report/
+tests/data/.snapshots/
+tests/reports/changes/change-report-*.json
+tests/reports/changes/latest-change-report.json
+tests/reports/changes/evidence/
+!tests/reports/changes/change-report.schema.json
+!tests/reports/changes/.gitkeep
+!tests/reports/changes/defects/.gitkeep
+*.log
+.DS_Store

@@ -1,0 +1,31 @@
+{
+  "page": "select-application",
+  "generatedAt": "2026-09-21T00:00:00.000Z",
+  "source": "excel-skeleton",
+  "entries": {
+    "jurisdiction": {
+      "name": "jurisdiction",
+      "page": "select-application",
+      "strategies": [
+        { "type": "label", "value": "Jurisdiction", "confidence": 0.95 },
+        { "type": "text", "value": "Jurisdiction", "confidence": 0.5 }
+      ]
+    },
+    "product": {
+      "name": "product",
+      "page": "select-application",
+      "strategies": [
+        { "type": "label", "value": "Product", "confidence": 0.95 },
+        { "type": "text", "value": "Product", "confidence": 0.5 }
+      ]
+    },
+    "startApplication": {
+      "name": "startApplication",
+      "page": "select-application",
+      "strategies": [
+        { "type": "role", "value": "button[name='Start']", "confidence": 0.9 },
+        { "type": "text", "value": "New Application", "confidence": 0.6 }
+      ]
+    }
+  }
+}
