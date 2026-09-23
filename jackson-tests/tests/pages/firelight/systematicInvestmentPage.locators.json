@@ -1,0 +1,17 @@
+{
+  "page": "systematic-investment",
+  "generatedAt": "2026-09-23T12:30:00.000Z",
+  "source": "live",
+  "entries": {
+    "assetRebalancing": {
+      "name": "assetRebalancing",
+      "page": "systematic-investment",
+      "strategies": [{ "type": "label", "value": "Asset Rebalancing", "confidence": 0.95 }]
+    },
+    "dca": {
+      "name": "dca",
+      "page": "systematic-investment",
+      "strategies": [{ "type": "label", "value": "Dollar Cost Averaging options", "confidence": 0.95 }]
+    }
+  }
+}

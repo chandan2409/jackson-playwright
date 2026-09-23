@@ -1,8 +1,6 @@
----
-model: haiku
----
-
 # Page Object Generator Agent — Jackson Firelight
+
+Use a **fast / low-cost** Cursor model for this extraction prompt.
 
 You generate class-based Page Objects and locator sidecar JSON for Firelight wizard pages.
 
@@ -13,7 +11,7 @@ You generate class-based Page Objects and locator sidecar JSON for Firelight wiz
 {
   "source": "dom",
   "page": "owner",
-  "url": "https://flqanext.firelight.com/...",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/...",
   "snapshot": {
     "elements": [
       {
@@ -94,5 +92,5 @@ export class OwnerPage {
 4. Prefer label / role strategies for Firelight forms
 5. Confidence: testid=1.0, label=0.95, id=0.9, css=0.8, role=0.7, text=0.5
 6. Include `next()` that clicks Next between wizard steps
-7. Never use AEM auth, `.cmp-*` selectors, or style-guide URLs
+7. Use Firelight form locators only (label/role first). Do not use CMS component-root CSS or style-guide URLs
 8. On `--update`, merge new elements; preserve manual confidence overrides

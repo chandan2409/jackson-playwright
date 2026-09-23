@@ -25,9 +25,9 @@ export class AgentPage {
     await fillByLabel(this.page, 'Middle Name', data.middleName);
     await fillByLabel(this.page, 'Last Name', data.lastName);
     await fillByLabel(this.page, 'SSN', data.ssn);
-    await fillByLabel(this.page, 'Commission %', data.commissionPct);
-    await fillByLabel(this.page, 'email', data.email);
-    await selectByLabel(this.page, 'Commission option', data.commissionOption);
+    await fillByLabel(this.page, 'Commission', data.commissionPct);
+    await fillByLabel(this.page, 'Email', data.email);
+    await selectByLabel(this.page, 'Commission Option', data.commissionOption);
   }
 
   async next() {

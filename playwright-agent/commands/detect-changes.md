@@ -1,7 +1,3 @@
----
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
----
-
 # /detect-changes — Day 8 UI Change Detection
 
 Compare the frozen Firelight baseline to the current UI and emit a change report.

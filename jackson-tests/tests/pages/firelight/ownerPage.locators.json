@@ -1,0 +1,28 @@
+{
+  "page": "owner",
+  "generatedAt": "2026-09-23T05:45:00.000Z",
+  "source": "excel",
+  "entries": {
+    "firstName": { "name": "firstName", "page": "owner", "strategies": [{ "type": "label", "value": "First Name", "confidence": 0.95 }] },
+    "middleName": { "name": "middleName", "page": "owner", "strategies": [{ "type": "label", "value": "Middle Name", "confidence": 0.95 }] },
+    "lastName": { "name": "lastName", "page": "owner", "strategies": [{ "type": "label", "value": "Last Name", "confidence": 0.95 }] },
+    "ssn": { "name": "ssn", "page": "owner", "strategies": [{ "type": "label", "value": "SSN", "confidence": 0.95 }] },
+    "dateOfBirth": { "name": "dateOfBirth", "page": "owner", "strategies": [{ "type": "label", "value": "Date of Birth", "confidence": 0.95 }] },
+    "sex": { "name": "sex", "page": "owner", "strategies": [{ "type": "label", "value": "Sex", "confidence": 0.95 }] },
+    "address1": { "name": "address1", "page": "owner", "strategies": [{ "type": "label", "value": "Physical Address Line 1", "confidence": 0.95 }] },
+    "address2": { "name": "address2", "page": "owner", "strategies": [{ "type": "label", "value": "Physical Address Line 2", "confidence": 0.95 }] },
+    "city": { "name": "city", "page": "owner", "strategies": [{ "type": "label", "value": "City", "confidence": 0.95 }] },
+    "state": { "name": "state", "page": "owner", "strategies": [{ "type": "label", "value": "State", "confidence": 0.95 }] },
+    "zip": { "name": "zip", "page": "owner", "strategies": [{ "type": "label", "value": "Zip code", "confidence": 0.95 }] },
+    "phone": { "name": "phone", "page": "owner", "strategies": [{ "type": "label", "value": "Phone", "confidence": 0.95 }] },
+    "mailingDifferent": { "name": "mailingDifferent", "page": "owner", "strategies": [{ "type": "label", "value": "Is the mailing address different than the physical address?", "confidence": 0.95 }] },
+    "phoneTransferConsent": { "name": "phoneTransferConsent", "page": "owner", "strategies": [{ "type": "label", "value": "Do you consent to Telephone/Electronic Transfer Authorization?", "confidence": 0.95 }] },
+    "eDeliveryConsent": { "name": "eDeliveryConsent", "page": "owner", "strategies": [{ "type": "label", "value": "Do you consent to Electronic Delivery of Documents?", "confidence": 0.95 }] },
+    "email": { "name": "email", "page": "owner", "strategies": [{ "type": "label", "value": "Email Address", "confidence": 0.95 }] },
+    "authorizeOther": { "name": "authorizeOther", "page": "owner", "strategies": [{ "type": "label", "value": "Do you wish to authorize an individual other than your Financial Professional", "confidence": 0.9 }] },
+    "backupWithholding": { "name": "backupWithholding", "page": "owner", "strategies": [{ "type": "label", "value": "Has the IRS notified you that you are subject to backup withholding?", "confidence": 0.95 }] },
+    "activeMilitary": { "name": "activeMilitary", "page": "owner", "strategies": [{ "type": "label", "value": "Are you an active military member?", "confidence": 0.95 }] },
+    "citizenship": { "name": "citizenship", "page": "owner", "strategies": [{ "type": "label", "value": "Citizenship", "confidence": 0.95 }] },
+    "next": { "name": "next", "page": "owner", "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }] }
+  }
+}

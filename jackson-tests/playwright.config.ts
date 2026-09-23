@@ -4,7 +4,7 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-const baseURL = process.env.FIRELIGHT_BASE_URL || 'https://flqanext.firelight.com';
+const baseURL = process.env.FIRELIGHT_BASE_URL || 'https://flqanext.insurancetechnologies.com/EGApp/';
 const authState = path.resolve(__dirname, '.auth/firelight-state.json');
 
 export default defineConfig({

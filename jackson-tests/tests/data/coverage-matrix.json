@@ -1,0 +1,21 @@
+{
+  "source": "Boun_POCtestcase.xlsx",
+  "product": "Elite Access II (B Share)",
+  "jurisdiction": "Colorado",
+  "caseName": "Boun",
+  "scripts": [
+    { "id": "FL-HP-001", "file": "tests/specs/script-1-happy-path.spec.ts", "path": "happy" },
+    { "id": "FL-VP-001", "file": "tests/specs/script-2-variant-path.spec.ts", "path": "variant" }
+  ],
+  "pages": [
+    "Select Application",
+    "New Application Information",
+    "Owner",
+    "Beneficiaries",
+    "Agent",
+    "Initial Allocations",
+    "Payment Detail",
+    "Signing Process"
+  ],
+  "excelStepCount": 68
+}

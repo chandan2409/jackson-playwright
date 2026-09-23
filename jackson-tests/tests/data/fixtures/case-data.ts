@@ -5,7 +5,7 @@
 export const happyPathData = {
   caseName: 'Boun',
   jurisdiction: 'Colorado',
-  product: 'Elite Access II',
+  product: 'Elite Access II (B Share)',
   ownershipType: 'Individual',
   annuitantSameAsOwner: 'Yes',
   jointAnnuitant: 'No',
@@ -53,7 +53,7 @@ export const happyPathData = {
     ssn: '000000002',
     dateOfBirth: '03/03/2005',
     sex: 'Male',
-    relationship: 'son',
+    relationship: 'Son',
     proceedsPct: '100',
   },
   agent: {

@@ -1,0 +1,30 @@
+{
+  "pageKey": "owner",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/EditWizardApplication",
+  "capturedAt": "2026-09-23T12:00:00.000Z",
+  "title": "Owner (rehearsal baseline)",
+  "elements": [
+    {
+      "name": "firstName",
+      "tag": "input",
+      "text": "",
+      "label": "First Name",
+      "id": "ownerFirstName",
+      "testId": null,
+      "nameAttr": "firstName",
+      "classes": [],
+      "type": "text"
+    },
+    {
+      "name": "ssn",
+      "tag": "input",
+      "text": "",
+      "label": "SSN",
+      "id": "ownerSsn",
+      "testId": null,
+      "nameAttr": "ssn",
+      "classes": [],
+      "type": "text"
+    }
+  ]
+}

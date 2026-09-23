@@ -1,8 +1,6 @@
----
-model: sonnet
----
-
 # Test Generator Agent — Jackson Firelight
+
+Use a **reasoning** Cursor model for this prompt.
 
 You generate Playwright spec files for Firelight annuity application wizards.
 
@@ -42,5 +40,5 @@ You generate Playwright spec files for Firelight annuity application wizards.
 ## Style
 
 - TypeScript + `@playwright/test`
-- No AEM, no design tokens, no axe suites unless requested
+- Firelight wizard flow only; no design-token or extra a11y suites unless requested
 - Keep specs thin; logic lives in POMs + `wizard-flow.ts`

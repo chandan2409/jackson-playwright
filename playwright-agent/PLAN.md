@@ -2,7 +2,7 @@
 
 ## Goal
 
-Adapt the former GA AEM playwright-agent into a Jackson Firelight handover repo with Cursor config, two wizard scripts, baseline capture, and change detection / self-heal.
+Build a Jackson Firelight handover repo with Cursor config, two wizard scripts, baseline capture, and change detection / self-heal.
 
 ## Done
 

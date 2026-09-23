@@ -1,0 +1,15 @@
+{
+  "page": "signing-process",
+  "generatedAt": "2026-09-23T05:45:00.000Z",
+  "source": "excel",
+  "entries": {
+    "signingMethod": {
+      "name": "signingMethod",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "label", "value": "Which method will be used to collect signatures?", "confidence": 0.95 },
+        { "type": "text", "value": "Wet Signature", "confidence": 0.55 }
+      ]
+    }
+  }
+}

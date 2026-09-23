@@ -1,0 +1,30 @@
+{
+  "pageKey": "owner",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/EditWizardApplication",
+  "capturedAt": "2026-09-23T12:05:00.000Z",
+  "title": "Owner (rehearsal current — simulated Day 8 UI)",
+  "elements": [
+    {
+      "name": "firstName",
+      "tag": "input",
+      "text": "",
+      "label": "Given Name",
+      "id": "ownerFirstName",
+      "testId": null,
+      "nameAttr": "firstName",
+      "classes": [],
+      "type": "text"
+    },
+    {
+      "name": "email",
+      "tag": "input",
+      "text": "",
+      "label": "Email Address (optional)",
+      "id": "ownerEmail",
+      "testId": null,
+      "nameAttr": "email",
+      "classes": [],
+      "type": "email"
+    }
+  ]
+}

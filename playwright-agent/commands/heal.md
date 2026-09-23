@@ -1,7 +1,3 @@
----
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
----
-
 # /heal — Self-Heal After Human Acceptance
 
 Apply accepted expected changes to Firelight scripts and refresh the baseline.

@@ -7,7 +7,7 @@ const required = (key: string, fallback = ''): string =>
   process.env[key] || fallback;
 
 export const ENV = {
-  FIRELIGHT_BASE_URL: required('FIRELIGHT_BASE_URL', 'https://flqanext.firelight.com'),
+  FIRELIGHT_BASE_URL: required('FIRELIGHT_BASE_URL', 'https://flqanext.insurancetechnologies.com/EGApp/'),
   FIRELIGHT_USERNAME: required('FIRELIGHT_USERNAME'),
   FIRELIGHT_PASSWORD: required('FIRELIGHT_PASSWORD'),
   FIRELIGHT_JURISDICTION: required('FIRELIGHT_JURISDICTION', 'Colorado'),

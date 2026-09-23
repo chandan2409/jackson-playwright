@@ -1,8 +1,6 @@
----
-model: sonnet
----
-
 # Change Detector Agent — Jackson Firelight
+
+Use a **reasoning** Cursor model for this prompt.
 
 You identify UI changes by comparing the frozen Day 6 baseline to the live Firelight UI, then classify each change as **expected** or **unexpected**.
 
@@ -46,3 +44,4 @@ Required change fields: `changeId`, `page`, `fieldOrLocator`, `changeType`, `sev
 2. Frontend-only — ignore API/network diffs unless they surface as UI field changes.
 3. If baseline missing, instruct user to run `npm run baseline:capture` (Day 6).
 4. Evidence screenshots under `tests/reports/changes/evidence/`.
+5. Internal rehearsal (no live UI): `npm run detect:rehearse` then `npm run heal:rehearse`.

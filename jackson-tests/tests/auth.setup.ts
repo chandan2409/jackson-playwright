@@ -6,14 +6,14 @@ import ENV from './utils/env';
 const authFile = path.resolve(__dirname, '../.auth/firelight-state.json');
 
 /**
- * Day 0 auth setup. Logs into Firelight FLQANEXT once and persists storageState.
- * Wire the real login selectors once sandbox credentials + URL are confirmed.
+ * Logs into Firelight FLQANEXT (Hexure STS) and persists storageState.
+ * App: https://flqanext.insurancetechnologies.com/EGApp/
+ * Login redirects to /EGSTS/login.aspx
  */
 setup('authenticate to Firelight', async ({ page }) => {
   fs.mkdirSync(path.dirname(authFile), { recursive: true });
 
   if (!ENV.FIRELIGHT_USERNAME || !ENV.FIRELIGHT_PASSWORD) {
-    // Allow offline scaffold: write empty state so chromium project can load.
     fs.writeFileSync(
       authFile,
       JSON.stringify({ cookies: [], origins: [] }, null, 2),
@@ -24,17 +24,14 @@ setup('authenticate to Firelight', async ({ page }) => {
 
   await page.goto(ENV.FIRELIGHT_BASE_URL);
   await page.waitForLoadState('domcontentloaded');
+  await expect(page.getByRole('heading', { name: 'Welcome Back!' })).toBeVisible();
 
-  // PLACEHOLDER: replace with live Firelight login field selectors after Day 0 access
-  const user = page.getByLabel(/user(name)?|email/i).or(page.locator('input[type="text"], input[name*="user" i]').first());
-  const pass = page.getByLabel(/password/i).or(page.locator('input[type="password"]').first());
-  const submit = page.getByRole('button', { name: /sign in|log in|login|submit/i });
+  await page.getByRole('textbox').first().fill(ENV.FIRELIGHT_USERNAME);
+  await page.locator('input[type="password"]').fill(ENV.FIRELIGHT_PASSWORD);
+  await page.getByRole('button', { name: 'Login' }).click();
 
-  await user.fill(ENV.FIRELIGHT_USERNAME);
-  await pass.fill(ENV.FIRELIGHT_PASSWORD);
-  await submit.click();
-  await page.waitForLoadState('networkidle');
-
-  await expect(page).not.toHaveURL(/login|signin/i);
+  await page.waitForURL(/\/EGApp\//, { timeout: 60_000, waitUntil: 'domcontentloaded' });
+  await expect(page).not.toHaveURL(/login\.aspx/i);
+  await page.getByText(/start new|home|activity/i).first().waitFor({ timeout: 30_000 }).catch(() => undefined);
   await page.context().storageState({ path: authFile });
 });

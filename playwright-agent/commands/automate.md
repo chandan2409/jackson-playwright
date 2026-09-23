@@ -1,7 +1,3 @@
----
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
----
-
 # /automate — Firelight Test Generation
 
 Generate Playwright automation for Jackson Firelight from Excel test cases.
@@ -40,7 +36,6 @@ POC default path: `Boun_POCtestcase.xlsx` (workspace root).
 
 - Jira mode
 - Figma / visual design mode
-- AEM component / style-guide mode
 - Accessibility suite generation (optional later)
 
 ## Output Summary
@@ -56,5 +51,5 @@ After generation, display:
 1. **Never invent Firelight selectors** when live DOM is available — scan and write multi-strategy locators.
 2. If Firelight is unreachable, generate label-based skeletons and note that Day 0 access is required to harden locators.
 3. Write only into `jackson-tests/`. Never write agent files into the test repo.
-4. Do not mention Jackson, AEM, GATestFramework, or kkr-aem in any generated file.
+4. Generated files must mention only Jackson / Firelight.
 5. After generation (with credentials), run `npm run test:script1` and `npm run test:script2` from `jackson-tests/`.

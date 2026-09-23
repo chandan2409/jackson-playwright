@@ -1,0 +1,421 @@
+{
+  "pageKey": "select-application",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/",
+  "capturedAt": "2026-09-23T07:32:32.878Z",
+  "title": "Welcome",
+  "elements": [
+    {
+      "name": "el_0",
+      "tag": "a",
+      "text": "skip to page content",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "skipToContent"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgAboutLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "imgAboutLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "__RequestVerificationToken",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": "__RequestVerificationToken",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "toolbar_Home",
+      "tag": "a",
+      "text": "Home",
+      "label": null,
+      "id": "toolbar_Home",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersLeft"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_NewActivity",
+      "tag": "a",
+      "text": "New Activity",
+      "label": null,
+      "id": "toolbar_NewActivity",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "newActivity_103",
+      "tag": "a",
+      "text": "Application",
+      "label": null,
+      "id": "newActivity_103",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "newActivity_508",
+      "tag": "a",
+      "text": "Sub-Pay",
+      "label": null,
+      "id": "newActivity_508",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "toolbar_AllActivities",
+      "tag": "a",
+      "text": "All Activities",
+      "label": null,
+      "id": "toolbar_AllActivities",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_Preferences",
+      "tag": "a",
+      "text": "Preferences",
+      "label": null,
+      "id": "toolbar_Preferences",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_LogOff",
+      "tag": "a",
+      "text": "Log Off",
+      "label": null,
+      "id": "toolbar_LogOff",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersRight"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_10",
+      "tag": "a",
+      "text": "☰",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "icon"
+      ],
+      "type": null
+    },
+    {
+      "name": "transactionBar_103",
+      "tag": "a",
+      "text": "Application",
+      "label": null,
+      "id": "transactionBar_103",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "enabledMenuLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "transactionBar_508",
+      "tag": "a",
+      "text": "Sub-Pay",
+      "label": null,
+      "id": "transactionBar_508",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "enabledMenuLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_13",
+      "tag": "button",
+      "text": "Recent Activity",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "tablinks",
+        "blueButton",
+        "active"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_14",
+      "tag": "button",
+      "text": "Shared Activity",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "tablinks",
+        "blueButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "9a0b6089-052c-4ba2-806d-73e31c750731",
+      "tag": "a",
+      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "label": null,
+      "id": "9a0b6089-052c-4ba2-806d-73e31c750731",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "fab49fc0-6534-4f73-9125-d49571f63991",
+      "tag": "a",
+      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "label": null,
+      "id": "fab49fc0-6534-4f73-9125-d49571f63991",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "c981214a-c2e4-4672-bb9a-ef2e0bd46ba0",
+      "tag": "a",
+      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "label": null,
+      "id": "c981214a-c2e4-4672-bb9a-ef2e0bd46ba0",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "98cd0591-14a1-4d5b-b098-c128f2ddf210",
+      "tag": "a",
+      "text": "Boun\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "label": null,
+      "id": "98cd0591-14a1-4d5b-b098-c128f2ddf210",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "19ca844f-76fd-41b2-90b1-5bc6ba4229e1",
+      "tag": "a",
+      "text": "Boun\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "label": null,
+      "id": "19ca844f-76fd-41b2-90b1-5bc6ba4229e1",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "prev",
+      "tag": "a",
+      "text": "",
+      "label": "Previous Page",
+      "id": "prev",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "page_2",
+      "tag": "a",
+      "text": "2",
+      "label": "2 Page",
+      "id": "page_2",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "page_3",
+      "tag": "a",
+      "text": "3",
+      "label": "3 Page",
+      "id": "page_3",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "page_4",
+      "tag": "a",
+      "text": "4",
+      "label": "4 Page",
+      "id": "page_4",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "page_5",
+      "tag": "a",
+      "text": "5",
+      "label": "5 Page",
+      "id": "page_5",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "next",
+      "tag": "a",
+      "text": "",
+      "label": "Next Page",
+      "id": "next",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "pageL",
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "startNew__103",
+      "tag": "a",
+      "text": "Application",
+      "label": null,
+      "id": "startNew__103",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "shadow",
+        "homeButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "startNew__508",
+      "tag": "a",
+      "text": "Sub-Pay",
+      "label": null,
+      "id": "startNew__508",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "shadow",
+        "homeButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "manage_AllActivities",
+      "tag": "a",
+      "text": "All Activities",
+      "label": null,
+      "id": "manage_AllActivities",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "shadow",
+        "homeButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_29",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "about_LicenseInfo",
+      "tag": "a",
+      "text": "Open Source License Info",
+      "label": "Open Source License Info",
+      "id": "about_LicenseInfo",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueLink"
+      ],
+      "type": null
+    }
+  ]
+}

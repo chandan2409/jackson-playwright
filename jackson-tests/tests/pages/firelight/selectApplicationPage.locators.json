@@ -1,30 +1,73 @@
 {
   "page": "select-application",
-  "generatedAt": "2026-09-21T00:00:00.000Z",
-  "source": "excel-skeleton",
+  "generatedAt": "2026-09-23T05:45:00.000Z",
+  "source": "dom",
   "entries": {
+    "startApplication": {
+      "name": "startApplication",
+      "page": "select-application",
+      "strategies": [
+        { "type": "id", "value": "startNew__103", "confidence": 0.95 },
+        { "type": "css", "value": "a.homeButton#startNew__103", "confidence": 0.9 },
+        { "type": "role", "value": "link[name='Application']", "confidence": 0.7 }
+      ]
+    },
+    "newActivity": {
+      "name": "newActivity",
+      "page": "select-application",
+      "strategies": [
+        { "type": "id", "value": "toolbar_NewActivity", "confidence": 0.95 },
+        { "type": "text", "value": "New Activity", "confidence": 0.6 }
+      ]
+    },
     "jurisdiction": {
       "name": "jurisdiction",
       "page": "select-application",
       "strategies": [
+        { "type": "id", "value": "Jurisdiction", "confidence": 0.95 },
         { "type": "label", "value": "Jurisdiction", "confidence": 0.95 },
-        { "type": "text", "value": "Jurisdiction", "confidence": 0.5 }
+        { "type": "css", "value": "select[name='Jurisdiction']", "confidence": 0.9 }
+      ]
+    },
+    "productType": {
+      "name": "productType",
+      "page": "select-application",
+      "strategies": [
+        { "type": "id", "value": "ProductType", "confidence": 0.95 },
+        { "type": "label", "value": "Product Type", "confidence": 0.9 },
+        { "type": "css", "value": "select[name='ProductType']", "confidence": 0.85 }
       ]
     },
     "product": {
       "name": "product",
       "page": "select-application",
       "strategies": [
-        { "type": "label", "value": "Product", "confidence": 0.95 },
-        { "type": "text", "value": "Product", "confidence": 0.5 }
+        { "type": "text", "value": "Elite Access II (B Share)", "confidence": 0.85 },
+        { "type": "label", "value": "Product", "confidence": 0.9 }
       ]
     },
-    "startApplication": {
-      "name": "startApplication",
+    "create": {
+      "name": "create",
       "page": "select-application",
       "strategies": [
-        { "type": "role", "value": "button[name='Start']", "confidence": 0.9 },
-        { "type": "text", "value": "New Application", "confidence": 0.6 }
+        { "type": "role", "value": "link[name='Create']", "confidence": 0.95 },
+        { "type": "text", "value": "Create", "confidence": 0.5 }
+      ]
+    },
+    "activityName": {
+      "name": "activityName",
+      "page": "select-application",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='Name']", "confidence": 0.95 },
+        { "type": "label", "value": "Name", "confidence": 0.9 }
+      ]
+    },
+    "createActivity": {
+      "name": "createActivity",
+      "page": "select-application",
+      "strategies": [
+        { "type": "css", "value": "[role='dialog'] button:has-text('Create')", "confidence": 0.95 },
+        { "type": "role", "value": "button[name='Create']", "confidence": 0.85 }
       ]
     }
   }

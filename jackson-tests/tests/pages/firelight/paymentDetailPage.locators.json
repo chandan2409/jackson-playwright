@@ -1,0 +1,13 @@
+{
+  "page": "payment-detail",
+  "generatedAt": "2026-09-23T05:45:00.000Z",
+  "source": "excel",
+  "entries": {
+    "existingPolicies": { "name": "existingPolicies", "page": "payment-detail", "strategies": [{ "type": "label", "value": "Does the owner have existing or pending life insurance or annuity policies?", "confidence": 0.95 }] },
+    "replacing": { "name": "replacing", "page": "payment-detail", "strategies": [{ "type": "label", "value": "Are you replacing an existing life insurance or annuity contract?", "confidence": 0.95 }] },
+    "premiumType": { "name": "premiumType", "page": "payment-detail", "strategies": [{ "type": "label", "value": "Premium Type", "confidence": 0.95 }] },
+    "paymentMethod": { "name": "paymentMethod", "page": "payment-detail", "strategies": [{ "type": "label", "value": "Payment Method", "confidence": 0.95 }] },
+    "amount": { "name": "amount", "page": "payment-detail", "strategies": [{ "type": "label", "value": "Amount", "confidence": 0.95 }] },
+    "next": { "name": "next", "page": "payment-detail", "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }] }
+  }
+}

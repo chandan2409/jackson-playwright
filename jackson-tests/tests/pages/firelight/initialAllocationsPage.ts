@@ -1,17 +1,22 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 import { clickNext } from '../../utils/form-helpers';
 
 export class InitialAllocationsPage {
   constructor(private page: Page) {}
 
-  /** Select first available investment option — refine once live DOM is known */
   async selectInvestmentOption() {
-    const option = this.page.locator('input[type="checkbox"], input[type="radio"]').first();
-    if (await option.count()) {
-      await option.check({ force: true }).catch(async () => option.click());
-      return;
-    }
-    await this.page.getByText(/investment|allocation|fund/i).first().click();
+    await this.page.getByText(/Initial Allocations/i).first().waitFor({ timeout: 20_000 });
+    const fund = this.page.getByText('Guaranteed One Year Fixed', { exact: true }).first();
+    await fund.scrollIntoViewIfNeeded();
+    const allocation = fund.locator(
+      'xpath=following::input[not(@type="checkbox") and not(@type="radio") and not(@type="hidden")][1]',
+    );
+    await allocation.click();
+    await allocation.fill('100');
+    await allocation.press('Tab').catch(() => undefined);
+    await expect(this.page.getByRole('button', { name: 'Next', exact: true }).first()).toBeEnabled({
+      timeout: 15_000,
+    });
   }
 
   async next() {

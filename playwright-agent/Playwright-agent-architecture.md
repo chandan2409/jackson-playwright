@@ -9,9 +9,9 @@ Excel → 2 scripts + baseline → detect changes → HITL accept → self-heal.
 ## Components
 
 ```
-playwright-agent/     prompts + commands (/automate, /detect-changes, /heal)
+.cursor/              Cursor rules, commands, mcp.json (what Jackson evaluates)
+playwright-agent/     Cursor agent runbooks + templates
 jackson-tests/        Playwright execution target
-.cursor/              rules, commands, mcp.json (client-evaluated)
 ```
 
 ## Agents
@@ -20,6 +20,7 @@ jackson-tests/        Playwright execution target
 |-------|------|
 | test-generator | Specs from Excel steps |
 | page-object-generator | POMs + locator sidecars |
+| script-2-iterator | Run variant script, fix from screenshot, repeat |
 | change-detector | Baseline diff + expected/unexpected |
 | self-healer | Apply accepted repairs |
 

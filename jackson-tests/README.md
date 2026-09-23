@@ -10,7 +10,9 @@ Runnable Playwright suite for the Jackson Firelight POC.
 | `npm run test:script1` | Happy-path wizard |
 | `npm run test:script2` | Variant-path wizard |
 | `npm run baseline:capture` | Day 6 baseline freeze |
-| `npm run detect:changes` | Day 8 change report |
+| `npm run detect:changes` | Day 8 change report (live wizard vs CURRENT baseline) |
+| `npm run detect:rehearse` | Internal detect dry-run (no Firelight) |
+| `npm run heal:rehearse` | Internal heal dry-run after detect:rehearse |
 
 ## Layout
 

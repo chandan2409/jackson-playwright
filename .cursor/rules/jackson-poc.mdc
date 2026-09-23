@@ -7,7 +7,7 @@ alwaysApply: true
 
 # Jackson Firelight POC
 
-This repository is the Bounteous handover for Jackson's Agentic QA POC on Firelight FLQANEXT.
+This repository is the Bounteous handover for Jackson's **Cursor** Agentic QA POC on Firelight FLQANEXT.
 
 ## Write boundaries
 
@@ -35,7 +35,7 @@ This repository is the Bounteous handover for Jackson's Agentic QA POC on Fireli
 
 ## Forbidden
 
-- Jackson / AEM / GATestFramework / kkr-aem patterns
 - Inventing CSS selectors when live DOM can be scanned
 - Backend/API test scope
 - Xray integration (Excel/Markdown defects only)
+- Tests or locators for any product other than Firelight FLQANEXT

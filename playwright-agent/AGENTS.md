@@ -1,4 +1,6 @@
-# Jackson Firelight POC — Agent Instructions
+# Jackson Firelight POC — Cursor Agent Instructions
+
+This is a **Cursor** POC. Jackson evaluates `.cursor/` (rules, commands, MCP).
 
 You are working in the **Jackson Firelight Agentic QA POC** repository.
 
@@ -9,23 +11,64 @@ You are working in the **Jackson Firelight Agentic QA POC** repository.
 3. Classify expected vs unexpected
 4. Self-heal only after human acceptance
 
-## Repos / folders
+## Folders
 
-- `playwright-agent/` — agent prompts and commands (do not write tests here)
+- `.cursor/` — Cursor rules and commands Jackson evaluates (source of truth for slash commands)
+- `playwright-agent/` — detailed runbooks, agent prompts, templates
 - `jackson-tests/` — Playwright suite (POMs, specs, baselines, change reports)
-- `.cursor/` — Cursor rules and commands Jackson evaluates
 
-## Commands
+Write tests only into `jackson-tests/`. Never write test files into `playwright-agent/`.
+
+## Cursor commands
 
 - `/automate excel` → generate/update scripts from Excel
 - `/detect-changes` → Day 8 change report
 - `/heal` → apply accepted repairs + new baseline
+- `/iterate-script1` → run script 1, fix from screenshot, repeat until green
+- `/iterate-script2` → run script 2 (variant), fix from screenshot, repeat until green
+
+## Agents (prompts)
+
+| Agent | Purpose | Cursor model routing |
+|-------|---------|----------------------|
+| `test-generator` | Specs from Excel steps | reasoning model |
+| `page-object-generator` | POMs + locator sidecars from live DOM | fast / low-cost model |
+| `script-2-iterator` | Run Script 2, fix from screenshot, repeat | reasoning model |
+| `change-detector` | Baseline vs current; expected vs unexpected | reasoning model |
+| `self-healer` | Update locators/POMs after HITL | reasoning model |
+
+## Conventions
+
+- POM classes in `jackson-tests/tests/pages/firelight/` with `*.locators.json` sidecars
+- Specs in `jackson-tests/tests/specs/` — two scripts: happy path + variant path
+- Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
+- Label-first locators for Firelight form fields
+- Every test MUST contain at least one `expect()`
+
+## Wizard pages
+
+1. Select Application
+2. New Application Information
+3. Owner
+4. Beneficiaries
+5. Agent
+6. Initial Allocations
+7. Payment Detail
+8. Signing Process
+
+## Token optimization (implemented in this layout)
+
+1. Fast model for mechanical POM extraction; reasoning model for detect/heal
+2. Split agent prompts from generated tests so prompts do not scan the whole suite
+3. Use templates under `playwright-agent/templates/` instead of free-form generation
+4. Cache DOM snapshots under `jackson-tests/tests/data/.snapshots/`
+5. Prefer `playwright-agent/AGENTS.md` + `jackson-tests/README.md` over dumping the repo
 
 ## Hard rules
 
-- Target platform is **Firelight FLQANEXT**, not AEM
-- Do not reference Jackson, GATestFramework, or kkr-aem
-- Prefer label-first locators; multi-strategy sidecars for healing
+- Target platform is **Firelight FLQANEXT** only
+- Stay on Firelight wizard UI
 - Never invent selectors when live DOM is available
 - Never heal unexpected changes; file defect notes instead
 - Human interaction only for start + acceptance
+- Frontend-only; Excel/Markdown defects (no Xray)
