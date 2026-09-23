@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jackson Firelight — Change review</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <p class="kicker">Firelight FLQANEXT</p>
+        <h1>Change review</h1>
+        <div id="chips" class="chips"></div>
+      </div>
+      <p class="phase">Jackson POC</p>
+    </header>
+
+    <ol id="wizard" class="wizard" aria-label="Wizard pages"></ol>
+
+    <p class="note no-print"> Script 1/2, live detect, and baseline capture hit the Firelight sandbox
+      (~2 min) and require <strong>Live Firelight</strong>.
+    </p>
+
+    <section class="actions no-print">
+      <label class="live-toggle">
+        <input type="checkbox" id="live-mode" />
+        Live Firelight
+      </label>
+      <button type="button" data-run="detect-rehearse">Detect (rehearsal)</button>
+      <button type="button" data-run="script1" class="live-only" disabled>Script 1</button>
+      <button type="button" data-run="script2" class="live-only" disabled>Script 2</button>
+      <button type="button" data-run="baseline" class="live-only" disabled>Capture baseline</button>
+      <button type="button" data-run="detect-live" class="live-only" disabled>Detect (live)</button>
+    </section>
+
+    <p id="job-status" class="meta no-print">Idle</p>
+    <pre id="job-log" class="log no-print">(no job yet)</pre>
+
+    <section id="summary" class="cards"></section>
+
+    <section>
+      <h2>Test coverage</h2>
+      <p id="coverage-meta" class="meta"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Script</th>
+              <th>Path</th>
+              <th>Last run</th>
+            </tr>
+          </thead>
+          <tbody id="coverage"></tbody>
+        </table>
+      </div>
+      <p class="heal-bar no-print">
+        <a class="ghost" id="html-report" href="/playwright-report/index.html" target="_blank" rel="noopener noreferrer">Open HTML report</a>
+        <span id="html-report-hint" class="meta"></span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Change report</h2>
+      <p id="report-meta" class="meta"></p>
+      <p class="note">Check expected rows to accept. Unexpected rows are rejected unless you check them (not recommended).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Class</th>
+              <th>Type</th>
+              <th>Page / field</th>
+              <th>Before → after</th>
+              <th>HITL</th>
+              <th>Heal</th>
+            </tr>
+          </thead>
+          <tbody id="changes"></tbody>
+        </table>
+      </div>
+      <p class="heal-bar no-print">
+        <button type="button" id="heal-btn">Heal accepted / reject rest</button>
+        <a class="ghost" id="export-md" href="/api/export.md">Export Markdown</a>
+        <button type="button" class="ghost" id="export-pdf">Export PDF</button>
+      </p>
+    </section>
+
+    <section class="split">
+      <div>
+        <h2>Live baseline pages</h2>
+        <p id="baseline-meta" class="meta"></p>
+        <ul id="baseline-pages" class="page-list"></ul>
+      </div>
+      <div>
+        <h2>Rehearsal locator (after heal)</h2>
+        <pre id="locator"></pre>
+        <h2>Defects</h2>
+        <div id="defects"></div>
+      </div>
+    </section>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -12,6 +12,7 @@
     "detect:rehearse": "DETECT_BASELINE_DIR=tests/data/rehearsal/baseline DETECT_CURRENT_DIR=tests/data/rehearsal/current CHANGE_TICKETS_PATH=tests/data/rehearsal/change-tickets.json tsx tests/utils/change-detector.ts",
     "heal:accept": "tsx tests/utils/apply-heal-acceptance.ts",
     "heal:rehearse": "tsx tests/utils/apply-heal-acceptance.ts --accept CHG-001 --reject CHG-002,CHG-003 --locators-dir tests/data/rehearsal/locators",
+    "ui": "tsx ui/serve.ts",
     "report:schema": "node -e \"console.log(require('fs').readFileSync('tests/reports/changes/change-report.schema.json','utf8'))\"",
     "auth:setup": "playwright test --project=setup",
     "headed": "playwright test --headed",

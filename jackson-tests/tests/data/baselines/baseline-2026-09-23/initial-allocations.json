@@ -1,7 +1,2167 @@
 {
   "pageKey": "initial-allocations",
-  "url": "",
-  "capturedAt": "2026-09-23T07:32:32.894Z",
-  "title": "(pending wizard navigation) initial-allocations",
-  "elements": []
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/EditWizardApplication?AppGuid=d34b8eec-c0f3-4d92-919b-60a3f70a1a28&RecordMetric=True",
+  "capturedAt": "2026-09-23T10:21:34.140Z",
+  "title": "Boun",
+  "elements": [
+    {
+      "name": "el_0",
+      "tag": "a",
+      "text": "skip to page content",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "skipToContent"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgAboutLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "imgAboutLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_2",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "summaryModal",
+        "align-top",
+        "fas",
+        "fa-pencil"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar__home",
+      "tag": "a",
+      "text": "Home",
+      "label": null,
+      "id": "toolbar__home",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersLeft"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_OtherActions",
+      "tag": "a",
+      "text": "Other Actions",
+      "label": null,
+      "id": "toolbar_OtherActions",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_5",
+      "tag": "a",
+      "text": "Rename/Summary",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_6",
+      "tag": "a",
+      "text": "History",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_7",
+      "tag": "a",
+      "text": "Documents",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_8",
+      "tag": "a",
+      "text": "Manage Optional Forms",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_9",
+      "tag": "a",
+      "text": "Request Client to Fill App",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_10",
+      "tag": "a",
+      "text": "Request Client to Fill & Sign",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "buttonSaveAs",
+      "tag": "a",
+      "text": "Copy Activity",
+      "label": null,
+      "id": "buttonSaveAs",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "SaveAsAppModel"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_12",
+      "tag": "a",
+      "text": "Log Off",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersRight"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_13",
+      "tag": "a",
+      "text": "☰",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "icon"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgNext",
+      "tag": "button",
+      "text": "CONTINUE",
+      "label": null,
+      "id": "imgNext",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "linkFocus",
+        "navActionBtnDisabled",
+        "disabled"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgOpenWiz",
+      "tag": "a",
+      "text": "Initial Allocations",
+      "label": null,
+      "id": "imgOpenWiz",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "ToggleMessagesLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "ToggleMessagesLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "alert",
+        "ITWizardShowAllErrorsButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "AssetCategory",
+      "tag": "select",
+      "text": "All Investment Options\nAllocation\nU.S. Equity\nFixed Income\nInternational/Global Equity\nAlternative\nSector Equity\nFixed A",
+      "label": "Asset Category",
+      "id": "AssetCategory",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITSelect"
+      ],
+      "type": null,
+      "options": [
+        "All Investment Options",
+        "Allocation",
+        "U.S. Equity",
+        "Fixed Income",
+        "International/Global Equity",
+        "Alternative",
+        "Sector Equity",
+        "Fixed Account Options"
+      ]
+    },
+    {
+      "name": "%",
+      "tag": "input",
+      "text": "",
+      "label": "%",
+      "id": "%",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_19",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_20",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_21",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_22",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_23",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_24",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_25",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_26",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_27",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_28",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_29",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_30",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_31",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_32",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_33",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_34",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_35",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_36",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_37",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_38",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_39",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_40",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_41",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_42",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_43",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_44",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_45",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_46",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_47",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_48",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_49",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_50",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_51",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_52",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_53",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_54",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_55",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_56",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_57",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_58",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_59",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_60",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_61",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_62",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_63",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_64",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_65",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_66",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_67",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_68",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_69",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_70",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_71",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_72",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_73",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_74",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_75",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_76",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_77",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_78",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_79",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_80",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_81",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_82",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_83",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_84",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_85",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_86",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_87",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_88",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_89",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_90",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_91",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_92",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_93",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_94",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_95",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_96",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_97",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_98",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_99",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_100",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_101",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_102",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_103",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_104",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_105",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_106",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_107",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_108",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_109",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_110",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_111",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_112",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_113",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_114",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_115",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_116",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_117",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_118",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_119",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_120",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_121",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_122",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_123",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_124",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_125",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_126",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_127",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_128",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_129",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_130",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_131",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_132",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_133",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_134",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign"
+      ],
+      "type": null
+    },
+    {
+      "name": "%",
+      "tag": "input",
+      "text": "",
+      "label": "%",
+      "id": "%",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITTextFieldInput",
+        "leftAlign",
+        "readOnlyInput"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_136",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumPrevious"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_137",
+      "tag": "button",
+      "text": "Close",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumClose"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_138",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumContinue"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_139",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraPrevious"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_140",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraContinue"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_141",
+      "tag": "button",
+      "text": "Save and Exit",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraClose"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_142",
+      "tag": "button",
+      "text": "Review",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraReview"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_143",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonBack"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_144",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_145",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_146",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_147",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "about_LicenseInfo",
+      "tag": "a",
+      "text": "Open Source License Info",
+      "label": "Open Source License Info",
+      "id": "about_LicenseInfo",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_149",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_150",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_151",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_152",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    }
+  ]
 }

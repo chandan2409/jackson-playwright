@@ -13,6 +13,8 @@ Runnable Playwright suite for the Jackson Firelight POC.
 | `npm run detect:changes` | Day 8 change report (live wizard vs CURRENT baseline) |
 | `npm run detect:rehearse` | Internal detect dry-run (no Firelight) |
 | `npm run heal:rehearse` | Internal heal dry-run after detect:rehearse |
+| `npm run ui` | Change review at http://127.0.0.1:5173 (coverage matrix + HTML report) |
+| `npm run report` | Playwright HTML report (screenshots / video / traces) |
 
 ## Layout
 

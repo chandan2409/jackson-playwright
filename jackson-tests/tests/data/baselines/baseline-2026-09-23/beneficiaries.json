@@ -1,7 +1,491 @@
 {
   "pageKey": "beneficiaries",
-  "url": "",
-  "capturedAt": "2026-09-23T07:32:32.893Z",
-  "title": "(pending wizard navigation) beneficiaries",
-  "elements": []
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/EditWizardApplication?AppGuid=d34b8eec-c0f3-4d92-919b-60a3f70a1a28&RecordMetric=True",
+  "capturedAt": "2026-09-23T10:21:15.758Z",
+  "title": "Boun",
+  "elements": [
+    {
+      "name": "el_0",
+      "tag": "a",
+      "text": "skip to page content",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "skipToContent"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgAboutLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "imgAboutLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_2",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "summaryModal",
+        "align-top",
+        "fas",
+        "fa-pencil"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar__home",
+      "tag": "a",
+      "text": "Home",
+      "label": null,
+      "id": "toolbar__home",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersLeft"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_OtherActions",
+      "tag": "a",
+      "text": "Other Actions",
+      "label": null,
+      "id": "toolbar_OtherActions",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_5",
+      "tag": "a",
+      "text": "Rename/Summary",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_6",
+      "tag": "a",
+      "text": "History",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_7",
+      "tag": "a",
+      "text": "Documents",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_8",
+      "tag": "a",
+      "text": "Manage Optional Forms",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_9",
+      "tag": "a",
+      "text": "Request Client to Fill App",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "el_10",
+      "tag": "a",
+      "text": "Request Client to Fill & Sign",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "buttonSaveAs",
+      "tag": "a",
+      "text": "Copy Activity",
+      "label": null,
+      "id": "buttonSaveAs",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "SaveAsAppModel"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_12",
+      "tag": "a",
+      "text": "Log Off",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersRight"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_13",
+      "tag": "a",
+      "text": "☰",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "icon"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgNext",
+      "tag": "button",
+      "text": "CONTINUE",
+      "label": null,
+      "id": "imgNext",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "linkFocus",
+        "navActionBtnDisabled",
+        "disabled"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgOpenWiz",
+      "tag": "a",
+      "text": "Beneficiaries",
+      "label": null,
+      "id": "imgOpenWiz",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "ToggleMessagesLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "ToggleMessagesLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "alert",
+        "ITWizardShowAllErrorsButton"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_17",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumPrevious"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_18",
+      "tag": "button",
+      "text": "Close",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumClose"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_19",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "magnumContinue"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_20",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraPrevious"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_21",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraContinue"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_22",
+      "tag": "button",
+      "text": "Save and Exit",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraClose"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_23",
+      "tag": "button",
+      "text": "Review",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonDisabled",
+        "auraReview"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_24",
+      "tag": "button",
+      "text": "Previous",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput",
+        "ITButtonBack"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_25",
+      "tag": "button",
+      "text": "Next",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ITButtonInput"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_26",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_27",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_28",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "about_LicenseInfo",
+      "tag": "a",
+      "text": "Open Source License Info",
+      "label": "Open Source License Info",
+      "id": "about_LicenseInfo",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_30",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_31",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_32",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_33",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    }
+  ]
 }

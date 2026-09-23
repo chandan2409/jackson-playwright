@@ -22,7 +22,7 @@ export default defineConfig({
   expect: { timeout: 15_000 },
   use: {
     baseURL,
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     actionTimeout: 20_000,

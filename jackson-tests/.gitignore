@@ -7,6 +7,7 @@ playwright-report/
 blob-report/
 tests/data/.snapshots/
 tests/reports/changes/change-report-*.json
+tests/reports/last-run.json
 tests/reports/changes/latest-change-report.json
 tests/reports/changes/evidence/
 !tests/reports/changes/change-report.schema.json

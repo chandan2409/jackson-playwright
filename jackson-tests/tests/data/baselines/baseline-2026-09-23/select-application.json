@@ -1,8 +1,8 @@
 {
   "pageKey": "select-application",
-  "url": "https://flqanext.insurancetechnologies.com/EGApp/",
-  "capturedAt": "2026-09-23T07:32:32.878Z",
-  "title": "Welcome",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/NewApplication?acordType=103",
+  "capturedAt": "2026-09-23T10:20:26.444Z",
+  "title": "New Application",
   "elements": [
     {
       "name": "el_0",
@@ -27,17 +27,6 @@
       "nameAttr": null,
       "classes": [],
       "type": null
-    },
-    {
-      "name": "__RequestVerificationToken",
-      "tag": "input",
-      "text": "",
-      "label": null,
-      "id": null,
-      "testId": null,
-      "nameAttr": "__RequestVerificationToken",
-      "classes": [],
-      "type": "hidden"
     },
     {
       "name": "toolbar_Home",
@@ -139,7 +128,7 @@
       "type": null
     },
     {
-      "name": "el_10",
+      "name": "el_9",
       "tag": "a",
       "text": "☰",
       "label": null,
@@ -178,217 +167,318 @@
       "type": null
     },
     {
-      "name": "el_13",
+      "name": "__RequestVerificationToken",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": "__RequestVerificationToken",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "JurisdictionId",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "JurisdictionId",
+      "testId": null,
+      "nameAttr": "JurisdictionId",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "ResidentJurisdiction",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "ResidentJurisdiction",
+      "testId": null,
+      "nameAttr": "ResidentJurisdiction",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "ProductId",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "ProductId",
+      "testId": null,
+      "nameAttr": "ProductId",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "SystemOverrideDate",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "SystemOverrideDate",
+      "testId": null,
+      "nameAttr": "SystemOverrideDate",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "AcordType",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "AcordType",
+      "testId": null,
+      "nameAttr": "AcordType",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "ActivityOrigin",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "ActivityOrigin",
+      "testId": null,
+      "nameAttr": "ActivityOrigin",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[0].IsSelected",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_0__IsSelected",
+      "testId": null,
+      "nameAttr": "FormList[0].IsSelected",
+      "classes": [],
+      "type": "checkbox"
+    },
+    {
+      "name": "FormList[0].IsSelected",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": "FormList[0].IsSelected",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[0].FormGuid",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_0__FormGuid",
+      "testId": null,
+      "nameAttr": "FormList[0].FormGuid",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[0].AppName",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_0__AppName",
+      "testId": null,
+      "nameAttr": "FormList[0].AppName",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[1].IsSelected",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_1__IsSelected",
+      "testId": null,
+      "nameAttr": "FormList[1].IsSelected",
+      "classes": [],
+      "type": "checkbox"
+    },
+    {
+      "name": "FormList[1].IsSelected",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": "FormList[1].IsSelected",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[1].FormGuid",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_1__FormGuid",
+      "testId": null,
+      "nameAttr": "FormList[1].FormGuid",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FormList[1].AppName",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FormList_1__AppName",
+      "testId": null,
+      "nameAttr": "FormList[1].AppName",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "buildNew",
+      "tag": "a",
+      "text": "Create",
+      "label": "Create",
+      "id": "buildNew",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow",
+        "createAppModal"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_28",
+      "tag": "a",
+      "text": "Cancel",
+      "label": "_Cancel",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "AppName",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "AppName",
+      "testId": null,
+      "nameAttr": "AppName",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "NewAppOwner",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "NewAppOwner",
+      "testId": null,
+      "nameAttr": "NewAppOwner",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "CaseAccess",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "CaseAccess",
+      "testId": null,
+      "nameAttr": "CaseAccess",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FirmName",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FirmName",
+      "testId": null,
+      "nameAttr": "FirmName",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "FirmID",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": "FirmID",
+      "testId": null,
+      "nameAttr": "FirmID",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "el_34",
       "tag": "button",
-      "text": "Recent Activity",
+      "text": "",
       "label": null,
       "id": null,
       "testId": null,
       "nameAttr": null,
       "classes": [
-        "tablinks",
-        "blueButton",
-        "active"
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
       ],
-      "type": null
+      "type": "button"
     },
     {
-      "name": "el_14",
+      "name": "AppName",
+      "tag": "input",
+      "text": "",
+      "label": "Name:",
+      "id": "txtAppName",
+      "testId": null,
+      "nameAttr": "AppName",
+      "classes": [],
+      "type": "text"
+    },
+    {
+      "name": "cmdCreate",
       "tag": "button",
-      "text": "Shared Activity",
+      "text": "Create",
       "label": null,
-      "id": null,
+      "id": "cmdCreate",
       "testId": null,
       "nameAttr": null,
       "classes": [
-        "tablinks",
-        "blueButton"
+        "ui-state-default",
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget"
       ],
       "type": null
     },
     {
-      "name": "9a0b6089-052c-4ba2-806d-73e31c750731",
-      "tag": "a",
-      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
+      "name": "cmdCancel",
+      "tag": "button",
+      "text": "Cancel",
       "label": null,
-      "id": "9a0b6089-052c-4ba2-806d-73e31c750731",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [],
-      "type": null
-    },
-    {
-      "name": "fab49fc0-6534-4f73-9125-d49571f63991",
-      "tag": "a",
-      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
-      "label": null,
-      "id": "fab49fc0-6534-4f73-9125-d49571f63991",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [],
-      "type": null
-    },
-    {
-      "name": "c981214a-c2e4-4672-bb9a-ef2e0bd46ba0",
-      "tag": "a",
-      "text": "Boun-Variant\nStatus: Data Entry\nUpdated: 9/23/2026",
-      "label": null,
-      "id": "c981214a-c2e4-4672-bb9a-ef2e0bd46ba0",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [],
-      "type": null
-    },
-    {
-      "name": "98cd0591-14a1-4d5b-b098-c128f2ddf210",
-      "tag": "a",
-      "text": "Boun\nStatus: Data Entry\nUpdated: 9/23/2026",
-      "label": null,
-      "id": "98cd0591-14a1-4d5b-b098-c128f2ddf210",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [],
-      "type": null
-    },
-    {
-      "name": "19ca844f-76fd-41b2-90b1-5bc6ba4229e1",
-      "tag": "a",
-      "text": "Boun\nStatus: Data Entry\nUpdated: 9/23/2026",
-      "label": null,
-      "id": "19ca844f-76fd-41b2-90b1-5bc6ba4229e1",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [],
-      "type": null
-    },
-    {
-      "name": "prev",
-      "tag": "a",
-      "text": "",
-      "label": "Previous Page",
-      "id": "prev",
+      "id": "cmdCancel",
       "testId": null,
       "nameAttr": null,
       "classes": [
-        "pageL",
-        "blueLink"
+        "ui-state-default",
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget"
       ],
       "type": null
     },
     {
-      "name": "page_2",
-      "tag": "a",
-      "text": "2",
-      "label": "2 Page",
-      "id": "page_2",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "pageL",
-        "blueLink"
-      ],
-      "type": null
-    },
-    {
-      "name": "page_3",
-      "tag": "a",
-      "text": "3",
-      "label": "3 Page",
-      "id": "page_3",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "pageL",
-        "blueLink"
-      ],
-      "type": null
-    },
-    {
-      "name": "page_4",
-      "tag": "a",
-      "text": "4",
-      "label": "4 Page",
-      "id": "page_4",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "pageL",
-        "blueLink"
-      ],
-      "type": null
-    },
-    {
-      "name": "page_5",
-      "tag": "a",
-      "text": "5",
-      "label": "5 Page",
-      "id": "page_5",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "pageL",
-        "blueLink"
-      ],
-      "type": null
-    },
-    {
-      "name": "next",
-      "tag": "a",
-      "text": "",
-      "label": "Next Page",
-      "id": "next",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "pageL",
-        "blueLink"
-      ],
-      "type": null
-    },
-    {
-      "name": "startNew__103",
-      "tag": "a",
-      "text": "Application",
-      "label": null,
-      "id": "startNew__103",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "shadow",
-        "homeButton"
-      ],
-      "type": null
-    },
-    {
-      "name": "startNew__508",
-      "tag": "a",
-      "text": "Sub-Pay",
-      "label": null,
-      "id": "startNew__508",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "shadow",
-        "homeButton"
-      ],
-      "type": null
-    },
-    {
-      "name": "manage_AllActivities",
-      "tag": "a",
-      "text": "All Activities",
-      "label": null,
-      "id": "manage_AllActivities",
-      "testId": null,
-      "nameAttr": null,
-      "classes": [
-        "shadow",
-        "homeButton"
-      ],
-      "type": null
-    },
-    {
-      "name": "el_29",
+      "name": "el_38",
       "tag": "button",
       "text": "",
       "label": null,
@@ -416,6 +506,249 @@
         "blueLink"
       ],
       "type": null
+    },
+    {
+      "name": "el_40",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_41",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_42",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_43",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_44",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_45",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_46",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_47",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_48",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_49",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_50",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_51",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_52",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_53",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_54",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
     }
   ]
 }
