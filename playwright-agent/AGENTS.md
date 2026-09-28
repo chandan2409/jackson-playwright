@@ -65,8 +65,8 @@ Baselines store **serialized DOM** (`html` + `htmlHash`) plus an interactive fie
 
 1. Fast model for mechanical POM extraction; reasoning model for detect/heal
 2. Split agent prompts from generated tests so prompts do not scan the whole suite
-3. Use templates under `playwright-agent/templates/` instead of free-form generation
-4. Cache DOM snapshots under `jackson-tests/tests/data/.snapshots/`
+3. Use templates under `playwright-agent/templates/` instead of free-form generation (`page-object-generator.md`, `test-generator.md`, `/automate`)
+4. Cache DOM snapshots under `jackson-tests/tests/data/.snapshots/` (`captureCurrentPage` during baseline/detect; POM/heal reuse)
 5. Prefer `playwright-agent/AGENTS.md` + `jackson-tests/README.md` over dumping the repo
 
 ## Hard rules

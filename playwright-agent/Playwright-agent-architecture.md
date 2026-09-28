@@ -18,11 +18,13 @@ jackson-tests/        Playwright execution target
 
 | Agent | Role |
 |-------|------|
-| test-generator | Specs from Excel steps |
-| page-object-generator | POMs + locator sidecars |
+| test-generator | Specs from Excel steps (`templates/spec-file.template.ts`) |
+| page-object-generator | POMs + locator sidecars (`templates/page-object.template.ts`, `templates/locators.template.json`) |
 | script-2-iterator | Run variant script, fix from screenshot, repeat |
 | change-detector | Baseline diff + expected/unexpected |
 | self-healer | Apply accepted repairs |
+
+Live page captures also write `jackson-tests/tests/data/.snapshots/<page>.json` for POM/heal reuse. Detect still walks Firelight vs CURRENT baseline; the cache is not a substitute for that walk.
 
 ## Day 8 report contract
 

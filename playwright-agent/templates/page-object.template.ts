@@ -1,27 +1,30 @@
 import { Page } from '@playwright/test';
-import { selectByLabel, fillByLabel, clickNext } from '../../utils/form-helpers';
-import { loadLocators, resolveLocator } from '../../utils/locator-registry';
 import path from 'path';
+import { fillByEntry, selectByEntry, clickByEntry } from '../../utils/form-helpers';
+import { loadLocators } from '../../utils/locator-registry';
 
-// TEMPLATE: Replace <PageName>, fields, and locator sidecar entries.
+// TEMPLATE — copy to jackson-tests/tests/pages/firelight/<pageName>Page.ts
+// Replace PageName / OwnerData / field keys. Do not call fillByLabel for wizard fields;
+// heal must be able to patch *.locators.json without editing this class.
+
 const registry = loadLocators(path.join(__dirname, '<pageName>Page.locators.json'));
+const E = (key: string) => registry.entries[key];
 
-export class PageNamePage /* REPLACE: <PageName>Page */ {
+export type PageNameData = {
+  firstName: string;
+  // REPLACE: remaining fixture keys for this page
+};
+
+export class PageNamePage {
   constructor(private page: Page) {}
 
-  async fill(data: Record<string, string>) {
-    // REPLACE: map each Firelight field
-    // await fillByLabel(this.page, 'First Name', data.firstName);
-    // await selectByLabel(this.page, 'Sex', data.sex);
-    void data;
-    void registry;
+  async fill(data: PageNameData) {
+    await fillByEntry(this.page, E('firstName'), data.firstName);
+    // await selectByEntry(this.page, E('sex'), data.sex);
+    // await clickByEntry(this.page, E('sameAsOwner'));
   }
 
   async next() {
-    await clickNext(this.page);
-  }
-
-  async resolve(entryName: string) {
-    return resolveLocator(this.page, (registry as any).entries[entryName]);
+    await clickByEntry(this.page, E('next'));
   }
 }

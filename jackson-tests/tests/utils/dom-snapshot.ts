@@ -1,5 +1,6 @@
 import { createHash } from 'crypto';
 import type { Page } from '@playwright/test';
+import { writeCachedSnapshot } from './snapshot-cache';
 
 export type DomElementSnapshot = {
   name: string;
@@ -115,7 +116,7 @@ export function hashHtml(html: string): string {
 
 export async function captureCurrentPage(page: Page, pageKey: string): Promise<PageSnapshot> {
   const { html, htmlHash, domRoot } = await serializeDom(page);
-  return {
+  const snap: PageSnapshot = {
     pageKey,
     url: page.url(),
     capturedAt: new Date().toISOString(),
@@ -126,6 +127,8 @@ export async function captureCurrentPage(page: Page, pageKey: string): Promise<P
     htmlHash,
     elements: await extractInteractive(page),
   };
+  writeCachedSnapshot(snap);
+  return snap;
 }
 
 export function unscannedSnapshot(pageKey: string, reason: string): PageSnapshot {

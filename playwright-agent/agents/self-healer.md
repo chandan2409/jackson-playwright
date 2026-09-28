@@ -19,7 +19,7 @@ You repair Playwright scripts **only after** human acceptance of expected change
 1. Load the change report.
 2. For each `acceptedChangeIds` entry with `classification=expected`:
    a. Update matching locator strategies in **all** `jackson-tests/tests/pages/firelight/*.locators.json` (and rehearsal sidecars when that is the heal target)
-   b. Do not hardcode labels in POM TypeScript — every wizard POM calls `fillByEntry` / `selectByEntry` / `resolveLocator` so id/css/role/label/text fallbacks all heal from the sidecar
+   b. Do not hardcode labels in POM TypeScript — copy `playwright-agent/templates/page-object.template.ts` (`fillByEntry` / `selectByEntry` / `clickByEntry`). Patch strategies using `playwright-agent/templates/locators.template.json` as the shape; prefer live nodes in `jackson-tests/tests/data/.snapshots/<page>.json` from the last detect/baseline walk before opening a new browser.
    c. Update fixtures or assertions if option/value changed
    d. Set `acceptanceStatus=accepted` on the report entry
 3. For each `rejectedChangeIds` or `unexpected` entry:

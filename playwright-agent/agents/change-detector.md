@@ -35,6 +35,7 @@ You identify UI changes by comparing the frozen Day 6 baseline to the live Firel
    ```bash
    cd jackson-tests && npm run detect:changes
    ```
+   Each live page write also caches `jackson-tests/tests/data/.snapshots/<page>.json` (gitignored) for POM generation and heal. Do **not** skip the live wizard walk and diff against that cache instead of CURRENT baseline.
 5. Review `jackson-tests/tests/reports/changes/latest-change-report.json`.
 6. For each change, ensure:
    - `classification` is `expected` if a ticket matches page+field; else `unexpected`

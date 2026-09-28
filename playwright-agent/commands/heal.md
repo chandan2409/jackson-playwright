@@ -13,7 +13,7 @@ Apply accepted expected changes to Firelight scripts and refresh the baseline.
 1. Load `jackson-tests/tests/reports/changes/latest-change-report.json`
 2. Require explicit accepted IDs (HITL). If none provided, stop and ask.
 3. Invoke `self-healer` agent with accepted/rejected IDs
-4. Update locators, POMs, fixtures, assertions as needed
+4. Update locators, POMs, fixtures, assertions as needed. Copy strategy shape from `playwright-agent/templates/locators.template.json`. Prefer `jackson-tests/tests/data/.snapshots/<page>.json` from the last detect/baseline walk.
 5. Write defect notes for unexpected/rejected changes
 6. Do not create Jira issues here; point to `/file-jira` if the user wants a backlog copy
 7. Run `npm run baseline:capture` to write the new self-healed baseline

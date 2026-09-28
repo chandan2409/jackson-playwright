@@ -7,10 +7,20 @@
       "name": "<elementName>",
       "page": "<page-key>",
       "strategies": [
-        { "type": "label", "value": "<Field Label>", "confidence": 0.95 },
-        { "type": "role", "value": "textbox[name='<Field Label>']", "confidence": 0.85 },
-        { "type": "css", "value": "input[name='<nameAttr>']", "confidence": 0.8 },
-        { "type": "testid", "value": "<data-testid>", "confidence": 1.0 }
+        { "type": "testid", "value": "<data-testid>", "confidence": 1.0 },
+        { "type": "id", "value": "<elementId>", "confidence": 0.93 },
+        { "type": "css", "value": "[data-dataitemid='<DataItemId>'] input", "confidence": 0.96 },
+        { "type": "role", "value": "textbox[name='<Field Label>']", "confidence": 0.86 },
+        { "type": "label", "value": "<Field Label>", "confidence": 0.8 },
+        { "type": "text", "value": "<Field Label>", "confidence": 0.55 }
+      ]
+    },
+    "next": {
+      "name": "next",
+      "page": "<page-key>",
+      "strategies": [
+        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
+        { "type": "text", "value": "Next", "confidence": 0.4 }
       ]
     }
   }

@@ -27,6 +27,8 @@ You generate Playwright spec files for Firelight annuity application wizards.
 
 ## Output Rules
 
+Copy `playwright-agent/templates/spec-file.template.ts` into the spec path. Do not invent a different describe/test skeleton.
+
 1. **File path**: `jackson-tests/tests/specs/<script-name>.spec.ts`
 2. Import shared flow: `runFirelightWizard` from `../utils/wizard-flow`
 3. Import fixture from `../data/fixtures/case-data`

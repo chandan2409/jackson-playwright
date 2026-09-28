@@ -13,6 +13,37 @@ function pill(text, cls) {
   return `<span class="pill ${cls}">${text}</span>`;
 }
 
+let coverageStepRows = [];
+let covPage = 1;
+let covPageSize = 25;
+let covPrintAll = false;
+
+function renderCoverageStepsPage() {
+  const body = document.getElementById('coverage-steps');
+  const pager = document.getElementById('coverage-steps-pager');
+  const prev = document.getElementById('steps-prev');
+  const next = document.getElementById('steps-next');
+  const label = document.getElementById('steps-page-label');
+  if (!body) return;
+
+  const total = coverageStepRows.length;
+  const size = covPrintAll ? Math.max(total, 1) : covPageSize;
+  const pages = Math.max(1, Math.ceil(total / size) || 1);
+  if (covPage > pages) covPage = pages;
+  const start = covPrintAll ? 0 : (covPage - 1) * size;
+  const slice = coverageStepRows.slice(start, start + size);
+  body.innerHTML = slice.join('') || '<tr><td colspan="6">No Excel steps.</td></tr>';
+
+  if (pager) pager.hidden = total <= 10;
+  if (label) {
+    label.textContent = total
+      ? `${start + 1}–${Math.min(start + size, total)} of ${total}`
+      : '0 steps';
+  }
+  if (prev) prev.disabled = covPage <= 1 || covPrintAll;
+  if (next) next.disabled = covPage >= pages || covPrintAll;
+}
+
 function liveOn() {
   return document.getElementById('live-mode').checked;
 }
@@ -92,26 +123,23 @@ async function refreshDashboard() {
       ? `${covSum.mappedSteps} Excel rows + ${covSum.liveOnlySteps} live-only · implemented ${covSum.implemented} · last run passed ${covSum.passed} / failed ${covSum.failed} / partial ${covSum.partial} / not-run ${covSum.notRun}`
       : 'No Excel steps in coverage-matrix.json';
   }
-  const stepsBody = document.getElementById('coverage-steps');
-  if (stepsBody) {
-    stepsBody.innerHTML = (cov?.steps || [])
-      .map((step) => {
-        const status = step.lastStatus || 'not-run';
-        const rowCls =
-          status === 'passed' ? 'expected' : status === 'failed' || status === 'timedOut' ? 'unexpected' : status === 'partial' ? 'partial' : '';
-        const tests = (step.results || (step.testCases || []).map((id) => ({ testId: id, status: 'not-run' })))
-          .map((res) => {
-            const cls = res.status === 'passed' ? 'expected' : res.status === 'not-run' || res.status === 'skipped' ? 'pending' : 'unexpected';
-            return `${pill(res.testId, cls)} ${pill(res.status, cls)}`;
-          })
-          .join('<br>');
-        const values =
-          step.happyValue || step.variantValue
-            ? `${step.happyValue || '—'} → ${step.variantValue || '—'}`
-            : '—';
-        const note = step.note ? `<br><span class="meta">${step.note}</span>` : '';
-        const src = step.source === 'live-wizard' ? ' <span class="pill pending">live</span>' : '';
-        return `<tr class="row-${rowCls}" title="${String(step.requirement || '').replace(/"/g, '&quot;')}">
+  coverageStepRows = (cov?.steps || []).map((step) => {
+    const status = step.lastStatus || 'not-run';
+    const rowCls =
+      status === 'passed' ? 'expected' : status === 'failed' || status === 'timedOut' ? 'unexpected' : status === 'partial' ? 'partial' : '';
+    const tests = (step.results || (step.testCases || []).map((id) => ({ testId: id, status: 'not-run' })))
+      .map((res) => {
+        const cls = res.status === 'passed' ? 'expected' : res.status === 'not-run' || res.status === 'skipped' ? 'pending' : 'unexpected';
+        return `${pill(res.testId, cls)} ${pill(res.status, cls)}`;
+      })
+      .join('<br>');
+    const values =
+      step.happyValue || step.variantValue
+        ? `${step.happyValue || '—'} → ${step.variantValue || '—'}`
+        : '—';
+    const note = step.note ? `<br><span class="meta">${step.note}</span>` : '';
+    const src = step.source === 'live-wizard' ? ' <span class="pill pending">live</span>' : '';
+    return `<tr class="row-${rowCls}" title="${String(step.requirement || '').replace(/"/g, '&quot;')}">
           <td><strong>${step.id}</strong>${src}<br><span class="meta req">${step.requirement}</span></td>
           <td>${step.page}</td>
           <td>${step.field || step.action}${note}</td>
@@ -119,9 +147,9 @@ async function refreshDashboard() {
           <td>${tests}</td>
           <td>${pill(status, status === 'passed' ? 'expected' : status === 'not-run' || status === 'skipped' ? 'pending' : status === 'partial' ? 'pending' : 'unexpected')}</td>
         </tr>`;
-      })
-      .join('');
-  }
+  });
+  covPage = 1;
+  renderCoverageStepsPage();
 
   const htmlLink = document.getElementById('html-report');
   const htmlHint = document.getElementById('html-report-hint');
@@ -317,6 +345,28 @@ document.getElementById('jira-defects').addEventListener('click', (event) => {
   const btn = event.target.closest('[data-jira]');
   if (!btn) return;
   fileJira([btn.dataset.jira]);
+});
+
+document.getElementById('steps-prev').addEventListener('click', () => {
+  covPage -= 1;
+  renderCoverageStepsPage();
+});
+document.getElementById('steps-next').addEventListener('click', () => {
+  covPage += 1;
+  renderCoverageStepsPage();
+});
+document.getElementById('steps-page-size').addEventListener('change', (event) => {
+  covPageSize = Number(event.target.value) || 25;
+  covPage = 1;
+  renderCoverageStepsPage();
+});
+window.addEventListener('beforeprint', () => {
+  covPrintAll = true;
+  renderCoverageStepsPage();
+});
+window.addEventListener('afterprint', () => {
+  covPrintAll = false;
+  renderCoverageStepsPage();
 });
 
 refreshDashboard().catch((err) => {

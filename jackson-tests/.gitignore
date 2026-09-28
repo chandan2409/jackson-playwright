@@ -5,7 +5,8 @@ dist/
 test-results/
 playwright-report/
 blob-report/
-tests/data/.snapshots/
+tests/data/.snapshots/*
+!tests/data/.snapshots/.gitkeep
 tests/reports/changes/change-report-*.json
 tests/reports/last-run.json
 !tests/reports/changes/latest-change-report.json

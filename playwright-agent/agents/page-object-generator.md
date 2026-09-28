@@ -4,7 +4,19 @@ Use a **fast / low-cost** Cursor model for this extraction prompt.
 
 You generate class-based Page Objects and locator sidecar JSON for Firelight wizard pages.
 
+**Do not free-form POMs.** Copy and fill:
+
+- `playwright-agent/templates/page-object.template.ts`
+- `playwright-agent/templates/locators.template.json`
+
+Wizard fields must go through `fillByEntry` / `selectByEntry` / `clickByEntry` + `loadLocators` so `resolveLocator` can heal from the sidecar. Do **not** hardcode `fillByLabel` / `selectByLabel` for those fields (that is why early POMs were single-strategy).
+
 ## Input
+
+Prefer a cached live snapshot over inventing fields:
+
+1. `jackson-tests/tests/data/.snapshots/<page-key>.json` (written by `captureCurrentPage` during `npm run baseline:capture` or `npm run detect:changes`)
+2. Else Option A / B below
 
 ### Option A: Live DOM extraction
 ```json
@@ -18,7 +30,7 @@ You generate class-based Page Objects and locator sidecar JSON for Firelight wiz
         "name": "firstName",
         "tag": "input",
         "label": "First Name",
-        "id": null,
+        "id": "FirstName",
         "testId": null,
         "type": "text"
       }
@@ -39,58 +51,28 @@ You generate class-based Page Objects and locator sidecar JSON for Firelight wiz
 }
 ```
 
+When using Option B, still emit **multi-strategy** sidecar entries (label + role; add id/css/testid only from live DOM or `.snapshots/`). Never invent `data-dataitemid` values.
+
 ## Output
 
 ### 1. Page Object (`<page>Page.ts`)
 
 Path: `jackson-tests/tests/pages/firelight/<page>Page.ts`
 
-```typescript
-import { Page } from '@playwright/test';
-import { selectByLabel, fillByLabel, clickNext } from '../../utils/form-helpers';
-
-export class OwnerPage {
-  constructor(private page: Page) {}
-
-  async fill(data: OwnerData) {
-    await fillByLabel(this.page, 'First Name', data.firstName);
-    // ...
-  }
-
-  async next() {
-    await clickNext(this.page);
-  }
-}
-```
+Start from `playwright-agent/templates/page-object.template.ts`. Keep the `E('field')` + `fillByEntry` / `selectByEntry` / `clickByEntry` pattern. Include `next()` via `clickByEntry(this.page, E('next'))`.
 
 ### 2. Locator sidecar (`<page>Page.locators.json`)
 
-```json
-{
-  "page": "owner",
-  "generatedAt": "ISO timestamp",
-  "source": "dom|excel",
-  "entries": {
-    "firstName": {
-      "name": "firstName",
-      "page": "owner",
-      "strategies": [
-        { "type": "label", "value": "First Name", "confidence": 0.95 },
-        { "type": "css", "value": "input[name='firstName']", "confidence": 0.8 },
-        { "type": "testid", "value": "owner-first-name", "confidence": 1.0 }
-      ]
-    }
-  }
-}
-```
+Path: `jackson-tests/tests/pages/firelight/<page>Page.locators.json`
+
+Start from `playwright-agent/templates/locators.template.json`. Strategy order (highest confidence first): testid → id → css (`data-dataitemid` when present on the live node) → role → label → text.
 
 ## Rules
 
 1. Class name: `<Page>Page` (PascalCase)
 2. Files go in `jackson-tests/tests/pages/firelight/`
 3. Constructor takes `Page` only
-4. Prefer label / role strategies for Firelight forms
-5. Confidence: testid=1.0, label=0.95, id=0.9, css=0.8, role=0.7, text=0.5
-6. Include `next()` that clicks Next between wizard steps
-7. Use Firelight form locators only (label/role first). Do not use CMS component-root CSS or style-guide URLs
-8. On `--update`, merge new elements; preserve manual confidence overrides
+4. Confidence: testid=1.0, css dataitem=0.96, id=0.93, role=0.86, label=0.8, text=0.55
+5. Use Firelight form locators only. Do not use CMS component-root CSS or style-guide URLs
+6. On `--update`, merge new elements; preserve manual confidence overrides
+7. If `.snapshots/<page>.json` is missing and Firelight is reachable, run `npm run baseline:capture` or `npm run detect:changes` first so the cache is populated

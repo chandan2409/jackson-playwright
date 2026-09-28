@@ -3,10 +3,8 @@ import { runFirelightWizard, happyPathData } from '../utils/wizard-flow';
 import ENV from '../utils/env';
 
 /**
- * Script 1 — Happy path
- * Source: Boun_POCtestcase.xlsx
+ * Script 1 — Happy path from Boun_POCtestcase.xlsx (copied from spec-file.template.ts).
  * Product: Elite Access II | Jurisdiction: Colorado | Case: Boun
- * Ends at Signing Process with Wet Signature.
  */
 test.describe('Firelight POC — Script 1 Happy Path', () => {
   test.skip(!ENV.FIRELIGHT_USERNAME, 'Requires FIRELIGHT_USERNAME / PASSWORD (Day 0)');
@@ -16,6 +14,6 @@ test.describe('Firelight POC — Script 1 Happy Path', () => {
   }) => {
     test.setTimeout(180_000);
     await runFirelightWizard(page, happyPathData);
-    await expect(page.getByText(/wet signature|signing/i).first()).toBeVisible();
+    await expect(page.getByText(/signing|wet signature/i).first()).toBeVisible();
   });
 });

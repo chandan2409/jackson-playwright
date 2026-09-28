@@ -21,6 +21,7 @@
     "middleName": {
       "name": "middleName", "page": "agent",
       "strategies": [
+        { "type": "css", "value": "[data-dataitemid='Agent_MiddleName'] input", "confidence": 0.96 },
         { "type": "role", "value": "textbox[name='Middle Name']", "confidence": 0.86 },
         { "type": "label", "value": "Middle Name", "confidence": 0.8 }
       ]
@@ -28,6 +29,7 @@
     "lastName": {
       "name": "lastName", "page": "agent",
       "strategies": [
+        { "type": "css", "value": "[data-dataitemid='Agent_LastName'] input", "confidence": 0.96 },
         { "type": "role", "value": "textbox[name='Last Name']", "confidence": 0.86 },
         { "type": "label", "value": "Last Name", "confidence": 0.8 }
       ]
@@ -35,6 +37,7 @@
     "ssn": {
       "name": "ssn", "page": "agent",
       "strategies": [
+        { "type": "css", "value": "[data-dataitemid='Agent_SSN'] input", "confidence": 0.96 },
         { "type": "role", "value": "textbox[name='SSN']", "confidence": 0.86 },
         { "type": "label", "value": "SSN", "confidence": 0.8 }
       ]

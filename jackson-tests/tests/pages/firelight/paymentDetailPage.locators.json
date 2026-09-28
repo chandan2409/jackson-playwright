@@ -20,6 +20,7 @@
     "premiumType": {
       "name": "premiumType", "page": "payment-detail",
       "strategies": [
+        { "type": "css", "value": "[data-dataitemid='Source_of_Funds_JCK']", "confidence": 0.96 },
         { "type": "id", "value": "PremiumType", "confidence": 0.93 },
         { "type": "label", "value": "Premium Type", "confidence": 0.8 }
       ]
@@ -27,6 +28,7 @@
     "paymentMethod": {
       "name": "paymentMethod", "page": "payment-detail",
       "strategies": [
+        { "type": "css", "value": "[data-dataitemid='PaymentMethod_JCK1']", "confidence": 0.96 },
         { "type": "id", "value": "PaymentMethod", "confidence": 0.93 },
         { "type": "label", "value": "Payment Method", "confidence": 0.8 }
       ]

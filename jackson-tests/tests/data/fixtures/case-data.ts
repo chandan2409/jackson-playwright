@@ -1,6 +1,7 @@
 /**
- * Sample test data for Elite Access II / Colorado / case Boun.
- * Replace SSN and PII with sandbox-safe values before live runs.
+ * Elite Access II / Colorado / case Boun.
+ * Excel rows spell actions and select values; name/SSN/address cells are
+ * "enter the Data value" with no payload — sandbox PII lives here.
  */
 export const happyPathData = {
   caseName: 'Boun',

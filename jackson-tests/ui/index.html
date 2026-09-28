@@ -58,6 +58,19 @@
       </div>
       <h3>Excel step → test case → last run</h3>
       <p id="coverage-steps-meta" class="meta"></p>
+      <div class="pager no-print" id="coverage-steps-pager" hidden>
+        <button type="button" id="steps-prev">Previous</button>
+        <span id="steps-page-label" class="meta"></span>
+        <button type="button" id="steps-next">Next</button>
+        <label class="pager-size">
+          Per page
+          <select id="steps-page-size">
+            <option value="10">10</option>
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
       <div class="table-wrap">
         <table>
           <thead>

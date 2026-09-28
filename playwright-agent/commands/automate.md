@@ -24,9 +24,10 @@ POC default path: `Boun_POCtestcase.xlsx` (workspace root).
    - `action` (select | enter | click)
    - `field` / `value`
 4. Ensure POMs exist under `jackson-tests/tests/pages/firelight/` for each wizard page.
-   - If missing or stale: invoke `page-object-generator` with live DOM (when credentials available) or Excel-derived field list.
+   - Copy `playwright-agent/templates/page-object.template.ts` and `playwright-agent/templates/locators.template.json` (see `page-object-generator.md`). Never generate `fillByLabel`-only POMs.
+   - If missing or stale: invoke `page-object-generator` using `jackson-tests/tests/data/.snapshots/<page>.json` when present, else live DOM, else Excel-derived field list.
 5. Ensure shared flow helper `jackson-tests/tests/utils/wizard-flow.ts` covers all steps.
-6. Produce / refresh **two** scripts:
+6. Produce / refresh **two** scripts from `playwright-agent/templates/spec-file.template.ts`:
    - `jackson-tests/tests/specs/script-1-happy-path.spec.ts` — Excel data as-is
    - `jackson-tests/tests/specs/script-2-variant-path.spec.ts` — alternate fixture (`variantPathData`) so scripts are distinct
 7. Update fixtures in `jackson-tests/tests/data/fixtures/case-data.ts`.

@@ -26,6 +26,7 @@ tests/
     fixtures/        # case data
     coverage-matrix.json  # Excel step → FL-HP-001 / FL-VP-001 (Change review last-run)
     baselines/       # frozen DOM (html + interactive inventory)
+    .snapshots/      # last live page capture (gitignored; POM/heal cache)
     change-tickets.json
   reports/changes/   # latest-change-report.json is committed; timestamped copies are gitignored
   utils/             # env, locators, baseline, detector, wizard flow
