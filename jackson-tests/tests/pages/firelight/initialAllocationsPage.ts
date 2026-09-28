@@ -1,17 +1,17 @@
 import { expect, Page } from '@playwright/test';
 import path from 'path';
-import { clickNext } from '../../utils/form-helpers';
-import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+import { clickByEntry } from '../../utils/form-helpers';
+import { loadLocators, resolveLocator } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'initialAllocationsPage.locators.json'));
-const L = (key: string) => fieldLabel(registry.entries[key]);
+const E = (key: string) => registry.entries[key];
 
 export class InitialAllocationsPage {
   constructor(private page: Page) {}
 
   async selectInvestmentOption() {
-    await this.page.getByText(/Initial Allocations/i).first().waitFor({ timeout: 20_000 });
-    const fund = this.page.getByText(L('investmentOption'), { exact: true }).first();
+    await resolveLocator(this.page, E('heading'), 20_000);
+    const fund = await resolveLocator(this.page, E('investmentOption'));
     await fund.scrollIntoViewIfNeeded();
     const allocation = fund.locator(
       'xpath=following::input[not(@type="checkbox") and not(@type="radio") and not(@type="hidden")][1]',
@@ -25,6 +25,6 @@ export class InitialAllocationsPage {
   }
 
   async next() {
-    await clickNext(this.page);
+    await clickByEntry(this.page, E('next'));
   }
 }

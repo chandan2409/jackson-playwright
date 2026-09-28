@@ -12,7 +12,6 @@
       "id": "ownerFirstName",
       "testId": null,
       "nameAttr": "firstName",
-      "classes": [],
       "type": "text"
     },
     {
@@ -23,7 +22,6 @@
       "id": "ownerSsn",
       "testId": null,
       "nameAttr": "ssn",
-      "classes": [],
       "type": "text"
     }
   ],

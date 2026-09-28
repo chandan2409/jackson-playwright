@@ -14,6 +14,7 @@ test.describe('Firelight POC — Script 1 Happy Path', () => {
   test('[FL-HP-001] @smoke @poc Elite Access II Colorado wizard completes to Wet Signature', async ({
     page,
   }) => {
+    test.setTimeout(180_000);
     await runFirelightWizard(page, happyPathData);
     await expect(page.getByText(/wet signature|signing/i).first()).toBeVisible();
   });

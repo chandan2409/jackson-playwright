@@ -7,22 +7,18 @@
       "name": "firstName",
       "page": "owner",
       "strategies": [
-        {
-          "type": "label",
-          "value": "Given Name",
-          "confidence": 0.95
-        }
+        { "type": "css", "value": "[data-dataitemid='Owner_FirstName'] input", "confidence": 0.96 },
+        { "type": "id", "value": "FirstName", "confidence": 0.93 },
+        { "type": "label", "value": "Given Name", "confidence": 0.8 }
       ]
     },
     "ssn": {
       "name": "ssn",
       "page": "owner",
       "strategies": [
-        {
-          "type": "label",
-          "value": "SSN",
-          "confidence": 0.95
-        }
+        { "type": "css", "value": "[data-dataitemid='Owner_SSN'] input", "confidence": 0.96 },
+        { "type": "id", "value": "SSN", "confidence": 0.93 },
+        { "type": "label", "value": "SSN", "confidence": 0.8 }
       ]
     }
   }

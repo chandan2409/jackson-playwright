@@ -12,9 +12,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "skipToContent"
-      ],
       "type": null
     },
     {
@@ -25,7 +22,6 @@
       "id": "imgAboutLink",
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -36,12 +32,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "summaryModal",
-        "align-top",
-        "fas",
-        "fa-pencil"
-      ],
       "type": null
     },
     {
@@ -52,12 +42,6 @@
       "id": "toolbar__home",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow",
-        "roundCornersLeft"
-      ],
       "type": null
     },
     {
@@ -68,11 +52,6 @@
       "id": "toolbar_OtherActions",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow"
-      ],
       "type": null
     },
     {
@@ -83,7 +62,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -94,7 +72,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -105,7 +82,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -116,7 +92,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -127,7 +102,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -138,7 +112,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -149,9 +122,6 @@
       "id": "buttonSaveAs",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "SaveAsAppModel"
-      ],
       "type": null
     },
     {
@@ -162,25 +132,16 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow",
-        "roundCornersRight"
-      ],
       "type": null
     },
     {
       "name": "el_13",
       "tag": "a",
-      "text": "☰",
+      "text": "\u2630",
       "label": null,
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "icon"
-      ],
       "type": null
     },
     {
@@ -191,11 +152,6 @@
       "id": "imgNext",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "linkFocus",
-        "navActionBtnDisabled",
-        "disabled"
-      ],
       "type": null
     },
     {
@@ -206,7 +162,6 @@
       "id": "imgOpenWiz",
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -217,10 +172,6 @@
       "id": "ToggleMessagesLink",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "alert",
-        "ITWizardShowAllErrorsButton"
-      ],
       "type": null
     },
     {
@@ -231,10 +182,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -245,10 +192,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -259,10 +202,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -273,11 +212,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "ITTextField--Masked",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -288,10 +222,6 @@
       "id": "%",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -302,10 +232,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -316,11 +242,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "ITTextField--Masked",
-        "leftAlign"
-      ],
       "type": null
     },
     {
@@ -331,9 +252,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITSelect"
-      ],
       "type": null,
       "options": [
         "",
@@ -352,10 +270,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "flbutton-pad"
-      ],
       "type": null
     },
     {
@@ -366,11 +280,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumPrevious"
-      ],
       "type": null
     },
     {
@@ -381,11 +290,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumClose"
-      ],
       "type": null
     },
     {
@@ -396,11 +300,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumContinue"
-      ],
       "type": null
     },
     {
@@ -411,11 +310,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraPrevious"
-      ],
       "type": null
     },
     {
@@ -426,11 +320,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraContinue"
-      ],
       "type": null
     },
     {
@@ -441,11 +330,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraClose"
-      ],
       "type": null
     },
     {
@@ -456,11 +340,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraReview"
-      ],
       "type": null
     },
     {
@@ -471,10 +350,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonBack"
-      ],
       "type": null
     },
     {
@@ -485,9 +360,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput"
-      ],
       "type": null
     },
     {
@@ -498,13 +370,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -515,13 +380,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -532,13 +390,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -549,9 +400,6 @@
       "id": "about_LicenseInfo",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueLink"
-      ],
       "type": null
     },
     {
@@ -562,13 +410,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -579,13 +420,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -596,13 +430,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -613,13 +440,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     }
   ]

@@ -5,7 +5,7 @@
   "title": "Boun",
   "scanned": true,
   "domRoot": "[role=\"main\"]",
-  "html": "<div id=\"MainBody\" role=\"main\">\n    <section id=\"main\">\n        \n\n\n<!-- Site stylesheet -->\n\n    <!-- ORGANIZATION'S BASE CSS  -->\n    \n<!-- ORGANIZATION'S BASE CSS  -->\n    \n<!-- BRANDING IS DIFFERENT FROM ORGANIZATION'S MAPCODE -->\n<!-- Flex box Grid - Used for Responsive Grid Layout -->\n\n<div id=\"fireLightMainDiv\"><div style=\"overflow: visible;\"><div class=\"ITNavBar\"><div id=\"ITNavBar__Left\" style=\"grid-template-columns: minmax(max-content, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) auto; display: grid;\"><div class=\"navPointer_Left_Current navPointer_WidthOuter3\"><div class=\"navPointer_Left_Inner_Current navPointer_WidthOuter3\"><div class=\"navDisplay_LeftIcon_Outer_Current\"><div class=\"navDisplay_LeftIcon_Inner_Current\"><span class=\"navDisplay_LeftIcon_TextSpan_Current\">1</span></div></div><span class=\"navDisplay_WithPercentBar_SpanText en-US\" tabindex=\"0\">DATA ENTRY</span></div></div><div class=\"navPointer navPointer_WidthOuter3\"><div class=\"navPointer_Inner navPointer_WidthInner3\"><div class=\"navDisplay_LeftIcon_Outer\"><div class=\"navDisplay_LeftIcon_Inner\"><span class=\"navDisplay_LeftIcon_TextSpan\">2</span></div></div><span class=\"navDisplay_SpanText\" tabindex=\"0\">SIGNATURES</span></div></div><div class=\"navPointer_Right navPointer_WidthOuter3\"><div class=\"navPointer_Right_Inner navPointer_WidthInner3\"><div class=\"navDisplay_LeftIcon_Outer\"><div class=\"navDisplay_LeftIcon_Inner\"><span class=\"navDisplay_LeftIcon_TextSpan\">3</span></div></div><span class=\"navDisplay_SpanText\" tabindex=\"0\">FINALIZE</span></div></div><div id=\"ITNavBar__Right\"><div class=\"navAction_NoLeft\"><button id=\"imgNext\" class=\"linkFocus navActionBtnDisabled disabled\" title=\"\" disabled=\"\"><span class=\"fas fa-chevron-circle-right navActionIconDisabledAdditional\"></span>CONTINUE</button></div></div></div></div></div><div class=\"panel transparentBackgroundColor\"><div id=\"divPercent\"><div id=\"percentHolder\"><div id=\"greenbar\" style=\"height: 8px; width: 57px;\"></div></div><div id=\"lblPercent\" class=\"red\">&nbsp;95%</div></div><div class=\"roundCornersTop heading wizardHeadingStyle\"><div class=\"ITWizardMenuButton\"><a id=\"imgOpenWiz\" href=\"javascript:void(0);\" title=\"Open Page List\" tabindex=\"0\"><img id=\"imgExpand\" src=\"content/Images/expand.png\" alt=\"Open Page List\"><div class=\"ITWizardPageName\">Payment Detail</div></a></div><div id=\"root__wizardName\" title=\"Jackson.com Elite Access II Family (12/24)\" class=\"ITWizardName\" tabindex=\"0\" style=\"text-overflow: ellipsis; overflow: hidden; white-space: nowrap;\">Jackson.com Elite Access II Family (12/24)</div><div id=\"RightIcons\" class=\"RightIcons\"><a id=\"ToggleMessagesLink\" class=\"alert ITWizardShowAllErrorsButton \" href=\"#\" tabindex=\"0\"><img title=\"Show/Hide Error Messages\" alt=\"Show/Hide Error Messages\" src=\"/EGApp/Content/Images/1x1clear.gif\"></a></div></div></div><div class=\"ITWizardRoot ITWizardRootDefault\" style=\"max-height: 401.4px; margin-top: 50px; width: 955px; overflow: hidden auto;\"><div class=\"eAppPanelContainer\"><div class=\"panel eAppPanelShadow\"><section class=\"MainITPanel\"><div class=\"view_generator \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Payment_Details_Page\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div class=\"\"><div data-dataitemid=\"PaymentDetail_Panel\" class=\"ITPanel\"><div class=\"ITPanelTitle\"><div class=\"ITPanelTitleText\" tabindex=\"0\">Payment Detail</div></div><div class=\"ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_5964\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Replacement_Questions_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Owner_ExistingPolicies_Question\"><div class=\"indent0 ITText leftAlign\" title=\"Does the owner have existing or pending life insurance or annuity policies?\"><span>Does the owner have existing or pending life insurance or annuity policies?</span></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"Yes\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Yes\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">Yes</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"No\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"No\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">No</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Owner_ChangePolicies_Question\"><div class=\"indent0 ITText leftAlign\" title=\"Are you replacing an existing life insurance or annuity contract?\"><span>Are you replacing an existing life insurance or annuity contract?</span></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"Yes\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Yes\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">Yes</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"No\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"No\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">No</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div class=\"sc-bRKDuR fTJHsd\"><hr class=\"panelDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div class=\"\"><div data-dataitemid=\"Source_of_Funds_JCK\" class=\"ITPanel\"><div class=\"ITPanelTitle\"><div class=\"ITPanelTitleText\" tabindex=\"0\">Payment 1</div></div><div class=\"ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Payment1_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-10 col-md-10 \"><div data-dataitemid=\"Premium_Group1\" class=\"groupField \"><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-3 col-md-3 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"MoneySource_JCK1\" class=\"ITComponentRoot ITSelectWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"PremiumType\" class=\"ITComponentLabel indent0\" style=\"overflow: hidden;\">Premium Type</label></div><select size=\"1\" data-dataitemid=\"MoneySource_JCK1\" id=\"PremiumType\" class=\"ITSelect\" tabindex=\"0\" title=\"Premium Type\"><option value=\"\" class=\"ITSelectOption undefined\"></option><option value=\"New Money/Contribution\" class=\"ITSelectOption undefined\">New Money/Contribution</option><option value=\"Rollover\" class=\"ITSelectOption undefined\">Tax Qualified - Rollover</option><option value=\"Transfer\" class=\"ITSelectOption undefined\">Tax Qualified - Transfer</option></select><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div><div class=\"col-xs-undefined col-sm-5 col-md-5 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"PaymentMethod_JCK1\" class=\"ITComponentRoot ITSelectWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"PaymentMethod\" class=\"ITComponentLabel indent0\" style=\"overflow: hidden;\">Payment Method</label></div><select size=\"1\" data-dataitemid=\"PaymentMethod_JCK1\" id=\"PaymentMethod\" class=\"ITSelect\" tabindex=\"0\" title=\"Payment Method\"><option value=\"\" class=\"ITSelectOption undefined\"></option></select><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div class=\"componentWrapper labelFieldWrapper amount amount_Disabled\" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"Payment_Check_Amount_JCK1\" class=\"ITComponentRoot ITTextFieldWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Amount\" class=\"ITComponentLabel indent0 readOnly\" style=\"overflow: hidden;\">Amount</label></div><div class=\"ITTextField\"><input data-dataitemid=\"Payment_Check_Amount_JCK1\" disabled=\"\" title=\"Amount\" tabindex=\"-1\" readonly=\"\" autocomplete=\"off\" id=\"Amount\" labelfontweight=\"normal\" maxlength=\"11\" class=\"ITTextFieldInput leftAlign readOnlyInput\" autocorrect=\"off\" autocapitalize=\"off\"></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-7 col-md-7 \"><div data-dataitemid=\"Transfer_Replacement_Info\" class=\"groupField \"><div class=\"row \"></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_6680\" class=\"groupField \"><div class=\"row \"></div></div></div></div></div></div></div></div></div></div></div></div></div><div class=\"sc-bRKDuR fTJHsd\"><hr class=\"panelDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_22838\" class=\"groupField ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div data-dataitemid=\"FIELD_13465\" class=\"groupField \"><div class=\"row \"></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Add_Remove_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-1 col-md-1 \"><div data-dataitemid=\"FIELD_8411\" class=\"groupField \"></div></div><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div data-dataitemid=\"BIN_Group2\" class=\"groupField \"><div class=\"row baselineAlign\"></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_2995\" class=\"sc-bRKDuR fTJHsd\"><hr class=\"ITDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-10 col-md-10 \"><div data-dataitemid=\"FIELD_2160\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-1 col-md-1 \"></div><div class=\"col-xs-undefined col-sm-7 col-md-7 \"><div data-dataitemid=\"FIELD_2161\" class=\"groupField \"><div class=\"row baselineAlign\"></div></div></div><div class=\"col-xs-undefined col-sm-4 col-md-4 \"><div data-dataitemid=\"FIELD_5956\" class=\"groupField \"><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"Premium_JCK_TotalAllocations\" class=\"ITComponentRoot ITTextFieldWrapper \"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Total\" class=\"ITComponentLabel indent0 readOnly\" style=\"overflow: hidden;\">Total</label></div><div class=\"ITTextField\"><input data-dataitemid=\"Premium_JCK_TotalAllocations\" title=\"Total\" tabindex=\"-1\" readonly=\"\" autocomplete=\"off\" id=\"Total\" labelfontweight=\"normal\" maxlength=\"100\" class=\"ITTextFieldInput leftAlign readOnlyInput\" autocorrect=\"off\" autocapitalize=\"off\"></div><div role=\"alert\" class=\"field_validator  errorText errorText--noError\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section><span id=\"floatingScrollIndicator\" class=\"far fa-arrow-alt-circle-down fa-3x\" style=\"position: absolute; opacity: 0.7; color: black; top: 351.391px; right: 5px;\"></span></div></div><div style=\"visibility: hidden;\"><div class=\"ITDialog magnumFormsDialog\" role=\"dialog\" aria-labelledby=\"dialogheader\" aria-modal=\"true\"><div class=\"ITDialog__box ITDialog__box--fullWidth\" style=\"max-width: 1200px; visibility: hidden;\"><header id=\"dialogheader\" class=\"ITDialog__header\" tabindex=\"0\">Underwriting Questions</header><div class=\"ITDialog__content \" tabindex=\"0\"><h2 id=\"magnumWaitText\" class=\"sc-fXpfQj jFdbbI\">Please Wait...</h2></div><footer class=\"ITDialog__footer\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumPrevious\" disabled=\"\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumClose\" disabled=\"\"><span class=\"ITButtonText \"><span>Close</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumContinue\" disabled=\"\"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></footer></div></div></div><div style=\"visibility: hidden;\"><div class=\"ITDialog auraDialog\" role=\"dialog\" aria-labelledby=\"dialogheader\" aria-modal=\"true\"><div class=\"ITDialog__box ITDialog__box--fullWidth\" style=\"max-width: 1200px; visibility: hidden;\"><header id=\"dialogheader\" class=\"ITDialog__header\" tabindex=\"0\">Evidence of Insurability </header><div class=\"ITDialog__content \" tabindex=\"0\"><div class=\"center\"><h2 id=\"auraWaitText\">Please Wait...</h2></div><div style=\"display: none; width: 100%;\"><div id=\"aura-div\"></div></div></div><footer class=\"ITDialog__footer\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraPrevious\" disabled=\"\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraContinue\" disabled=\"\"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraClose\" disabled=\"\"><span class=\"ITButtonText \"><span>Save and Exit</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraReview\" disabled=\"\"><span class=\"ITButtonText \"><span>Review</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></footer></div></div></div><div class=\"toast-container\"><div class=\"toast-list\"></div></div></div><div id=\"navigationButtonsContainer\" class=\"eAppNavigationButtonsContainer\"><div class=\"eAppNavigationButtons eAppPanelShadow\"><div class=\"row navigationButton rightAlign\"><div class=\"col-md-3 col-sm-3 col-xs-12 last-xs\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput   ITButtonBack\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">×</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div><div class=\"col-md-3 col-sm-3 col-xs-12 last-sm last-md\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput  \"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  errorText\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div>\n\n\n\n\n<!-- App Bundle -->\n\n\n    </section>\n</div>",
+  "html": "<div id=\"MainBody\" role=\"main\">\n    <section id=\"main\">\n        \n\n\n<!-- Site stylesheet -->\n\n    <!-- ORGANIZATION'S BASE CSS  -->\n    \n<!-- ORGANIZATION'S BASE CSS  -->\n    \n<!-- BRANDING IS DIFFERENT FROM ORGANIZATION'S MAPCODE -->\n<!-- Flex box Grid - Used for Responsive Grid Layout -->\n\n<div id=\"fireLightMainDiv\"><div style=\"overflow: visible;\"><div class=\"ITNavBar\"><div id=\"ITNavBar__Left\" style=\"grid-template-columns: minmax(max-content, 1fr) minmax(0px, 1fr) minmax(0px, 1fr) auto; display: grid;\"><div class=\"navPointer_Left_Current navPointer_WidthOuter3\"><div class=\"navPointer_Left_Inner_Current navPointer_WidthOuter3\"><div class=\"navDisplay_LeftIcon_Outer_Current\"><div class=\"navDisplay_LeftIcon_Inner_Current\"><span class=\"navDisplay_LeftIcon_TextSpan_Current\">1</span></div></div><span class=\"navDisplay_WithPercentBar_SpanText en-US\" tabindex=\"0\">DATA ENTRY</span></div></div><div class=\"navPointer navPointer_WidthOuter3\"><div class=\"navPointer_Inner navPointer_WidthInner3\"><div class=\"navDisplay_LeftIcon_Outer\"><div class=\"navDisplay_LeftIcon_Inner\"><span class=\"navDisplay_LeftIcon_TextSpan\">2</span></div></div><span class=\"navDisplay_SpanText\" tabindex=\"0\">SIGNATURES</span></div></div><div class=\"navPointer_Right navPointer_WidthOuter3\"><div class=\"navPointer_Right_Inner navPointer_WidthInner3\"><div class=\"navDisplay_LeftIcon_Outer\"><div class=\"navDisplay_LeftIcon_Inner\"><span class=\"navDisplay_LeftIcon_TextSpan\">3</span></div></div><span class=\"navDisplay_SpanText\" tabindex=\"0\">FINALIZE</span></div></div><div id=\"ITNavBar__Right\"><div class=\"navAction_NoLeft\"><button id=\"imgNext\" class=\"linkFocus navActionBtnDisabled disabled\" title=\"\" disabled=\"\"><span class=\"fas fa-chevron-circle-right navActionIconDisabledAdditional\"></span>CONTINUE</button></div></div></div></div></div><div class=\"panel transparentBackgroundColor\"><div id=\"divPercent\"><div id=\"percentHolder\"><div id=\"greenbar\" style=\"height: 8px; width: 57px;\"></div></div><div id=\"lblPercent\" class=\"red\">&nbsp;95%</div></div><div class=\"roundCornersTop heading wizardHeadingStyle\"><div class=\"ITWizardMenuButton\"><a id=\"imgOpenWiz\" href=\"javascript:void(0);\" title=\"Open Page List\" tabindex=\"0\"><img id=\"imgExpand\" src=\"content/Images/expand.png\" alt=\"Open Page List\"><div class=\"ITWizardPageName\">Payment Detail</div></a></div><div id=\"root__wizardName\" title=\"Jackson.com Elite Access II Family (12/24)\" class=\"ITWizardName\" tabindex=\"0\" style=\"text-overflow: ellipsis; overflow: hidden; white-space: nowrap;\">Jackson.com Elite Access II Family (12/24)</div><div id=\"RightIcons\" class=\"RightIcons\"><a id=\"ToggleMessagesLink\" class=\"alert ITWizardShowAllErrorsButton \" href=\"#\" tabindex=\"0\"><img title=\"Show/Hide Error Messages\" alt=\"Show/Hide Error Messages\" src=\"/EGApp/Content/Images/1x1clear.gif\"></a></div></div></div><div class=\"ITWizardRoot ITWizardRootDefault\" style=\"max-height: 401.4px; margin-top: 50px; width: 955px; overflow: hidden auto;\"><div class=\"eAppPanelContainer\"><div class=\"panel eAppPanelShadow\"><section class=\"MainITPanel\"><div class=\"view_generator \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Payment_Details_Page\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div class=\"\"><div data-dataitemid=\"PaymentDetail_Panel\" class=\"ITPanel\"><div class=\"ITPanelTitle\"><div class=\"ITPanelTitleText\" tabindex=\"0\">Payment Detail</div></div><div class=\"ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_5964\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Replacement_Questions_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Owner_ExistingPolicies_Question\"><div class=\"indent0 ITText leftAlign\" title=\"Does the owner have existing or pending life insurance or annuity policies?\"><span>Does the owner have existing or pending life insurance or annuity policies?</span></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"Yes\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Yes\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">Yes</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ExistingPolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"No\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"No\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">No</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Owner_ChangePolicies_Question\"><div class=\"indent0 ITText leftAlign\" title=\"Are you replacing an existing life insurance or annuity contract?\"><span>Are you replacing an existing life insurance or annuity contract?</span></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"Yes\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Yes\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">Yes</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div style=\"position: relative; width: 100%; height: 100%;\"><div class=\"componentWrapper  \"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITComponentRoot ITCheckBoxWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"indent0\"><div data-dataitemid=\"Owner_ChangePolicies\" class=\"ITCheckBoxContainer\"><div class=\"ITCheckBoxInput\"><div class=\"ITCheckBox    ITCheckBox--round ITCheckBox--error\" tabindex=\"0\" title=\"No\" role=\"checkbox\" aria-checked=\"false\"></div></div><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"No\" class=\"ITComponentLabel\" style=\"overflow: hidden;\">No</label></div></div></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><div class=\"sc-bRKDuR fTJHsd\"><hr class=\"panelDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div class=\"\"><div data-dataitemid=\"Source_of_Funds_JCK\" class=\"ITPanel\"><div class=\"ITPanelTitle\"><div class=\"ITPanelTitleText\" tabindex=\"0\">Payment 1</div></div><div class=\"ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Payment1_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-10 col-md-10 \"><div data-dataitemid=\"Premium_Group1\" class=\"groupField \"><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-3 col-md-3 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"MoneySource_JCK1\" class=\"ITComponentRoot ITSelectWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"PremiumType\" class=\"ITComponentLabel indent0\" style=\"overflow: hidden;\">Premium Type</label></div><select size=\"1\" data-dataitemid=\"MoneySource_JCK1\" id=\"PremiumType\" class=\"ITSelect\" tabindex=\"0\" title=\"Premium Type\"><option value=\"\" class=\"ITSelectOption undefined\"></option><option value=\"New Money/Contribution\" class=\"ITSelectOption undefined\">New Money/Contribution</option><option value=\"Rollover\" class=\"ITSelectOption undefined\">Tax Qualified - Rollover</option><option value=\"Transfer\" class=\"ITSelectOption undefined\">Tax Qualified - Transfer</option></select><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div><div class=\"col-xs-undefined col-sm-5 col-md-5 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"PaymentMethod_JCK1\" class=\"ITComponentRoot ITSelectWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"PaymentMethod\" class=\"ITComponentLabel indent0\" style=\"overflow: hidden;\">Payment Method</label></div><select size=\"1\" data-dataitemid=\"PaymentMethod_JCK1\" id=\"PaymentMethod\" class=\"ITSelect\" tabindex=\"0\" title=\"Payment Method\"><option value=\"\" class=\"ITSelectOption undefined\"></option></select><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div><div class=\"col-xs-undefined col-sm-2 col-md-2 \"><div class=\"componentWrapper labelFieldWrapper amount amount_Disabled\" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"Payment_Check_Amount_JCK1\" class=\"ITComponentRoot ITTextFieldWrapper validationError--optional validationError--transApplication\"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Amount\" class=\"ITComponentLabel indent0 readOnly\" style=\"overflow: hidden;\">Amount</label></div><div class=\"ITTextField\"><input data-dataitemid=\"Payment_Check_Amount_JCK1\" disabled=\"\" title=\"Amount\" tabindex=\"-1\" readonly=\"\" autocomplete=\"off\" id=\"Amount\" labelfontweight=\"normal\" maxlength=\"11\" class=\"ITTextFieldInput leftAlign readOnlyInput\" autocorrect=\"off\" autocapitalize=\"off\"></div><div role=\"alert\" class=\"field_validator  errorText errorText--optional errorText--transApplication\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-7 col-md-7 \"><div data-dataitemid=\"Transfer_Replacement_Info\" class=\"groupField \"><div class=\"row \"></div><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_6680\" class=\"groupField \"><div class=\"row \"></div></div></div></div></div></div></div></div></div></div></div></div></div><div class=\"sc-bRKDuR fTJHsd\"><hr class=\"panelDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_22838\" class=\"groupField ITPanelContents\"><div class=\"row \"><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div data-dataitemid=\"FIELD_13465\" class=\"groupField \"><div class=\"row \"></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"Add_Remove_Group\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-1 col-md-1 \"><div data-dataitemid=\"FIELD_8411\" class=\"groupField \"></div></div><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div data-dataitemid=\"BIN_Group2\" class=\"groupField \"><div class=\"row baselineAlign\"></div></div></div></div></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-12 col-md-12 \"><div data-dataitemid=\"FIELD_2995\" class=\"sc-bRKDuR fTJHsd\"><hr class=\"ITDivider\"></div></div></div><div class=\"row \"><div class=\"col-xs-undefined col-sm-10 col-md-10 \"><div data-dataitemid=\"FIELD_2160\" class=\"groupField \"><div class=\"row \"><div class=\"col-xs-undefined col-sm-1 col-md-1 \"></div><div class=\"col-xs-undefined col-sm-7 col-md-7 \"><div data-dataitemid=\"FIELD_2161\" class=\"groupField \"><div class=\"row baselineAlign\"></div></div></div><div class=\"col-xs-undefined col-sm-4 col-md-4 \"><div data-dataitemid=\"FIELD_5956\" class=\"groupField \"><div class=\"row baselineAlign\"><div class=\"col-xs-undefined col-sm-6 col-md-6 \"><div class=\"componentWrapper labelFieldWrapper \" style=\"position: relative;\"><div class=\"\" style=\"width: 100%; height: 100%;\"><div data-dataitemid=\"Premium_JCK_TotalAllocations\" class=\"ITComponentRoot ITTextFieldWrapper \"><div class=\"ITComponent\"><div class=\"ITComponentLabelContainer\" tabindex=\"-1\"><label for=\"Total\" class=\"ITComponentLabel indent0 readOnly\" style=\"overflow: hidden;\">Total</label></div><div class=\"ITTextField\"><input data-dataitemid=\"Premium_JCK_TotalAllocations\" title=\"Total\" tabindex=\"-1\" readonly=\"\" autocomplete=\"off\" id=\"Total\" labelfontweight=\"normal\" maxlength=\"100\" class=\"ITTextFieldInput leftAlign readOnlyInput\" autocorrect=\"off\" autocapitalize=\"off\"></div><div role=\"alert\" class=\"field_validator  errorText errorText--noError\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section><span id=\"floatingScrollIndicator\" class=\"far fa-arrow-alt-circle-down fa-3x\" style=\"position: absolute; opacity: 0.7; color: black; top: 351.391px; right: 5px;\"></span></div></div><div style=\"visibility: hidden;\"><div class=\"ITDialog magnumFormsDialog\" role=\"dialog\" aria-labelledby=\"dialogheader\" aria-modal=\"true\"><div class=\"ITDialog__box ITDialog__box--fullWidth\" style=\"max-width: 1200px; visibility: hidden;\"><header id=\"dialogheader\" class=\"ITDialog__header\" tabindex=\"0\">Underwriting Questions</header><div class=\"ITDialog__content \" tabindex=\"0\"><h2 id=\"magnumWaitText\" class=\"sc-fXpfQj jFdbbI\">Please Wait...</h2></div><footer class=\"ITDialog__footer\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumPrevious\" disabled=\"\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumClose\" disabled=\"\"><span class=\"ITButtonText \"><span>Close</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  magnumContinue\" disabled=\"\"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></footer></div></div></div><div style=\"visibility: hidden;\"><div class=\"ITDialog auraDialog\" role=\"dialog\" aria-labelledby=\"dialogheader\" aria-modal=\"true\"><div class=\"ITDialog__box ITDialog__box--fullWidth\" style=\"max-width: 1200px; visibility: hidden;\"><header id=\"dialogheader\" class=\"ITDialog__header\" tabindex=\"0\">Evidence of Insurability </header><div class=\"ITDialog__content \" tabindex=\"0\"><div class=\"center\"><h2 id=\"auraWaitText\">Please Wait...</h2></div><div style=\"display: none; width: 100%;\"><div id=\"aura-div\"></div></div></div><footer class=\"ITDialog__footer\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraPrevious\" disabled=\"\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraContinue\" disabled=\"\"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraClose\" disabled=\"\"><span class=\"ITButtonText \"><span>Save and Exit</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput ITButtonDisabled  auraReview\" disabled=\"\"><span class=\"ITButtonText \"><span>Review</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></footer></div></div></div><div class=\"toast-container\"><div class=\"toast-list\"></div></div></div><div id=\"navigationButtonsContainer\" class=\"eAppNavigationButtonsContainer\"><div class=\"eAppNavigationButtons eAppPanelShadow\"><div class=\"row navigationButton rightAlign\"><div class=\"col-md-3 col-sm-3 col-xs-12 last-xs\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput   ITButtonBack\"><span class=\"ITButtonText \"><span>Previous</span></span></button><div role=\"alert\" class=\"field_validator  \" data-itemid=\"validation-error-popup\"><div class=\"field_validator__close\" data-itemid=\"validation-error-popup-close\" tabindex=\"9000\">\u00d7</div><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div><div class=\"col-md-3 col-sm-3 col-xs-12 last-sm last-md\"><div class=\"ITComponentRoot undefined\"><div class=\"ITComponent\"><div style=\"height: 100%;\"><button class=\"ITButtonInput  \"><span class=\"ITButtonText \"><span>Next</span></span></button><div role=\"alert\" class=\"field_validator  errorText\" data-itemid=\"validation-error-popup\"><div class=\"field_validator__arrow\" data-itemid=\"validation-error-popup-arrow\"><div class=\"field_validator__arrow_border\" data-itemid=\"validation-error-popup-arrow-border\"></div><div class=\"field_validator__arrow_fill\" data-itemid=\"validation-error-popup-arrow-fill\"></div></div><div class=\"field_validator__text\" data-itemid=\"validation-error-popup-text\"></div></div></div></div></div></div></div></div></div></div>\n\n\n\n\n<!-- App Bundle -->\n\n\n    </section>\n</div>",
   "htmlHash": "cb9cc2e9616b0c04700dffcd7ad7ae4ccc9b36bf74ea39e4f65ecb5bd45bfd45",
   "elements": [
     {
@@ -16,9 +16,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "skipToContent"
-      ],
       "type": null
     },
     {
@@ -29,7 +26,6 @@
       "id": "imgAboutLink",
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -40,12 +36,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "summaryModal",
-        "align-top",
-        "fas",
-        "fa-pencil"
-      ],
       "type": null
     },
     {
@@ -56,12 +46,6 @@
       "id": "toolbar__home",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow",
-        "roundCornersLeft"
-      ],
       "type": null
     },
     {
@@ -72,11 +56,6 @@
       "id": "toolbar_OtherActions",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow"
-      ],
       "type": null
     },
     {
@@ -87,7 +66,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -98,7 +76,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -109,7 +86,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -120,7 +96,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -131,7 +106,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -142,7 +116,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -153,9 +126,6 @@
       "id": "buttonSaveAs",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "SaveAsAppModel"
-      ],
       "type": null
     },
     {
@@ -166,25 +136,16 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueButton",
-        "toolbarButton",
-        "shadow",
-        "roundCornersRight"
-      ],
       "type": null
     },
     {
       "name": "el_13",
       "tag": "a",
-      "text": "☰",
+      "text": "\u2630",
       "label": null,
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "icon"
-      ],
       "type": null
     },
     {
@@ -195,11 +156,6 @@
       "id": "imgNext",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "linkFocus",
-        "navActionBtnDisabled",
-        "disabled"
-      ],
       "type": null
     },
     {
@@ -210,7 +166,6 @@
       "id": "imgOpenWiz",
       "testId": null,
       "nameAttr": null,
-      "classes": [],
       "type": null
     },
     {
@@ -221,10 +176,6 @@
       "id": "ToggleMessagesLink",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "alert",
-        "ITWizardShowAllErrorsButton"
-      ],
       "type": null
     },
     {
@@ -235,9 +186,6 @@
       "id": "PremiumType",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITSelect"
-      ],
       "type": null,
       "options": [
         "",
@@ -254,9 +202,6 @@
       "id": "PaymentMethod",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITSelect"
-      ],
       "type": null,
       "options": [
         ""
@@ -270,11 +215,6 @@
       "id": "Amount",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign",
-        "readOnlyInput"
-      ],
       "type": null
     },
     {
@@ -285,11 +225,6 @@
       "id": "Total",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITTextFieldInput",
-        "leftAlign",
-        "readOnlyInput"
-      ],
       "type": null
     },
     {
@@ -300,11 +235,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumPrevious"
-      ],
       "type": null
     },
     {
@@ -315,11 +245,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumClose"
-      ],
       "type": null
     },
     {
@@ -330,11 +255,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "magnumContinue"
-      ],
       "type": null
     },
     {
@@ -345,11 +265,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraPrevious"
-      ],
       "type": null
     },
     {
@@ -360,11 +275,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraContinue"
-      ],
       "type": null
     },
     {
@@ -375,11 +285,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraClose"
-      ],
       "type": null
     },
     {
@@ -390,11 +295,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonDisabled",
-        "auraReview"
-      ],
       "type": null
     },
     {
@@ -405,10 +305,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput",
-        "ITButtonBack"
-      ],
       "type": null
     },
     {
@@ -419,9 +315,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ITButtonInput"
-      ],
       "type": null
     },
     {
@@ -432,13 +325,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -449,13 +335,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -466,13 +345,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -483,9 +355,6 @@
       "id": "about_LicenseInfo",
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "blueLink"
-      ],
       "type": null
     },
     {
@@ -496,13 +365,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -513,13 +375,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -530,13 +385,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     },
     {
@@ -547,13 +395,6 @@
       "id": null,
       "testId": null,
       "nameAttr": null,
-      "classes": [
-        "ui-button",
-        "ui-corner-all",
-        "ui-widget",
-        "ui-button-icon-only",
-        "ui-dialog-titlebar-close"
-      ],
       "type": "button"
     }
   ]

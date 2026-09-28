@@ -9,7 +9,6 @@ export type DomElementSnapshot = {
   id: string | null;
   testId: string | null;
   nameAttr: string | null;
-  classes: string[];
   type: string | null;
   options?: string[];
 };
@@ -91,7 +90,6 @@ export async function extractInteractive(page: Page): Promise<DomElementSnapshot
         id: html.id || null,
         testId: html.getAttribute('data-testid'),
         nameAttr: html.getAttribute('name'),
-        classes: Array.from(html.classList),
         type: html.getAttribute('type'),
         options,
       };

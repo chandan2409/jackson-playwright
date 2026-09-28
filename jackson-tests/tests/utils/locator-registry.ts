@@ -39,23 +39,42 @@ function hosts(page: Page): LocatorHost[] {
   return [page];
 }
 
-async function firstVisible(locator: Locator): Promise<Locator | null> {
+export type Occurrence = 'first' | 'last';
+
+async function pickVisible(locator: Locator, occurrence: Occurrence): Promise<Locator | null> {
   const n = await locator.count();
-  for (let i = 0; i < n; i++) {
+  const order = occurrence === 'last' ? [...Array(n).keys()].reverse() : [...Array(n).keys()];
+  for (const i of order) {
     const cand = locator.nth(i);
     if (await cand.isVisible().catch(() => false)) return cand;
   }
   return null;
 }
 
-/**
- * Resolve the highest-confidence strategy that matches a **visible** control on the page.
- * Child frames are not searched unless a later call site adds them (Firelight wizard is main-document).
- */
+/** One pass, no wait — used by fill/select so a miss falls through to the label heuristic immediately. */
+export async function tryResolveLocator(
+  page: Page,
+  entry: LocatorEntry,
+  occurrence: Occurrence = 'first',
+): Promise<Locator | null> {
+  const sorted = [...entry.strategies].sort((a, b) => b.confidence - a.confidence);
+  for (const host of hosts(page)) {
+    for (const strategy of sorted) {
+      try {
+        const hit = await pickVisible(strategyToLocator(host, strategy), occurrence);
+        if (hit) return hit;
+      } catch {
+        /* try next strategy */
+      }
+    }
+  }
+  return null;
+}
 export async function resolveLocator(
   page: Page,
   entry: LocatorEntry,
   timeout = 20_000,
+  occurrence: Occurrence = 'first',
 ): Promise<Locator> {
   const sorted = [...entry.strategies].sort((a, b) => b.confidence - a.confidence);
   const deadline = Date.now() + timeout;
@@ -65,7 +84,7 @@ export async function resolveLocator(
     for (const host of hosts(page)) {
       for (const strategy of sorted) {
         try {
-          const hit = await firstVisible(strategyToLocator(host, strategy));
+          const hit = await pickVisible(strategyToLocator(host, strategy), occurrence);
           if (hit) return hit;
         } catch (e: any) {
           errors.push(`${strategy.type}=${strategy.value} (${e.message})`);
@@ -87,6 +106,9 @@ function strategyToLocator(host: LocatorHost, strategy: LocatorStrategy): Locato
     case 'testid':
       return host.getByTestId(strategy.value);
     case 'id':
+      if (/[^A-Za-z0-9_-]/.test(strategy.value)) {
+        return host.locator(`[id=${JSON.stringify(strategy.value)}]`);
+      }
       return host.locator(`#${strategy.value}`);
     case 'css':
       return host.locator(strategy.value);

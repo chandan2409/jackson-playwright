@@ -1,17 +1,34 @@
 {
   "page": "systematic-investment",
-  "generatedAt": "2026-09-23T12:30:00.000Z",
-  "source": "live",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "source": "live-dom",
   "entries": {
+    "heading": {
+      "name": "heading", "page": "systematic-investment",
+      "strategies": [
+        { "type": "text", "value": "Systematic Investment", "confidence": 0.9 }
+      ]
+    },
     "assetRebalancing": {
-      "name": "assetRebalancing",
-      "page": "systematic-investment",
-      "strategies": [{ "type": "label", "value": "Asset Rebalancing", "confidence": 0.95 }]
+      "name": "assetRebalancing", "page": "systematic-investment",
+      "strategies": [
+        { "type": "css", "value": "[data-dataitemid='Asset_Rebalancing_Text']", "confidence": 0.9 },
+        { "type": "label", "value": "Asset Rebalancing", "confidence": 0.8 }
+      ]
     },
     "dca": {
-      "name": "dca",
-      "page": "systematic-investment",
-      "strategies": [{ "type": "label", "value": "Dollar Cost Averaging options", "confidence": 0.95 }]
+      "name": "dca", "page": "systematic-investment",
+      "strategies": [
+        { "type": "label", "value": "Dollar Cost Averaging options", "confidence": 0.8 },
+        { "type": "text", "value": "Dollar Cost Averaging options", "confidence": 0.55 }
+      ]
+    },
+    "next": {
+      "name": "next", "page": "systematic-investment",
+      "strategies": [
+        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
+        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 }
+      ]
     }
   }
 }

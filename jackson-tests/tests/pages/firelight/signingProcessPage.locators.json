@@ -1,13 +1,13 @@
 {
   "page": "signing-process",
-  "generatedAt": "2026-09-23T05:45:00.000Z",
-  "source": "excel",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "source": "live-dom",
   "entries": {
     "signingMethod": {
-      "name": "signingMethod",
-      "page": "signing-process",
+      "name": "signingMethod", "page": "signing-process",
       "strategies": [
-        { "type": "label", "value": "Which method will be used to collect signatures?", "confidence": 0.95 },
+        { "type": "id", "value": "WetSignature", "confidence": 0.9 },
+        { "type": "label", "value": "Which method will be used to collect signatures?", "confidence": 0.8 },
         { "type": "text", "value": "Wet Signature", "confidence": 0.55 }
       ]
     }

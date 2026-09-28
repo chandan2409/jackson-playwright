@@ -24,6 +24,7 @@ tests/
   specs/             # script-1 + script-2
   data/
     fixtures/        # case data
+    coverage-matrix.json  # Excel step → FL-HP-001 / FL-VP-001 (Change review last-run)
     baselines/       # frozen DOM (html + interactive inventory)
     change-tickets.json
   reports/changes/   # latest-change-report.json is committed; timestamped copies are gitignored

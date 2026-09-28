@@ -3,10 +3,7 @@
   "product": "Elite Access II (B Share)",
   "jurisdiction": "Colorado",
   "caseName": "Boun",
-  "scripts": [
-    { "id": "FL-HP-001", "file": "tests/specs/script-1-happy-path.spec.ts", "path": "happy" },
-    { "id": "FL-VP-001", "file": "tests/specs/script-2-variant-path.spec.ts", "path": "variant" }
-  ],
+  "excelStepCount": 72,
   "pages": [
     "Select Application",
     "New Application Information",
@@ -15,7 +12,1434 @@
     "Agent",
     "Initial Allocations",
     "Payment Detail",
-    "Signing Process"
+    "Signing Process",
+    "Systematic Investment",
+    "Add-On Benefits"
   ],
-  "excelStepCount": 68
+  "scripts": [
+    {
+      "id": "FL-HP-001",
+      "file": "tests/specs/script-1-happy-path.spec.ts",
+      "path": "happy",
+      "title": "Elite Access II Colorado wizard completes to Wet Signature"
+    },
+    {
+      "id": "FL-VP-001",
+      "file": "tests/specs/script-2-variant-path.spec.ts",
+      "path": "variant",
+      "title": "Variant data path reaches Signing with alternate proceeds"
+    }
+  ],
+  "steps": [
+    {
+      "id": "EX-001",
+      "excelRow": 1,
+      "requirement": "Select Application",
+      "page": "Select Application",
+      "action": "click",
+      "field": "Start application",
+      "happyValue": "Start",
+      "variantValue": "Start",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/selectApplicationPage.ts",
+      "locatorEntry": "startApplication",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-002",
+      "excelRow": 2,
+      "requirement": "Select Jurisdication of Colorado",
+      "page": "Select Application",
+      "action": "select",
+      "field": "Jurisdiction",
+      "happyValue": "Colorado",
+      "variantValue": "Colorado",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/selectApplicationPage.ts",
+      "locatorEntry": "jurisdiction",
+      "fixtureKey": "jurisdiction",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-003",
+      "excelRow": 3,
+      "requirement": "Select Product of Elite Access II",
+      "page": "Select Application",
+      "action": "select",
+      "field": "Product",
+      "happyValue": "Elite Access II (B Share)",
+      "variantValue": "Elite Access II (B Share)",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/selectApplicationPage.ts",
+      "locatorEntry": "product",
+      "fixtureKey": "product",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-004",
+      "excelRow": 4,
+      "requirement": "Name Case - start case with name Boun",
+      "page": "Select Application",
+      "action": "enter",
+      "field": "Case Name",
+      "happyValue": "Boun",
+      "variantValue": "Boun-Variant",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/selectApplicationPage.ts",
+      "locatorEntry": "create",
+      "fixtureKey": "caseName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-005",
+      "excelRow": 7,
+      "requirement": "On the New Application Information page, select \"Individual\" for \"Select Ownership type\".",
+      "page": "New Application Information",
+      "action": "select",
+      "field": "Select Ownership type",
+      "happyValue": "Individual",
+      "variantValue": "Individual",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "ownershipType",
+      "fixtureKey": "ownershipType",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-006",
+      "excelRow": 8,
+      "requirement": "On the New Application Information page, select \"Yes\" for \"Is the annuitant the same as the owner?\".",
+      "page": "New Application Information",
+      "action": "select",
+      "field": "Is the annuitant the same as the owner?",
+      "happyValue": "Yes",
+      "variantValue": "Yes",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "annuitantSameAsOwner",
+      "fixtureKey": "annuitantSameAsOwner",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-007",
+      "excelRow": 9,
+      "requirement": "On the New Application Information page, select \"No\" for \"Is there a joint annuitant?\".",
+      "page": "New Application Information",
+      "action": "select",
+      "field": "Is there a joint annuitant?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "jointAnnuitant",
+      "fixtureKey": "jointAnnuitant",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-008",
+      "excelRow": 10,
+      "requirement": "On the New Application Information page, select \"Qualified Account\" for \"Tax Qualification Type\".",
+      "page": "New Application Information",
+      "action": "select",
+      "field": "Tax Qualification Type",
+      "happyValue": "Qualified Account",
+      "variantValue": "Qualified Account",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "taxQualificationType",
+      "fixtureKey": "taxQualificationType",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-009",
+      "excelRow": 11,
+      "requirement": "On the New Application Information page, select \"Roth IRA\" for \"Type of Qualified Account\".",
+      "page": "New Application Information",
+      "action": "select",
+      "field": "Type of Qualified Account",
+      "happyValue": "Roth IRA",
+      "variantValue": "Roth IRA",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "qualifiedAccountType",
+      "fixtureKey": "qualifiedAccountType",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-010",
+      "excelRow": 12,
+      "requirement": "Click Next to move from New Application Information to Owner.",
+      "page": "New Application Information",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/newApplicationInformationPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-011",
+      "excelRow": 13,
+      "requirement": "On the Owner page, enter the Data value for \"First Name\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "First Name",
+      "happyValue": "Boun",
+      "variantValue": "Boun",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "firstName",
+      "fixtureKey": "owner.firstName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-012",
+      "excelRow": 14,
+      "requirement": "On the Owner page, enter the Data value for \"Middle Name\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Middle Name",
+      "happyValue": "T",
+      "variantValue": "T",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "middleName",
+      "fixtureKey": "owner.middleName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-013",
+      "excelRow": 15,
+      "requirement": "On the Owner page, enter the Data value for \"Last Name\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Last Name",
+      "happyValue": "Tester",
+      "variantValue": "Variant",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "lastName",
+      "fixtureKey": "owner.lastName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-014",
+      "excelRow": 16,
+      "requirement": "On the Owner page, enter the Data value for \"SSN\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "SSN",
+      "happyValue": "000000000",
+      "variantValue": "000000000",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "ssn",
+      "fixtureKey": "owner.ssn",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-015",
+      "excelRow": 17,
+      "requirement": "On the Owner page, enter the Data value for \"Date of Birth\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Date of Birth",
+      "happyValue": "01/01/1980",
+      "variantValue": "01/01/1980",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "dateOfBirth",
+      "fixtureKey": "owner.dateOfBirth",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-016",
+      "excelRow": 18,
+      "requirement": "On the Owner page, select \"Male\" for \"Sex\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Sex",
+      "happyValue": "Male",
+      "variantValue": "Male",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "sex",
+      "fixtureKey": "owner.sex",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-017",
+      "excelRow": 19,
+      "requirement": "On the Owner page, enter the Data value for \"Physical Address Line 1\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Physical Address Line 1",
+      "happyValue": "100 Main St",
+      "variantValue": "100 Main St",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "address1",
+      "fixtureKey": "owner.address1",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-018",
+      "excelRow": 20,
+      "requirement": "On the Owner page, enter the Data value for \"Physical Address Line 2\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Physical Address Line 2",
+      "happyValue": "Suite 1",
+      "variantValue": "Suite 1",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "address2",
+      "fixtureKey": "owner.address2",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-019",
+      "excelRow": 21,
+      "requirement": "On the Owner page, enter the Data value for \"City\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "City",
+      "happyValue": "Denver",
+      "variantValue": "Denver",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "city",
+      "fixtureKey": "owner.city",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-020",
+      "excelRow": 22,
+      "requirement": "On the Owner page, select \"CO\" for \"State\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "State",
+      "happyValue": "CO",
+      "variantValue": "CO",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "state",
+      "fixtureKey": "owner.state",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-021",
+      "excelRow": 23,
+      "requirement": "On the Owner page, enter the Data value for \"Zip code\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Zip code",
+      "happyValue": "80202",
+      "variantValue": "80202",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "zip",
+      "fixtureKey": "owner.zip",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-022",
+      "excelRow": 24,
+      "requirement": "On the Owner page, enter the Data value for \"Phone\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Phone",
+      "happyValue": "3035550100",
+      "variantValue": "3035550100",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "phone",
+      "fixtureKey": "owner.phone",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-023",
+      "excelRow": 25,
+      "requirement": "On the Owner page, select \"No\" for \"Is the mailing address different than the physical address?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Is the mailing address different than the physical address?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "mailingDifferent",
+      "fixtureKey": "owner.mailingDifferent",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-024",
+      "excelRow": 26,
+      "requirement": "On the Owner page, select \"No\" for \"Do you consent to Telephone/Electronic Transfer Authorization?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Do you consent to Telephone/Electronic Transfer Authorization?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "phoneTransferConsent",
+      "fixtureKey": "owner.phoneTransferConsent",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-025",
+      "excelRow": 27,
+      "requirement": "On the Owner page, select \"Yes\" for \"Do you consent to Electronic Delivery of Documents?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Do you consent to Electronic Delivery of Documents?",
+      "happyValue": "Yes",
+      "variantValue": "Yes",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "eDeliveryConsent",
+      "fixtureKey": "owner.eDeliveryConsent",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-026",
+      "excelRow": 28,
+      "requirement": "On the Owner page, enter the Data value for \"Email Address\".",
+      "page": "Owner",
+      "action": "enter",
+      "field": "Email Address",
+      "happyValue": "boun.tester@example.com",
+      "variantValue": "boun.variant@example.com",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "email",
+      "fixtureKey": "owner.email",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-027",
+      "excelRow": 29,
+      "requirement": "On the Owner page, select \"No\" for \"Do you wish to authorize an individual other than your Financial Professional to receive information via phone and/or in writing?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Do you wish to authorize an individual other than your Financial Professional to receive information via phone and/or in writing?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "authorizeOther",
+      "fixtureKey": "owner.authorizeOther",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-028",
+      "excelRow": 30,
+      "requirement": "On the Owner page, select \"No\" for \"Has the IRS notified you that you are subject to backup withholding?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Has the IRS notified you that you are subject to backup withholding?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "backupWithholding",
+      "fixtureKey": "owner.backupWithholding",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-029",
+      "excelRow": 31,
+      "requirement": "On the Owner page, select \"No\" for \"Are you an active military member?\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Are you an active military member?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "activeMilitary",
+      "fixtureKey": "owner.activeMilitary",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-030",
+      "excelRow": 32,
+      "requirement": "On the Owner page, select \"U.S. Citizen\" for \"Citizenship:\".",
+      "page": "Owner",
+      "action": "select",
+      "field": "Citizenship",
+      "happyValue": "U.S. Citizen",
+      "variantValue": "U.S. Citizen",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "citizenship",
+      "fixtureKey": "owner.citizenship",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-031",
+      "excelRow": 33,
+      "requirement": "Click Next to move from Owner to Beneficiaries.",
+      "page": "Owner",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/ownerPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-032",
+      "excelRow": 34,
+      "requirement": "On the Beneficiaries page, select \"Living Person\" for \"Is the beneficiary a living person or non-natural entity?\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Is the beneficiary a living person or non-natural entity?",
+      "happyValue": "Living Person",
+      "variantValue": "Living Person",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "livingPerson",
+      "fixtureKey": "primaryBeneficiary.type",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-033",
+      "excelRow": 35,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"First Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "First Name",
+      "happyValue": "Pat",
+      "variantValue": "Pat",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "firstName",
+      "fixtureKey": "primaryBeneficiary.firstName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-034",
+      "excelRow": 36,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Middle Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Middle Name",
+      "happyValue": "A",
+      "variantValue": "A",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "middleName",
+      "fixtureKey": "primaryBeneficiary.middleName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-035",
+      "excelRow": 37,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Last Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Last Name",
+      "happyValue": "Beneficiary",
+      "variantValue": "Beneficiary",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "lastName",
+      "fixtureKey": "primaryBeneficiary.lastName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-036",
+      "excelRow": 38,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"SSN\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "SSN",
+      "happyValue": "000000001",
+      "variantValue": "000000001",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "ssn",
+      "fixtureKey": "primaryBeneficiary.ssn",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-037",
+      "excelRow": 39,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Date of Birth\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Date of Birth",
+      "happyValue": "02/02/1982",
+      "variantValue": "02/02/1982",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "dateOfBirth",
+      "fixtureKey": "primaryBeneficiary.dateOfBirth",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-038",
+      "excelRow": 40,
+      "requirement": "On the Beneficiaries page, select \"Female\" for \"Sex\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Sex",
+      "happyValue": "Female",
+      "variantValue": "Female",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "sex",
+      "fixtureKey": "primaryBeneficiary.sex",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-039",
+      "excelRow": 41,
+      "requirement": "On the Beneficiaries page, select \"Wife\" for \"Relationship to Owner\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Relationship to Owner",
+      "happyValue": "Wife",
+      "variantValue": "Wife",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "relationship",
+      "fixtureKey": "primaryBeneficiary.relationship",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-040",
+      "excelRow": 42,
+      "requirement": "On the Beneficiaries page, click Same_As_Owner6.",
+      "page": "Beneficiaries",
+      "action": "click",
+      "field": "Same_As_Owner6",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "sameAsOwner",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-041",
+      "excelRow": 43,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Proceeds %\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Proceeds %",
+      "happyValue": "100",
+      "variantValue": "60",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "proceedsPct",
+      "fixtureKey": "primaryBeneficiary.proceedsPct",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-042",
+      "excelRow": 44,
+      "requirement": "On the Beneficiaries page, click Add_Beneficiary_Method.",
+      "page": "Beneficiaries",
+      "action": "click",
+      "field": "Add_Beneficiary_Method",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "addBeneficiary",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-043",
+      "excelRow": 45,
+      "requirement": "On the Beneficiaries page, select \"Contingent\" for \"Beneficiary Type\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Beneficiary Type",
+      "happyValue": "Contingent",
+      "variantValue": "Contingent",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "beneficiaryType",
+      "fixtureKey": "contingentBeneficiary.beneficiaryType",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-044",
+      "excelRow": 46,
+      "requirement": "On the Beneficiaries page, select \"Living Person\" for \"Is the beneficiary a living person or non-natural entity?\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Is the beneficiary a living person or non-natural entity?",
+      "happyValue": "Living Person",
+      "variantValue": "Living Person",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "livingPerson",
+      "fixtureKey": "contingentBeneficiary.type",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-045",
+      "excelRow": 47,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"First Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "First Name",
+      "happyValue": "Sam",
+      "variantValue": "Sam",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "firstName",
+      "fixtureKey": "contingentBeneficiary.firstName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-046",
+      "excelRow": 48,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Middle Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Middle Name",
+      "happyValue": "B",
+      "variantValue": "B",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "middleName",
+      "fixtureKey": "contingentBeneficiary.middleName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-047",
+      "excelRow": 49,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Last Name\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Last Name",
+      "happyValue": "Beneficiary",
+      "variantValue": "Beneficiary",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "lastName",
+      "fixtureKey": "contingentBeneficiary.lastName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-048",
+      "excelRow": 50,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"SSN\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "SSN",
+      "happyValue": "000000002",
+      "variantValue": "000000002",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "ssn",
+      "fixtureKey": "contingentBeneficiary.ssn",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-049",
+      "excelRow": 51,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Date of Birth\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Date of Birth",
+      "happyValue": "03/03/2005",
+      "variantValue": "03/03/2005",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "dateOfBirth",
+      "fixtureKey": "contingentBeneficiary.dateOfBirth",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-050",
+      "excelRow": 52,
+      "requirement": "On the Beneficiaries page, select \"Male\" for \"Sex\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Sex",
+      "happyValue": "Male",
+      "variantValue": "Male",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "sex",
+      "fixtureKey": "contingentBeneficiary.sex",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-051",
+      "excelRow": 53,
+      "requirement": "On the Beneficiaries page, select \"son\" for \"Relationship to Owner\".",
+      "page": "Beneficiaries",
+      "action": "select",
+      "field": "Relationship to Owner",
+      "happyValue": "Son",
+      "variantValue": "Son",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "relationship",
+      "fixtureKey": "contingentBeneficiary.relationship",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-052",
+      "excelRow": 54,
+      "requirement": "On the Beneficiaries page, click Same_As_Owner7.",
+      "page": "Beneficiaries",
+      "action": "click",
+      "field": "Same_As_Owner7",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "sameAsOwner",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-053",
+      "excelRow": 55,
+      "requirement": "On the Beneficiaries page, enter the Data value for \"Proceeds %\".",
+      "page": "Beneficiaries",
+      "action": "enter",
+      "field": "Proceeds %",
+      "happyValue": "100",
+      "variantValue": "40",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "proceedsPct",
+      "fixtureKey": "contingentBeneficiary.proceedsPct",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-054",
+      "excelRow": 56,
+      "requirement": "Click Next to move from Beneficiaries to Agent.",
+      "page": "Beneficiaries",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/beneficiariesPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-055",
+      "excelRow": 57,
+      "requirement": "On the Agent page, select \"Yes\" for \"Did the agent use only Jackson-approved sales material(s) during the presentation of this Jackson product to the applicant? And in addition, were copies of all approved sales material(s), including electronically presented materials, used during the presentation left with the applicant.\".",
+      "page": "Agent",
+      "action": "select",
+      "field": "Did the agent use only Jackson-approved sales material(s) during the presentation of this Jackson product to the applicant? And in addition, were copies of all approved sales material(s), including electronically presented materials, used during the presentation left with the applicant.",
+      "happyValue": "Yes",
+      "variantValue": "Yes",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "jacksonApprovedMaterials",
+      "fixtureKey": "agent.jacksonApprovedMaterials",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-056",
+      "excelRow": 58,
+      "requirement": "On the Agent page, enter the Data value for \"First Name\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "First Name",
+      "happyValue": "Alex",
+      "variantValue": "Alex",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "firstName",
+      "fixtureKey": "agent.firstName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-057",
+      "excelRow": 59,
+      "requirement": "On the Agent page, enter the Data value for \"Middle Name\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "Middle Name",
+      "happyValue": "C",
+      "variantValue": "C",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "middleName",
+      "fixtureKey": "agent.middleName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-058",
+      "excelRow": 60,
+      "requirement": "On the Agent page, enter the Data value for \"Last Name\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "Last Name",
+      "happyValue": "Agent",
+      "variantValue": "Agent",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "lastName",
+      "fixtureKey": "agent.lastName",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-059",
+      "excelRow": 61,
+      "requirement": "On the Agent page, enter the Data value for \"SSN\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "SSN",
+      "happyValue": "000000003",
+      "variantValue": "000000003",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "ssn",
+      "fixtureKey": "agent.ssn",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-060",
+      "excelRow": 62,
+      "requirement": "On the Agent page, enter the Data value for \"Commission %\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "Commission %",
+      "happyValue": "100",
+      "variantValue": "100",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "commissionPct",
+      "fixtureKey": "agent.commissionPct",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-061",
+      "excelRow": 63,
+      "requirement": "On the Agent page, enter the Data value for \"email\".",
+      "page": "Agent",
+      "action": "enter",
+      "field": "email",
+      "happyValue": "alex.agent@example.com",
+      "variantValue": "alex.agent@example.com",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "email",
+      "fixtureKey": "agent.email",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-062",
+      "excelRow": 64,
+      "requirement": "On the Agent page, select \"A\" for \"Commission option\".",
+      "page": "Agent",
+      "action": "select",
+      "field": "Commission option",
+      "happyValue": "A",
+      "variantValue": "A",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "commissionOption",
+      "fixtureKey": "agent.commissionOption",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-063",
+      "excelRow": 65,
+      "requirement": "Click Next to move from Agent page to Initial Allocations Page.",
+      "page": "Agent",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/agentPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true,
+      "note": "Excel Next goes Agent \u2192 Initial Allocations. Live wizard also has Systematic Investment after Agent."
+    },
+    {
+      "id": "EX-064",
+      "excelRow": 66,
+      "requirement": "On the Initial Allocations Page, select an Investment Option.",
+      "page": "Initial Allocations",
+      "action": "select",
+      "field": "Investment Option",
+      "happyValue": "(first available option)",
+      "variantValue": "(first available option)",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/initialAllocationsPage.ts",
+      "locatorEntry": "investmentOption",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-065",
+      "excelRow": 67,
+      "requirement": "Click Next to move from Initial Allocations Page to Payment Detail Page.",
+      "page": "Initial Allocations",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/initialAllocationsPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true,
+      "note": "Excel Next goes Initial Allocations \u2192 Payment Detail. Live wizard also has Add-On Benefits before Payment."
+    },
+    {
+      "id": "EX-066",
+      "excelRow": 68,
+      "requirement": "On the Payment Detail page, select \"No\" for \"Does the owner have existing or pending life insurance or annuity policies?\".",
+      "page": "Payment Detail",
+      "action": "select",
+      "field": "Does the owner have existing or pending life insurance or annuity policies?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "existingPolicies",
+      "fixtureKey": "payment.existingPolicies",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-067",
+      "excelRow": 69,
+      "requirement": "On the Payment Detail page, select \"No\" for \"Are you replacing an existing life insurance or annuity contract?\".",
+      "page": "Payment Detail",
+      "action": "select",
+      "field": "Are you replacing an existing life insurance or annuity contract?",
+      "happyValue": "No",
+      "variantValue": "No",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "replacing",
+      "fixtureKey": "payment.replacing",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-068",
+      "excelRow": 70,
+      "requirement": "On the Payment Detail page, select \"Tax Qualified - Rollover\" for \"Premium Type\".",
+      "page": "Payment Detail",
+      "action": "select",
+      "field": "Premium Type",
+      "happyValue": "Tax Qualified - Rollover",
+      "variantValue": "Tax Qualified - Rollover",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "premiumType",
+      "fixtureKey": "payment.premiumType",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-069",
+      "excelRow": 71,
+      "requirement": "On the Payment Detail page, select \"Financial Professional or Owner to Request Funds\" for \"Payment Method\".",
+      "page": "Payment Detail",
+      "action": "select",
+      "field": "Payment Method",
+      "happyValue": "Financial Professional or Owner to Request Funds",
+      "variantValue": "Financial Professional or Owner to Request Funds",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "paymentMethod",
+      "fixtureKey": "payment.paymentMethod",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-070",
+      "excelRow": 72,
+      "requirement": "On the Payment Detail page, enter the Data value for \"Amount\".",
+      "page": "Payment Detail",
+      "action": "enter",
+      "field": "Amount",
+      "happyValue": "50000",
+      "variantValue": "25000",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "amount",
+      "fixtureKey": "payment.amount",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-071",
+      "excelRow": 73,
+      "requirement": "Click Next to move from Payment Detail to Signing Process.",
+      "page": "Payment Detail",
+      "action": "next",
+      "field": "Next",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/paymentDetailPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "EX-072",
+      "excelRow": 74,
+      "requirement": "On the Signing Process page, select \"Wet Signature\" for \"Which method will be used to collect signatures?\".",
+      "page": "Signing Process",
+      "action": "select",
+      "field": "Which method will be used to collect signatures?",
+      "happyValue": "Wet Signature",
+      "variantValue": "Wet Signature",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/signingProcessPage.ts",
+      "locatorEntry": "signingMethod",
+      "fixtureKey": "signingMethod",
+      "source": "Boun_POCtestcase.xlsx",
+      "implemented": true
+    },
+    {
+      "id": "LIVE-001",
+      "excelRow": null,
+      "requirement": "Systematic Investment page (not in Excel) \u2014 continue when present",
+      "page": "Systematic Investment",
+      "action": "continue",
+      "field": "Systematic Investment",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/systematicInvestmentPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "live-wizard",
+      "implemented": true,
+      "note": "Present in Firelight FLQANEXT wizard; omitted from Boun_POCtestcase.xlsx"
+    },
+    {
+      "id": "LIVE-002",
+      "excelRow": null,
+      "requirement": "Add-On Benefits page (not in Excel) \u2014 continue when present",
+      "page": "Add-On Benefits",
+      "action": "continue",
+      "field": "Add-On Benefits",
+      "happyValue": "",
+      "variantValue": "",
+      "testCases": [
+        "FL-HP-001",
+        "FL-VP-001"
+      ],
+      "pom": "tests/pages/firelight/addOnBenefitsPage.ts",
+      "locatorEntry": "next",
+      "fixtureKey": null,
+      "source": "live-wizard",
+      "implemented": true,
+      "note": "Present in Firelight FLQANEXT wizard; omitted from Boun_POCtestcase.xlsx"
+    }
+  ]
 }

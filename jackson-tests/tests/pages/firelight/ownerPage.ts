@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import path from 'path';
-import { selectByLabel, fillByLabel, clickNext } from '../../utils/form-helpers';
-import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+import { fillByEntry, selectByEntry, clickByEntry } from '../../utils/form-helpers';
+import { loadLocators } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'ownerPage.locators.json'));
-const L = (key: string) => fieldLabel(registry.entries[key]);
+const E = (key: string) => registry.entries[key];
 
 export type OwnerData = {
   firstName: string;
@@ -33,29 +33,29 @@ export class OwnerPage {
   constructor(private page: Page) {}
 
   async fill(data: OwnerData) {
-    await fillByLabel(this.page, L('firstName'), data.firstName);
-    await fillByLabel(this.page, L('middleName'), data.middleName);
-    await fillByLabel(this.page, L('lastName'), data.lastName);
-    await fillByLabel(this.page, L('ssn'), data.ssn);
-    await fillByLabel(this.page, L('dateOfBirth'), data.dateOfBirth);
-    await selectByLabel(this.page, L('sex'), data.sex);
-    await fillByLabel(this.page, L('address1'), data.address1);
-    await fillByLabel(this.page, L('address2'), data.address2);
-    await fillByLabel(this.page, L('city'), data.city);
-    await selectByLabel(this.page, L('state'), data.state);
-    await fillByLabel(this.page, L('zip'), data.zip);
-    await fillByLabel(this.page, L('phone'), data.phone);
-    await selectByLabel(this.page, L('mailingDifferent'), data.mailingDifferent);
-    await selectByLabel(this.page, L('phoneTransferConsent'), data.phoneTransferConsent);
-    await selectByLabel(this.page, L('eDeliveryConsent'), data.eDeliveryConsent);
-    await fillByLabel(this.page, L('email'), data.email);
-    await selectByLabel(this.page, L('authorizeOther'), data.authorizeOther);
-    await selectByLabel(this.page, L('backupWithholding'), data.backupWithholding);
-    await selectByLabel(this.page, L('activeMilitary'), data.activeMilitary);
-    await selectByLabel(this.page, L('citizenship'), data.citizenship);
+    await fillByEntry(this.page, E('firstName'), data.firstName);
+    await fillByEntry(this.page, E('middleName'), data.middleName);
+    await fillByEntry(this.page, E('lastName'), data.lastName);
+    await fillByEntry(this.page, E('ssn'), data.ssn);
+    await fillByEntry(this.page, E('dateOfBirth'), data.dateOfBirth);
+    await selectByEntry(this.page, E('sex'), data.sex);
+    await fillByEntry(this.page, E('address1'), data.address1);
+    await fillByEntry(this.page, E('address2'), data.address2);
+    await fillByEntry(this.page, E('city'), data.city);
+    await selectByEntry(this.page, E('state'), data.state);
+    await fillByEntry(this.page, E('zip'), data.zip);
+    await fillByEntry(this.page, E('phone'), data.phone);
+    await selectByEntry(this.page, E('mailingDifferent'), data.mailingDifferent);
+    await selectByEntry(this.page, E('phoneTransferConsent'), data.phoneTransferConsent);
+    await selectByEntry(this.page, E('eDeliveryConsent'), data.eDeliveryConsent);
+    await fillByEntry(this.page, E('email'), data.email);
+    await selectByEntry(this.page, E('authorizeOther'), data.authorizeOther);
+    await selectByEntry(this.page, E('backupWithholding'), data.backupWithholding);
+    await selectByEntry(this.page, E('activeMilitary'), data.activeMilitary);
+    await selectByEntry(this.page, E('citizenship'), data.citizenship);
   }
 
   async next() {
-    await clickNext(this.page);
+    await clickByEntry(this.page, E('next'));
   }
 }

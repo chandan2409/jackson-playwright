@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import path from 'path';
-import { selectByLabel, fillByLabel, clickNext } from '../../utils/form-helpers';
-import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+import { selectByEntry, fillByEntry, clickByEntry } from '../../utils/form-helpers';
+import { loadLocators } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'paymentDetailPage.locators.json'));
-const L = (key: string) => fieldLabel(registry.entries[key]);
+const E = (key: string) => registry.entries[key];
 
 export type PaymentData = {
   existingPolicies: string;
@@ -18,14 +18,14 @@ export class PaymentDetailPage {
   constructor(private page: Page) {}
 
   async fill(data: PaymentData) {
-    await selectByLabel(this.page, L('existingPolicies'), data.existingPolicies);
-    await selectByLabel(this.page, L('replacing'), data.replacing);
-    await selectByLabel(this.page, L('premiumType'), data.premiumType);
-    await selectByLabel(this.page, L('paymentMethod'), data.paymentMethod);
-    await fillByLabel(this.page, L('amount'), data.amount);
+    await selectByEntry(this.page, E('existingPolicies'), data.existingPolicies);
+    await selectByEntry(this.page, E('replacing'), data.replacing);
+    await selectByEntry(this.page, E('premiumType'), data.premiumType);
+    await selectByEntry(this.page, E('paymentMethod'), data.paymentMethod);
+    await fillByEntry(this.page, E('amount'), data.amount);
   }
 
   async next() {
-    await clickNext(this.page);
+    await clickByEntry(this.page, E('next'));
   }
 }

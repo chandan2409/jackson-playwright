@@ -1,50 +1,50 @@
 {
   "page": "new-application-information",
-  "generatedAt": "2026-09-23T05:45:00.000Z",
-  "source": "excel",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "source": "live-dom",
   "entries": {
     "ownershipType": {
-      "name": "ownershipType",
-      "page": "new-application-information",
+      "name": "ownershipType", "page": "new-application-information",
       "strategies": [
-        { "type": "text", "value": "Please select the type of ownership for this account", "confidence": 0.95 },
-        { "type": "label", "value": "Select Ownership type", "confidence": 0.6 }
+        { "type": "text", "value": "Please select the type of ownership for this account", "confidence": 0.9 },
+        { "type": "label", "value": "Select Ownership type", "confidence": 0.6 },
+        { "type": "role", "value": "checkbox[name='Individual']", "confidence": 0.5 }
       ]
     },
     "annuitantSameAsOwner": {
-      "name": "annuitantSameAsOwner",
-      "page": "new-application-information",
+      "name": "annuitantSameAsOwner", "page": "new-application-information",
       "strategies": [
-        { "type": "label", "value": "Is the annuitant the same as the owner?", "confidence": 0.95 }
+        { "type": "css", "value": "[data-dataitemid='Annuitant_Same_As_Owner_Group']", "confidence": 0.92 },
+        { "type": "label", "value": "Is the annuitant the same as the owner?", "confidence": 0.8 }
       ]
     },
     "jointAnnuitant": {
-      "name": "jointAnnuitant",
-      "page": "new-application-information",
+      "name": "jointAnnuitant", "page": "new-application-information",
       "strategies": [
-        { "type": "label", "value": "Is there a joint annuitant?", "confidence": 0.95 }
+        { "type": "label", "value": "Is there a joint annuitant?", "confidence": 0.8 },
+        { "type": "text", "value": "Is there a joint annuitant?", "confidence": 0.55 }
       ]
     },
     "taxQualificationType": {
-      "name": "taxQualificationType",
-      "page": "new-application-information",
+      "name": "taxQualificationType", "page": "new-application-information",
       "strategies": [
-        { "type": "label", "value": "Tax Qualification Type", "confidence": 0.95 }
+        { "type": "label", "value": "Tax Qualification Type", "confidence": 0.8 },
+        { "type": "text", "value": "Tax Qualification Type", "confidence": 0.55 }
       ]
     },
     "qualifiedAccountType": {
-      "name": "qualifiedAccountType",
-      "page": "new-application-information",
+      "name": "qualifiedAccountType", "page": "new-application-information",
       "strategies": [
-        { "type": "label", "value": "Type of Qualified Account", "confidence": 0.95 }
+        { "type": "label", "value": "Type of Qualified Account", "confidence": 0.8 },
+        { "type": "text", "value": "Type of Qualified Account", "confidence": 0.55 }
       ]
     },
     "next": {
-      "name": "next",
-      "page": "new-application-information",
+      "name": "next", "page": "new-application-information",
       "strategies": [
-        { "type": "role", "value": "button[name='Next']", "confidence": 0.9 },
-        { "type": "text", "value": "Next", "confidence": 0.5 }
+        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
+        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 },
+        { "type": "text", "value": "Next", "confidence": 0.4 }
       ]
     }
   }

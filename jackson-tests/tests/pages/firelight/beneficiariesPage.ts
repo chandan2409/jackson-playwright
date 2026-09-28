@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import path from 'path';
-import { selectByLabel, fillByLabel, clickNext, clickControl } from '../../utils/form-helpers';
-import { fieldLabel, loadLocators, resolveLocator } from '../../utils/locator-registry';
+import { selectByEntry, fillByEntry, clickByEntry } from '../../utils/form-helpers';
+import { loadLocators, resolveLocator } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'beneficiariesPage.locators.json'));
-const L = (key: string) => fieldLabel(registry.entries[key]);
+const E = (key: string) => registry.entries[key];
 
 export type BeneficiaryData = {
   type: string;
@@ -23,46 +23,41 @@ export class BeneficiariesPage {
   constructor(private page: Page) {}
 
   async fillPrimary(data: BeneficiaryData) {
-    await selectByLabel(this.page, L('livingPerson'), data.type);
-    await this.page.getByText(L('firstName'), { exact: false }).first().waitFor({ timeout: 15_000 });
-    await fillByLabel(this.page, L('firstName'), data.firstName);
-    await fillByLabel(this.page, L('middleName'), data.middleName);
-    await fillByLabel(this.page, L('lastName'), data.lastName);
-    await fillByLabel(this.page, L('ssn'), data.ssn);
-    await fillByLabel(this.page, L('dateOfBirth'), data.dateOfBirth);
-    await selectByLabel(this.page, L('sex'), data.sex);
-    await selectByLabel(this.page, L('relationship'), data.relationship);
-    await clickControl(this.page, L('sameAsOwner'));
-    await fillByLabel(this.page, L('proceedsPct'), data.proceedsPct);
+    await selectByEntry(this.page, E('livingPerson'), data.type);
+    await fillByEntry(this.page, E('firstName'), data.firstName);
+    await fillByEntry(this.page, E('middleName'), data.middleName);
+    await fillByEntry(this.page, E('lastName'), data.lastName);
+    await fillByEntry(this.page, E('ssn'), data.ssn);
+    await fillByEntry(this.page, E('dateOfBirth'), data.dateOfBirth);
+    await selectByEntry(this.page, E('sex'), data.sex);
+    await selectByEntry(this.page, E('relationship'), data.relationship);
+    await clickByEntry(this.page, E('sameAsOwner'));
+    await fillByEntry(this.page, E('proceedsPct'), data.proceedsPct);
   }
 
   async addContingent(data: BeneficiaryData) {
-    let add;
     try {
-      add = await resolveLocator(this.page, registry.entries.addBeneficiary);
+      await resolveLocator(this.page, E('addBeneficiary'), 5_000);
     } catch {
       return;
     }
-    if (!(await add.count())) {
-      return;
-    }
-    await add.first().click();
+    await clickByEntry(this.page, E('addBeneficiary'));
     if (data.beneficiaryType) {
-      await selectByLabel(this.page, L('beneficiaryType'), data.beneficiaryType, 'last');
+      await selectByEntry(this.page, E('beneficiaryType'), data.beneficiaryType, 'last');
     }
-    await selectByLabel(this.page, L('livingPerson'), data.type, 'last');
-    await fillByLabel(this.page, L('firstName'), data.firstName, 'last');
-    await fillByLabel(this.page, L('middleName'), data.middleName, 'last');
-    await fillByLabel(this.page, L('lastName'), data.lastName, 'last');
-    await fillByLabel(this.page, L('ssn'), data.ssn, 'last');
-    await fillByLabel(this.page, L('dateOfBirth'), data.dateOfBirth, 'last');
-    await selectByLabel(this.page, L('sex'), data.sex, 'last');
-    await selectByLabel(this.page, L('relationship'), data.relationship, 'last');
-    await clickControl(this.page, L('sameAsOwner'), 'last');
-    await fillByLabel(this.page, L('proceedsPct'), data.proceedsPct, 'last');
+    await selectByEntry(this.page, E('livingPerson'), data.type, 'last');
+    await fillByEntry(this.page, E('firstName'), data.firstName, 'last');
+    await fillByEntry(this.page, E('middleName'), data.middleName, 'last');
+    await fillByEntry(this.page, E('lastName'), data.lastName, 'last');
+    await fillByEntry(this.page, E('ssn'), data.ssn, 'last');
+    await fillByEntry(this.page, E('dateOfBirth'), data.dateOfBirth, 'last');
+    await selectByEntry(this.page, E('sex'), data.sex, 'last');
+    await selectByEntry(this.page, E('relationship'), data.relationship, 'last');
+    await clickByEntry(this.page, E('sameAsOwner'), 'last');
+    await fillByEntry(this.page, E('proceedsPct'), data.proceedsPct, 'last');
   }
 
   async next() {
-    await clickNext(this.page);
+    await clickByEntry(this.page, E('next'));
   }
 }

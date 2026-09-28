@@ -12,7 +12,6 @@
       "id": "ownerFirstName",
       "testId": null,
       "nameAttr": "firstName",
-      "classes": [],
       "type": "text"
     },
     {
@@ -23,7 +22,6 @@
       "id": "ownerEmail",
       "testId": null,
       "nameAttr": "email",
-      "classes": [],
       "type": "email"
     },
     {
@@ -34,7 +32,6 @@
       "id": "ownerDob",
       "testId": null,
       "nameAttr": "dob",
-      "classes": [],
       "type": "date"
     },
     {
@@ -45,7 +42,6 @@
       "id": "ownerPreferredName",
       "testId": null,
       "nameAttr": "preferredName",
-      "classes": [],
       "type": "text"
     }
   ],

@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { wizardScope, type FormScope } from './wizard-scope';
+import { fieldLabel, resolveLocator, tryResolveLocator, type LocatorEntry } from './locator-registry';
 
 export type Occurrence = 'first' | 'last';
 
@@ -199,4 +200,94 @@ export async function clickControl(
     }
   }
   throw new Error(`Could not find control "${name}" on ${page.url()}`);
+}
+
+async function controlTag(loc: Locator): Promise<string> {
+  return loc.evaluate((el) => el.tagName.toLowerCase()).catch(() => '');
+}
+
+/** Multi-strategy fill: resolveLocator (id/css/role/label/text) then Firelight label heuristic. */
+export async function fillByEntry(
+  page: Page,
+  entry: LocatorEntry,
+  value: string,
+  occurrence: Occurrence = 'first',
+): Promise<void> {
+  await waitForWizardIdle(page);
+  try {
+    const loc = await tryResolveLocator(page, entry, occurrence);
+    if (loc) {
+      const tag = await controlTag(loc);
+      if (tag === 'input' || tag === 'textarea') {
+        await loc.scrollIntoViewIfNeeded().catch(() => undefined);
+        await loc.click();
+        await loc.fill(value);
+        await loc.press('Tab').catch(() => undefined);
+        return;
+      }
+      if (tag === 'select') {
+        await loc.selectOption({ label: value }).catch(async () => {
+          await loc.selectOption(value);
+        });
+        return;
+      }
+    }
+  } catch {
+    /* fall through to question-scoped heuristic */
+  }
+  await fillByLabel(page, fieldLabel(entry), value, occurrence);
+}
+
+/** Multi-strategy select / Yes-No: native <select> via resolveLocator, else grouped radios. */
+export async function selectByEntry(
+  page: Page,
+  entry: LocatorEntry,
+  option: string,
+  occurrence: Occurrence = 'first',
+): Promise<void> {
+  await waitForWizardIdle(page);
+  try {
+    const loc = await tryResolveLocator(page, entry, occurrence);
+    if (loc) {
+      const tag = await controlTag(loc);
+      if (tag === 'select') {
+        await loc.selectOption({ label: option }).catch(async () => {
+          await loc.selectOption(option);
+        });
+        return;
+      }
+    }
+  } catch {
+    /* grouped checkboxes still need the question-scoped heuristic */
+  }
+  await selectByLabel(page, fieldLabel(entry), option, occurrence);
+}
+
+export async function clickByEntry(
+  page: Page,
+  entry: LocatorEntry,
+  occurrence: Occurrence = 'first',
+): Promise<void> {
+  await waitForWizardIdle(page);
+  try {
+    const loc = await tryResolveLocator(page, entry, occurrence);
+    if (loc) {
+      await loc.click();
+      await waitForWizardIdle(page);
+      return;
+    }
+    if (/next/i.test(entry.name)) {
+      await clickNext(page);
+      return;
+    }
+    const waited = await resolveLocator(page, entry, 8_000, occurrence);
+    await waited.click();
+    await waitForWizardIdle(page);
+  } catch (err) {
+    if (/next/i.test(entry.name)) {
+      await clickNext(page);
+      return;
+    }
+    throw err;
+  }
 }

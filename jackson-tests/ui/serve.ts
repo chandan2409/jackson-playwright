@@ -71,6 +71,36 @@ type LastSpec = {
   duration: number | null;
 };
 
+type CoverageStep = {
+  id: string;
+  excelRow: number | null;
+  requirement: string;
+  page: string;
+  action: string;
+  field: string;
+  happyValue?: string;
+  variantValue?: string;
+  testCases: string[];
+  pom?: string;
+  locatorEntry?: string | null;
+  fixtureKey?: string | null;
+  source?: string;
+  implemented?: boolean;
+  note?: string;
+};
+
+function specStatusMap(specs: LastSpec[]): Record<string, LastSpec> {
+  return Object.fromEntries(specs.map((s) => [s.id, s]));
+}
+
+function rollupStepStatus(results: Array<{ testId: string; status: string }>): string {
+  if (!results.length) return 'not-run';
+  if (results.some((r) => r.status === 'failed' || r.status === 'timedOut')) return 'failed';
+  if (results.every((r) => r.status === 'passed')) return 'passed';
+  if (results.every((r) => r.status === 'not-run' || r.status === 'skipped')) return results[0]?.status || 'not-run';
+  return 'partial';
+}
+
 function collectSpecs(node: unknown, out: LastSpec[] = []): LastSpec[] {
   if (!node || typeof node !== 'object') return out;
   const rec = node as Record<string, unknown>;
@@ -178,21 +208,43 @@ function loadDashboard() {
         caseName: string;
         excelStepCount: number;
         pages: string[];
-        scripts: Array<{ id: string; file: string; path: string }>;
+        scripts: Array<{ id: string; file: string; path: string; title?: string; coversExcel?: string[] }>;
+        steps?: CoverageStep[];
       })
     : null;
+  const bySpec = specStatusMap(lastRun?.specs || []);
+  const coverageSteps = (coverageRaw?.steps || []).map((step) => {
+    const results = step.testCases.map((testId) => ({
+      testId,
+      status: bySpec[testId]?.status || 'not-run',
+      durationMs: bySpec[testId]?.duration ?? null,
+    }));
+    return { ...step, results, lastStatus: rollupStepStatus(results) };
+  });
   const coverage = coverageRaw
     ? {
         ...coverageRaw,
         scripts: coverageRaw.scripts.map((script) => {
-          const hit = lastRun?.specs.find((s) => s.id === script.id);
+          const hit = bySpec[script.id];
           return {
             ...script,
             lastStatus: hit?.status || 'not-run',
-            lastTitle: hit?.title || '',
+            lastTitle: hit?.title || script.title || '',
             lastDurationMs: hit?.duration ?? null,
+            coveredStepCount: coverageSteps.filter((step) => step.testCases.includes(script.id)).length,
           };
         }),
+        steps: coverageSteps,
+        summary: {
+          excelSteps: coverageRaw.excelStepCount,
+          mappedSteps: coverageSteps.filter((s) => s.source !== 'live-wizard').length,
+          liveOnlySteps: coverageSteps.filter((s) => s.source === 'live-wizard').length,
+          implemented: coverageSteps.filter((s) => s.implemented !== false && s.source !== 'live-wizard').length,
+          passed: coverageSteps.filter((s) => s.lastStatus === 'passed').length,
+          failed: coverageSteps.filter((s) => s.lastStatus === 'failed').length,
+          partial: coverageSteps.filter((s) => s.lastStatus === 'partial').length,
+          notRun: coverageSteps.filter((s) => s.lastStatus === 'not-run' || s.lastStatus === 'skipped').length,
+        },
       }
     : null;
 
@@ -337,6 +389,19 @@ const server = http.createServer(async (req, res) => {
       defects: Array<{ id: string; body: string }>;
     };
     const r = dash.report;
+    const cov = dash.coverage as {
+      source?: string;
+      summary?: { excelSteps: number; implemented: number; passed: number; failed: number; partial: number; notRun: number };
+      scripts?: Array<{ id: string; lastStatus?: string; coveredStepCount?: number }>;
+      steps?: Array<{
+        id: string;
+        page: string;
+        field: string;
+        requirement: string;
+        lastStatus: string;
+        results: Array<{ testId: string; status: string }>;
+      }>;
+    } | null;
     const lines = [
       '# Jackson Firelight change report',
       '',
@@ -347,9 +412,35 @@ const server = http.createServer(async (req, res) => {
       `- Generated: ${r?.generatedAt || dash.generatedAt}`,
       `- Summary: ${r?.summary?.total ?? 0} total · ${r?.summary?.expected ?? 0} expected · ${r?.summary?.unexpected ?? 0} unexpected`,
       '',
+      '## Test coverage (Excel step → test case → last run)',
+      '',
+      `- Source: ${cov?.source || 'n/a'}`,
+      `- Excel steps: ${cov?.summary?.excelSteps ?? 0} · implemented: ${cov?.summary?.implemented ?? 0}`,
+      `- Last run: passed ${cov?.summary?.passed ?? 0} · failed ${cov?.summary?.failed ?? 0} · partial ${cov?.summary?.partial ?? 0} · not-run ${cov?.summary?.notRun ?? 0}`,
+      '',
+      '| Test | Status | Excel steps |',
+      '|------|--------|-------------|',
+    ];
+    for (const script of cov?.scripts || []) {
+      lines.push(`| ${script.id} | ${script.lastStatus || 'not-run'} | ${script.coveredStepCount ?? 0} |`);
+    }
+    lines.push(
+      '',
+      '| Step | Page | Field | Tests | Status | Requirement |',
+      '|------|------|-------|-------|--------|-------------|',
+    );
+    for (const step of cov?.steps || []) {
+      const tests = (step.results || []).map((res) => `${res.testId}:${res.status}`).join(', ');
+      const req = step.requirement.replace(/\|/g, '/').replace(/\n/g, ' ');
+      lines.push(`| ${step.id} | ${step.page} | ${step.field} | ${tests} | ${step.lastStatus} | ${req} |`);
+    }
+    lines.push(
+      '',
+      '## Change report',
+      '',
       '| ID | Class | Type | Page | Field | HITL | Heal |',
       '|----|-------|------|------|-------|------|------|',
-    ];
+    );
     for (const c of r?.changes || []) {
       lines.push(
         `| ${c.changeId} | ${c.classification} | ${c.changeType} | ${c.page} | ${c.fieldOrLocator} | ${c.acceptanceStatus || 'pending'} | ${c.healAction || ''} |`,

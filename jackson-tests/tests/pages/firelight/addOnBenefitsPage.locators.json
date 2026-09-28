@@ -1,17 +1,22 @@
 {
   "page": "add-on-benefits",
-  "generatedAt": "2026-09-25T15:30:00.000Z",
-  "source": "live",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "source": "live-dom",
   "entries": {
     "heading": {
-      "name": "heading",
-      "page": "add-on-benefits",
-      "strategies": [{ "type": "text", "value": "Add-On Benefits", "confidence": 0.95 }]
+      "name": "heading", "page": "add-on-benefits",
+      "strategies": [
+        { "type": "text", "value": "Add-On Benefits", "confidence": 0.92 },
+        { "type": "css", "value": ".ITWizardPageName:has-text('Add-On Benefits')", "confidence": 0.8 }
+      ]
     },
     "next": {
-      "name": "next",
-      "page": "add-on-benefits",
-      "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }, { "type": "text", "value": "Next", "confidence": 0.5 }]
+      "name": "next", "page": "add-on-benefits",
+      "strategies": [
+        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
+        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 },
+        { "type": "text", "value": "Next", "confidence": 0.4 }
+      ]
     }
   }
 }

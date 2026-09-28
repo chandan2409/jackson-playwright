@@ -1,20 +1,99 @@
 {
   "page": "beneficiaries",
-  "generatedAt": "2026-09-23T05:45:00.000Z",
-  "source": "excel",
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "source": "live-dom",
   "entries": {
-    "livingPerson": { "name": "livingPerson", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Is the beneficiary a living person or non-natural entity?", "confidence": 0.95 }] },
-    "firstName": { "name": "firstName", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "First Name", "confidence": 0.95 }] },
-    "middleName": { "name": "middleName", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Middle Name", "confidence": 0.95 }] },
-    "lastName": { "name": "lastName", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Last Name", "confidence": 0.95 }] },
-    "ssn": { "name": "ssn", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "SSN", "confidence": 0.95 }] },
-    "dateOfBirth": { "name": "dateOfBirth", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Date of Birth", "confidence": 0.95 }] },
-    "sex": { "name": "sex", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Sex", "confidence": 0.95 }] },
-    "relationship": { "name": "relationship", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Relationship to Owner", "confidence": 0.95 }] },
-    "sameAsOwner": { "name": "sameAsOwner", "page": "beneficiaries", "strategies": [{ "type": "text", "value": "Same As Owner", "confidence": 0.9 }] },
-    "proceedsPct": { "name": "proceedsPct", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Proceeds", "confidence": 0.95 }] },
-    "addBeneficiary": { "name": "addBeneficiary", "page": "beneficiaries", "strategies": [{ "type": "role", "value": "button[name='Add Beneficiary']", "confidence": 0.9 }, { "type": "text", "value": "Add Beneficiary", "confidence": 0.7 }] },
-    "beneficiaryType": { "name": "beneficiaryType", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Beneficiary Type", "confidence": 0.95 }] },
-    "next": { "name": "next", "page": "beneficiaries", "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }] }
+    "livingPerson": {
+      "name": "livingPerson", "page": "beneficiaries",
+      "strategies": [
+        { "type": "css", "value": "[data-dataitemid='PrimaryBeneficiary1_JCK_LP']", "confidence": 0.92 },
+        { "type": "id", "value": "LivingPerson", "confidence": 0.7 },
+        { "type": "label", "value": "Is the beneficiary a living person or non-natural entity?", "confidence": 0.8 }
+      ]
+    },
+    "firstName": {
+      "name": "firstName", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='First Name']", "confidence": 0.86 },
+        { "type": "label", "value": "First Name", "confidence": 0.8 }
+      ]
+    },
+    "middleName": {
+      "name": "middleName", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='Middle Name']", "confidence": 0.86 },
+        { "type": "label", "value": "Middle Name", "confidence": 0.8 }
+      ]
+    },
+    "lastName": {
+      "name": "lastName", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='Last Name']", "confidence": 0.86 },
+        { "type": "label", "value": "Last Name", "confidence": 0.8 }
+      ]
+    },
+    "ssn": {
+      "name": "ssn", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='SSN']", "confidence": 0.86 },
+        { "type": "label", "value": "SSN", "confidence": 0.8 }
+      ]
+    },
+    "dateOfBirth": {
+      "name": "dateOfBirth", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='Date of Birth']", "confidence": 0.86 },
+        { "type": "label", "value": "Date of Birth", "confidence": 0.8 }
+      ]
+    },
+    "sex": {
+      "name": "sex", "page": "beneficiaries",
+      "strategies": [
+        { "type": "label", "value": "Sex", "confidence": 0.8 },
+        { "type": "text", "value": "Sex", "confidence": 0.55 }
+      ]
+    },
+    "relationship": {
+      "name": "relationship", "page": "beneficiaries",
+      "strategies": [
+        { "type": "label", "value": "Relationship to Owner", "confidence": 0.8 },
+        { "type": "text", "value": "Relationship to Owner", "confidence": 0.55 }
+      ]
+    },
+    "sameAsOwner": {
+      "name": "sameAsOwner", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "button[name='Same As Owner']", "confidence": 0.9 },
+        { "type": "text", "value": "Same As Owner", "confidence": 0.75 }
+      ]
+    },
+    "proceedsPct": {
+      "name": "proceedsPct", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "textbox[name='Proceeds']", "confidence": 0.86 },
+        { "type": "label", "value": "Proceeds", "confidence": 0.8 }
+      ]
+    },
+    "addBeneficiary": {
+      "name": "addBeneficiary", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "button[name='Add Beneficiary']", "confidence": 0.9 },
+        { "type": "text", "value": "Add Beneficiary", "confidence": 0.7 }
+      ]
+    },
+    "beneficiaryType": {
+      "name": "beneficiaryType", "page": "beneficiaries",
+      "strategies": [
+        { "type": "label", "value": "Beneficiary Type", "confidence": 0.8 },
+        { "type": "text", "value": "Beneficiary Type", "confidence": 0.55 }
+      ]
+    },
+    "next": {
+      "name": "next", "page": "beneficiaries",
+      "strategies": [
+        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
+        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 }
+      ]
+    }
   }
 }
