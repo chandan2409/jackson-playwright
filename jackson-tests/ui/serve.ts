@@ -3,6 +3,7 @@ import http from 'http';
 import path from 'path';
 import { spawn, type ChildProcessWithoutNullStreams } from 'child_process';
 import { fileURLToPath } from 'url';
+import { createJiraForDefect, jiraUiStatus, listDefectNotes, writeDefectStub } from '../tests/utils/jira-file.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const UI_DIR = path.join(ROOT, 'ui');
@@ -21,7 +22,14 @@ const WIZARD_STEPS = [
   { key: 'signing-process', label: 'Signing' },
 ];
 
-type PageSnap = { pageKey: string; title?: string; elements?: unknown[] };
+type PageSnap = {
+  pageKey: string;
+  title?: string;
+  elements?: unknown[];
+  html?: string;
+  htmlHash?: string;
+  scanned?: boolean;
+};
 
 type JobState = {
   name: string;
@@ -110,24 +118,34 @@ function loadDashboard() {
     }
     const snap = readJson(file) as PageSnap;
     const title = snap.title || pageKey;
-    const stub = /pending|scaffold/i.test(title) || !(snap.elements && snap.elements.length);
-    return { pageKey, title, elementCount: snap.elements?.length ?? 0, stub };
+    const htmlChars = snap.html?.length ?? 0;
+    const stub =
+      snap.scanned === false ||
+      /pending|scaffold|did not reach|missing snapshot/i.test(title) ||
+      (!(snap.elements && snap.elements.length) && !htmlChars);
+    return {
+      pageKey,
+      title,
+      elementCount: snap.elements?.length ?? 0,
+      htmlChars,
+      scanned: snap.scanned !== false && !stub,
+      stub,
+    };
   });
 
-  const rehearsalLocatorPath = path.join(ROOT, 'tests/data/rehearsal/locators/ownerPage.locators.json');
-  const rehearsalLocators = fs.existsSync(rehearsalLocatorPath) ? readJson(rehearsalLocatorPath) : null;
+  function locatorBundle(dir: string) {
+    if (!fs.existsSync(dir)) return {};
+    const out: Record<string, unknown> = {};
+    for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.locators.json'))) {
+      out[file] = readJson(path.join(dir, file));
+    }
+    return out;
+  }
 
-  const defectsDir = path.join(ROOT, 'tests/reports/changes/defects');
-  const defects = fs.existsSync(defectsDir)
-    ? fs
-        .readdirSync(defectsDir)
-        .filter((f) => f.endsWith('.md'))
-        .sort()
-        .map((f) => ({
-          id: f.replace(/\.md$/, ''),
-          body: fs.readFileSync(path.join(defectsDir, f), 'utf8'),
-        }))
-    : [];
+  const rehearsalLocators = locatorBundle(path.join(ROOT, 'tests/data/rehearsal/locators'));
+  const liveLocators = locatorBundle(path.join(ROOT, 'tests/pages/firelight'));
+
+  const defects = listDefectNotes();
 
   const lastRunPath = path.join(ROOT, 'tests/reports/last-run.json');
   let lastRun: {
@@ -202,7 +220,9 @@ function loadDashboard() {
       ? { id: liveManifest.baselineId, capturedAt: liveManifest.capturedAt, pages: livePages }
       : null,
     rehearsalLocators,
+    liveLocators,
     defects,
+    jira: jiraUiStatus(),
     lastRun,
     coverage,
     htmlReport: htmlReportReady
@@ -344,6 +364,49 @@ const server = http.createServer(async (req, res) => {
       'Content-Disposition': 'attachment; filename="jackson-change-report.md"',
     });
     res.end(lines.join('\n'));
+    return;
+  }
+
+  if (url.pathname === '/api/jira' && req.method === 'POST') {
+    try {
+      const body = JSON.parse((await readBody(req)) || '{}') as { changeIds?: string[] };
+      const reportPath = path.join(ROOT, 'tests/reports/changes/latest-change-report.json');
+      const report = fs.existsSync(reportPath)
+        ? (readJson(reportPath) as {
+            changes?: Array<{
+              changeId: string;
+              page?: string;
+              fieldOrLocator?: string;
+              severity?: string;
+              changeType?: string;
+              classification?: string;
+              description?: string;
+              evidenceScreenshot?: string;
+            }>;
+          })
+        : { changes: [] };
+      const unexpected = (report.changes || []).filter((c) => c.classification === 'unexpected').map((c) => c.changeId);
+      let ids = validChangeIds(body.changeIds);
+      if (ids.length === 0) ids = unexpected.filter((id) => !listDefectNotes().find((d) => d.id === id)?.jiraKey);
+      if (ids.length === 0) ids = listDefectNotes().filter((d) => !d.jiraKey).map((d) => d.id);
+      if (ids.length === 0) {
+        json(res, 400, { error: 'No unexpected defects left to file (or they already have a Jira key)' });
+        return;
+      }
+      const results = [];
+      for (const id of ids) {
+        const change = (report.changes || []).find((c) => c.changeId === id);
+        if (change) writeDefectStub(change);
+        try {
+          results.push({ id, ...(await createJiraForDefect(id)) });
+        } catch (err) {
+          results.push({ id, error: err instanceof Error ? err.message : String(err) });
+        }
+      }
+      json(res, 200, { results, jira: jiraUiStatus(), defects: listDefectNotes() });
+    } catch (err) {
+      json(res, 400, { error: err instanceof Error ? err.message : String(err) });
+    }
     return;
   }
 

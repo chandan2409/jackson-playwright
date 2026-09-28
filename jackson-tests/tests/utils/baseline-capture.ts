@@ -2,8 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from '@playwright/test';
 import ENV from './env';
-import { captureCurrentPage, type PageSnapshot } from './dom-snapshot';
+import { captureCurrentPage, unscannedSnapshot, type PageSnapshot } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
+import { WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
 const BASELINE_DIR = path.join(ROOT, 'tests/data/baselines');
@@ -20,18 +21,6 @@ export type BaselineManifest = {
   pages: string[];
 };
 
-const FALLBACK_PAGES = [
-  'select-application',
-  'new-application-information',
-  'owner',
-  'beneficiaries',
-  'agent',
-  'systematic-investment',
-  'initial-allocations',
-  'add-on-benefits',
-  'payment-detail',
-  'signing-process',
-];
 
 function writeSnap(outDir: string, snap: PageSnapshot) {
   fs.writeFileSync(path.join(outDir, `${snap.pageKey}.json`), JSON.stringify(snap, null, 2));
@@ -53,16 +42,9 @@ async function main() {
   };
 
   const stubRemaining = () => {
-    for (const pageKey of FALLBACK_PAGES) {
+    for (const pageKey of WIZARD_PAGES) {
       if (manifest.pages.includes(pageKey)) continue;
-      const stub: PageSnapshot = {
-        pageKey,
-        url: '',
-        capturedAt: new Date().toISOString(),
-        title: `(pending wizard navigation) ${pageKey}`,
-        elements: [],
-      };
-      writeSnap(outDir, stub);
+      writeSnap(outDir, unscannedSnapshot(pageKey, `(wizard walk did not reach) ${pageKey}`));
       manifest.pages.push(pageKey);
     }
   };
@@ -84,7 +66,7 @@ async function main() {
       const snap = await captureCurrentPage(page, pageKey);
       writeSnap(outDir, snap);
       if (!manifest.pages.includes(pageKey)) manifest.pages.push(pageKey);
-      console.log(`Captured ${pageKey} (${snap.elements.length} elements)`);
+      console.log(`Captured ${pageKey} (dom ${snap.html.length} chars, ${snap.elements.length} interactive)`);
     });
   } catch (err) {
     console.warn('Wizard walk stopped early:', err);

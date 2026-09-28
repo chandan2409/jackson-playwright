@@ -56,7 +56,7 @@ npm run test:script2          # variant path
 ```bash
 cd jackson-tests
 npm run baseline:capture
-git add tests/data/baselines tests/specs tests/pages
+git add tests/data/baselines tests/specs tests/pages tests/reports/changes/latest-change-report.json
 git commit -m "Freeze Day 6 Firelight baseline"
 ```
 
@@ -76,6 +76,16 @@ git commit -m "Freeze Day 6 Firelight baseline"
 | `/automate excel` | Generate/update scripts from Excel test case |
 | `/detect-changes` | Scan UI vs baseline; emit change report |
 | `/heal` | Repair scripts after HITL acceptance |
+| `/file-jira` | Optional: copy unexpected defects to Jira (Atlassian MCP) |
+
+## Optional Jira (MCP + Change review)
+
+1. Cursor Settings → MCP → **atlassian** → Connect (`https://mcp.atlassian.com/v2/mcp` is in `.cursor/mcp.json`).
+2. Set `JIRA_PROJECT_KEY` and `JIRA_CLOUD_SITE` in `jackson-tests/.env`.
+3. After detect/heal rejects: `/file-jira` **or** Change review → **Defects → Jira**.
+4. The UI button uses Jira REST (`JIRA_EMAIL` + `JIRA_API_TOKEN` from [Atlassian API tokens](https://id.atlassian.com/manage-account/security/api-tokens)). MCP OAuth is not available inside `npm run ui`.
+
+Markdown under `jackson-tests/tests/reports/changes/defects/` remains the POC record. This is not Xray.
 
 ## Deliverables checklist
 
@@ -86,4 +96,4 @@ git commit -m "Freeze Day 6 Firelight baseline"
 
 ## Out of scope (per POC)
 
-Backend/API changes, Xray integration (Excel/Markdown defects are enough), accuracy/coverage SLAs.
+Backend/API changes, Xray test-management sync, accuracy/coverage SLAs. Optional Jira MCP is a defect copy only.

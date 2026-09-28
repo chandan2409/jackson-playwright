@@ -24,6 +24,7 @@
       "name": "jurisdiction",
       "page": "select-application",
       "strategies": [
+        { "type": "role", "value": "combobox[name='Jurisdiction']", "confidence": 0.97 },
         { "type": "id", "value": "Jurisdiction", "confidence": 0.95 },
         { "type": "label", "value": "Jurisdiction", "confidence": 0.95 },
         { "type": "css", "value": "select[name='Jurisdiction']", "confidence": 0.9 }
@@ -33,6 +34,7 @@
       "name": "productType",
       "page": "select-application",
       "strategies": [
+        { "type": "role", "value": "combobox[name='Product Type']", "confidence": 0.97 },
         { "type": "id", "value": "ProductType", "confidence": 0.95 },
         { "type": "label", "value": "Product Type", "confidence": 0.9 },
         { "type": "css", "value": "select[name='ProductType']", "confidence": 0.85 }

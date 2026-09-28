@@ -24,6 +24,7 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 - `/automate excel` → generate/update scripts from Excel
 - `/detect-changes` → Day 8 change report
 - `/heal` → apply accepted repairs + new baseline
+- `/file-jira` → optional Jira copy of unexpected Markdown defects (Atlassian MCP)
 - `/iterate-script1` → run script 1, fix from screenshot, repeat until green
 - `/iterate-script2` → run script 2 (variant), fix from screenshot, repeat until green
 
@@ -45,16 +46,20 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 - Label-first locators for Firelight form fields
 - Every test MUST contain at least one `expect()`
 
-## Wizard pages
+## Wizard pages (detect and heal cover all)
 
 1. Select Application
 2. New Application Information
 3. Owner
 4. Beneficiaries
 5. Agent
-6. Initial Allocations
-7. Payment Detail
-8. Signing Process
+6. Systematic Investment
+7. Initial Allocations
+8. Add-On Benefits
+9. Payment Detail
+10. Signing Process
+
+Baselines store **serialized DOM** (`html` + `htmlHash`) plus an interactive field inventory. Self-heal patches `*.locators.json` sidecars for every page object under `tests/pages/firelight/`.
 
 ## Token optimization (implemented in this layout)
 
@@ -71,4 +76,5 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 - Never invent selectors when live DOM is available
 - Never heal unexpected changes; file defect notes instead
 - Human interaction only for start + acceptance
-- Frontend-only; Excel/Markdown defects (no Xray)
+- Frontend-only; Excel/Markdown defects are source of truth (no Xray)
+- Optional Jira via Atlassian MCP (`/file-jira`) is a copy of unexpected defects only

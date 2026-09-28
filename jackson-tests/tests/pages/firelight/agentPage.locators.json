@@ -8,9 +8,9 @@
     "middleName": { "name": "middleName", "page": "agent", "strategies": [{ "type": "label", "value": "Middle Name", "confidence": 0.95 }] },
     "lastName": { "name": "lastName", "page": "agent", "strategies": [{ "type": "label", "value": "Last Name", "confidence": 0.95 }] },
     "ssn": { "name": "ssn", "page": "agent", "strategies": [{ "type": "label", "value": "SSN", "confidence": 0.95 }] },
-    "commissionPct": { "name": "commissionPct", "page": "agent", "strategies": [{ "type": "label", "value": "Commission %", "confidence": 0.95 }] },
-    "email": { "name": "email", "page": "agent", "strategies": [{ "type": "label", "value": "email", "confidence": 0.9 }] },
-    "commissionOption": { "name": "commissionOption", "page": "agent", "strategies": [{ "type": "label", "value": "Commission option", "confidence": 0.95 }] },
+    "commissionPct": { "name": "commissionPct", "page": "agent", "strategies": [{ "type": "label", "value": "Commission", "confidence": 0.95 }] },
+    "email": { "name": "email", "page": "agent", "strategies": [{ "type": "label", "value": "Email", "confidence": 0.9 }] },
+    "commissionOption": { "name": "commissionOption", "page": "agent", "strategies": [{ "type": "label", "value": "Commission Option", "confidence": 0.95 }] },
     "next": { "name": "next", "page": "agent", "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }] }
   }
 }

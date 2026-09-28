@@ -4,5 +4,16 @@
   "product": "Elite Access II",
   "jurisdiction": "Colorado",
   "caseName": "Boun",
-  "pages": ["owner"]
+  "pages": [
+    "select-application",
+    "new-application-information",
+    "owner",
+    "beneficiaries",
+    "agent",
+    "systematic-investment",
+    "initial-allocations",
+    "add-on-benefits",
+    "payment-detail",
+    "signing-process"
+  ]
 }

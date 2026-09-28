@@ -1,5 +1,10 @@
 import { Page } from '@playwright/test';
+import path from 'path';
 import { selectByLabel, fillByLabel, clickNext, clickControl } from '../../utils/form-helpers';
+import { fieldLabel, loadLocators, resolveLocator } from '../../utils/locator-registry';
+
+const registry = loadLocators(path.join(__dirname, 'beneficiariesPage.locators.json'));
+const L = (key: string) => fieldLabel(registry.entries[key]);
 
 export type BeneficiaryData = {
   type: string;
@@ -18,49 +23,43 @@ export class BeneficiariesPage {
   constructor(private page: Page) {}
 
   async fillPrimary(data: BeneficiaryData) {
-    await selectByLabel(
-      this.page,
-      'Is the beneficiary a living person or non-natural entity?',
-      data.type,
-    );
-    await this.page.getByText('First Name', { exact: false }).first().waitFor({ timeout: 15_000 });
-    await fillByLabel(this.page, 'First Name', data.firstName);
-    await fillByLabel(this.page, 'Middle Name', data.middleName);
-    await fillByLabel(this.page, 'Last Name', data.lastName);
-    await fillByLabel(this.page, 'SSN', data.ssn);
-    await fillByLabel(this.page, 'Date of Birth', data.dateOfBirth);
-    await selectByLabel(this.page, 'Sex', data.sex);
-    await selectByLabel(this.page, 'Relationship to Owner', data.relationship);
-    await clickControl(this.page, 'Same As Owner');
-    await fillByLabel(this.page, 'Proceeds', data.proceedsPct);
+    await selectByLabel(this.page, L('livingPerson'), data.type);
+    await this.page.getByText(L('firstName'), { exact: false }).first().waitFor({ timeout: 15_000 });
+    await fillByLabel(this.page, L('firstName'), data.firstName);
+    await fillByLabel(this.page, L('middleName'), data.middleName);
+    await fillByLabel(this.page, L('lastName'), data.lastName);
+    await fillByLabel(this.page, L('ssn'), data.ssn);
+    await fillByLabel(this.page, L('dateOfBirth'), data.dateOfBirth);
+    await selectByLabel(this.page, L('sex'), data.sex);
+    await selectByLabel(this.page, L('relationship'), data.relationship);
+    await clickControl(this.page, L('sameAsOwner'));
+    await fillByLabel(this.page, L('proceedsPct'), data.proceedsPct);
   }
 
   async addContingent(data: BeneficiaryData) {
-    const add = this.page
-      .getByRole('button', { name: /add beneficiary/i })
-      .or(this.page.getByRole('link', { name: /add beneficiary/i }));
+    let add;
+    try {
+      add = await resolveLocator(this.page, registry.entries.addBeneficiary);
+    } catch {
+      return;
+    }
     if (!(await add.count())) {
       return;
     }
     await add.first().click();
     if (data.beneficiaryType) {
-      await selectByLabel(this.page, 'Beneficiary Type', data.beneficiaryType, 'last');
+      await selectByLabel(this.page, L('beneficiaryType'), data.beneficiaryType, 'last');
     }
-    await selectByLabel(
-      this.page,
-      'Is the beneficiary a living person or non-natural entity?',
-      data.type,
-      'last',
-    );
-    await fillByLabel(this.page, 'First Name', data.firstName, 'last');
-    await fillByLabel(this.page, 'Middle Name', data.middleName, 'last');
-    await fillByLabel(this.page, 'Last Name', data.lastName, 'last');
-    await fillByLabel(this.page, 'SSN', data.ssn, 'last');
-    await fillByLabel(this.page, 'Date of Birth', data.dateOfBirth, 'last');
-    await selectByLabel(this.page, 'Sex', data.sex, 'last');
-    await selectByLabel(this.page, 'Relationship to Owner', data.relationship, 'last');
-    await clickControl(this.page, 'Same As Owner', 'last');
-    await fillByLabel(this.page, 'Proceeds', data.proceedsPct, 'last');
+    await selectByLabel(this.page, L('livingPerson'), data.type, 'last');
+    await fillByLabel(this.page, L('firstName'), data.firstName, 'last');
+    await fillByLabel(this.page, L('middleName'), data.middleName, 'last');
+    await fillByLabel(this.page, L('lastName'), data.lastName, 'last');
+    await fillByLabel(this.page, L('ssn'), data.ssn, 'last');
+    await fillByLabel(this.page, L('dateOfBirth'), data.dateOfBirth, 'last');
+    await selectByLabel(this.page, L('sex'), data.sex, 'last');
+    await selectByLabel(this.page, L('relationship'), data.relationship, 'last');
+    await clickControl(this.page, L('sameAsOwner'), 'last');
+    await fillByLabel(this.page, L('proceedsPct'), data.proceedsPct, 'last');
   }
 
   async next() {

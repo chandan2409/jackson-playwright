@@ -1,5 +1,6 @@
 function labelFromFingerprint(raw) {
   if (!raw) return '—';
+  if (/^[a-f0-9]{16,}$/i.test(raw)) return `<code title="${raw}">${raw.slice(0, 8)}…</code>`;
   try {
     const parsed = JSON.parse(raw);
     return parsed.label || parsed.text || parsed.tag || raw;
@@ -17,11 +18,12 @@ function liveOn() {
 }
 
 function setBusy(busy) {
-  document.querySelectorAll('[data-run], #heal-btn').forEach((btn) => {
+  document.querySelectorAll('[data-run], #heal-btn, #jira-file-missing, #jira-create-report, [data-jira]').forEach((btn) => {
     if (btn.classList.contains('live-only') && !liveOn()) {
       btn.disabled = true;
       return;
     }
+    if (btn.id === 'jira-file-missing' || btn.hasAttribute('data-jira')) return;
     btn.disabled = busy;
   });
 }
@@ -99,11 +101,19 @@ async function refreshDashboard() {
   }
 
   const tbody = document.getElementById('changes');
+  const defectById = Object.fromEntries((data.defects || []).map((d) => [d.id, d]));
   tbody.innerHTML = (report?.changes || [])
     .map((c) => {
       const before = labelFromFingerprint(c.baselineValue);
       const after = labelFromFingerprint(c.currentValue);
       const checked = c.classification === 'expected' ? 'checked' : '';
+      const defect = defectById[c.changeId];
+      let jiraCell = '—';
+      if (defect?.jiraUrl) {
+        jiraCell = `<a href="${defect.jiraUrl}" target="_blank" rel="noopener noreferrer">${defect.jiraKey}</a>`;
+      } else if (c.classification === 'unexpected') {
+        jiraCell = `<button type="button" class="ghost" data-jira="${c.changeId}">Create</button>`;
+      }
       return `<tr class="row-${c.classification}">
         <td><input type="checkbox" class="chg" data-id="${c.changeId}" data-class="${c.classification}" ${checked} /></td>
         <td><strong>${c.changeId}</strong></td>
@@ -114,6 +124,7 @@ async function refreshDashboard() {
         <td>${before} → ${after}</td>
         <td>${pill(c.acceptanceStatus || 'pending', c.acceptanceStatus || 'pending')}</td>
         <td>${c.healAction || '—'}</td>
+        <td>${jiraCell}</td>
       </tr>`;
     })
     .join('');
@@ -125,19 +136,41 @@ async function refreshDashboard() {
   document.getElementById('baseline-pages').innerHTML = (live?.pages || [])
     .map((p) => {
       const cls = p.stub ? 'stub' : 'live';
-      const tag = p.stub ? 'stub / empty' : `${p.elementCount} elements`;
+      const tag = p.stub
+        ? 'not scanned'
+        : `${p.htmlChars ? `${p.htmlChars} DOM chars · ` : ''}${p.elementCount} fields`;
       return `<li><span>${p.pageKey}</span><span class="${cls}">${tag}</span></li>`;
     })
     .join('');
 
-  const loc = data.rehearsalLocators?.entries || {};
-  document.getElementById('locator').textContent = Object.keys(loc).length
-    ? JSON.stringify(loc, null, 2)
-    : 'No rehearsal locator file';
+  const locators = liveOn() ? data.liveLocators : data.rehearsalLocators;
+  document.getElementById('locator').textContent = locators && Object.keys(locators).length
+    ? JSON.stringify(locators, null, 2)
+    : 'No locator sidecars';
+
+  const jira = data.jira || {};
+  document.getElementById('jira-meta').textContent = jira.hint || '';
+  document.getElementById('jira-file-missing').disabled = !jira.configured;
+  document.getElementById('jira-create-report').disabled = !jira.configured;
+  document.getElementById('jira-defects').innerHTML = (data.defects || [])
+    .map((d) => {
+      const link = d.jiraUrl
+        ? `<a href="${d.jiraUrl}" target="_blank" rel="noopener noreferrer">${d.jiraKey}</a>`
+        : '—';
+      const action = d.jiraKey
+        ? ''
+        : `<button type="button" class="ghost" data-jira="${d.id}" ${jira.configured ? '' : 'disabled'}>Create</button>`;
+      return `<tr>
+        <td><strong>${d.id}</strong></td>
+        <td>${link}</td>
+        <td>${action}</td>
+      </tr>`;
+    })
+    .join('') || '<tr><td colspan="3">No defect notes.</td></tr>';
 
   document.getElementById('defects').innerHTML = (data.defects || [])
     .map((d) => `<article class="defect">${d.body.replace(/</g, '&lt;')}</article>`)
-    .join('') || '<p class="meta">No defect notes.</p>';
+    .join('') || '';
 
   if (data.job?.running) pollJob();
 }
@@ -208,6 +241,45 @@ document.getElementById('heal-btn').addEventListener('click', () => {
 });
 
 document.getElementById('export-pdf').addEventListener('click', () => window.print());
+
+async function fileJira(changeIds) {
+  const status = document.getElementById('jira-status');
+  status.textContent = 'Creating in Jira…';
+  const res = await fetch('/api/jira', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ changeIds }),
+  });
+  const body = await res.json();
+  if (!res.ok) {
+    status.textContent = body.error || 'Jira create failed';
+    return;
+  }
+  const errors = (body.results || []).filter((r) => r.error);
+  const made = (body.results || []).filter((r) => r.key && !r.error);
+  status.textContent = errors.length
+    ? errors.map((r) => `${r.id}: ${r.error}`).join(' · ')
+    : `Filed ${made.map((r) => r.key).join(', ')}`;
+  await refreshDashboard();
+}
+
+document.getElementById('jira-file-missing').addEventListener('click', () => fileJira([]));
+document.getElementById('jira-create-report').addEventListener('click', () => {
+  const unexpected = [...document.querySelectorAll('.chg')]
+    .filter((box) => box.dataset.class === 'unexpected')
+    .map((box) => box.dataset.id);
+  fileJira(unexpected);
+});
+document.getElementById('changes').addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-jira]');
+  if (!btn) return;
+  fileJira([btn.dataset.jira]);
+});
+document.getElementById('jira-defects').addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-jira]');
+  if (!btn) return;
+  fileJira([btn.dataset.jira]);
+});
 
 refreshDashboard().catch((err) => {
   document.body.insertAdjacentHTML('beforeend', `<p class="note">Failed to load dashboard: ${err.message}</p>`);

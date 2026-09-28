@@ -41,7 +41,16 @@
           "fieldOrLocator": { "type": "string" },
           "changeType": {
             "type": "string",
-            "enum": ["added", "removed", "modified", "relocated", "label-changed", "option-changed"]
+            "enum": [
+              "added",
+              "removed",
+              "modified",
+              "relocated",
+              "label-changed",
+              "option-changed",
+              "dom-changed",
+              "unscanned"
+            ]
           },
           "severity": {
             "type": "string",

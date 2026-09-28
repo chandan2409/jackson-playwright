@@ -15,9 +15,10 @@ Apply accepted expected changes to Firelight scripts and refresh the baseline.
 3. Invoke `self-healer` agent with accepted/rejected IDs
 4. Update locators, POMs, fixtures, assertions as needed
 5. Write defect notes for unexpected/rejected changes
-6. Run `npm run baseline:capture` to write the new self-healed baseline
-7. Optionally re-run `npm run test:script1` and `npm run test:script2`
-8. Summarize files changed and recommend commit message
+6. Do not create Jira issues here; point to `/file-jira` if the user wants a backlog copy
+7. Run `npm run baseline:capture` to write the new self-healed baseline
+8. Optionally re-run `npm run test:script1` and `npm run test:script2`
+9. Summarize files changed and recommend commit message
 
 ## Critical Rules
 

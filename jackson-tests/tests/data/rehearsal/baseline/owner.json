@@ -26,5 +26,9 @@
       "classes": [],
       "type": "text"
     }
-  ]
+  ],
+  "scanned": true,
+  "domRoot": "section",
+  "html": "<section data-page=\"owner\"><label for=\"ownerFirstName\">First Name</label><input id=\"ownerFirstName\" name=\"firstName\"><label for=\"ownerSsn\">SSN</label><input id=\"ownerSsn\" name=\"ssn\"></section>",
+  "htmlHash": "2d11b30083d01878c6564cd5ceb9b2466fe388d0c8cbe258184e349f8fc94e6d"
 }

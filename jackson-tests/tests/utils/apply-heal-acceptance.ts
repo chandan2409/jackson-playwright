@@ -42,7 +42,7 @@ function healLabelChange(locatorsDir: string, fromLabel: string, toLabel: string
     let changed = false;
     for (const entry of Object.values(json.entries || {}) as Array<{ strategies?: Array<{ type: string; value: string }> }>) {
       for (const strategy of entry.strategies || []) {
-        if (strategy.type === 'label' && strategy.value === fromLabel) {
+        if ((strategy.type === 'label' || strategy.type === 'text') && strategy.value === fromLabel) {
           strategy.value = toLabel;
           changed = true;
         }

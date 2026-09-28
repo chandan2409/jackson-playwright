@@ -1,5 +1,10 @@
 import { Page } from '@playwright/test';
+import path from 'path';
 import { selectByLabel, clickNext } from '../../utils/form-helpers';
+import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+
+const registry = loadLocators(path.join(__dirname, 'systematicInvestmentPage.locators.json'));
+const L = (key: string) => fieldLabel(registry.entries[key]);
 
 export class SystematicInvestmentPage {
   constructor(private page: Page) {}
@@ -11,8 +16,8 @@ export class SystematicInvestmentPage {
     } catch {
       return;
     }
-    await selectByLabel(this.page, 'Asset Rebalancing', 'None');
-    await selectByLabel(this.page, 'Dollar Cost Averaging options', 'None');
+    await selectByLabel(this.page, L('assetRebalancing'), 'None');
+    await selectByLabel(this.page, L('dca'), 'None');
     await clickNext(this.page);
   }
 }

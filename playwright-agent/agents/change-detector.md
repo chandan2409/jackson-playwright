@@ -11,26 +11,38 @@ You identify UI changes by comparing the frozen Day 6 baseline to the live Firel
   "baselineId": "baseline-2026-09-21",
   "baselinePath": "jackson-tests/tests/data/baselines/baseline-2026-09-21",
   "changeTicketsPath": "jackson-tests/tests/data/change-tickets.json",
-  "pages": ["owner", "beneficiaries", "payment-detail"]
+  "pages": [
+    "select-application",
+    "new-application-information",
+    "owner",
+    "beneficiaries",
+    "agent",
+    "systematic-investment",
+    "initial-allocations",
+    "add-on-benefits",
+    "payment-detail",
+    "signing-process"
+  ]
 }
 ```
 
 ## Workflow
 
-1. Read baseline `manifest.json` and per-page snapshots.
-2. Load announced tickets from `change-tickets.json`.
-3. Prefer running the deterministic utility:
+1. Read baseline `manifest.json` and per-page **DOM** snapshots (`html` / `htmlHash` + `elements`).
+2. Diff **every** wizard page in `WIZARD_PAGES` (not a subset). Pages the walk did not reach are `unscanned`, not silent skips.
+3. Load announced tickets from `change-tickets.json`.
+4. Prefer running the deterministic utility:
    ```bash
    cd jackson-tests && npm run detect:changes
    ```
-4. Review `jackson-tests/tests/reports/changes/latest-change-report.json`.
-5. For each change, ensure:
+5. Review `jackson-tests/tests/reports/changes/latest-change-report.json`.
+6. For each change, ensure:
    - `classification` is `expected` if a ticket matches page+field; else `unexpected`
    - `severity` reflects impact (removed → high; label/option → medium; added → low)
    - `requiresHumanAcceptance` is `true` for expected and unexpected (POC HITL)
    - `healAction` is `update-locator` / `update-assertion` for expected, `file-defect` for unexpected
-6. Summarize for the user: totals, expected list, unexpected list, path to report.
-7. **Do not heal** in this command — wait for human acceptance, then `/heal`.
+7. Summarize for the user: totals, expected list, unexpected list, path to report.
+8. **Do not heal** in this command — wait for human acceptance, then `/heal`.
 
 ## Output Schema
 

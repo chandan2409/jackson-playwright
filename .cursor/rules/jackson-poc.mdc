@@ -28,14 +28,16 @@ This repository is the Bounteous handover for Jackson's **Cursor** Agentic QA PO
 - Prefer label-first Playwright locators for form fields
 - Use multi-strategy `*.locators.json` sidecars (`resolveLocator`)
 - Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
-- Day 6 baseline freeze under `jackson-tests/tests/data/baselines/`
-- Day 8 reports under `jackson-tests/tests/reports/changes/` matching `change-report.schema.json`
+- Day 6 baseline freeze under `jackson-tests/tests/data/baselines/` (serialized DOM + field inventory)
+- Day 8 reports under `jackson-tests/tests/reports/changes/` matching `change-report.schema.json` (`latest-change-report.json` is committed)
 - Self-heal only after explicit human acceptance of expected changes
 - Unexpected changes → defect notes, not silent locator patches
+- Optional `/file-jira` may copy unexpected defects to Jira via Atlassian MCP; Markdown defects remain source of truth
 
 ## Forbidden
 
 - Inventing CSS selectors when live DOM can be scanned
 - Backend/API test scope
-- Xray integration (Excel/Markdown defects only)
+- Xray test-management integration (no test execution sync)
+- Using Jira instead of Markdown defects, or filing Jira for expected/accepted heals
 - Tests or locators for any product other than Firelight FLQANEXT

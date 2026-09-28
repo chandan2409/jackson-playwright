@@ -6,7 +6,7 @@ const registry = loadLocators(path.join(__dirname, 'selectApplicationPage.locato
 
 /**
  * Home + Create New Application (live Firelight EGApp).
- * Source: Boun_POCtestcase.xlsx + live DOM scan 2026-09-23.
+ * Locators live in selectApplicationPage.locators.json (heal updates that sidecar).
  */
 export class SelectApplicationPage {
   constructor(private page: Page) {}
@@ -19,7 +19,7 @@ export class SelectApplicationPage {
   async startApplication() {
     const start = await resolveLocator(this.page, registry.entries.startApplication);
     await start.click();
-    await this.page.locator('#Jurisdiction').waitFor({ timeout: 30_000 });
+    await resolveLocator(this.page, registry.entries.jurisdiction, 30_000);
   }
 
   async selectJurisdiction(jurisdiction: string) {
@@ -28,16 +28,15 @@ export class SelectApplicationPage {
   }
 
   async selectProduct(product: string) {
-    const typeField = this.page.locator('#ProductType');
+    const typeField = await resolveLocator(this.page, registry.entries.productType);
     if (await typeField.count()) {
       await typeField.selectOption({ label: 'All' }).catch(() => undefined);
     }
     await this.page.waitForTimeout(1000);
-    // Accessible name is "Variable Annuity, Jackson Life, Elite Access II (B Share)"
     const productLink = this.page.getByRole('link', { name: product });
     await productLink.first().waitFor({ timeout: 20_000 });
     await productLink.first().click();
-    const createLink = this.page.getByRole('link', { name: 'Create' });
+    const createLink = await resolveLocator(this.page, registry.entries.create);
     await this.page
       .getByText(/Click 'Create' to proceed/i)
       .or(createLink)
@@ -47,15 +46,20 @@ export class SelectApplicationPage {
   }
 
   async confirmCreate(caseName: string) {
-    const dialog = this.page.getByRole('dialog', { name: 'Create Activity' });
-    if (!(await dialog.isVisible().catch(() => false))) {
-      await this.page.getByRole('link', { name: 'Create' }).click();
-      await dialog.waitFor({ timeout: 20_000 });
+    await this.page.getByText(/Click 'Create' to proceed/i).waitFor({ timeout: 30_000 });
+    const createLink = this.page.getByRole('link', { name: 'Create', exact: true });
+    const nameBox = this.page.getByRole('textbox', { name: 'Name' });
+    if (!(await nameBox.isVisible().catch(() => false))) {
+      await createLink.click();
+      await nameBox.waitFor({ timeout: 20_000 }).catch(async () => {
+        await createLink.click({ force: true });
+        await nameBox.waitFor({ timeout: 20_000 });
+      });
     }
 
-    await dialog.getByRole('textbox', { name: 'Name' }).fill(caseName);
-    await dialog.getByRole('button', { name: 'Create' }).click();
-    await dialog.waitFor({ state: 'hidden', timeout: 45_000 }).catch(() => undefined);
+    await nameBox.fill(caseName);
+    await this.page.getByRole('button', { name: 'Create' }).click({ noWaitAfter: true });
+    await nameBox.waitFor({ state: 'hidden', timeout: 45_000 }).catch(() => undefined);
 
     await this.page.getByText(caseName, { exact: true }).first().waitFor({ timeout: 45_000 });
     await this.page

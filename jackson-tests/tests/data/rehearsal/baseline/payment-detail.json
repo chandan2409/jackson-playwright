@@ -1,0 +1,11 @@
+{
+  "pageKey": "payment-detail",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/",
+  "capturedAt": "2026-09-23T12:00:00.000Z",
+  "title": "payment-detail (rehearsal baseline)",
+  "scanned": true,
+  "domRoot": "section",
+  "html": "<section data-page=\"payment-detail\"></section>",
+  "htmlHash": "2858c162f88fb9fbe4b32e3332ef51a370da487cd4de02b41a51333f83b5d728",
+  "elements": []
+}

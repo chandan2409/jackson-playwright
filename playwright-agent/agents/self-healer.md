@@ -18,8 +18,8 @@ You repair Playwright scripts **only after** human acceptance of expected change
 
 1. Load the change report.
 2. For each `acceptedChangeIds` entry with `classification=expected`:
-   a. Update matching locator strategies in `*.locators.json`
-   b. Update POM method labels / selects if label text changed
+   a. Update matching locator strategies in **all** `jackson-tests/tests/pages/firelight/*.locators.json` (and rehearsal sidecars when that is the heal target)
+   b. Do not hardcode labels in POM TypeScript — POMs call `fieldLabel` / `resolveLocator` so a sidecar patch heals the page
    c. Update fixtures or assertions if option/value changed
    d. Set `acceptanceStatus=accepted` on the report entry
 3. For each `rejectedChangeIds` or `unexpected` entry:
@@ -32,6 +32,7 @@ You repair Playwright scripts **only after** human acceptance of expected change
    ```
 5. Point `tests/data/baselines/CURRENT` at the new baseline id.
 6. Summarize files changed and instruct commit of self-healed baseline.
+7. Do not create Jira here. If unexpected defects exist, mention `/file-jira`.
 
 ## Defect note template
 

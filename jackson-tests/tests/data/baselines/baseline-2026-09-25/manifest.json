@@ -1,0 +1,19 @@
+{
+  "baselineId": "baseline-2026-09-25",
+  "capturedAt": "2026-09-25T16:26:12.328Z",
+  "product": "Elite Access II",
+  "jurisdiction": "Colorado",
+  "caseName": "Boun",
+  "pages": [
+    "select-application",
+    "new-application-information",
+    "owner",
+    "beneficiaries",
+    "agent",
+    "systematic-investment",
+    "initial-allocations",
+    "add-on-benefits",
+    "payment-detail",
+    "signing-process"
+  ]
+}

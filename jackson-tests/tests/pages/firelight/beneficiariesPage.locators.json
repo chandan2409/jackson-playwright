@@ -11,11 +11,10 @@
     "dateOfBirth": { "name": "dateOfBirth", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Date of Birth", "confidence": 0.95 }] },
     "sex": { "name": "sex", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Sex", "confidence": 0.95 }] },
     "relationship": { "name": "relationship", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Relationship to Owner", "confidence": 0.95 }] },
-    "sameAsOwner6": { "name": "sameAsOwner6", "page": "beneficiaries", "strategies": [{ "type": "text", "value": "Same_As_Owner6", "confidence": 0.7 }, { "type": "text", "value": "Same as Owner", "confidence": 0.55 }] },
-    "proceedsPct": { "name": "proceedsPct", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Proceeds %", "confidence": 0.95 }] },
-    "addBeneficiary": { "name": "addBeneficiary", "page": "beneficiaries", "strategies": [{ "type": "text", "value": "Add_Beneficiary_Method", "confidence": 0.7 }, { "type": "role", "value": "button[name='Add Beneficiary']", "confidence": 0.8 }] },
+    "sameAsOwner": { "name": "sameAsOwner", "page": "beneficiaries", "strategies": [{ "type": "text", "value": "Same As Owner", "confidence": 0.9 }] },
+    "proceedsPct": { "name": "proceedsPct", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Proceeds", "confidence": 0.95 }] },
+    "addBeneficiary": { "name": "addBeneficiary", "page": "beneficiaries", "strategies": [{ "type": "role", "value": "button[name='Add Beneficiary']", "confidence": 0.9 }, { "type": "text", "value": "Add Beneficiary", "confidence": 0.7 }] },
     "beneficiaryType": { "name": "beneficiaryType", "page": "beneficiaries", "strategies": [{ "type": "label", "value": "Beneficiary Type", "confidence": 0.95 }] },
-    "sameAsOwner7": { "name": "sameAsOwner7", "page": "beneficiaries", "strategies": [{ "type": "text", "value": "Same_As_Owner7", "confidence": 0.7 }] },
     "next": { "name": "next", "page": "beneficiaries", "strategies": [{ "type": "role", "value": "button[name='Next']", "confidence": 0.9 }] }
   }
 }

@@ -1,5 +1,10 @@
 import { Page } from '@playwright/test';
+import path from 'path';
 import { selectByLabel, fillByLabel, clickNext } from '../../utils/form-helpers';
+import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+
+const registry = loadLocators(path.join(__dirname, 'agentPage.locators.json'));
+const L = (key: string) => fieldLabel(registry.entries[key]);
 
 export type AgentData = {
   jacksonApprovedMaterials: string;
@@ -16,18 +21,14 @@ export class AgentPage {
   constructor(private page: Page) {}
 
   async fill(data: AgentData) {
-    await selectByLabel(
-      this.page,
-      'Did the agent use only Jackson-approved sales material',
-      data.jacksonApprovedMaterials,
-    );
-    await fillByLabel(this.page, 'First Name', data.firstName);
-    await fillByLabel(this.page, 'Middle Name', data.middleName);
-    await fillByLabel(this.page, 'Last Name', data.lastName);
-    await fillByLabel(this.page, 'SSN', data.ssn);
-    await fillByLabel(this.page, 'Commission', data.commissionPct);
-    await fillByLabel(this.page, 'Email', data.email);
-    await selectByLabel(this.page, 'Commission Option', data.commissionOption);
+    await selectByLabel(this.page, L('jacksonApprovedMaterials'), data.jacksonApprovedMaterials);
+    await fillByLabel(this.page, L('firstName'), data.firstName);
+    await fillByLabel(this.page, L('middleName'), data.middleName);
+    await fillByLabel(this.page, L('lastName'), data.lastName);
+    await fillByLabel(this.page, L('ssn'), data.ssn);
+    await fillByLabel(this.page, L('commissionPct'), data.commissionPct);
+    await fillByLabel(this.page, L('email'), data.email);
+    await selectByLabel(this.page, L('commissionOption'), data.commissionOption);
   }
 
   async next() {

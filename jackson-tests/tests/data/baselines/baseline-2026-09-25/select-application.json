@@ -1,0 +1,742 @@
+{
+  "pageKey": "select-application",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/NewApplication?acordType=103",
+  "capturedAt": "2026-09-25T16:26:22.467Z",
+  "title": "New Application",
+  "scanned": true,
+  "domRoot": "form",
+  "html": "<form action=\"/EGApp/\" id=\"newAppForm\" method=\"post\"><input name=\"__RequestVerificationToken\" type=\"hidden\">        <div style=\"margin: 5px; padding: 3px;\">\n            \n            <span id=\"lblJurisdiction\">Jurisdiction:</span> <a id=\"imgInfo\" href=\"#\" class=\"blueText\" title=\"Jurisdiction Info\" tabindex=\"0\" style=\"font-size:large; cursor:pointer;\"><span class=\"fa fa-info-circle\"></span></a>\n            <select aria-label=\"Jurisdiction\" class=\"dropdown shadow\" data-val=\"true\" data-val-required=\"The Jurisdiction field is required.\" id=\"Jurisdiction\" name=\"Jurisdiction\" onchange=\"UpdateJurisdiction()\" tabindex=\"0\"><option value=\"-1\">Select Jurisdiction</option>\n<option value=\"1\">Alabama</option>\n<option value=\"2\">Alaska</option>\n<option value=\"4\">Arizona</option>\n<option value=\"5\">Arkansas</option>\n<option value=\"6\">California</option>\n<option selected=\"selected\" value=\"7\">Colorado</option>\n<option value=\"8\">Connecticut</option>\n<option value=\"9\">Delaware</option>\n<option value=\"10\">District of Columbia</option>\n<option value=\"12\">Florida</option>\n<option value=\"13\">Georgia</option>\n<option value=\"14\">Guam</option>\n<option value=\"15\">Hawaii</option>\n<option value=\"16\">Idaho</option>\n<option value=\"17\">Illinois</option>\n<option value=\"18\">Indiana</option>\n<option value=\"19\">Iowa</option>\n<option value=\"20\">Kansas</option>\n<option value=\"21\">Kentucky</option>\n<option value=\"22\">Louisiana</option>\n<option value=\"23\">Maine</option>\n<option value=\"25\">Maryland</option>\n<option value=\"26\">Massachusetts</option>\n<option value=\"27\">Michigan</option>\n<option value=\"28\">Minnesota</option>\n<option value=\"29\">Mississippi</option>\n<option value=\"30\">Missouri</option>\n<option value=\"31\">Montana</option>\n<option value=\"32\">Nebraska</option>\n<option value=\"33\">Nevada</option>\n<option value=\"34\">New Hampshire</option>\n<option value=\"35\">New Jersey</option>\n<option value=\"36\">New Mexico</option>\n<option value=\"37\">New York</option>\n<option value=\"38\">North Carolina</option>\n<option value=\"39\">North Dakota</option>\n<option value=\"41\">Ohio</option>\n<option value=\"42\">Oklahoma</option>\n<option value=\"43\">Oregon</option>\n<option value=\"45\">Pennsylvania</option>\n<option value=\"46\">Puerto Rico</option>\n<option value=\"47\">Rhode Island</option>\n<option value=\"48\">South Carolina</option>\n<option value=\"49\">South Dakota</option>\n<option value=\"50\">Tennessee</option>\n<option value=\"51\">Texas</option>\n<option value=\"52\">Utah</option>\n<option value=\"53\">Vermont</option>\n<option value=\"54\">Virgin Islands</option>\n<option value=\"55\">Virginia</option>\n<option value=\"56\">Washington</option>\n<option value=\"57\">West Virginia</option>\n<option value=\"58\">Wisconsin</option>\n<option value=\"59\">Wyoming</option>\n</select>\n\n                            <label>\n                    Product Type:\n                    <select class=\"dropdown shadow\" data-val=\"true\" data-val-required=\"The ProductType field is required.\" id=\"ProductType\" name=\"ProductType\" onchange=\"UpdateProductType()\" style=\"width:240px\" tabindex=\"0\"><option value=\"\">Select Product Type</option>\n<option selected=\"selected\" value=\"99999\">All</option>\n<option value=\"5\">Fixed Annuity</option>\n<option value=\"13\">Fixed Indexed Annuity</option>\n<option value=\"56\">Registered Indexed Annuity</option>\n<option value=\"6\">Variable Annuity</option>\n</select>\n                </label>\n                                        <span></span>\n<select aria-label=\"Carrier\" class=\"dropdown shadow\" id=\"CarrierID\" name=\"CarrierID\" onchange=\"Update()\" style=\"display:none\" tabindex=\"0\"><option value=\"\">Select Carrier</option>\n<option value=\"3596_0\">Jackson Life</option>\n</select>\n            \n<br>                                 </div>\n</form>",
+  "htmlHash": "6fccedaa5c322f339abebfb35a7a895c1b6f8a2097592dbca082528ad3fa8626",
+  "elements": [
+    {
+      "name": "el_0",
+      "tag": "a",
+      "text": "skip to page content",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "skipToContent"
+      ],
+      "type": null
+    },
+    {
+      "name": "imgAboutLink",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "imgAboutLink",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "toolbar_Home",
+      "tag": "a",
+      "text": "Home",
+      "label": null,
+      "id": "toolbar_Home",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersLeft"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_NewActivity",
+      "tag": "a",
+      "text": "New Activity",
+      "label": null,
+      "id": "toolbar_NewActivity",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "newActivity_103",
+      "tag": "a",
+      "text": "Application",
+      "label": null,
+      "id": "newActivity_103",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "newActivity_508",
+      "tag": "a",
+      "text": "Sub-Pay",
+      "label": null,
+      "id": "newActivity_508",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [],
+      "type": null
+    },
+    {
+      "name": "toolbar_AllActivities",
+      "tag": "a",
+      "text": "All Activities",
+      "label": null,
+      "id": "toolbar_AllActivities",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_Preferences",
+      "tag": "a",
+      "text": "Preferences",
+      "label": null,
+      "id": "toolbar_Preferences",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "toolbar_LogOff",
+      "tag": "a",
+      "text": "Log Off",
+      "label": null,
+      "id": "toolbar_LogOff",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueButton",
+        "toolbarButton",
+        "shadow",
+        "roundCornersRight"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_9",
+      "tag": "a",
+      "text": "☰",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "icon"
+      ],
+      "type": null
+    },
+    {
+      "name": "transactionBar_103",
+      "tag": "a",
+      "text": "Application",
+      "label": null,
+      "id": "transactionBar_103",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "enabledMenuLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "transactionBar_508",
+      "tag": "a",
+      "text": "Sub-Pay",
+      "label": null,
+      "id": "transactionBar_508",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "enabledMenuLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "__RequestVerificationToken",
+      "tag": "input",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": "__RequestVerificationToken",
+      "classes": [],
+      "type": "hidden"
+    },
+    {
+      "name": "imgInfo",
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "id": "imgInfo",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueText"
+      ],
+      "type": null
+    },
+    {
+      "name": "Jurisdiction",
+      "tag": "select",
+      "text": "Select Jurisdiction\nAlabama\nAlaska\nArizona\nArkansas\nCalifornia\nColorado\nConnecticut\nDelaware\nDistrict of Columbia\nFlorid",
+      "label": "Jurisdiction",
+      "id": "Jurisdiction",
+      "testId": null,
+      "nameAttr": "Jurisdiction",
+      "classes": [
+        "dropdown",
+        "shadow"
+      ],
+      "type": null,
+      "options": [
+        "Select Jurisdiction",
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "District of Columbia",
+        "Florida",
+        "Georgia",
+        "Guam",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Puerto Rico",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virgin Islands",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming"
+      ]
+    },
+    {
+      "name": "ProductType",
+      "tag": "select",
+      "text": "Select Product Type\nAll\nFixed Annuity\nFixed Indexed Annuity\nRegistered Indexed Annuity\nVariable Annuity",
+      "label": "Product Type:\n                    Select Product Type\nAll\nFixed Annuity\nFixed Indexed Annuity\nRegistered Indexed Annuity\nVariable Annuity",
+      "id": "ProductType",
+      "testId": null,
+      "nameAttr": "ProductType",
+      "classes": [
+        "dropdown",
+        "shadow"
+      ],
+      "type": null,
+      "options": [
+        "Select Product Type",
+        "All",
+        "Fixed Annuity",
+        "Fixed Indexed Annuity",
+        "Registered Indexed Annuity",
+        "Variable Annuity"
+      ]
+    },
+    {
+      "name": "CarrierID",
+      "tag": "select",
+      "text": "Select Carrier\nJackson Life",
+      "label": "Carrier",
+      "id": "CarrierID",
+      "testId": null,
+      "nameAttr": "CarrierID",
+      "classes": [
+        "dropdown",
+        "shadow"
+      ],
+      "type": null,
+      "options": [
+        "Select Carrier",
+        "Jackson Life"
+      ]
+    },
+    {
+      "name": "el_17",
+      "tag": "a",
+      "text": "Fixed Annuity Jackson Life RateProtector",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_18",
+      "tag": "a",
+      "text": "Fixed Indexed Annuity Jackson Life Jackson Income Assurance 7",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_19",
+      "tag": "a",
+      "text": "Fixed Indexed Annuity Jackson Life Jackson Income Assurance 10",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_20",
+      "tag": "a",
+      "text": "Variable Annuity Jackson Life Elite Access II (B Share)",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_21",
+      "tag": "a",
+      "text": "Variable Annuity Jackson Life Elite Access II with Liquidity (C Share)",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_22",
+      "tag": "a",
+      "text": "Variable Annuity Jackson Life Elite Access Advisory II (I Share)",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_23",
+      "tag": "a",
+      "text": "Variable Annuity Jackson Life Perspective II (B Share)",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_24",
+      "tag": "a",
+      "text": "Fixed Indexed Annuity Jackson Life Jackson Income Assurance Advisory 7",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_25",
+      "tag": "a",
+      "text": "Fixed Indexed Annuity Jackson Life Jackson Income Assurance Advisory 10",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_26",
+      "tag": "a",
+      "text": "Registered Indexed Annuity Jackson Life Jackson Market Link Pro IV",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "listProd",
+        "grayButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_27",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "about_LicenseInfo",
+      "tag": "a",
+      "text": "Open Source License Info",
+      "label": "Open Source License Info",
+      "id": "about_LicenseInfo",
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blueLink"
+      ],
+      "type": null
+    },
+    {
+      "name": "el_29",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_30",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_31",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_32",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_33",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_34",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_35",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_36",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_37",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_38",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_39",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_40",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_41",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_42",
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "ui-button",
+        "ui-corner-all",
+        "ui-widget",
+        "ui-button-icon-only",
+        "ui-dialog-titlebar-close"
+      ],
+      "type": "button"
+    },
+    {
+      "name": "el_43",
+      "tag": "input",
+      "text": "",
+      "label": "Ok",
+      "id": null,
+      "testId": null,
+      "nameAttr": null,
+      "classes": [
+        "blackButton",
+        "roundCorners",
+        "shadow"
+      ],
+      "type": "button"
+    }
+  ]
+}

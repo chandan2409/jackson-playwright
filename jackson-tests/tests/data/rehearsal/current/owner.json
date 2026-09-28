@@ -2,7 +2,7 @@
   "pageKey": "owner",
   "url": "https://flqanext.insurancetechnologies.com/EGApp/EditWizardApplication",
   "capturedAt": "2026-09-23T12:05:00.000Z",
-  "title": "Owner (rehearsal current — simulated Day 8 UI)",
+  "title": "Owner (rehearsal current \u2014 simulated Day 8 UI)",
   "elements": [
     {
       "name": "firstName",
@@ -25,6 +25,32 @@
       "nameAttr": "email",
       "classes": [],
       "type": "email"
+    },
+    {
+      "name": "dob",
+      "tag": "input",
+      "text": "",
+      "label": "Date of Birth",
+      "id": "ownerDob",
+      "testId": null,
+      "nameAttr": "dob",
+      "classes": [],
+      "type": "date"
+    },
+    {
+      "name": "preferredName",
+      "tag": "input",
+      "text": "",
+      "label": "Preferred Name",
+      "id": "ownerPreferredName",
+      "testId": null,
+      "nameAttr": "preferredName",
+      "classes": [],
+      "type": "text"
     }
-  ]
+  ],
+  "scanned": true,
+  "domRoot": "section",
+  "html": "<section data-page=\"owner\"><label for=\"ownerFirstName\">Given Name</label><input id=\"ownerFirstName\" name=\"firstName\"><label for=\"ownerEmail\">Email Address (optional)</label><input id=\"ownerEmail\" name=\"email\" type=\"email\"><label for=\"ownerDob\">Date of Birth</label><input id=\"ownerDob\" name=\"dob\" type=\"date\"><label for=\"ownerPreferredName\">Preferred Name</label><input id=\"ownerPreferredName\" name=\"preferredName\"></section>",
+  "htmlHash": "d324a7f65573b12012555a149f2b08883d0c0b83e5405466f9053503ef9dc11b"
 }

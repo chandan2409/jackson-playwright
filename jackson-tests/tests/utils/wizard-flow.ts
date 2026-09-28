@@ -61,10 +61,7 @@ export async function runFirelightWizard(
   await agent.next();
 
   const systematic = new SystematicInvestmentPage(page);
-  const sysHeading = page.getByText('Systematic Investment', { exact: false }).first();
-  if (await sysHeading.isVisible().catch(() => false)) {
-    await snapshot?.('systematic-investment');
-  }
+  await snapshot?.('systematic-investment');
   await systematic.fillIfPresent();
 
   const allocations = new InitialAllocationsPage(page);
@@ -73,10 +70,7 @@ export async function runFirelightWizard(
   await allocations.next();
 
   const addOns = new AddOnBenefitsPage(page);
-  const addOnHeading = page.getByText('Add-On Benefits', { exact: false }).first();
-  if (await addOnHeading.isVisible().catch(() => false)) {
-    await snapshot?.('add-on-benefits');
-  }
+  await snapshot?.('add-on-benefits');
   await addOns.continueIfPresent();
 
   await page.getByText(/Payment Detail|Premium Type|Payment Method/i).first().waitFor({ timeout: 20_000 });

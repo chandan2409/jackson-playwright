@@ -6,10 +6,14 @@ import {
   captureCurrentPage,
   elementKey,
   fingerprint,
+  hashHtml,
+  isScanned,
+  unscannedSnapshot,
   type PageSnapshot,
   type DomElementSnapshot,
 } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
+import { WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
 const BASELINE_ROOT = path.join(ROOT, 'tests/data/baselines');
@@ -24,7 +28,15 @@ type ChangeRecord = {
   changeId: string;
   page: string;
   fieldOrLocator: string;
-  changeType: 'added' | 'removed' | 'modified' | 'relocated' | 'label-changed' | 'option-changed';
+  changeType:
+    | 'added'
+    | 'removed'
+    | 'modified'
+    | 'relocated'
+    | 'label-changed'
+    | 'option-changed'
+    | 'dom-changed'
+    | 'unscanned';
   severity: Severity;
   classification: Classification;
   matchedTicketId: string | null;
@@ -79,6 +91,10 @@ function severityFor(changeType: ChangeRecord['changeType']): Severity {
   switch (changeType) {
     case 'removed':
       return 'high';
+    case 'unscanned':
+      return 'high';
+    case 'dom-changed':
+      return 'medium';
     case 'label-changed':
     case 'option-changed':
       return 'medium';
@@ -106,6 +122,7 @@ export function diffPage(
     baseEl: DomElementSnapshot | null,
     currEl: DomElementSnapshot | null,
     description: string,
+    values?: { baselineValue: string | null; currentValue: string | null },
   ) => {
     counter.n += 1;
     const labels = [baseEl?.label, currEl?.label, key].filter(Boolean) as string[];
@@ -119,8 +136,8 @@ export function diffPage(
       classification,
       matchedTicketId,
       description,
-      baselineValue: baseEl ? fingerprint(baseEl) : null,
-      currentValue: currEl ? fingerprint(currEl) : null,
+      baselineValue: values?.baselineValue ?? (baseEl ? fingerprint(baseEl) : null),
+      currentValue: values?.currentValue ?? (currEl ? fingerprint(currEl) : null),
       evidenceScreenshot: '',
       requiresHumanAcceptance: true,
       acceptanceStatus: 'pending',
@@ -150,17 +167,47 @@ export function diffPage(
     push('added', key, null, currEl, `New element not in baseline: ${key}`);
   }
 
+  const fieldChanges = changes.length;
+  const baseHash = hashHtml(baseline.html || '');
+  const currHash = hashHtml(current.html || '');
+  if (fieldChanges === 0 && baseline.html && current.html && baseHash !== currHash) {
+    counter.n += 1;
+    changes.push({
+      changeId: `CHG-${String(counter.n).padStart(3, '0')}`,
+      page: pageKey,
+      fieldOrLocator: `${pageKey}#dom`,
+      changeType: 'dom-changed',
+      severity: 'low',
+      classification: 'info',
+      matchedTicketId: null,
+      description: `Page markup changed with no field inventory diff (${baseHash.slice(0, 8)} → ${currHash.slice(0, 8)}). Recapture baseline after HITL; do not patch locators from the hash.`,
+      baselineValue: baseHash,
+      currentValue: currHash,
+      evidenceScreenshot: '',
+      requiresHumanAcceptance: true,
+      acceptanceStatus: 'pending',
+      healAction: 'recapture-baseline',
+    });
+  }
+
   return changes;
 }
 
-function emptySnap(pageKey: string): PageSnapshot {
-  return {
-    pageKey,
-    url: '',
-    capturedAt: new Date().toISOString(),
-    title: pageKey,
-    elements: [],
-  };
+function evidenceFor(pageKey: string, currentDir: string): string {
+  const png = path.join(EVIDENCE_DIR, `${pageKey}.png`);
+  if (fs.existsSync(png)) return path.relative(ROOT, png);
+  if (currentDir) {
+    const json = path.join(currentDir, `${pageKey}.json`);
+    if (fs.existsSync(json)) return path.relative(ROOT, json);
+  }
+  return '';
+}
+
+function loadSnap(file: string, pageKey: string): PageSnapshot {
+  if (!fs.existsSync(file)) return unscannedSnapshot(pageKey, `(missing snapshot) ${pageKey}`);
+  const snap = JSON.parse(fs.readFileSync(file, 'utf8')) as PageSnapshot;
+  if (!snap.htmlHash && snap.html) snap.htmlHash = hashHtml(snap.html);
+  return snap;
 }
 
 async function main() {
@@ -197,13 +244,10 @@ async function main() {
   const counter = { n: 0 };
   const currentByPage = new Map<string, PageSnapshot>();
 
+  const pageKeys = Array.from(new Set([...(manifest.pages as string[]), ...WIZARD_PAGES]));
   if (currentDir) {
-    for (const pageKey of manifest.pages as string[]) {
-      const file = path.join(currentDir, `${pageKey}.json`);
-      currentByPage.set(
-        pageKey,
-        fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : emptySnap(pageKey),
-      );
+    for (const pageKey of pageKeys) {
+      currentByPage.set(pageKey, loadSnap(path.join(currentDir, `${pageKey}.json`), pageKey));
     }
   } else if (ENV.FIRELIGHT_USERNAME && fs.existsSync(AUTH)) {
     const browser = await chromium.launch();
@@ -222,14 +266,35 @@ async function main() {
     }
   }
 
-  for (const pageKey of manifest.pages as string[]) {
-    const baselineSnap: PageSnapshot = JSON.parse(
-      fs.readFileSync(path.join(baselinePath, `${pageKey}.json`), 'utf8'),
-    );
-    const current = currentByPage.get(pageKey) || emptySnap(pageKey);
+  for (const pageKey of pageKeys) {
+    const baselineFile = path.join(baselinePath, `${pageKey}.json`);
+    const baselineSnap = loadSnap(baselineFile, pageKey);
+    const current = currentByPage.get(pageKey) || unscannedSnapshot(pageKey, `(not scanned) ${pageKey}`);
+
+    if (!isScanned(current)) {
+      counter.n += 1;
+      allChanges.push({
+        changeId: `CHG-${String(counter.n).padStart(3, '0')}`,
+        page: pageKey,
+        fieldOrLocator: pageKey,
+        changeType: 'unscanned',
+        severity: 'high',
+        classification: 'info',
+        matchedTicketId: null,
+        description: `Wizard page ${pageKey} was not scanned on this detect run (baseline ${isScanned(baselineSnap) ? 'present' : 'also missing'})`,
+        baselineValue: baselineSnap.htmlHash || null,
+        currentValue: null,
+        evidenceScreenshot: evidenceFor(pageKey, currentDir),
+        requiresHumanAcceptance: true,
+        acceptanceStatus: 'pending',
+        healAction: 'none',
+      });
+      continue;
+    }
+
     const pageChanges = diffPage(pageKey, baselineSnap, current, tickets, counter);
     for (const c of pageChanges) {
-      c.evidenceScreenshot = path.relative(ROOT, path.join(EVIDENCE_DIR, `${pageKey}.png`));
+      c.evidenceScreenshot = evidenceFor(pageKey, currentDir);
     }
     allChanges.push(...pageChanges);
   }

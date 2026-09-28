@@ -5,7 +5,7 @@ Compare the frozen Firelight baseline to the current UI and emit a change report
 ## Usage
 
 ```
-/detect-changes [--pages owner,beneficiaries] [--tickets tests/data/change-tickets.json]
+/detect-changes
 ```
 
 ## Steps

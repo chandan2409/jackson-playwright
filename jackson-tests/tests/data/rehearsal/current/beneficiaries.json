@@ -1,0 +1,11 @@
+{
+  "pageKey": "beneficiaries",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/",
+  "capturedAt": "2026-09-23T12:05:00.000Z",
+  "title": "beneficiaries (rehearsal current)",
+  "scanned": true,
+  "domRoot": "section",
+  "html": "<section data-page=\"beneficiaries\"></section>",
+  "htmlHash": "549da6a98792f4992db6fdb7c382189acd3a7796d2031a2be4faea8118424063",
+  "elements": []
+}

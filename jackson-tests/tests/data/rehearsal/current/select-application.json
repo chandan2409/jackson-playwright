@@ -1,0 +1,11 @@
+{
+  "pageKey": "select-application",
+  "url": "https://flqanext.insurancetechnologies.com/EGApp/",
+  "capturedAt": "2026-09-23T12:05:00.000Z",
+  "title": "select-application (rehearsal current)",
+  "scanned": true,
+  "domRoot": "section",
+  "html": "<section data-page=\"select-application\"></section>",
+  "htmlHash": "e42c5c6b6097dd9df54ca089f886521201413489965eb4b5d0f287ea71aacc65",
+  "elements": []
+}

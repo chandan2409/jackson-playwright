@@ -77,6 +77,7 @@
               <th>Before → after</th>
               <th>HITL</th>
               <th>Heal</th>
+              <th>Jira</th>
             </tr>
           </thead>
           <tbody id="changes"></tbody>
@@ -84,8 +85,10 @@
       </div>
       <p class="heal-bar no-print">
         <button type="button" id="heal-btn">Heal accepted / reject rest</button>
+        <button type="button" id="jira-create-report">Create Jira</button>
         <a class="ghost" id="export-md" href="/api/export.md">Export Markdown</a>
         <button type="button" class="ghost" id="export-pdf">Export PDF</button>
+        <span id="jira-status" class="meta"></span>
       </p>
     </section>
 
@@ -96,9 +99,25 @@
         <ul id="baseline-pages" class="page-list"></ul>
       </div>
       <div>
-        <h2>Rehearsal locator (after heal)</h2>
+        <h2>Locator sidecars (heal target)</h2>
         <pre id="locator"></pre>
-        <h2>Defects</h2>
+        <h2>Defects → Jira</h2>
+        <p id="jira-meta" class="meta"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Jira</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="jira-defects"></tbody>
+          </table>
+        </div>
+        <p class="heal-bar no-print">
+          <button type="button" id="jira-file-missing">File defects without a Jira key</button>
+        </p>
         <div id="defects"></div>
       </div>
     </section>
