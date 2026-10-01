@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T10:15:42.685Z",
+  "generatedAt": "2026-09-28T14:06:43.335Z",
   "baselineId": "rehearsal-day8",
   "baselinePath": "tests/data/rehearsal/baseline",
   "product": "Elite Access II",
@@ -25,7 +25,7 @@
       "currentValue": "{\"tag\":\"input\",\"label\":\"Given Name\",\"type\":\"text\",\"text\":\"\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "accepted",
       "healAction": "update-locator"
     },
     {
@@ -41,7 +41,7 @@
       "currentValue": null,
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "file-defect"
     },
     {
@@ -57,7 +57,7 @@
       "currentValue": "{\"tag\":\"input\",\"label\":\"Email Address (optional)\",\"type\":\"email\",\"text\":\"\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "file-defect"
     },
     {
@@ -73,7 +73,7 @@
       "currentValue": "{\"tag\":\"input\",\"label\":\"Date of Birth\",\"type\":\"date\",\"text\":\"\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "file-defect"
     },
     {
@@ -89,7 +89,7 @@
       "currentValue": "{\"tag\":\"input\",\"label\":\"Preferred Name\",\"type\":\"text\",\"text\":\"\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "file-defect"
     }
   ]

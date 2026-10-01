@@ -20,7 +20,7 @@ POC default path: `Boun_POCtestcase.xlsx` (workspace root).
    - Product (e.g. Elite Access II)
    - Case name (e.g. Boun)
 3. Parse each Action row into structured steps with:
-   - `page` (New Application Information, Owner, Beneficiaries, Agent, Initial Allocations, Payment Detail, Signing Process)
+   - `page` (Select Application, New Application Information, Owner, Beneficiaries, Agent, Systematic Investment, Initial Allocations, Add-On Benefits, Payment Detail, Signing Process)
    - `action` (select | enter | click)
    - `field` / `value`
 4. Ensure POMs exist under `jackson-tests/tests/pages/firelight/` for each wizard page.

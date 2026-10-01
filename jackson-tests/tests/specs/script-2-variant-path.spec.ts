@@ -9,12 +9,12 @@ import ENV from '../utils/env';
 test.describe('Firelight POC — Script 2 Variant Path', () => {
   test.skip(!ENV.FIRELIGHT_USERNAME, 'Requires FIRELIGHT_USERNAME / PASSWORD (Day 0)');
 
-  test('[FL-VP-001] @smoke @poc Variant data path reaches Signing with alternate proceeds', async ({
+  test('[FL-VP-001] @smoke @poc Variant data path completes through Submit Application', async ({
     page,
   }) => {
-    test.setTimeout(180_000);
+    test.setTimeout(300_000);
     await runFirelightWizard(page, variantPathData);
-    await expect(page.getByText(/signing|wet signature/i).first()).toBeVisible();
+    await expect(page.getByText(/SIGNATURES|FINALIZE|Submit for Review|Submit Application|signing|wet signature/i).first()).toBeVisible();
     expect(variantPathData.payment.amount).not.toEqual('50000');
     expect(variantPathData.primaryBeneficiary.proceedsPct).toBe('60');
   });

@@ -60,7 +60,7 @@ export function jiraUiStatus() {
         ? 'Set JIRA_PROJECT_KEY in jackson-tests/.env (use JFS if QA has no create permission)'
         : !token
           ? 'Set JIRA_EMAIL and JIRA_API_TOKEN for the UI (Cursor /file-jira uses MCP instead). Create a token at https://id.atlassian.com/manage-account/security/api-tokens'
-          : `Will create Bugs in ${projectKey} on ${site}`,
+          : `Will create Bugs in ${projectKey} on ${site}. Live-detect PNGs under tests/reports/changes/evidence/ are attached.`,
   };
 }
 
@@ -94,11 +94,53 @@ function tlsInsecure(): boolean {
   return process.env.JIRA_TLS_INSECURE === '1' || process.env.JIRA_TLS_INSECURE === 'true';
 }
 
+function imageMime(filePath: string): string {
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === '.jpg' || ext === '.jpeg') return 'image/jpeg';
+  if (ext === '.gif') return 'image/gif';
+  if (ext === '.webp') return 'image/webp';
+  return 'image/png';
+}
+
+function isImagePath(filePath: string): boolean {
+  return /\.(png|jpe?g|gif|webp)$/i.test(filePath);
+}
+
+/** Prefer a PNG/JPEG on disk; rehearsal JSON paths are not attachable. */
+export function resolveEvidenceImage(changeId: string, evidenceHint?: string): string | null {
+  const note = listDefectNotes().find((d) => d.id === changeId);
+  const candidates = [evidenceHint, note ? field(note.body, 'Evidence') : '', note ? path.join('tests/reports/changes/evidence', `${field(note.body, 'Page')}.png`) : '']
+    .filter(Boolean) as string[];
+  for (const raw of candidates) {
+    const abs = path.isAbsolute(raw) ? raw : path.join(ROOT, raw);
+    if (fs.existsSync(abs) && isImagePath(abs)) return abs;
+  }
+  return null;
+}
+
+function attachmentMultipart(filePath: string): { body: Buffer; contentType: string } {
+  const boundary = `----JacksonPoc${Date.now()}`;
+  const filename = path.basename(filePath).replace(/"/g, '');
+  const fileBuf = fs.readFileSync(filePath);
+  const header = Buffer.from(
+    `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${filename}"\r\nContent-Type: ${imageMime(filePath)}\r\n\r\n`,
+  );
+  const footer = Buffer.from(`\r\n--${boundary}--\r\n`);
+  return {
+    body: Buffer.concat([header, fileBuf, footer]),
+    contentType: `multipart/form-data; boundary=${boundary}`,
+  };
+}
+
 function jiraRequest(url: string, init: RequestInit, insecure: boolean): Promise<Response> {
   if (!insecure) return fetch(url, init);
   const parsed = new URL(url);
   const headers = new Headers(init.headers);
-  const body = typeof init.body === 'string' ? init.body : undefined;
+  const raw = init.body;
+  const body = Buffer.isBuffer(raw) ? raw : typeof raw === 'string' ? raw : undefined;
+  if (Buffer.isBuffer(body) && !headers.has('content-length')) {
+    headers.set('Content-Length', String(body.length));
+  }
   return new Promise((resolve, reject) => {
     const req = https.request(
       {
@@ -126,6 +168,25 @@ function jiraRequest(url: string, init: RequestInit, insecure: boolean): Promise
     if (body) req.write(body);
     req.end();
   });
+}
+
+async function attachEvidence(issueKey: string, auth: string, filePath: string): Promise<void> {
+  const site = siteBase();
+  const { body, contentType } = attachmentMultipart(filePath);
+  const res = await jiraFetch(`${site}/rest/api/3/issue/${issueKey}/attachments`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+      'X-Atlassian-Token': 'no-check',
+      'Content-Type': contentType,
+    },
+    body: body as unknown as BodyInit,
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(text.slice(0, 240) || `Jira attach HTTP ${res.status}`);
+  }
 }
 
 async function jiraFetch(url: string, init: RequestInit): Promise<Response> {
@@ -167,7 +228,10 @@ export function writeDefectStub(change: {
   fs.writeFileSync(file, body);
 }
 
-export async function createJiraForDefect(changeId: string): Promise<{ key: string; url: string; skipped?: boolean }> {
+export async function createJiraForDefect(
+  changeId: string,
+  evidenceHint?: string,
+): Promise<{ key: string; url: string; skipped?: boolean; attached?: string; attachError?: string }> {
   const status = jiraUiStatus();
   if (!status.configured) {
     throw new Error(status.hint);
@@ -186,6 +250,7 @@ export async function createJiraForDefect(changeId: string): Promise<{ key: stri
   const fieldName = field(note.body, 'Field') || 'unknown';
   const summary = `[FLQANEXT] ${changeId} ${page} ${fieldName}`.slice(0, 255);
   const auth = Buffer.from(`${email}:${token}`).toString('base64');
+  const evidenceImage = resolveEvidenceImage(changeId, evidenceHint);
 
   const res = await jiraFetch(`${site}/rest/api/3/issue`, {
     method: 'POST',
@@ -200,7 +265,7 @@ export async function createJiraForDefect(changeId: string): Promise<{ key: stri
         summary,
         issuetype: { name: 'Bug' },
         description: adfFromText(
-          `${note.body.trim()}\n\nDo not heal; track with Jackson.\nSource: jackson-tests/tests/reports/changes/defects/${changeId}.md`,
+          `${note.body.trim()}\n\nDo not heal; track with Jackson.\nSource: jackson-tests/tests/reports/changes/defects/${changeId}.md${evidenceImage ? `\nScreenshot attached: ${path.basename(evidenceImage)}` : ''}`,
         ),
         labels: ['firelight', 'flqanext', 'poc'],
       },
@@ -219,5 +284,16 @@ export async function createJiraForDefect(changeId: string): Promise<{ key: stri
   let body = fs.readFileSync(file, 'utf8').trimEnd();
   if (!parseJiraKey(body)) body += `\n- Jira: ${payload.key}\n`;
   fs.writeFileSync(file, body.endsWith('\n') ? body : `${body}\n`);
-  return { key: payload.key, url: jiraBrowseUrl(payload.key) as string };
+
+  let attached: string | undefined;
+  let attachError: string | undefined;
+  if (evidenceImage) {
+    try {
+      await attachEvidence(payload.key, auth, evidenceImage);
+      attached = path.relative(ROOT, evidenceImage);
+    } catch (err) {
+      attachError = err instanceof Error ? err.message : String(err);
+    }
+  }
+  return { key: payload.key, url: jiraBrowseUrl(payload.key) as string, attached, attachError };
 }

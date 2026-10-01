@@ -105,6 +105,17 @@ function severityFor(changeType: ChangeRecord['changeType']): Severity {
   }
 }
 
+function fieldChangeType(baseEl: DomElementSnapshot, currEl: DomElementSnapshot): ChangeRecord['changeType'] {
+  if (baseEl.label !== currEl.label) return 'label-changed';
+  if (JSON.stringify(baseEl.options) !== JSON.stringify(currEl.options)) return 'option-changed';
+  return 'modified';
+}
+
+function nextId(counter: { n: number }): string {
+  counter.n += 1;
+  return `CHG-${String(counter.n).padStart(3, '0')}`;
+}
+
 export function diffPage(
   pageKey: string,
   baseline: PageSnapshot,
@@ -124,11 +135,10 @@ export function diffPage(
     description: string,
     values?: { baselineValue: string | null; currentValue: string | null },
   ) => {
-    counter.n += 1;
     const labels = [baseEl?.label, currEl?.label, key].filter(Boolean) as string[];
     const { classification, matchedTicketId } = classify(pageKey, key, tickets, labels);
     changes.push({
-      changeId: `CHG-${String(counter.n).padStart(3, '0')}`,
+      changeId: nextId(counter),
       page: pageKey,
       fieldOrLocator: key,
       changeType,
@@ -152,13 +162,7 @@ export function diffPage(
       continue;
     }
     if (fingerprint(baseEl) !== fingerprint(currEl)) {
-      const changeType =
-        baseEl.label !== currEl.label
-          ? 'label-changed'
-          : JSON.stringify(baseEl.options) !== JSON.stringify(currEl.options)
-            ? 'option-changed'
-            : 'modified';
-      push(changeType, key, baseEl, currEl, `Element changed on ${pageKey}: ${key}`);
+      push(fieldChangeType(baseEl, currEl), key, baseEl, currEl, `Element changed on ${pageKey}: ${key}`);
     }
   }
 
@@ -167,13 +171,11 @@ export function diffPage(
     push('added', key, null, currEl, `New element not in baseline: ${key}`);
   }
 
-  const fieldChanges = changes.length;
   const baseHash = hashHtml(baseline.html || '');
   const currHash = hashHtml(current.html || '');
-  if (fieldChanges === 0 && baseline.html && current.html && baseHash !== currHash) {
-    counter.n += 1;
+  if (changes.length === 0 && baseline.html && current.html && baseHash !== currHash) {
     changes.push({
-      changeId: `CHG-${String(counter.n).padStart(3, '0')}`,
+      changeId: nextId(counter),
       page: pageKey,
       fieldOrLocator: `${pageKey}#dom`,
       changeType: 'dom-changed',
@@ -201,6 +203,30 @@ function evidenceFor(pageKey: string, currentDir: string): string {
     if (fs.existsSync(json)) return path.relative(ROOT, json);
   }
   return '';
+}
+
+function unscannedRecord(
+  pageKey: string,
+  counter: { n: number },
+  baselineSnap: PageSnapshot,
+  currentDir: string,
+): ChangeRecord {
+  return {
+    changeId: nextId(counter),
+    page: pageKey,
+    fieldOrLocator: pageKey,
+    changeType: 'unscanned',
+    severity: 'high',
+    classification: 'info',
+    matchedTicketId: null,
+    description: `Wizard page ${pageKey} was not scanned on this detect run (baseline ${isScanned(baselineSnap) ? 'present' : 'also missing'})`,
+    baselineValue: baselineSnap.htmlHash || null,
+    currentValue: null,
+    evidenceScreenshot: evidenceFor(pageKey, currentDir),
+    requiresHumanAcceptance: true,
+    acceptanceStatus: 'pending',
+    healAction: 'none',
+  };
 }
 
 function loadSnap(file: string, pageKey: string): PageSnapshot {
@@ -272,23 +298,7 @@ async function main() {
     const current = currentByPage.get(pageKey) || unscannedSnapshot(pageKey, `(not scanned) ${pageKey}`);
 
     if (!isScanned(current)) {
-      counter.n += 1;
-      allChanges.push({
-        changeId: `CHG-${String(counter.n).padStart(3, '0')}`,
-        page: pageKey,
-        fieldOrLocator: pageKey,
-        changeType: 'unscanned',
-        severity: 'high',
-        classification: 'info',
-        matchedTicketId: null,
-        description: `Wizard page ${pageKey} was not scanned on this detect run (baseline ${isScanned(baselineSnap) ? 'present' : 'also missing'})`,
-        baselineValue: baselineSnap.htmlHash || null,
-        currentValue: null,
-        evidenceScreenshot: evidenceFor(pageKey, currentDir),
-        requiresHumanAcceptance: true,
-        acceptanceStatus: 'pending',
-        healAction: 'none',
-      });
+      allChanges.push(unscannedRecord(pageKey, counter, baselineSnap, currentDir));
       continue;
     }
 

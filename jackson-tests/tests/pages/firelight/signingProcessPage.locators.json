@@ -10,6 +10,64 @@
         { "type": "label", "value": "Which method will be used to collect signatures?", "confidence": 0.8 },
         { "type": "text", "value": "Wet Signature", "confidence": 0.55 }
       ]
+    },
+    "closeNotice": {
+      "name": "closeNotice",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "link[name='Close']", "confidence": 0.95 },
+        { "type": "role", "value": "button[name='Close']", "confidence": 0.8 },
+        { "type": "text", "value": "Close", "confidence": 0.4 }
+      ]
+    },
+    "print": {
+      "name": "print",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "button[name='View & Print Documents']", "confidence": 0.95 },
+        { "type": "text", "value": "View & Print Documents", "confidence": 0.7 }
+      ]
+    },
+    "printSelected": {
+      "name": "printSelected",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "button[name='Print Selected Documents']", "confidence": 0.95 },
+        { "type": "text", "value": "Print Selected Documents", "confidence": 0.7 }
+      ]
+    },
+    "attach": {
+      "name": "attach",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "button[name='Attach Documents']", "confidence": 0.95 },
+        { "type": "text", "value": "Attach Documents", "confidence": 0.7 }
+      ]
+    },
+    "submitForReview": {
+      "name": "submitForReview",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "button[name='Submit for Review']", "confidence": 0.95 },
+        { "type": "text", "value": "Submit for Review", "confidence": 0.7 }
+      ]
+    },
+    "confirmYes": {
+      "name": "confirmYes",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "role", "value": "button[name='Yes']", "confidence": 0.95 },
+        { "type": "text", "value": "Yes", "confidence": 0.5 }
+      ]
+    },
+    "continue": {
+      "name": "continue",
+      "page": "signing-process",
+      "strategies": [
+        { "type": "id", "value": "imgNext", "confidence": 0.93 },
+        { "type": "role", "value": "button[name='CONTINUE']", "confidence": 0.9 },
+        { "type": "text", "value": "CONTINUE", "confidence": 0.55 }
+      ]
     }
   }
 }

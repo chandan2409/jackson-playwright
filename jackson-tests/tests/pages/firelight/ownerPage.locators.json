@@ -4,164 +4,409 @@
   "source": "live-dom",
   "entries": {
     "firstName": {
-      "name": "firstName", "page": "owner",
+      "name": "firstName",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_FirstName'] input", "confidence": 0.96 },
-        { "type": "id", "value": "FirstName", "confidence": 0.93 },
-        { "type": "role", "value": "textbox[name='First Name']", "confidence": 0.86 },
-        { "type": "label", "value": "First Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_FirstName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "FirstName",
+          "confidence": 0.93
+        },
+        {
+          "type": "role",
+          "value": "textbox[name='First Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Given Name",
+          "confidence": 0.8
+        }
       ]
     },
     "middleName": {
-      "name": "middleName", "page": "owner",
+      "name": "middleName",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_MiddleName'] input", "confidence": 0.96 },
-        { "type": "id", "value": "MiddleName(optional)", "confidence": 0.93 },
-        { "type": "label", "value": "Middle Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_MiddleName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "MiddleName(optional)",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Middle Name",
+          "confidence": 0.8
+        }
       ]
     },
     "lastName": {
-      "name": "lastName", "page": "owner",
+      "name": "lastName",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_LastName'] input", "confidence": 0.96 },
-        { "type": "id", "value": "LastName", "confidence": 0.93 },
-        { "type": "label", "value": "Last Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_LastName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "LastName",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Last Name",
+          "confidence": 0.8
+        }
       ]
     },
     "ssn": {
-      "name": "ssn", "page": "owner",
+      "name": "ssn",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_SSN'] input", "confidence": 0.96 },
-        { "type": "id", "value": "SSN", "confidence": 0.93 },
-        { "type": "label", "value": "SSN", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_SSN'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "SSN",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "SSN",
+          "confidence": 0.8
+        }
       ]
     },
     "dateOfBirth": {
-      "name": "dateOfBirth", "page": "owner",
+      "name": "dateOfBirth",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_DOB'] input", "confidence": 0.96 },
-        { "type": "id", "value": "DateofBirth", "confidence": 0.93 },
-        { "type": "label", "value": "Date of Birth", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_DOB'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "DateofBirth",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Date of Birth",
+          "confidence": 0.8
+        }
       ]
     },
     "sex": {
-      "name": "sex", "page": "owner",
+      "name": "sex",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_Gender'] [role='checkbox']", "confidence": 0.9 },
-        { "type": "label", "value": "Sex", "confidence": 0.8 },
-        { "type": "text", "value": "Sex", "confidence": 0.55 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_Gender'] [role='checkbox']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Sex",
+          "confidence": 0.8
+        },
+        {
+          "type": "text",
+          "value": "Sex",
+          "confidence": 0.55
+        }
       ]
     },
     "address1": {
-      "name": "address1", "page": "owner",
+      "name": "address1",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_ResidentialAddress1'] input", "confidence": 0.96 },
-        { "type": "id", "value": "PhysicalAddressLine1", "confidence": 0.93 },
-        { "type": "label", "value": "Physical Address Line 1", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_ResidentialAddress1'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "PhysicalAddressLine1",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Physical Address Line 1",
+          "confidence": 0.8
+        }
       ]
     },
     "address2": {
-      "name": "address2", "page": "owner",
+      "name": "address2",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_ResidentialAddress2'] input", "confidence": 0.96 },
-        { "type": "id", "value": "PhysicalAddressLine2(optional)", "confidence": 0.93 },
-        { "type": "label", "value": "Physical Address Line 2", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_ResidentialAddress2'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "PhysicalAddressLine2(optional)",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Physical Address Line 2",
+          "confidence": 0.8
+        }
       ]
     },
     "city": {
-      "name": "city", "page": "owner",
+      "name": "city",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_ResidentialAddress_City'] input", "confidence": 0.96 },
-        { "type": "id", "value": "City", "confidence": 0.93 },
-        { "type": "label", "value": "City", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_ResidentialAddress_City'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "City",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "City",
+          "confidence": 0.8
+        }
       ]
     },
     "state": {
-      "name": "state", "page": "owner",
+      "name": "state",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_ResidentialAddress_State'] select", "confidence": 0.96 },
-        { "type": "id", "value": "State", "confidence": 0.93 },
-        { "type": "label", "value": "State", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_ResidentialAddress_State'] select",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "State",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "State",
+          "confidence": 0.8
+        }
       ]
     },
     "zip": {
-      "name": "zip", "page": "owner",
+      "name": "zip",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_ResidentialAddress_Zipcode'] input", "confidence": 0.96 },
-        { "type": "id", "value": "ZipCode", "confidence": 0.93 },
-        { "type": "label", "value": "Zip code", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_ResidentialAddress_Zipcode'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "ZipCode",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Zip code",
+          "confidence": 0.8
+        }
       ]
     },
     "phone": {
-      "name": "phone", "page": "owner",
+      "name": "phone",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_Home_PhoneNumber'] input", "confidence": 0.96 },
-        { "type": "id", "value": "Phone(optional)", "confidence": 0.93 },
-        { "type": "label", "value": "Phone", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_Home_PhoneNumber'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "id",
+          "value": "Phone(optional)",
+          "confidence": 0.93
+        },
+        {
+          "type": "label",
+          "value": "Phone",
+          "confidence": 0.8
+        }
       ]
     },
     "mailingDifferent": {
-      "name": "mailingDifferent", "page": "owner",
+      "name": "mailingDifferent",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_MailingAddress_NotSameAsResidential']", "confidence": 0.9 },
-        { "type": "label", "value": "Is the mailing address different than the physical address?", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_MailingAddress_NotSameAsResidential']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Is the mailing address different than the physical address?",
+          "confidence": 0.8
+        }
       ]
     },
     "phoneTransferConsent": {
-      "name": "phoneTransferConsent", "page": "owner",
+      "name": "phoneTransferConsent",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Telephone_JCK_Authorization_Yes']", "confidence": 0.9 },
-        { "type": "label", "value": "Do you consent to Telephone/Electronic Transfer Authorization?", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Telephone_JCK_Authorization_Yes']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Do you consent to Telephone/Electronic Transfer Authorization?",
+          "confidence": 0.8
+        }
       ]
     },
     "eDeliveryConsent": {
-      "name": "eDeliveryConsent", "page": "owner",
+      "name": "eDeliveryConsent",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='OwnerAcknowledgments']", "confidence": 0.9 },
-        { "type": "label", "value": "Do you consent to Electronic Delivery of Documents?", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='OwnerAcknowledgments']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Do you consent to Electronic Delivery of Documents?",
+          "confidence": 0.8
+        }
       ]
     },
     "email": {
-      "name": "email", "page": "owner",
+      "name": "email",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_Primary_EmailAddress'] input", "confidence": 0.96 },
-        { "type": "label", "value": "Email Address", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_Primary_EmailAddress'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "label",
+          "value": "Email Address",
+          "confidence": 0.8
+        }
       ]
     },
     "authorizeOther": {
-      "name": "authorizeOther", "page": "owner",
+      "name": "authorizeOther",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='AuthorizedCaller_ClientAdd']", "confidence": 0.9 },
-        { "type": "label", "value": "Do you wish to authorize an individual other than your Financial Professional", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='AuthorizedCaller_ClientAdd']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Do you wish to authorize an individual other than your Financial Professional",
+          "confidence": 0.8
+        }
       ]
     },
     "backupWithholding": {
-      "name": "backupWithholding", "page": "owner",
+      "name": "backupWithholding",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='IRS_Withholding']", "confidence": 0.9 },
-        { "type": "label", "value": "Has the IRS notified you that you are subject to backup withholding?", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='IRS_Withholding']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Has the IRS notified you that you are subject to backup withholding?",
+          "confidence": 0.8
+        }
       ]
     },
     "activeMilitary": {
-      "name": "activeMilitary", "page": "owner",
+      "name": "activeMilitary",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_Active_Military_YN']", "confidence": 0.9 },
-        { "type": "label", "value": "Are you an active military member?", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_Active_Military_YN']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Are you an active military member?",
+          "confidence": 0.8
+        }
       ]
     },
     "citizenship": {
-      "name": "citizenship", "page": "owner",
+      "name": "citizenship",
+      "page": "owner",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Owner_Citizen_US']", "confidence": 0.9 },
-        { "type": "label", "value": "Citizenship", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Owner_Citizen_US']",
+          "confidence": 0.9
+        },
+        {
+          "type": "label",
+          "value": "Citizenship",
+          "confidence": 0.8
+        }
       ]
     },
     "next": {
-      "name": "next", "page": "owner",
+      "name": "next",
+      "page": "owner",
       "strategies": [
-        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
-        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 },
-        { "type": "text", "value": "Next", "confidence": 0.4 }
+        {
+          "type": "role",
+          "value": "button[name='Next']",
+          "confidence": 0.95
+        },
+        {
+          "type": "css",
+          "value": "button.ITButtonInput:has-text('Next')",
+          "confidence": 0.85
+        },
+        {
+          "type": "text",
+          "value": "Next",
+          "confidence": 0.4
+        }
       ]
     }
   }

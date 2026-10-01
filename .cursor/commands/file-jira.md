@@ -16,5 +16,8 @@ Copy **unexpected** Day 8 defects into Jira via the Atlassian MCP. Markdown unde
 4. Call Atlassian MCP to create **one Jira work item per change** in `JIRA_PROJECT_KEY`.
 5. Summary: `[FLQANEXT] <changeId> <page> <field>`
 6. Description: page, field, type, severity, before/after, evidence path, “Do not heal; track with Jackson.”
-7. Append `Jira: <KEY>` to the defect Markdown. Do not delete the file.
-8. Return the Jira keys. If MCP is disconnected, stop and ask the user to Connect — do not fake tickets.
+7. Attach `evidenceScreenshot` when it is a PNG/JPEG on disk (`tests/reports/changes/evidence/<page>.png` from Detect live). Rehearsal JSON is not a screenshot — skip attach.
+8. Append `Jira: <KEY>` to the defect Markdown. Do not delete the file.
+9. Return the Jira keys. If MCP is disconnected, stop and ask the user to Connect — do not fake tickets.
+
+Cursor `/file-jira` uses MCP (no attachment API). Prefer Change review **File unexpected to Jira** when a screenshot should go on the ticket (REST attach).

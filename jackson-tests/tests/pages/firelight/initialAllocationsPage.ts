@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import path from 'path';
-import { clickByEntry } from '../../utils/form-helpers';
+import { clickByEntry, waitForWizardIdle } from '../../utils/form-helpers';
 import { loadLocators, resolveLocator } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'initialAllocationsPage.locators.json'));
@@ -16,7 +16,8 @@ export class InitialAllocationsPage {
     const allocation = fund.locator(
       'xpath=following::input[not(@type="checkbox") and not(@type="radio") and not(@type="hidden")][1]',
     );
-    await allocation.click();
+    await waitForWizardIdle(this.page);
+    await allocation.click({ force: true });
     await allocation.fill('100');
     await allocation.press('Tab').catch(() => undefined);
     await expect(this.page.getByRole('button', { name: 'Next', exact: true }).first()).toBeEnabled({

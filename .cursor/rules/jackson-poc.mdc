@@ -28,6 +28,8 @@ This repository is the Bounteous handover for Jackson's **Cursor** Agentic QA PO
 - Prefer label-first Playwright locators for form fields
 - Use multi-strategy `*.locators.json` sidecars (`resolveLocator`)
 - Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
+- Scripts succeed at Signing Process: Wet Signature selected and DATA ENTRY 100% (no CONTINUE / Submit for Review)
+- Live Beneficiaries: primary Proceeds `%` must total **100%** (validation toast). Open Page List to jump to a failed step.
 - Day 6 baseline freeze under `jackson-tests/tests/data/baselines/` (serialized DOM + field inventory)
 - Day 8 reports under `jackson-tests/tests/reports/changes/` matching `change-report.schema.json` (`latest-change-report.json` is committed)
 - Self-heal only after explicit human acceptance of expected changes

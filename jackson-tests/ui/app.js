@@ -15,8 +15,29 @@ function pill(text, cls) {
 
 let coverageStepRows = [];
 let covPage = 1;
-let covPageSize = 25;
+let covPageSize = 10;
 let covPrintAll = false;
+let changeFilter = 'all';
+
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach((panel) => {
+    panel.hidden = panel.id !== `panel-${id}`;
+  });
+  document.querySelectorAll('.tabs [data-panel]').forEach((tab) => {
+    tab.setAttribute('aria-selected', String(tab.dataset.panel === id));
+  });
+  if (location.hash !== `#${id}`) history.replaceState(null, '', `#${id}`);
+}
+
+function applyChangeFilter() {
+  document.querySelectorAll('#changes tr[data-class]').forEach((row) => {
+    const match = changeFilter === 'all' || row.dataset.class === changeFilter;
+    row.classList.toggle('row-hidden', !match);
+  });
+  document.querySelectorAll('.filter').forEach((btn) => {
+    btn.classList.toggle('is-on', btn.dataset.filter === changeFilter);
+  });
+}
 
 function renderCoverageStepsPage() {
   const body = document.getElementById('coverage-steps');
@@ -105,6 +126,9 @@ async function refreshDashboard() {
   document.getElementById('coverage-meta').textContent = cov
     ? `${cov.source} · ${covSum?.excelSteps ?? cov.excelStepCount} Excel steps mapped · ${cov.scripts.length} scripts · ${cov.pages.length} wizard pages`
     : 'No coverage-matrix.json';
+  document.getElementById('tab-coverage').textContent = cov?.scripts?.length
+    ? `Coverage (${cov.scripts.length})`
+    : 'Coverage';
   document.getElementById('coverage').innerHTML = (cov?.scripts || [])
     .map((script) => {
       const status = script.lastStatus || 'not-run';
@@ -152,48 +176,71 @@ async function refreshDashboard() {
   renderCoverageStepsPage();
 
   const htmlLink = document.getElementById('html-report');
+  const htmlAll = document.getElementById('html-report-all');
   const htmlHint = document.getElementById('html-report-hint');
   if (data.htmlReport?.available) {
     htmlLink.classList.remove('is-disabled');
     htmlLink.setAttribute('href', data.htmlReport.href);
     htmlLink.setAttribute('target', '_blank');
     htmlLink.setAttribute('rel', 'noopener noreferrer');
-    htmlHint.textContent = 'Screenshots, video, and traces from the last Playwright run.';
   } else {
     htmlLink.classList.add('is-disabled');
     htmlLink.setAttribute('href', '#');
     htmlLink.removeAttribute('target');
-    htmlHint.textContent = 'Run Script 1 or Script 2 to generate the HTML report.';
+  }
+  if (data.htmlReportAll?.available) {
+    htmlAll.classList.remove('is-disabled');
+    htmlAll.setAttribute('href', data.htmlReportAll.href);
+    htmlAll.setAttribute('target', '_blank');
+    htmlAll.setAttribute('rel', 'noopener noreferrer');
+    htmlHint.textContent = data.htmlReport?.available
+      ? 'Last run · All runs merges every blob still within ARTIFACT_RETENTION_DAYS.'
+      : 'Merged history of retained Playwright runs.';
+  } else {
+    htmlAll.classList.add('is-disabled');
+    htmlAll.setAttribute('href', '#');
+    htmlAll.removeAttribute('target');
+    htmlHint.textContent = data.htmlReport?.available
+      ? 'Screenshots, video, and traces from the last Playwright run.'
+      : 'Run Script 1 or Script 2 to generate the HTML report.';
   }
 
   const tbody = document.getElementById('changes');
   const defectById = Object.fromEntries((data.defects || []).map((d) => [d.id, d]));
-  tbody.innerHTML = (report?.changes || [])
+  const changes = report?.changes || [];
+  tbody.innerHTML = changes.length
+    ? changes
     .map((c) => {
       const before = labelFromFingerprint(c.baselineValue);
       const after = labelFromFingerprint(c.currentValue);
       const checked = c.classification === 'expected' ? 'checked' : '';
       const defect = defectById[c.changeId];
-      let jiraCell = '—';
-      if (defect?.jiraUrl) {
+      const acceptedHeal = c.classification === 'expected' || c.acceptanceStatus === 'accepted';
+      let jiraCell = '<span class="meta">—</span>';
+      if (!acceptedHeal && defect?.jiraUrl) {
         jiraCell = `<a href="${defect.jiraUrl}" target="_blank" rel="noopener noreferrer">${defect.jiraKey}</a>`;
-      } else if (c.classification === 'unexpected') {
+      } else if (!acceptedHeal && c.classification === 'unexpected') {
         jiraCell = `<button type="button" class="ghost" data-jira="${c.changeId}">Create</button>`;
       }
-      return `<tr class="row-${c.classification}">
+      const ticketNote = acceptedHeal ? '' : (c.matchedTicketId ? `<br><span class="meta">${c.matchedTicketId}</span>` : '');
+      return `<tr class="row-${c.classification}" data-class="${c.classification}">
         <td><input type="checkbox" class="chg" data-id="${c.changeId}" data-class="${c.classification}" ${checked} /></td>
         <td><strong>${c.changeId}</strong></td>
         <td>${pill(c.classification, c.classification)}</td>
         <td>${c.changeType}</td>
-        <td>${c.page}<br><span class="meta">${c.fieldOrLocator}</span>
-          ${c.matchedTicketId ? `<br><span class="meta">${c.matchedTicketId}</span>` : ''}</td>
-        <td>${before} → ${after}</td>
+        <td>${c.page}<br><span class="meta">${c.fieldOrLocator}</span>${ticketNote}</td>
+        <td><span class="diff"><span class="from">${before}</span><span class="to">${after}</span></span></td>
         <td>${pill(c.acceptanceStatus || 'pending', c.acceptanceStatus || 'pending')}</td>
         <td>${c.healAction || '—'}</td>
         <td>${jiraCell}</td>
       </tr>`;
     })
-    .join('');
+    .join('')
+    : '<tr><td colspan="9"><p class="empty">No change report yet. Run Detect (rehearsal).</p></td></tr>';
+  applyChangeFilter();
+  const unexpectedCount = changes.filter((c) => c.classification === 'unexpected').length;
+  document.getElementById('tab-changes').textContent = `Changes (${changes.length})`;
+  document.getElementById('tab-defects').textContent = unexpectedCount ? `Defects (${unexpectedCount})` : 'Defects';
 
   const live = data.liveBaseline;
   document.getElementById('baseline-meta').textContent = live
@@ -218,7 +265,13 @@ async function refreshDashboard() {
   document.getElementById('jira-meta').textContent = jira.hint || '';
   document.getElementById('jira-file-missing').disabled = !jira.configured;
   document.getElementById('jira-create-report').disabled = !jira.configured;
-  document.getElementById('jira-defects').innerHTML = (data.defects || [])
+  const acceptedIds = new Set(
+    (report?.changes || [])
+      .filter((c) => c.classification === 'expected' || c.acceptanceStatus === 'accepted')
+      .map((c) => c.changeId),
+  );
+  const defectNotes = (data.defects || []).filter((d) => !acceptedIds.has(d.id));
+  document.getElementById('jira-defects').innerHTML = defectNotes
     .map((d) => {
       const link = d.jiraUrl
         ? `<a href="${d.jiraUrl}" target="_blank" rel="noopener noreferrer">${d.jiraKey}</a>`
@@ -232,9 +285,9 @@ async function refreshDashboard() {
         <td>${action}</td>
       </tr>`;
     })
-    .join('') || '<tr><td colspan="3">No defect notes.</td></tr>';
+    .join('') || '<tr><td colspan="3"><p class="empty">No unexpected defect notes. Accepted heals stay out of this list.</p></td></tr>';
 
-  document.getElementById('defects').innerHTML = (data.defects || [])
+  document.getElementById('defects').innerHTML = defectNotes
     .map((d) => `<article class="defect">${d.body.replace(/</g, '&lt;')}</article>`)
     .join('') || '';
 
@@ -255,11 +308,19 @@ function selectedHeal() {
 async function startRun(script, extra = {}) {
   setBusy(true);
   document.getElementById('job-status').textContent = `Running ${script}…`;
+  document.getElementById('job-fold').open = true;
   document.getElementById('job-log').textContent = '';
+  const live = script === 'script1' || script === 'script2' ? true : liveOn();
+  if (live) {
+    document.getElementById('live-mode').checked = true;
+    document.querySelectorAll('.live-only').forEach((btn) => {
+      btn.disabled = false;
+    });
+  }
   const res = await fetch('/api/run', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ script, live: liveOn(), ...extra }),
+    body: JSON.stringify({ script, live, ...extra }),
   });
   const body = await res.json();
   if (!res.ok) {
@@ -279,6 +340,7 @@ async function pollJob() {
   document.getElementById('job-log').scrollTop = document.getElementById('job-log').scrollHeight;
   if (job.running) {
     document.getElementById('job-status').textContent = `Running ${job.name}…`;
+    document.getElementById('job-fold').open = true;
     setBusy(true);
     pollTimer = window.setTimeout(pollJob, 600);
     return;
@@ -290,6 +352,18 @@ async function pollJob() {
     await refreshDashboard();
   }
 }
+
+document.querySelectorAll('.tabs [data-panel]').forEach((tab) => {
+  tab.addEventListener('click', () => showPanel(tab.dataset.panel));
+});
+document.querySelectorAll('.filter').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    changeFilter = btn.dataset.filter;
+    applyChangeFilter();
+  });
+});
+const initialPanel = (location.hash || '#changes').replace('#', '');
+if (['changes', 'coverage', 'baseline', 'defects'].includes(initialPanel)) showPanel(initialPanel);
 
 document.getElementById('live-mode').addEventListener('change', () => {
   document.querySelectorAll('.live-only').forEach((btn) => {
@@ -325,7 +399,14 @@ async function fileJira(changeIds) {
   const made = (body.results || []).filter((r) => r.key && !r.error);
   status.textContent = errors.length
     ? errors.map((r) => `${r.id}: ${r.error}`).join(' · ')
-    : `Filed ${made.map((r) => r.key).join(', ')}`;
+    : made
+        .map((r) => {
+          if (r.attached) return `${r.key} (+screenshot)`;
+          if (r.attachError) return `${r.key} (ticket ok, screenshot failed: ${r.attachError})`;
+          if (r.skipped) return r.key;
+          return `${r.key} (no PNG — run Detect live first)`;
+        })
+        .join(', ');
   await refreshDashboard();
 }
 
@@ -356,16 +437,22 @@ document.getElementById('steps-next').addEventListener('click', () => {
   renderCoverageStepsPage();
 });
 document.getElementById('steps-page-size').addEventListener('change', (event) => {
-  covPageSize = Number(event.target.value) || 25;
+  covPageSize = Number(event.target.value) || 10;
   covPage = 1;
   renderCoverageStepsPage();
 });
+let printPanel = 'changes';
 window.addEventListener('beforeprint', () => {
+  printPanel = (location.hash || '#changes').replace('#', '');
   covPrintAll = true;
+  document.querySelectorAll('.panel').forEach((panel) => {
+    panel.hidden = false;
+  });
   renderCoverageStepsPage();
 });
 window.addEventListener('afterprint', () => {
   covPrintAll = false;
+  showPanel(['changes', 'coverage', 'baseline', 'defects'].includes(printPanel) ? printPanel : 'changes');
   renderCoverageStepsPage();
 });
 

@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import path from 'path';
-import { selectByEntry, clickByEntry } from '../../utils/form-helpers';
+import { selectChoiceBelowQuestion, clickByEntry } from '../../utils/form-helpers';
 import { loadLocators, resolveLocator } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'systematicInvestmentPage.locators.json'));
@@ -15,8 +15,13 @@ export class SystematicInvestmentPage {
     } catch {
       return;
     }
-    await selectByEntry(this.page, E('assetRebalancing'), 'None');
-    await selectByEntry(this.page, E('dca'), 'None');
+    await selectChoiceBelowQuestion(this.page, 'Asset Rebalancing', 'None');
+    await selectChoiceBelowQuestion(
+      this.page,
+      'Dollar Cost Averaging options',
+      'None',
+      this.page.getByRole('button', { name: 'Next', exact: true }).first(),
+    );
     await clickByEntry(this.page, E('next'));
   }
 }

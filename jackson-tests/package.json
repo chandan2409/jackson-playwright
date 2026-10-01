@@ -5,18 +5,21 @@
   "private": true,
   "scripts": {
     "test": "playwright test",
-    "test:script1": "playwright test tests/specs/script-1-happy-path.spec.ts",
-    "test:script2": "playwright test tests/specs/script-2-variant-path.spec.ts",
+    "test:script1": "tsx ui/run-live.ts tests/specs/script-1-happy-path.spec.ts",
+    "test:script2": "tsx ui/run-live.ts tests/specs/script-2-variant-path.spec.ts",
     "baseline:capture": "tsx tests/utils/baseline-capture.ts",
     "detect:changes": "tsx tests/utils/change-detector.ts",
     "detect:rehearse": "DETECT_BASELINE_DIR=tests/data/rehearsal/baseline DETECT_CURRENT_DIR=tests/data/rehearsal/current CHANGE_TICKETS_PATH=tests/data/rehearsal/change-tickets.json tsx tests/utils/change-detector.ts",
     "heal:accept": "tsx tests/utils/apply-heal-acceptance.ts",
     "heal:rehearse": "tsx tests/utils/apply-heal-acceptance.ts --accept CHG-001 --reject CHG-002,CHG-003,CHG-004,CHG-005 --locators-dir tests/data/rehearsal/locators",
     "ui": "tsx ui/serve.ts",
+    "artifacts:prune": "tsx tests/utils/artifact-retention.ts",
+    "report:all": "tsx tests/utils/merge-blob-reports.ts",
     "report:schema": "node -e \"console.log(require('fs').readFileSync('tests/reports/changes/change-report.schema.json','utf8'))\"",
     "auth:setup": "playwright test --project=setup",
     "headed": "playwright test --headed",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "report:history": "playwright show-report playwright-report-all"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.0",

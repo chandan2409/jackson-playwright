@@ -93,6 +93,7 @@ export const variantPathData = {
   },
   contingentBeneficiary: {
     ...happyPathData.contingentBeneficiary,
+    beneficiaryType: 'Primary',
     proceedsPct: '40',
   },
   payment: {

@@ -4,70 +4,167 @@
   "source": "live-dom",
   "entries": {
     "jacksonApprovedMaterials": {
-      "name": "jacksonApprovedMaterials", "page": "agent",
+      "name": "jacksonApprovedMaterials",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_JCK_SalesMaterial_Yes']", "confidence": 0.92 },
-        { "type": "label", "value": "Did the agent use only Jackson-approved sales material", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_JCK_SalesMaterial_Yes']",
+          "confidence": 0.92
+        },
+        {
+          "type": "label",
+          "value": "Did the agent use only Jackson-approved sales material",
+          "confidence": 0.8
+        }
       ]
     },
     "firstName": {
-      "name": "firstName", "page": "agent",
+      "name": "firstName",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_FirstName'] input", "confidence": 0.96 },
-        { "type": "role", "value": "textbox[name='First Name']", "confidence": 0.86 },
-        { "type": "label", "value": "First Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_FirstName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "role",
+          "value": "textbox[name='First Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "First Name",
+          "confidence": 0.8
+        }
       ]
     },
     "middleName": {
-      "name": "middleName", "page": "agent",
+      "name": "middleName",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_MiddleName'] input", "confidence": 0.96 },
-        { "type": "role", "value": "textbox[name='Middle Name']", "confidence": 0.86 },
-        { "type": "label", "value": "Middle Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_MiddleName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "role",
+          "value": "textbox[name='Middle Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Middle Name",
+          "confidence": 0.8
+        }
       ]
     },
     "lastName": {
-      "name": "lastName", "page": "agent",
+      "name": "lastName",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_LastName'] input", "confidence": 0.96 },
-        { "type": "role", "value": "textbox[name='Last Name']", "confidence": 0.86 },
-        { "type": "label", "value": "Last Name", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_LastName'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "role",
+          "value": "textbox[name='Last Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Last Name",
+          "confidence": 0.8
+        }
       ]
     },
     "ssn": {
-      "name": "ssn", "page": "agent",
+      "name": "ssn",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_SSN'] input", "confidence": 0.96 },
-        { "type": "role", "value": "textbox[name='SSN']", "confidence": 0.86 },
-        { "type": "label", "value": "SSN", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_SSN'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "role",
+          "value": "textbox[name='SSN']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "SSN",
+          "confidence": 0.8
+        }
       ]
     },
     "commissionPct": {
-      "name": "commissionPct", "page": "agent",
+      "name": "commissionPct",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_Commission_JCK_CommissionSplit'] input", "confidence": 0.96 },
-        { "type": "label", "value": "Commission", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_Commission_JCK_CommissionSplit'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "label",
+          "value": "Commission",
+          "confidence": 0.8
+        }
       ]
     },
     "email": {
-      "name": "email", "page": "agent",
+      "name": "email",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_Primary_EmailAddress'] input", "confidence": 0.96 },
-        { "type": "label", "value": "Email", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_Primary_EmailAddress'] input",
+          "confidence": 0.96
+        },
+        {
+          "type": "label",
+          "value": "Email",
+          "confidence": 0.8
+        }
       ]
     },
     "commissionOption": {
-      "name": "commissionOption", "page": "agent",
+      "name": "commissionOption",
+      "page": "agent",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='Agent_Commission_Option_JCK']", "confidence": 0.92 },
-        { "type": "label", "value": "Commission Option", "confidence": 0.8 }
+        {
+          "type": "css",
+          "value": "[data-dataitemid='Agent_Commission_Option_JCK']",
+          "confidence": 0.92
+        },
+        {
+          "type": "label",
+          "value": "Commission Option",
+          "confidence": 0.8
+        }
       ]
     },
     "next": {
-      "name": "next", "page": "agent",
+      "name": "next",
+      "page": "agent",
       "strategies": [
-        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
-        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 }
+        {
+          "type": "role",
+          "value": "button[name='Next']",
+          "confidence": 0.95
+        },
+        {
+          "type": "css",
+          "value": "button.ITButtonInput:has-text('Next')",
+          "confidence": 0.85
+        }
       ]
     }
   }

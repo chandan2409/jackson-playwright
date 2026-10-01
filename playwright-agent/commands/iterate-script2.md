@@ -20,5 +20,7 @@ cd jackson-tests && npm run test:script2
 
 - Write only under `jackson-tests/`
 - Live DOM / screenshot labels win over Excel
+- Primary Proceeds live value is **100%** (validation). Fixture 60/40 is Excel coverage only
+- Success: Wet Signature + DATA ENTRY 100%. Open Page List for failed steps
 - Shared `wizard-flow.ts` changes must not silently break Script 1
 - No commit unless the user asks

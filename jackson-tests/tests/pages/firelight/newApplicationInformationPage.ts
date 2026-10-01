@@ -1,11 +1,10 @@
 import { Page } from '@playwright/test';
 import path from 'path';
-import { selectByEntry, clickByEntry } from '../../utils/form-helpers';
-import { fieldLabel, loadLocators } from '../../utils/locator-registry';
+import { selectByEntry, clickByEntry, selectChoiceBelowQuestion } from '../../utils/form-helpers';
+import { loadLocators } from '../../utils/locator-registry';
 
 const registry = loadLocators(path.join(__dirname, 'newApplicationInformationPage.locators.json'));
 const E = (key: string) => registry.entries[key];
-const L = (key: string) => fieldLabel(registry.entries[key]);
 
 export class NewApplicationInformationPage {
   constructor(private page: Page) {}
@@ -17,13 +16,25 @@ export class NewApplicationInformationPage {
     taxQualificationType: string;
     qualifiedAccountType: string;
   }) {
+    await this.page.bringToFront();
     await selectByEntry(this.page, E('ownershipType'), data.ownershipType);
-    await this.page.waitForTimeout(1500);
-    await selectByEntry(this.page, E('annuitantSameAsOwner'), data.annuitantSameAsOwner);
-    await selectByEntry(this.page, E('jointAnnuitant'), data.jointAnnuitant);
-    await this.page.getByText(L('taxQualificationType'), { exact: false }).first().waitFor({ timeout: 20_000 });
-    await selectByEntry(this.page, E('taxQualificationType'), data.taxQualificationType);
-    await this.page.getByText(L('qualifiedAccountType'), { exact: false }).first().waitFor({ timeout: 15_000 });
+    await selectChoiceBelowQuestion(
+      this.page,
+      'Is the annuitant the same as the owner?',
+      data.annuitantSameAsOwner,
+    );
+    await selectChoiceBelowQuestion(
+      this.page,
+      'Is there a joint annuitant?',
+      data.jointAnnuitant,
+      this.page.getByRole('checkbox', { name: /Qualified Account|^Qualified$/i }).first(),
+    );
+    await selectChoiceBelowQuestion(
+      this.page,
+      'Tax Qualification Type',
+      data.taxQualificationType,
+      this.page.getByRole('combobox', { name: /Type of Qualified Account/i }).first(),
+    );
     await selectByEntry(this.page, E('qualifiedAccountType'), data.qualifiedAccountType);
   }
 

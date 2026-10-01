@@ -38,7 +38,8 @@ If no IDs: unexpected rows in `latest-change-report.json` (Cursor command) or de
 2. Confirm `JIRA_PROJECT_KEY`. If missing, ask.
 3. Create one issue per change; do not batch unrelated CHGs into one ticket.
 4. Write the issue key back onto `defects/<changeId>.md` as `Jira: KEY`.
-5. Do not call `/heal` from this command.
+5. MCP cannot attach files. For a screenshot on the ticket, use Change review **File unexpected to Jira** after Detect (live) wrote `tests/reports/changes/evidence/<page>.png`.
+6. Do not call `/heal` from this command.
 
 ## Demo line
 

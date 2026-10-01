@@ -84,6 +84,7 @@ export async function runFirelightWizard(
   await snapshot?.('signing-process');
   await signing.selectSigningMethod(data.signingMethod);
   await signing.assertOnSigningPage();
+  await signing.assertDataEntryComplete();
 }
 
 export { happyPathData, variantPathData };

@@ -37,7 +37,7 @@ Copy `playwright-agent/templates/spec-file.template.ts` into the spec path. Do n
 6. Skip when credentials missing: `test.skip(!ENV.FIRELIGHT_USERNAME, '...')`
 7. **Every test MUST have at least one `expect()`**
 8. Prefer calling `runFirelightWizard(page, data)` over duplicating page fills
-9. Assertions at end: Signing page visible / Wet Signature selected
+9. Assertions at end: Wet Signature checked and DATA ENTRY **100%** (Signing Process). Do not assert CONTINUE or Submit.
 
 ## Style
 

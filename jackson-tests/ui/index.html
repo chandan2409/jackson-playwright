@@ -7,132 +7,160 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="top">
-      <div>
-        <p class="kicker">Firelight FLQANEXT</p>
-        <h1>Change review</h1>
-        <div id="chips" class="chips"></div>
-      </div>
-      <p class="phase">Jackson POC</p>
-    </header>
+    <div class="shell">
+      <header class="top">
+        <div>
+          <p class="kicker">Firelight FLQANEXT</p>
+          <h1>Change review</h1>
+          <div id="chips" class="chips"></div>
+        </div>
+        <p class="phase">Jackson POC</p>
+      </header>
 
-    <ol id="wizard" class="wizard" aria-label="Wizard pages"></ol>
+      <ol id="wizard" class="wizard" aria-label="Wizard pages"></ol>
 
-    <p class="note no-print"> Script 1/2, live detect, and baseline capture hit the Firelight sandbox
-      (~2 min) and require <strong>Live Firelight</strong>.
-    </p>
+      <section class="ops no-print">
+        <p class="note">
+          Script 1/2 open Change review (if needed) and a headed Firelight window (~2 min).
+          Live detect and baseline capture still need <strong>Live Firelight</strong>.
+        </p>
+        <div class="actions">
+          <label class="live-toggle">
+            <input type="checkbox" id="live-mode" />
+            Live Firelight
+          </label>
+          <button type="button" data-run="detect-rehearse">Detect (rehearsal)</button>
+          <button type="button" data-run="script1">Script 1</button>
+          <button type="button" data-run="script2">Script 2</button>
+          <button type="button" data-run="baseline" class="live-only" disabled>Capture baseline</button>
+          <button type="button" data-run="detect-live" class="live-only" disabled>Detect (live)</button>
+        </div>
+        <p id="job-status" class="meta job-status">Idle</p>
+        <details id="job-fold" class="job-fold">
+          <summary>Job log</summary>
+          <pre id="job-log" class="log">(no job yet)</pre>
+        </details>
+      </section>
 
-    <section class="actions no-print">
-      <label class="live-toggle">
-        <input type="checkbox" id="live-mode" />
-        Live Firelight
-      </label>
-      <button type="button" data-run="detect-rehearse">Detect (rehearsal)</button>
-      <button type="button" data-run="script1" class="live-only" disabled>Script 1</button>
-      <button type="button" data-run="script2" class="live-only" disabled>Script 2</button>
-      <button type="button" data-run="baseline" class="live-only" disabled>Capture baseline</button>
-      <button type="button" data-run="detect-live" class="live-only" disabled>Detect (live)</button>
-    </section>
+      <section id="summary" class="cards"></section>
 
-    <p id="job-status" class="meta no-print">Idle</p>
-    <pre id="job-log" class="log no-print">(no job yet)</pre>
+      <nav class="tabs no-print" role="tablist" aria-label="Dashboard sections">
+        <button type="button" role="tab" id="tab-changes" data-panel="changes" aria-selected="true">Changes</button>
+        <button type="button" role="tab" id="tab-coverage" data-panel="coverage" aria-selected="false">Coverage</button>
+        <button type="button" role="tab" id="tab-baseline" data-panel="baseline" aria-selected="false">Baseline</button>
+        <button type="button" role="tab" id="tab-defects" data-panel="defects" aria-selected="false">Defects</button>
+      </nav>
 
-    <section id="summary" class="cards"></section>
+      <section id="panel-changes" class="panel" role="tabpanel" aria-labelledby="tab-changes">
+        <div class="panel-head">
+          <div>
+            <h2>Change report</h2>
+            <p id="report-meta" class="meta"></p>
+          </div>
+          <div class="filters no-print" role="group" aria-label="Filter changes">
+            <button type="button" class="filter is-on" data-filter="all">All</button>
+            <button type="button" class="filter" data-filter="expected">Expected</button>
+            <button type="button" class="filter" data-filter="unexpected">Unexpected</button>
+          </div>
+        </div>
+        <p class="note">Check <strong>expected</strong> rows, then Heal. Jira is only for <strong>unexpected</strong> defects — not for accepted heals.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Accept</th>
+                <th>ID</th>
+                <th>Class</th>
+                <th>Type</th>
+                <th>Page / field</th>
+                <th>Before → after</th>
+                <th>HITL</th>
+                <th>Heal</th>
+                <th>Jira</th>
+              </tr>
+            </thead>
+            <tbody id="changes"></tbody>
+          </table>
+        </div>
+        <p class="heal-bar no-print">
+          <button type="button" id="heal-btn">Heal accepted / reject rest</button>
+          <button type="button" class="ghost" id="jira-create-report">File unexpected to Jira</button>
+          <a class="ghost" id="export-md" href="/api/export.md">Export Markdown</a>
+          <button type="button" class="ghost" id="export-pdf">Export PDF</button>
+          <span id="jira-status" class="meta"></span>
+        </p>
+      </section>
 
-    <section>
-      <h2>Test coverage</h2>
-      <p id="coverage-meta" class="meta"></p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Script</th>
-              <th>Path</th>
-              <th>Excel steps</th>
-              <th>Last run</th>
-            </tr>
-          </thead>
-          <tbody id="coverage"></tbody>
-        </table>
-      </div>
-      <h3>Excel step → test case → last run</h3>
-      <p id="coverage-steps-meta" class="meta"></p>
-      <div class="pager no-print" id="coverage-steps-pager" hidden>
-        <button type="button" id="steps-prev">Previous</button>
-        <span id="steps-page-label" class="meta"></span>
-        <button type="button" id="steps-next">Next</button>
-        <label class="pager-size">
-          Per page
-          <select id="steps-page-size">
-            <option value="10">10</option>
-            <option value="25" selected>25</option>
-            <option value="50">50</option>
-          </select>
-        </label>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Step</th>
-              <th>Page</th>
-              <th>Field</th>
-              <th>Happy / variant</th>
-              <th>Tests</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="coverage-steps"></tbody>
-        </table>
-      </div>
-      <p class="heal-bar no-print">
-        <a class="ghost" id="html-report" href="/playwright-report/index.html" target="_blank" rel="noopener noreferrer">Open HTML report</a>
-        <span id="html-report-hint" class="meta"></span>
-      </p>
-    </section>
+      <section id="panel-coverage" class="panel" role="tabpanel" aria-labelledby="tab-coverage" hidden>
+        <h2>Test coverage</h2>
+        <p id="coverage-meta" class="meta"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Script</th>
+                <th>Path</th>
+                <th>Excel steps</th>
+                <th>Last run</th>
+              </tr>
+            </thead>
+            <tbody id="coverage"></tbody>
+          </table>
+        </div>
+        <h3>Excel step → test case → last run</h3>
+        <p id="coverage-steps-meta" class="meta"></p>
+        <div class="pager no-print" id="coverage-steps-pager" hidden>
+          <button type="button" id="steps-prev">Previous</button>
+          <span id="steps-page-label" class="meta"></span>
+          <button type="button" id="steps-next">Next</button>
+          <label class="pager-size">
+            Per page
+            <select id="steps-page-size">
+              <option value="10" selected>10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Page</th>
+                <th>Field</th>
+                <th>Happy / variant</th>
+                <th>Tests</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="coverage-steps"></tbody>
+          </table>
+        </div>
+        <p class="heal-bar no-print">
+          <a class="ghost" id="html-report" href="/playwright-report/index.html" target="_blank" rel="noopener noreferrer">Open HTML report</a>
+          <a class="ghost" id="html-report-all" href="/playwright-report-all/index.html" target="_blank" rel="noopener noreferrer">All runs</a>
+          <span id="html-report-hint" class="meta"></span>
+        </p>
+      </section>
 
-    <section>
-      <h2>Change report</h2>
-      <p id="report-meta" class="meta"></p>
-      <p class="note">Check expected rows to accept. Unexpected rows are rejected unless you check them (not recommended).</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>ID</th>
-              <th>Class</th>
-              <th>Type</th>
-              <th>Page / field</th>
-              <th>Before → after</th>
-              <th>HITL</th>
-              <th>Heal</th>
-              <th>Jira</th>
-            </tr>
-          </thead>
-          <tbody id="changes"></tbody>
-        </table>
-      </div>
-      <p class="heal-bar no-print">
-        <button type="button" id="heal-btn">Heal accepted / reject rest</button>
-        <button type="button" id="jira-create-report">Create Jira</button>
-        <a class="ghost" id="export-md" href="/api/export.md">Export Markdown</a>
-        <button type="button" class="ghost" id="export-pdf">Export PDF</button>
-        <span id="jira-status" class="meta"></span>
-      </p>
-    </section>
+      <section id="panel-baseline" class="panel" role="tabpanel" aria-labelledby="tab-baseline" hidden>
+        <div class="split">
+          <div>
+            <h2>Live baseline pages</h2>
+            <p id="baseline-meta" class="meta"></p>
+            <ul id="baseline-pages" class="page-list"></ul>
+          </div>
+          <div>
+            <h2>Locator sidecars (heal target)</h2>
+            <pre id="locator"></pre>
+          </div>
+        </div>
+      </section>
 
-    <section class="split">
-      <div>
-        <h2>Live baseline pages</h2>
-        <p id="baseline-meta" class="meta"></p>
-        <ul id="baseline-pages" class="page-list"></ul>
-      </div>
-      <div>
-        <h2>Locator sidecars (heal target)</h2>
-        <pre id="locator"></pre>
-        <h2>Defects → Jira</h2>
+      <section id="panel-defects" class="panel" role="tabpanel" aria-labelledby="tab-defects" hidden>
+        <h2>Unexpected defects → Jira</h2>
         <p id="jira-meta" class="meta"></p>
         <div class="table-wrap">
           <table>
@@ -147,11 +175,11 @@
           </table>
         </div>
         <p class="heal-bar no-print">
-          <button type="button" id="jira-file-missing">File defects without a Jira key</button>
+          <button type="button" id="jira-file-missing">File unexpected defects missing a Jira key</button>
         </p>
         <div id="defects"></div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <script src="/app.js"></script>
   </body>

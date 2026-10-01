@@ -11,6 +11,7 @@ test.describe('Firelight POC — <Script Name>', () => {
   test('[FL-HP-001] @smoke @poc <scenario title>', async ({ page }) => {
     test.setTimeout(180_000);
     await runFirelightWizard(page, happyPathData);
-    await expect(page.getByText(/signing|wet signature/i).first()).toBeVisible();
+    await expect(page.getByText('100%', { exact: true }).first()).toBeVisible();
+    await expect(page.getByRole('checkbox', { name: /Wet Signature/i })).toBeChecked();
   });
 });

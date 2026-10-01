@@ -1,0 +1,51 @@
+{
+  "page": "signatures",
+  "generatedAt": "2026-09-30T00:00:00.000Z",
+  "source": "live-dom",
+  "entries": {
+    "heading": {
+      "name": "heading",
+      "page": "signatures",
+      "strategies": [
+        { "type": "text", "value": "SIGNATURES", "confidence": 0.9 },
+        { "type": "text", "value": "Submit Application", "confidence": 0.85 },
+        { "type": "text", "value": "Signatures", "confidence": 0.7 }
+      ]
+    },
+    "generate": {
+      "name": "generate",
+      "page": "signatures",
+      "strategies": [
+        { "type": "role", "value": "button[name='Generate Documents']", "confidence": 0.9 },
+        { "type": "text", "value": "Generate Documents", "confidence": 0.7 },
+        { "type": "text", "value": "Unlock Documents", "confidence": 0.6 }
+      ]
+    },
+    "request": {
+      "name": "request",
+      "page": "signatures",
+      "strategies": [
+        { "type": "role", "value": "button[name='Request Signatures']", "confidence": 0.9 },
+        { "type": "text", "value": "Request Signatures", "confidence": 0.7 }
+      ]
+    },
+    "submit": {
+      "name": "submit",
+      "page": "signatures",
+      "strategies": [
+        { "type": "role", "value": "button[name='Submit for Review']", "confidence": 0.95 },
+        { "type": "text", "value": "Submit for Review", "confidence": 0.75 },
+        { "type": "role", "value": "button[name='Submit Application']", "confidence": 0.6 }
+      ]
+    },
+    "continue": {
+      "name": "continue",
+      "page": "signatures",
+      "strategies": [
+        { "type": "id", "value": "imgNext", "confidence": 0.93 },
+        { "type": "role", "value": "button[name='CONTINUE']", "confidence": 0.9 },
+        { "type": "text", "value": "CONTINUE", "confidence": 0.55 }
+      ]
+    }
+  }
+}

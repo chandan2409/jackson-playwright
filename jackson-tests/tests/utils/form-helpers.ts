@@ -9,11 +9,25 @@ async function scopes(page: Page): Promise<FormScope[]> {
   return wizard === page ? [page] : [wizard, page];
 }
 
-async function waitForWizardIdle(page: Page): Promise<void> {
-  const loading = page.getByText('Loading, please wait', { exact: false });
-  if (await loading.count()) {
-    await loading.first().waitFor({ state: 'hidden', timeout: 30_000 }).catch(() => undefined);
+export async function waitForWizardIdle(page: Page): Promise<void> {
+  const loading = page.getByText(/Loading, please wait/i);
+  await loading.first().waitFor({ state: 'hidden', timeout: 60_000 }).catch(() => undefined);
+  const serviceError = page.getByText(/503 Service Unavailable|An error occurred while processing your request/i);
+  if (await serviceError.first().isVisible().catch(() => false)) {
+    await page.getByRole('button', { name: 'Close', exact: true }).click().catch(() => undefined);
+    await serviceError.first().waitFor({ state: 'hidden', timeout: 10_000 }).catch(() => undefined);
   }
+}
+
+async function scrollWizardToBottom(page: Page): Promise<void> {
+  await page
+    .locator('.ITWizardRoot')
+    .first()
+    .evaluate((el) => {
+      (el as HTMLElement).scrollTop = (el as HTMLElement).scrollHeight;
+    })
+    .catch(() => undefined);
+  await page.locator('#floatingScrollIndicator').click({ force: true }).catch(() => undefined);
 }
 
 function pick(loc: Locator, occurrence: Occurrence): Locator {
@@ -34,8 +48,11 @@ async function checkChoice(choice: Locator): Promise<void> {
   await choice.check({ force: true }).catch(async () => {
     await choice.click({ force: true });
   });
-  if (!(await choice.isChecked().catch(() => false))) {
+  for (let attempt = 0; attempt < 6; attempt++) {
+    if (await choice.isChecked().catch(() => false)) return;
+    if ((await choice.getAttribute('aria-checked')) === 'true') return;
     await choice.click({ force: true });
+    await new Promise((r) => setTimeout(r, 200));
   }
 }
 
@@ -58,6 +75,120 @@ async function choiceBelowQuestion(
   return null;
 }
 
+/** Firelight round checkboxes: click the label under the question until checked or `until` is visible. */
+export async function selectChoiceBelowQuestion(
+  page: Page,
+  questionText: string,
+  option: string,
+  until?: Locator,
+): Promise<void> {
+  await waitForWizardIdle(page);
+  const question = page.getByText(questionText, { exact: false }).first();
+  await question.waitFor({ state: 'visible', timeout: 20_000 });
+  await question.scrollIntoViewIfNeeded().catch(() => undefined);
+  const box = question.locator(`xpath=following::div[@role="checkbox"][@title="${option}"][1]`);
+  const deadline = Date.now() + 20_000;
+  while (Date.now() < deadline) {
+    await scrollWizardToBottom(page);
+    if ((await box.count()) > 0 && (await box.isVisible().catch(() => false))) break;
+    await box.scrollIntoViewIfNeeded().catch(() => undefined);
+    await page.waitForTimeout(400);
+  }
+  await box.waitFor({ state: 'visible', timeout: 8_000 });
+  for (let i = 0; i < 20; i++) {
+    const checked =
+      (await box.getAttribute('aria-checked')) === 'true' || (await box.isChecked().catch(() => false));
+    if (checked) {
+      if (!until) {
+        await waitForWizardIdle(page);
+        await page.waitForTimeout(800);
+        return;
+      }
+      await scrollWizardToBottom(page);
+      if (await until.isVisible().catch(() => false)) {
+        await waitForWizardIdle(page);
+        return;
+      }
+    } else {
+      await box.evaluate((el) => (el as HTMLElement).click());
+    }
+    await waitForWizardIdle(page);
+    await page.waitForTimeout(500);
+  }
+  if (until) {
+    await scrollWizardToBottom(page);
+    await until.waitFor({ state: 'visible', timeout: 20_000 });
+  }
+}
+
+async function selectNativeOption(box: Locator, option: string): Promise<void> {
+  await box.selectOption({ label: option }).catch(async () => {
+    const value = await box.evaluate((el, wanted) => {
+      const select = el as HTMLSelectElement;
+      const match = [...select.options].find((o) => o.text.trim().toLowerCase() === wanted.toLowerCase());
+      return match?.value ?? '';
+    }, option);
+    if (!value) throw new Error(`No combobox option "${option}"`);
+    await box.selectOption(value);
+  });
+}
+
+async function trySelectInScope(
+  scope: FormScope,
+  label: string,
+  option: string,
+  occurrence: Occurrence,
+  page: Page,
+): Promise<boolean> {
+  const yesNo = /^(Yes|No)$/i.test(option);
+  const labelRe = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+  const question = pick(scope.getByText(label, { exact: false }), occurrence);
+  const questionVisible = (await question.count()) > 0;
+
+  if (questionVisible) {
+    await question.scrollIntoViewIfNeeded().catch(() => undefined);
+    const near = await choiceBelowQuestion(scope, question, option);
+    if (near) {
+      await checkChoice(near);
+      await waitForWizardIdle(page);
+      await page.waitForTimeout(400);
+      return true;
+    }
+    const followingCombo = question.locator('xpath=following::select[1]');
+    if (await followingCombo.count()) {
+      await selectNativeOption(followingCombo, option);
+      return true;
+    }
+  }
+
+  if (!yesNo && occurrence === 'first') {
+    const uniqueChoice = choiceInScope(scope, option);
+    if (await uniqueChoice.count()) {
+      await checkChoice(uniqueChoice.first());
+      await waitForWizardIdle(page);
+      await page.waitForTimeout(400);
+      return true;
+    }
+  }
+
+  const combo = scope.getByRole('combobox', { name: labelRe });
+  if (await combo.count()) {
+    await selectNativeOption(pick(combo, occurrence), option);
+    return true;
+  }
+
+  const field = scope.getByLabel(label, { exact: false });
+  if (await field.count()) {
+    const target = pick(field, occurrence);
+    const tag = await target.evaluate((el) => el.tagName.toLowerCase());
+    if (tag === 'select') {
+      await target.selectOption({ label: option });
+      return true;
+    }
+  }
+  return false;
+}
+
 export async function selectByLabel(
   page: Page,
   label: string,
@@ -65,71 +196,45 @@ export async function selectByLabel(
   occurrence: Occurrence = 'first',
 ): Promise<void> {
   await waitForWizardIdle(page);
-  const yesNo = /^(Yes|No)$/i.test(option);
-  const labelRe = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-
   for (const scope of await scopes(page)) {
-    const question = pick(scope.getByText(label, { exact: false }), occurrence);
-    const questionVisible = (await question.count()) > 0;
+    if (await trySelectInScope(scope, label, option, occurrence, page)) return;
+  }
+  throw new Error(`Could not find field labeled "${label}" (option "${option}") on ${page.url()}`);
+}
 
-    if (questionVisible) {
-      await question.scrollIntoViewIfNeeded().catch(() => undefined);
-      const near = await choiceBelowQuestion(scope, question, option);
-      if (near) {
-        await checkChoice(near);
-        await waitForWizardIdle(page);
-        await page.waitForTimeout(400);
-        return;
-      }
+async function tryFillInScope(
+  scope: FormScope,
+  label: string,
+  value: string,
+  occurrence: Occurrence,
+): Promise<boolean> {
+  const name = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+  const question = pick(scope.getByText(label, { exact: false }), occurrence);
+  await question.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => undefined);
 
-      const followingCombo = question.locator('xpath=following::select[1]');
-      if (await followingCombo.count()) {
-        await followingCombo.selectOption({ label: option }).catch(async () => {
-          await followingCombo.selectOption(option);
-        });
-        return;
-      }
-    }
-
-    if (!yesNo && occurrence === 'first') {
-      const uniqueChoice = choiceInScope(scope, option);
-      if (await uniqueChoice.count()) {
-        await checkChoice(uniqueChoice.first());
-        await waitForWizardIdle(page);
-        await page.waitForTimeout(400);
-        return;
-      }
-    }
-
-    const combo = scope.getByRole('combobox', { name: labelRe });
-    if (await combo.count()) {
-      const box = pick(combo, occurrence);
-      await box.selectOption({ label: option }).catch(async () => {
-        const value = await box.evaluate((el, wanted) => {
-          const select = el as HTMLSelectElement;
-          const match = [...select.options].find(
-            (o) => o.text.trim().toLowerCase() === wanted.toLowerCase(),
-          );
-          return match?.value ?? '';
-        }, option);
-        if (!value) throw new Error(`No combobox option "${option}"`);
-        await box.selectOption(value);
-      });
-      return;
-    }
-
-    const field = scope.getByLabel(label, { exact: false });
-    if (await field.count()) {
-      const target = pick(field, occurrence);
-      const tag = await target.evaluate((el) => el.tagName.toLowerCase());
-      if (tag === 'select') {
-        await target.selectOption({ label: option });
-        return;
-      }
-    }
+  const named = scope.getByRole('textbox', { name }).or(scope.getByLabel(label, { exact: false }));
+  if (await named.count()) {
+    const field = pick(named, occurrence);
+    await field.scrollIntoViewIfNeeded().catch(() => undefined);
+    await field.click();
+    await field.fill(value);
+    await field.press('Tab').catch(() => undefined);
+    return true;
   }
 
-  throw new Error(`Could not find field labeled "${label}" (option "${option}") on ${page.url()}`);
+  if (await question.count()) {
+    await question.scrollIntoViewIfNeeded().catch(() => undefined);
+    const following = question.locator(
+      'xpath=following::input[not(@type="checkbox") and not(@type="radio") and not(@type="hidden")][1]',
+    );
+    if (await following.count()) {
+      await following.click();
+      await following.fill(value);
+      await following.press('Tab').catch(() => undefined);
+      return true;
+    }
+  }
+  return false;
 }
 
 export async function fillByLabel(
@@ -139,34 +244,8 @@ export async function fillByLabel(
   occurrence: Occurrence = 'first',
 ): Promise<void> {
   await waitForWizardIdle(page);
-  const name = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-
   for (const scope of await scopes(page)) {
-    const question = pick(scope.getByText(label, { exact: false }), occurrence);
-    await question.waitFor({ state: 'visible', timeout: 15_000 }).catch(() => undefined);
-
-    const named = scope.getByRole('textbox', { name }).or(scope.getByLabel(label, { exact: false }));
-    if (await named.count()) {
-      const field = pick(named, occurrence);
-      await field.scrollIntoViewIfNeeded().catch(() => undefined);
-      await field.click();
-      await field.fill(value);
-      await field.press('Tab').catch(() => undefined);
-      return;
-    }
-
-    if (await question.count()) {
-      await question.scrollIntoViewIfNeeded().catch(() => undefined);
-      const following = question.locator(
-        'xpath=following::input[not(@type="checkbox") and not(@type="radio") and not(@type="hidden")][1]',
-      );
-      if (await following.count()) {
-        await following.click();
-        await following.fill(value);
-        await following.press('Tab').catch(() => undefined);
-        return;
-      }
-    }
+    if (await tryFillInScope(scope, label, value, occurrence)) return;
   }
   throw new Error(`Could not find input labeled "${label}" on ${page.url()}`);
 }

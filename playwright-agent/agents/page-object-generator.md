@@ -11,6 +11,14 @@ You generate class-based Page Objects and locator sidecar JSON for Firelight wiz
 
 Wizard fields must go through `fillByEntry` / `selectByEntry` / `clickByEntry` + `loadLocators` so `resolveLocator` can heal from the sidecar. Do **not** hardcode `fillByLabel` / `selectByLabel` for those fields (that is why early POMs were single-strategy).
 
+Exception already on live Firelight:
+
+- **New Application Information** and **Systematic Investment** may keep `selectChoiceBelowQuestion` so Yes/No and round checkboxes stay scoped to the question
+- **Beneficiaries** may fill Proceeds `%` to **100** from the live validation toast and use **Open Page List** to reopen a failed step
+- **Signing Process** may click the Wet Signature round checkbox (success = checked + DATA ENTRY 100%)
+
+New pages still start from the `*ByEntry` template.
+
 ## Input
 
 Prefer a cached live snapshot over inventing fields:

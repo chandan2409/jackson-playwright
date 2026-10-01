@@ -4,95 +4,231 @@
   "source": "live-dom",
   "entries": {
     "livingPerson": {
-      "name": "livingPerson", "page": "beneficiaries",
+      "name": "livingPerson",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "css", "value": "[data-dataitemid='PrimaryBeneficiary1_JCK_LP']", "confidence": 0.92 },
-        { "type": "id", "value": "LivingPerson", "confidence": 0.7 },
-        { "type": "label", "value": "Is the beneficiary a living person or non-natural entity?", "confidence": 0.8 }
+        {
+          "type": "label",
+          "value": "Is the beneficiary a living person or non-natural entity?",
+          "confidence": 0.9
+        },
+        {
+          "type": "id",
+          "value": "LivingPerson",
+          "confidence": 0.7
+        },
+        {
+          "type": "css",
+          "value": "[data-dataitemid='PrimaryBeneficiary1_JCK_LP']",
+          "confidence": 0.45
+        }
       ]
     },
     "firstName": {
-      "name": "firstName", "page": "beneficiaries",
+      "name": "firstName",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='First Name']", "confidence": 0.86 },
-        { "type": "label", "value": "First Name", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='First Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "First Name",
+          "confidence": 0.8
+        }
       ]
     },
     "middleName": {
-      "name": "middleName", "page": "beneficiaries",
+      "name": "middleName",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='Middle Name']", "confidence": 0.86 },
-        { "type": "label", "value": "Middle Name", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='Middle Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Middle Name",
+          "confidence": 0.8
+        }
       ]
     },
     "lastName": {
-      "name": "lastName", "page": "beneficiaries",
+      "name": "lastName",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='Last Name']", "confidence": 0.86 },
-        { "type": "label", "value": "Last Name", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='Last Name']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Last Name",
+          "confidence": 0.8
+        }
       ]
     },
     "ssn": {
-      "name": "ssn", "page": "beneficiaries",
+      "name": "ssn",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='SSN']", "confidence": 0.86 },
-        { "type": "label", "value": "SSN", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='SSN']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "SSN",
+          "confidence": 0.8
+        }
       ]
     },
     "dateOfBirth": {
-      "name": "dateOfBirth", "page": "beneficiaries",
+      "name": "dateOfBirth",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='Date of Birth']", "confidence": 0.86 },
-        { "type": "label", "value": "Date of Birth", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='Date of Birth']",
+          "confidence": 0.86
+        },
+        {
+          "type": "label",
+          "value": "Date of Birth",
+          "confidence": 0.8
+        }
       ]
     },
     "sex": {
-      "name": "sex", "page": "beneficiaries",
+      "name": "sex",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "label", "value": "Sex", "confidence": 0.8 },
-        { "type": "text", "value": "Sex", "confidence": 0.55 }
+        {
+          "type": "label",
+          "value": "Sex",
+          "confidence": 0.8
+        },
+        {
+          "type": "text",
+          "value": "Sex",
+          "confidence": 0.55
+        }
       ]
     },
     "relationship": {
-      "name": "relationship", "page": "beneficiaries",
+      "name": "relationship",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "label", "value": "Relationship to Owner", "confidence": 0.8 },
-        { "type": "text", "value": "Relationship to Owner", "confidence": 0.55 }
+        {
+          "type": "label",
+          "value": "Relationship to Owner",
+          "confidence": 0.8
+        },
+        {
+          "type": "text",
+          "value": "Relationship to Owner",
+          "confidence": 0.55
+        }
       ]
     },
     "sameAsOwner": {
-      "name": "sameAsOwner", "page": "beneficiaries",
+      "name": "sameAsOwner",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "button[name='Same As Owner']", "confidence": 0.9 },
-        { "type": "text", "value": "Same As Owner", "confidence": 0.75 }
+        {
+          "type": "role",
+          "value": "button[name='Same As Owner']",
+          "confidence": 0.9
+        },
+        {
+          "type": "text",
+          "value": "Same As Owner",
+          "confidence": 0.75
+        }
       ]
     },
     "proceedsPct": {
-      "name": "proceedsPct", "page": "beneficiaries",
+      "name": "proceedsPct",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "textbox[name='Proceeds']", "confidence": 0.86 },
-        { "type": "label", "value": "Proceeds", "confidence": 0.8 }
+        {
+          "type": "role",
+          "value": "textbox[name='%']",
+          "confidence": 0.95
+        },
+        {
+          "type": "label",
+          "value": "Proceeds",
+          "confidence": 0.8
+        },
+        {
+          "type": "text",
+          "value": "Proceeds",
+          "confidence": 0.55
+        }
       ]
     },
     "addBeneficiary": {
-      "name": "addBeneficiary", "page": "beneficiaries",
+      "name": "addBeneficiary",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "button[name='Add Beneficiary']", "confidence": 0.9 },
-        { "type": "text", "value": "Add Beneficiary", "confidence": 0.7 }
+        {
+          "type": "role",
+          "value": "button[name='Add Additional Beneficiary']",
+          "confidence": 0.95
+        },
+        {
+          "type": "text",
+          "value": "Add Additional Beneficiary",
+          "confidence": 0.85
+        },
+        {
+          "type": "role",
+          "value": "button[name='Add Beneficiary']",
+          "confidence": 0.7
+        },
+        {
+          "type": "text",
+          "value": "Add Beneficiary",
+          "confidence": 0.55
+        }
       ]
     },
     "beneficiaryType": {
-      "name": "beneficiaryType", "page": "beneficiaries",
+      "name": "beneficiaryType",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "label", "value": "Beneficiary Type", "confidence": 0.8 },
-        { "type": "text", "value": "Beneficiary Type", "confidence": 0.55 }
+        {
+          "type": "label",
+          "value": "Beneficiary Type",
+          "confidence": 0.8
+        },
+        {
+          "type": "text",
+          "value": "Beneficiary Type",
+          "confidence": 0.55
+        }
       ]
     },
     "next": {
-      "name": "next", "page": "beneficiaries",
+      "name": "next",
+      "page": "beneficiaries",
       "strategies": [
-        { "type": "role", "value": "button[name='Next']", "confidence": 0.95 },
-        { "type": "css", "value": "button.ITButtonInput:has-text('Next')", "confidence": 0.85 }
+        {
+          "type": "role",
+          "value": "button[name='Next']",
+          "confidence": 0.95
+        },
+        {
+          "type": "css",
+          "value": "button.ITButtonInput:has-text('Next')",
+          "confidence": 0.85
+        }
       ]
     }
   }

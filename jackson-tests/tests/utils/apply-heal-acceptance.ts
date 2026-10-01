@@ -77,6 +77,10 @@ function main() {
   for (const change of report.changes) {
     if (accepted.has(change.changeId)) {
       change.acceptanceStatus = 'accepted';
+      if (change.classification === 'expected') {
+        const defectPath = path.join(DEFECTS, `${change.changeId}.md`);
+        if (fs.existsSync(defectPath)) fs.unlinkSync(defectPath);
+      }
       if (change.classification === 'unexpected') {
         console.warn(
           `Warning: ${change.changeId} is unexpected but accepted — prefer filing a defect instead of healing.`,
@@ -93,7 +97,7 @@ function main() {
     if (rejected.has(change.changeId) || change.classification === 'unexpected') {
       if (rejected.has(change.changeId) || !accepted.has(change.changeId)) {
         change.acceptanceStatus = change.acceptanceStatus === 'accepted' ? 'accepted' : 'rejected';
-        if (change.classification === 'unexpected' || rejected.has(change.changeId)) {
+        if (change.classification === 'unexpected') {
           const defectPath = path.join(DEFECTS, `${change.changeId}.md`);
           const body = `# Defect ${change.changeId}
 

@@ -9,11 +9,12 @@ import ENV from '../utils/env';
 test.describe('Firelight POC — Script 1 Happy Path', () => {
   test.skip(!ENV.FIRELIGHT_USERNAME, 'Requires FIRELIGHT_USERNAME / PASSWORD (Day 0)');
 
-  test('[FL-HP-001] @smoke @poc Elite Access II Colorado wizard completes to Wet Signature', async ({
+  test('[FL-HP-001] @smoke @poc Elite Access II Colorado wizard reaches 100% with Wet Signature', async ({
     page,
   }) => {
-    test.setTimeout(180_000);
+    test.setTimeout(300_000);
     await runFirelightWizard(page, happyPathData);
-    await expect(page.getByText(/signing|wet signature/i).first()).toBeVisible();
+    await expect(page.getByText('100%', { exact: true }).first()).toBeVisible();
+    await expect(page.getByRole('checkbox', { name: /Wet Signature/i })).toBeChecked();
   });
 });

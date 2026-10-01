@@ -12,12 +12,14 @@ You keep the **variant-path** Playwright script green on live Firelight FLQANEXT
 - Flow: `runFirelightWizard(page, variantPathData)`
 - Fixture: `jackson-tests/tests/data/fixtures/case-data.ts` → `variantPathData`
 
-Variant data (do not revert to happy-path values):
+Variant data (do not revert Script 2 to happy-path owner/payment):
 
 - `caseName`: Boun-Variant
-- Primary proceeds: `60`
-- Contingent proceeds: `40`
 - Payment amount: `25000`
+- Fixture proceeds keys may stay `60` / `40` for Excel coverage
+- **Live form:** primary Proceeds `%` is **100** (toast: PRIMARY allocation must total 100%). Do not type 60 into one primary field. Do not add a second Primary at 40%.
+
+Success: Wet Signature checked, DATA ENTRY **100%**. Open Page List if a step failed. Do not CONTINUE or submit.
 
 ## Loop (max 8 rounds)
 
@@ -50,7 +52,8 @@ Handle these pages if they appear; do not skip ahead to Excel page names:
 - Wait for Firelight `Loading, please wait...` to hide
 - No iframe wait unless the screenshot shows an iframe
 - Never invent CSS selectors when the screenshot/a11y tree is available
-- If Add Beneficiary is not on the live page, do not invent a control; report the blocker for the 60/40 split
+- If Add Beneficiary is not on the live page, do not invent a control
+- Live primary allocation 100% wins over Excel 60/40
 
 ## Stop
 

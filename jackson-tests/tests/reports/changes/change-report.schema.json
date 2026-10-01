@@ -73,7 +73,7 @@
           },
           "healAction": {
             "type": ["string", "null"],
-            "description": "Proposed heal: update-locator | update-assertion | file-defect | none"
+            "description": "Proposed heal: update-locator | update-assertion | file-defect | recapture-baseline | none"
           }
         }
       }

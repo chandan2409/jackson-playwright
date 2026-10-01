@@ -30,6 +30,8 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 
 ## Agents (prompts)
 
+Suggested Cursor models in the table are **guidance only** (the chat picker is not wired from these files). There is no `script-1-iterator` prompt; `/iterate-script1` is command-only.
+
 | Agent | Purpose | Cursor model routing |
 |-------|---------|----------------------|
 | `test-generator` | Specs from Excel steps | reasoning model |
@@ -45,6 +47,9 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 - Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
 - Label-first locators for Firelight form fields
 - Every test MUST contain at least one `expect()`
+- Script success: Wet Signature checked and DATA ENTRY **100%**. Do not CONTINUE or submit.
+- Primary beneficiary Proceeds must total **100%** on the live form (Firelight validation). Script 2 fixture may still store Excel 60/40; do not type 60 into a single primary field.
+- Incomplete wizard: **Open Page List** → failed page (usually Beneficiaries) → fix → return to Signing.
 
 ## Wizard pages (detect and heal cover all)
 
