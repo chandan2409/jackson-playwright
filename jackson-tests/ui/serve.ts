@@ -4,9 +4,10 @@ import path from 'path';
 import { createJiraForDefect, jiraUiStatus, listDefectNotes, writeDefectStub } from '../tests/utils/jira-file.ts';
 import { loadDashboard, readJsonFile } from './dashboard.ts';
 import { dashboardMarkdown } from './export-md.ts';
-import { json, readBody, sendFile, validChangeIds } from './http.ts';
+import { json, readBody, sendDownload, sendFile, validChangeIds } from './http.ts';
 import { job, startBin, startNpm } from './jobs.ts';
 import { PORT, ROOT, UI_DIR } from './root.ts';
+import { zipScriptPack, type ScriptPackKind } from '../tests/utils/script-bundle.ts';
 
 const ALLOWED_NPM: Record<string, string[]> = {
   script1: ['run', 'test:script1'],
@@ -142,6 +143,17 @@ const server = http.createServer(async (req, res) => {
       'Content-Disposition': 'attachment; filename="jackson-change-report.md"',
     });
     res.end(dashboardMarkdown(loadDashboard(job)));
+    return;
+  }
+
+  const scriptZip = url.pathname.match(/^\/api\/download\/(baseline|healed)-script\.zip$/);
+  if (scriptZip && req.method === 'GET') {
+    const packed = zipScriptPack(scriptZip[1] as ScriptPackKind);
+    if ('error' in packed) {
+      json(res, 404, { error: packed.error });
+      return;
+    }
+    sendDownload(res, packed.filename, packed.body, 'application/zip');
     return;
   }
 

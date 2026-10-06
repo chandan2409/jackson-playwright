@@ -33,6 +33,16 @@ export function validChangeIds(ids: unknown): string[] {
   return ids.filter((id): id is string => typeof id === 'string' && /^CHG-\d{3}$/.test(id));
 }
 
+export function sendDownload(res: http.ServerResponse, filename: string, body: Buffer, contentType: string) {
+  res.writeHead(200, {
+    'Content-Type': contentType,
+    'Content-Disposition': `attachment; filename="${filename}"`,
+    'Content-Length': String(body.length),
+    'Cache-Control': 'no-store',
+  });
+  res.end(body);
+}
+
 export function sendFile(
   res: http.ServerResponse,
   root: string,

@@ -10,6 +10,8 @@ import path from 'path';
  *   npx tsx tests/utils/apply-heal-acceptance.ts --accept CHG-001 --locators-dir tests/data/rehearsal/locators
  */
 
+import { snapshotScriptPack } from './script-bundle';
+
 const ROOT = path.resolve(__dirname, '../..');
 const REPORT = path.join(ROOT, 'tests/reports/changes/latest-change-report.json');
 const DEFECTS = path.join(ROOT, 'tests/reports/changes/defects');
@@ -120,6 +122,7 @@ function main() {
   console.log(`Updated acceptance on ${REPORT}`);
   console.log(`Accepted: ${[...accepted].join(', ') || '(none)'}`);
   console.log(`Locator files healed: ${healedFiles.join(', ') || '(none)'}`);
+  if (healedFiles.length && locatorsDir === DEFAULT_LOCATORS) snapshotScriptPack('healed');
   console.log(`Rejected/defects: see ${DEFECTS}`);
 }
 

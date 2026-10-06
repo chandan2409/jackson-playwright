@@ -14,5 +14,6 @@ tests/reports/last-run.json
 !tests/reports/changes/change-report.schema.json
 !tests/reports/changes/.gitkeep
 !tests/reports/changes/defects/.gitkeep
+tests/reports/scripts/
 *.log
 .DS_Store

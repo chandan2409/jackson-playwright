@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { jiraUiStatus, listDefectNotes } from '../tests/utils/jira-file.ts';
+import { packInfo } from '../tests/utils/script-bundle.ts';
 import type { JobState } from './jobs.ts';
 import { ROOT } from './root.ts';
 
@@ -248,6 +249,7 @@ export function loadDashboard(job: JobState) {
     coverage,
     htmlReport: htmlLink(path.join(ROOT, 'playwright-report/index.html'), '/playwright-report/index.html'),
     htmlReportAll: htmlLink(path.join(ROOT, 'playwright-report-all/index.html'), '/playwright-report-all/index.html'),
+    scriptPacks: { baseline: packInfo('baseline'), healed: packInfo('healed') },
   };
 }
 

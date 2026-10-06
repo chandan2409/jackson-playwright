@@ -340,6 +340,31 @@ async function refreshDashboard() {
     ? JSON.stringify(locators, null, 2)
     : 'No locator sidecars';
 
+  const packs = data.scriptPacks || {};
+  const baselinePack = packs.baseline || {};
+  const healedPack = packs.healed || {};
+  document.querySelectorAll('#dl-baseline-script, #dl-baseline-script-tab').forEach((el) => {
+    el.classList.remove('is-disabled');
+    el.title = baselinePack.ready
+      ? `Frozen ${baselinePack.capturedAt || ''} · ${baselinePack.fileCount || 0} files`
+      : 'First download freezes the current Script 1/2 + POM locators as baseline';
+  });
+  document.querySelectorAll('#dl-healed-script, #dl-healed-script-tab').forEach((el) => {
+    el.classList.toggle('is-disabled', !healedPack.ready);
+    if (!healedPack.ready) el.removeAttribute('href');
+    else el.setAttribute('href', healedPack.download || '/api/download/healed-script.zip');
+    el.title = healedPack.ready
+      ? `Healed ${healedPack.capturedAt || ''} · ${healedPack.fileCount || 0} files`
+      : 'Accept expected Detect rows and Heal to freeze a healed script zip';
+  });
+  const packHint = document.getElementById('script-pack-hint');
+  if (packHint) {
+    packHint.textContent = [
+      baselinePack.ready ? `Baseline script frozen ${baselinePack.capturedAt}` : 'Baseline script: download to freeze current specs + locators',
+      healedPack.ready ? `Healed script frozen ${healedPack.capturedAt}` : 'Healed script: after Heal',
+    ].join(' · ');
+  }
+
   const jira = data.jira || {};
   document.getElementById('jira-meta').textContent = jira.hint || '';
   document.getElementById('jira-file-missing').disabled = !jira.configured;

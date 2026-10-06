@@ -5,6 +5,7 @@ import ENV from './env';
 import { captureCurrentPage, unscannedSnapshot, type PageSnapshot } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
 import { screenshotWizard } from './wizard-shot';
+import { snapshotScriptPack } from './script-bundle';
 import { WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
@@ -76,6 +77,7 @@ async function main() {
     stubRemaining();
     fs.writeFileSync(path.join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
     fs.writeFileSync(path.join(BASELINE_DIR, 'CURRENT'), baselineId);
+    snapshotScriptPack('baseline');
     await browser.close();
   }
 
