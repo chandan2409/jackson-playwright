@@ -4,6 +4,7 @@ import { chromium } from '@playwright/test';
 import ENV from './env';
 import { captureCurrentPage, unscannedSnapshot, type PageSnapshot } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
+import { screenshotWizard } from './wizard-shot';
 import { WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
@@ -65,6 +66,7 @@ async function main() {
     await runFirelightWizard(page, happyPathData, async (pageKey) => {
       const snap = await captureCurrentPage(page, pageKey);
       writeSnap(outDir, snap);
+      await screenshotWizard(page, path.join(outDir, `${pageKey}.png`));
       if (!manifest.pages.includes(pageKey)) manifest.pages.push(pageKey);
       console.log(`Captured ${pageKey} (dom ${snap.html.length} chars, ${snap.elements.length} interactive)`);
     });

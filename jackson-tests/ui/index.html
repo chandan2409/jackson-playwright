@@ -22,7 +22,9 @@
       <section class="ops no-print">
         <p class="note">
           Script 1/2 open Change review (if needed) and a headed Firelight window (~2 min).
-          Live detect and baseline capture still need <strong>Live Firelight</strong>.
+          Live detect needs <strong>Live Firelight</strong>.
+          <strong>Capture baseline</strong> walks the site <em>as it is today</em> — do not use it to get “before” shots after Firelight already changed.
+          Before images come from the frozen Day 6 HTML (<code>npm run baseline:pngs</code>), after images from Detect (live).
         </p>
         <div class="actions">
           <label class="live-toggle">
@@ -63,7 +65,20 @@
             <button type="button" class="filter" data-filter="unexpected">Unexpected</button>
           </div>
         </div>
-        <p class="note">Check <strong>expected</strong> rows, then Heal. Jira is only for <strong>unexpected</strong> defects — not for accepted heals.</p>
+        <p class="note">Check <strong>expected</strong> rows, then Heal. Click a row to open <strong>before / after</strong> in a new tab. Jira is only for <strong>unexpected</strong> defects.</p>
+        <div class="pager no-print" id="changes-pager" hidden>
+          <button type="button" id="changes-prev">Previous</button>
+          <span id="changes-page-label" class="meta"></span>
+          <button type="button" id="changes-next">Next</button>
+          <label class="pager-size">
+            Per page
+            <select id="changes-page-size">
+              <option value="10" selected>10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+          </label>
+        </div>
         <div class="table-wrap">
           <table>
             <thead>
@@ -72,7 +87,7 @@
                 <th>ID</th>
                 <th>Class</th>
                 <th>Type</th>
-                <th>Page / field</th>
+                <th>What changed</th>
                 <th>Before → after</th>
                 <th>HITL</th>
                 <th>Heal</th>
@@ -162,11 +177,16 @@
       <section id="panel-defects" class="panel" role="tabpanel" aria-labelledby="tab-defects" hidden>
         <h2>Unexpected defects → Jira</h2>
         <p id="jira-meta" class="meta"></p>
+        <p class="note">Same unexpected rows as Detect (not stale Markdown). Click a row for before / after. Do not heal these; file to Jira if Jackson wants a ticket.</p>
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Page / field</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Before → after</th>
                 <th>Jira</th>
                 <th></th>
               </tr>
@@ -176,11 +196,13 @@
         </div>
         <p class="heal-bar no-print">
           <button type="button" id="jira-file-missing">File unexpected defects missing a Jira key</button>
+          <span id="jira-status-defects" class="meta"></span>
         </p>
         <div id="defects"></div>
       </section>
     </div>
 
+    <script src="/change-copy.js"></script>
     <script src="/app.js"></script>
   </body>
 </html>

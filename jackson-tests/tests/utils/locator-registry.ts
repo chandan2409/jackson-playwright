@@ -36,7 +36,7 @@ export function fieldLabel(entry: LocatorEntry): string {
 }
 
 function hosts(page: Page): LocatorHost[] {
-  return [page];
+  return [page, ...page.frames().filter((f) => f !== page.mainFrame())];
 }
 
 export type Occurrence = 'first' | 'last';

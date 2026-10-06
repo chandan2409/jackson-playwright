@@ -95,7 +95,20 @@ Baselines store serialized DOM (`html` + `htmlHash`) plus an interactive field i
 1. Split agent prompts from generated tests so prompts do not scan the whole suite
 2. Copy templates instead of free-form generation
 3. Cache last live DOM under `jackson-tests/tests/data/.snapshots/` (gitignored)
-4. Prefer this file + `playwright-agent/AGENTS.md` + `jackson-tests/README.md` over dumping the repo
+4. Prefer root `AGENTS.md` + nested folder `AGENTS.md` over dumping the repo
+5. Dated `baselines/baseline-*/` is `.cursorignore`d; detect still uses live vs `CURRENT`
+6. Project skills: slash workflows under `.cursor/skills/` plus auto `pom-from-snapshots`
+
+## Hooks
+
+Project hooks: `.cursor/hooks.json` (Jackson-evaluable Cursor config).
+
+- `sessionStart` — compact token-optimization context (IDE; Cloud Agents skip)
+- `preToolUse` — specs only under `jackson-tests/`; no `.env` writes (`failClosed`)
+- `beforeReadFile` — prefer `.snapshots/` over full baseline `html`
+- `beforeShellExecution` — no force-push to main/master (`failClosed`)
+
+See `.cursor/hooks/README.md`. Token rules also live in `.cursor/rules/token-optimization.mdc`.
 
 ## Test execution (headed + Change review)
 

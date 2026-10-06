@@ -8,6 +8,8 @@ export const MIME: Record<string, string> = {
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
   '.json': 'application/json',
   '.webm': 'video/webm',
   '.zip': 'application/zip',

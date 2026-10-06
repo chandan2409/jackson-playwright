@@ -1,45 +1,26 @@
 ---
-description: Jackson Firelight POC core constraints for Cursor agents
-globs:
-  - "**/*"
+description: Jackson Firelight POC write boundaries and live-wizard contract
 alwaysApply: true
 ---
 
 # Jackson Firelight POC
 
-This repository is the Bounteous handover for Jackson's **Cursor** Agentic QA POC on Firelight FLQANEXT.
+- Tests, POMs, baselines, reports → `jackson-tests/` only
+- Prompts, templates, runbooks → `playwright-agent/` only
+- Cursor config → `.cursor/` (rules, commands, skills, hooks)
 
-## Write boundaries
+## Contract
 
-- Generated tests, POMs, baselines, and reports → `jackson-tests/` only
-- Agent prompts/commands/templates → `playwright-agent/` only
-- Cursor-evaluated config → `.cursor/`
-
-## Product context
-
-- Platform: Firelight FLQANEXT sandbox
-- Product: Elite Access II
-- Jurisdiction: Colorado
-- Case: Boun (from `Boun_POCtestcase.xlsx`)
-- Two scripts required: happy path + variant path
-
-## Behavior
-
-- Prefer label-first Playwright locators for form fields
-- Use multi-strategy `*.locators.json` sidecars (`resolveLocator`)
-- Auth via `storageState` from `jackson-tests/tests/auth.setup.ts`
-- Scripts succeed at Signing Process: Wet Signature selected and DATA ENTRY 100% (no CONTINUE / Submit for Review)
-- Live Beneficiaries: primary Proceeds `%` must total **100%** (validation toast). Open Page List to jump to a failed step.
-- Day 6 baseline freeze under `jackson-tests/tests/data/baselines/` (serialized DOM + field inventory)
-- Day 8 reports under `jackson-tests/tests/reports/changes/` matching `change-report.schema.json` (`latest-change-report.json` is committed)
-- Self-heal only after explicit human acceptance of expected changes
-- Unexpected changes → defect notes, not silent locator patches
-- Optional `/file-jira` may copy unexpected defects to Jira via Atlassian MCP; Markdown defects remain source of truth
+- Label-first locators + `*.locators.json` (`resolveLocator`)
+- Auth: `storageState` from `jackson-tests/tests/auth.setup.ts`
+- Success: Wet Signature checked, DATA ENTRY **100%** (no CONTINUE / Submit for Review)
+- Primary Proceeds `%` totals **100%**. Open Page List to jump to a failed step.
+- Heal only after human acceptance. Unexpected → defect notes. Optional `/file-jira` copies unexpected only.
 
 ## Forbidden
 
-- Inventing CSS selectors when live DOM can be scanned
-- Backend/API test scope
-- Xray test-management integration (no test execution sync)
-- Using Jira instead of Markdown defects, or filing Jira for expected/accepted heals
-- Tests or locators for any product other than Firelight FLQANEXT
+- Invented CSS when live DOM can be scanned
+- Backend/API tests, Xray, any product other than Firelight FLQANEXT
+- Jira as source of truth, or Jira for expected/accepted heals
+
+Details: root `AGENTS.md`. Workflows: `.cursor/commands/` or matching skills.

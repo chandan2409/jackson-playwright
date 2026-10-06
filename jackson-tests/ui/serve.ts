@@ -107,7 +107,8 @@ function handleExtraRoots(url: URL, res: http.ServerResponse): boolean {
   const extraRoots: Array<{ prefix: string; dir: string }> = [
     { prefix: '/playwright-report/', dir: path.join(ROOT, 'playwright-report') },
     { prefix: '/playwright-report-all/', dir: path.join(ROOT, 'playwright-report-all') },
-    { prefix: '/test-results/', dir: path.join(ROOT, 'test-results') },
+    { prefix: '/evidence/', dir: path.join(ROOT, 'tests/reports/changes/evidence') },
+    { prefix: '/baseline-png/', dir: path.join(ROOT, 'tests/data/baselines') },
   ];
   for (const extra of extraRoots) {
     if (url.pathname === extra.prefix.slice(0, -1) || url.pathname.startsWith(extra.prefix)) {
@@ -115,6 +116,11 @@ function handleExtraRoots(url: URL, res: http.ServerResponse): boolean {
         ? decodeURIComponent(url.pathname.slice(extra.prefix.length))
         : 'index.html';
       if (!rel || rel.endsWith('/')) rel = `${rel}index.html`;
+      if (extra.prefix === '/baseline-png/' && !rel.toLowerCase().endsWith('.png')) {
+        res.writeHead(404);
+        res.end('Baseline screenshot not found.');
+        return true;
+      }
       sendFile(res, extra.dir, rel, 'Playwright HTML report not generated yet. Run Script 1 or Script 2.');
       return true;
     }

@@ -18,7 +18,7 @@ An AI agent (Cursor-configured) can:
 ```
 ├── playwright-agent/     # Agent prompts, commands, templates
 ├── jackson-tests/        # Runnable Playwright suite + baselines + change reports
-├── .cursor/              # Cursor rules / commands / MCP (evaluated by Jackson)
+├── .cursor/              # Rules, commands, skills, hooks, MCP (evaluated by Jackson)
 ├── Boun_POCtestcase.xlsx # Source manual test case
 └── POCwriteup.docx       # POC requirements
 ```
@@ -71,11 +71,17 @@ git commit -m "Freeze Day 6 Firelight baseline"
 
 ## Cursor commands
 
+Same names exist as project skills under `.cursor/skills/` (type `/` in Agent).
+
+Demo script for Jackson (Cursor best practices vs this repo): [playwright-agent/cursor-best-practices-demo.md](playwright-agent/cursor-best-practices-demo.md).
+
 | Command | Purpose |
 |---------|---------|
 | `/automate excel` | Generate/update scripts from Excel test case |
 | `/detect-changes` | Scan UI vs baseline; emit change report |
 | `/heal` | Repair scripts after HITL acceptance |
+| `/iterate-script1` | Run happy path until Wet Signature + 100% |
+| `/iterate-script2` | Run variant path until Wet Signature + 100% |
 | `/file-jira` | Optional: copy unexpected defects to Jira (Atlassian MCP) |
 
 ## Optional Jira (MCP + Change review)
@@ -90,7 +96,7 @@ Markdown under `jackson-tests/tests/reports/changes/defects/` remains the POC re
 ## Deliverables checklist
 
 - [ ] Cloneable repo with Day 6 baseline committed
-- [ ] `.cursor/` configuration (rules, commands, MCP)
+- [ ] `.cursor/` configuration (rules, commands, skills, hooks, MCP)
 - [ ] Day 8 change report (`tests/reports/changes/`)
 - [ ] Self-healed baseline scripts after acceptance
 

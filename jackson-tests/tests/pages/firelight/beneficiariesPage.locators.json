@@ -35,7 +35,7 @@
         },
         {
           "type": "label",
-          "value": "First Name",
+          "value": "Given Name",
           "confidence": 0.8
         }
       ]

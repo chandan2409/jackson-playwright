@@ -13,6 +13,9 @@ export function dashboardMarkdown(dash: Dash): string {
       changeType: string;
       page: string;
       fieldOrLocator: string;
+      severity?: string;
+      description?: string;
+      evidenceScreenshot?: string;
       acceptanceStatus?: string;
       healAction?: string | null;
     }>;
@@ -75,8 +78,25 @@ export function dashboardMarkdown(dash: Dash): string {
     );
   }
   lines.push('', '## Defects', '');
-  for (const d of dash.defects) {
-    lines.push(d.body, '');
+  const unexpected = (r?.changes || []).filter((c) => c.classification === 'unexpected');
+  const noteById = Object.fromEntries((dash.defects || []).map((d) => [d.id, d]));
+  if (!unexpected.length) {
+    lines.push('No unexpected changes in the latest Detect report.');
+  }
+  for (const c of unexpected) {
+    const note = noteById[c.changeId];
+    lines.push(
+      `### ${c.changeId}`,
+      '',
+      `- Page: ${c.page}`,
+      `- Field: ${c.fieldOrLocator}`,
+      `- Type: ${c.changeType}`,
+      `- Severity: ${c.severity}`,
+      `- Description: ${c.description}`,
+      `- Evidence: ${c.evidenceScreenshot || ''}`,
+      note?.jiraKey ? `- Jira: ${note.jiraKey}` : '- Jira: (none)',
+      '',
+    );
   }
   return lines.join('\n');
 }

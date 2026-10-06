@@ -8,6 +8,7 @@
     "test:script1": "tsx ui/run-live.ts tests/specs/script-1-happy-path.spec.ts",
     "test:script2": "tsx ui/run-live.ts tests/specs/script-2-variant-path.spec.ts",
     "baseline:capture": "tsx tests/utils/baseline-capture.ts",
+    "baseline:pngs": "tsx tests/utils/render-baseline-pngs.ts",
     "detect:changes": "tsx tests/utils/change-detector.ts",
     "detect:rehearse": "DETECT_BASELINE_DIR=tests/data/rehearsal/baseline DETECT_CURRENT_DIR=tests/data/rehearsal/current CHANGE_TICKETS_PATH=tests/data/rehearsal/change-tickets.json tsx tests/utils/change-detector.ts",
     "heal:accept": "tsx tests/utils/apply-heal-acceptance.ts",

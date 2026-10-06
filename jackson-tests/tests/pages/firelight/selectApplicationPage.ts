@@ -1,6 +1,7 @@
-import { Page } from '@playwright/test';
+import { Frame, Page } from '@playwright/test';
 import path from 'path';
 import { loadLocators, resolveLocator } from '../../utils/locator-registry';
+import { ensureFirelightSession } from '../../utils/firelight-session';
 
 const registry = loadLocators(path.join(__dirname, 'selectApplicationPage.locators.json'));
 
@@ -14,12 +15,50 @@ export class SelectApplicationPage {
   async goto(baseUrl: string) {
     await this.page.goto(baseUrl);
     await this.page.waitForLoadState('domcontentloaded');
+    await ensureFirelightSession(this.page);
   }
 
   async startApplication() {
-    const start = await resolveLocator(this.page, registry.entries.startApplication);
-    await start.click();
+    const jurisdiction = this.page.getByRole('combobox', { name: 'Jurisdiction' });
+    if (await jurisdiction.isVisible().catch(() => false)) return;
+
+    await this.page.getByText('Start New', { exact: true }).waitFor({ timeout: 20_000 });
+    const clicked = await this.clickStartNewApplication();
+    if (!clicked) {
+      throw new Error(
+        'Firelight home is visible (Start New) but Application was not clickable. See tests/reports/changes/evidence/detect-walk-failed.png',
+      );
+    }
     await resolveLocator(this.page, registry.entries.jurisdiction, 30_000);
+  }
+
+  /** Home tile is a labeled row, not a link/button in the a11y tree. Search frames too. */
+  private async clickStartNewApplication(): Promise<boolean> {
+    const tryHost = async (host: Page | Frame): Promise<boolean> => {
+      const tiles = [
+        host.getByText('Application', { exact: true }),
+        host.getByRole('link', { name: 'Application', exact: true }),
+        host.getByRole('button', { name: 'Application', exact: true }),
+        host.getByRole('row', { name: 'Application', exact: true }),
+      ];
+      for (const loc of tiles) {
+        const n = await loc.count().catch(() => 0);
+        for (let i = 0; i < n; i++) {
+          const el = loc.nth(i);
+          if (!(await el.isVisible().catch(() => false))) continue;
+          await el.click();
+          return true;
+        }
+      }
+      return false;
+    };
+
+    if (await tryHost(this.page)) return true;
+    for (const frame of this.page.frames()) {
+      if (frame === this.page.mainFrame()) continue;
+      if (await tryHost(frame)) return true;
+    }
+    return false;
   }
 
   async selectJurisdiction(jurisdiction: string) {

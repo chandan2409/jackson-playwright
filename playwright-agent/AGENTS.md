@@ -1,6 +1,6 @@
 # Jackson Firelight POC — Cursor Agent Instructions
 
-This is a **Cursor** POC. Jackson evaluates `.cursor/` (rules, commands, MCP).
+This is a **Cursor** POC. Jackson evaluates `.cursor/` (rules, commands, skills, hooks, MCP).
 
 You are working in the **Jackson Firelight Agentic QA POC** repository.
 
@@ -13,13 +13,15 @@ You are working in the **Jackson Firelight Agentic QA POC** repository.
 
 ## Folders
 
-- `.cursor/` — Cursor rules and commands Jackson evaluates (source of truth for slash commands)
+- `.cursor/` — rules, `/` commands, skills, hooks, MCP (Jackson-evaluated)
 - `playwright-agent/` — detailed runbooks, agent prompts, templates
 - `jackson-tests/` — Playwright suite (POMs, specs, baselines, change reports)
 
 Write tests only into `jackson-tests/`. Never write test files into `playwright-agent/`.
 
-## Cursor commands
+## Cursor commands and skills
+
+Same workflows exist as `.cursor/commands/*.md` and `.cursor/skills/<name>/SKILL.md`.
 
 - `/automate excel` → generate/update scripts from Excel
 - `/detect-changes` → Day 8 change report
@@ -30,7 +32,7 @@ Write tests only into `jackson-tests/`. Never write test files into `playwright-
 
 ## Agents (prompts)
 
-Suggested Cursor models in the table are **guidance only** (the chat picker is not wired from these files). There is no `script-1-iterator` prompt; `/iterate-script1` is command-only.
+Suggested Cursor models in the table are **guidance only** (the chat picker is not wired from these files). There is no `script-1-iterator` prompt; `/iterate-script1` is command + skill.
 
 | Agent | Purpose | Cursor model routing |
 |-------|---------|----------------------|
@@ -66,13 +68,9 @@ Suggested Cursor models in the table are **guidance only** (the chat picker is n
 
 Baselines store **serialized DOM** (`html` + `htmlHash`) plus an interactive field inventory. Self-heal patches `*.locators.json` sidecars for every page object under `tests/pages/firelight/`.
 
-## Token optimization (implemented in this layout)
+## Token optimization
 
-1. Fast model for mechanical POM extraction; reasoning model for detect/heal
-2. Split agent prompts from generated tests so prompts do not scan the whole suite
-3. Use templates under `playwright-agent/templates/` instead of free-form generation (`page-object-generator.md`, `test-generator.md`, `/automate`)
-4. Cache DOM snapshots under `jackson-tests/tests/data/.snapshots/` (`captureCurrentPage` during baseline/detect; POM/heal reuse)
-5. Prefer `playwright-agent/AGENTS.md` + `jackson-tests/README.md` over dumping the repo
+See `.cursor/rules/token-optimization.mdc` (always-on) and skill `pom-from-snapshots`. Session start hook repeats a one-line budget (IDE only; Cloud Agents rely on the rule).
 
 ## Hard rules
 

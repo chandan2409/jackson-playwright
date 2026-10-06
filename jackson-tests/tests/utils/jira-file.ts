@@ -210,10 +210,14 @@ export function writeDefectStub(change: {
   classification?: string;
   description?: string;
   evidenceScreenshot?: string;
+  baselineValue?: string | null;
+  currentValue?: string | null;
 }) {
   fs.mkdirSync(DEFECTS_DIR, { recursive: true });
   const file = path.join(DEFECTS_DIR, `${change.changeId}.md`);
-  if (fs.existsSync(file)) return;
+  const prior = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+  const jiraKey = parseJiraKey(prior);
+  const desc = (change.description || '').replace(/\n+/g, ' ').trim();
   const body = `# Defect ${change.changeId}
 
 - Page: ${change.page || ''}
@@ -221,10 +225,12 @@ export function writeDefectStub(change: {
 - Severity: ${change.severity || ''}
 - Type: ${change.changeType || ''}
 - Classification: ${change.classification || 'unexpected'}
-- Description: ${change.description || ''}
+- Description: ${desc}
+- Baseline: ${change.baselineValue || ''}
+- Live: ${change.currentValue || ''}
 - Evidence: ${change.evidenceScreenshot || ''}
 - Action: Do not heal; track with Jackson
-`;
+${jiraKey ? `- Jira: ${jiraKey}\n` : ''}`;
   fs.writeFileSync(file, body);
 }
 

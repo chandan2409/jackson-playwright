@@ -18,6 +18,12 @@ let covPage = 1;
 let covPageSize = 10;
 let covPrintAll = false;
 let changeFilter = 'all';
+let selectedChangeId = '';
+let changeItems = [];
+let changeAccept = new Map();
+let chgPage = 1;
+let chgPageSize = 10;
+let chgPrintAll = false;
 
 function showPanel(id) {
   document.querySelectorAll('.panel').forEach((panel) => {
@@ -29,14 +35,77 @@ function showPanel(id) {
   if (location.hash !== `#${id}`) history.replaceState(null, '', `#${id}`);
 }
 
-function applyChangeFilter() {
-  document.querySelectorAll('#changes tr[data-class]').forEach((row) => {
-    const match = changeFilter === 'all' || row.dataset.class === changeFilter;
-    row.classList.toggle('row-hidden', !match);
+function evidenceHref(raw) {
+  if (!raw) return '';
+  const norm = String(raw).replace(/\\/g, '/');
+  if (!/\.(png|jpe?g)$/i.test(norm)) return '';
+  const name = norm.split('/').pop();
+  return `/evidence/${encodeURIComponent(name)}`;
+}
+
+function openChangeCompare(row) {
+  document.querySelectorAll('#changes tr[data-id]').forEach((el) => {
+    el.classList.toggle('is-selected', el === row);
   });
+  if (!row) {
+    selectedChangeId = '';
+    return;
+  }
+  selectedChangeId = row.dataset.id || '';
+  window.open(`/compare.html?id=${encodeURIComponent(selectedChangeId)}`, '_blank', 'noopener');
+}
+
+function syncVisibleAccept() {
+  document.querySelectorAll('#changes .chg').forEach((box) => {
+    changeAccept.set(box.dataset.id, box.checked);
+  });
+}
+
+function filteredChanges() {
+  return changeItems.filter((row) => changeFilter === 'all' || row.classification === changeFilter);
+}
+
+function renderChangesPage() {
+  syncVisibleAccept();
+  const body = document.getElementById('changes');
+  const pager = document.getElementById('changes-pager');
+  const prev = document.getElementById('changes-prev');
+  const next = document.getElementById('changes-next');
+  const label = document.getElementById('changes-page-label');
+  if (!body) return;
+
   document.querySelectorAll('.filter').forEach((btn) => {
     btn.classList.toggle('is-on', btn.dataset.filter === changeFilter);
   });
+
+  const filtered = filteredChanges();
+  const total = filtered.length;
+  if (!total) {
+    body.innerHTML = '<tr><td colspan="9"><p class="empty">No changes in this filter.</p></td></tr>';
+    if (pager) pager.hidden = true;
+    if (label) label.textContent = '0 changes';
+    return;
+  }
+
+  const size = chgPrintAll ? Math.max(total, 1) : chgPageSize;
+  const pages = Math.max(1, Math.ceil(total / size) || 1);
+  if (chgPage > pages) chgPage = pages;
+  const start = chgPrintAll ? 0 : (chgPage - 1) * size;
+  const slice = filtered.slice(start, start + size);
+  body.innerHTML = slice
+    .map((row) => row.html.replace('data-chg-box', changeAccept.get(row.id) ? 'checked' : ''))
+    .join('');
+
+  if (selectedChangeId) {
+    document.querySelectorAll('#changes tr[data-id]').forEach((el) => {
+      el.classList.toggle('is-selected', el.dataset.id === selectedChangeId);
+    });
+  }
+
+  if (pager) pager.hidden = total <= chgPageSize && !chgPrintAll;
+  if (label) label.textContent = `${start + 1}–${Math.min(start + size, total)} of ${total}`;
+  if (prev) prev.disabled = chgPage <= 1 || chgPrintAll;
+  if (next) next.disabled = chgPage >= pages || chgPrintAll;
 }
 
 function renderCoverageStepsPage() {
@@ -208,12 +277,9 @@ async function refreshDashboard() {
   const tbody = document.getElementById('changes');
   const defectById = Object.fromEntries((data.defects || []).map((d) => [d.id, d]));
   const changes = report?.changes || [];
-  tbody.innerHTML = changes.length
-    ? changes
-    .map((c) => {
+  changeItems = changes.map((c) => {
       const before = labelFromFingerprint(c.baselineValue);
       const after = labelFromFingerprint(c.currentValue);
-      const checked = c.classification === 'expected' ? 'checked' : '';
       const defect = defectById[c.changeId];
       const acceptedHeal = c.classification === 'expected' || c.acceptanceStatus === 'accepted';
       let jiraCell = '<span class="meta">—</span>';
@@ -223,21 +289,34 @@ async function refreshDashboard() {
         jiraCell = `<button type="button" class="ghost" data-jira="${c.changeId}">Create</button>`;
       }
       const ticketNote = acceptedHeal ? '' : (c.matchedTicketId ? `<br><span class="meta">${c.matchedTicketId}</span>` : '');
-      return `<tr class="row-${c.classification}" data-class="${c.classification}">
-        <td><input type="checkbox" class="chg" data-id="${c.changeId}" data-class="${c.classification}" ${checked} /></td>
+      const copy = pageFieldCopy(c);
+      return {
+        id: c.changeId,
+        classification: c.classification,
+        html: `<tr class="row-${c.classification}" data-class="${c.classification}" data-id="${c.changeId}" data-page="${c.page}">
+        <td><input type="checkbox" class="chg" data-id="${c.changeId}" data-class="${c.classification}" data-chg-box /></td>
         <td><strong>${c.changeId}</strong></td>
         <td>${pill(c.classification, c.classification)}</td>
         <td>${c.changeType}</td>
-        <td>${c.page}<br><span class="meta">${c.fieldOrLocator}</span>${ticketNote}</td>
+        <td><strong>${escapeHtml(copy.page)}</strong><br><span class="meta">${escapeHtml(copy.detail)}</span>${ticketNote}</td>
         <td><span class="diff"><span class="from">${before}</span><span class="to">${after}</span></span></td>
         <td>${pill(c.acceptanceStatus || 'pending', c.acceptanceStatus || 'pending')}</td>
         <td>${c.healAction || '—'}</td>
         <td>${jiraCell}</td>
-      </tr>`;
-    })
-    .join('')
-    : '<tr><td colspan="9"><p class="empty">No change report yet. Run Detect (rehearsal).</p></td></tr>';
-  applyChangeFilter();
+      </tr>`,
+      };
+    });
+  changeAccept = new Map(
+    changes.map((c) => [c.changeId, c.classification === 'expected' || c.acceptanceStatus === 'accepted']),
+  );
+  chgPage = 1;
+  if (!changeItems.length) {
+    tbody.innerHTML = '<tr><td colspan="9"><p class="empty">No change report yet. Run Detect (rehearsal).</p></td></tr>';
+    const pager = document.getElementById('changes-pager');
+    if (pager) pager.hidden = true;
+  } else {
+    renderChangesPage();
+  }
   const unexpectedCount = changes.filter((c) => c.classification === 'unexpected').length;
   document.getElementById('tab-changes').textContent = `Changes (${changes.length})`;
   document.getElementById('tab-defects').textContent = unexpectedCount ? `Defects (${unexpectedCount})` : 'Defects';
@@ -265,42 +344,67 @@ async function refreshDashboard() {
   document.getElementById('jira-meta').textContent = jira.hint || '';
   document.getElementById('jira-file-missing').disabled = !jira.configured;
   document.getElementById('jira-create-report').disabled = !jira.configured;
-  const acceptedIds = new Set(
-    (report?.changes || [])
-      .filter((c) => c.classification === 'expected' || c.acceptanceStatus === 'accepted')
-      .map((c) => c.changeId),
+
+  const unexpected = (report?.changes || []).filter(
+    (c) => c.classification === 'unexpected' && c.acceptanceStatus !== 'accepted',
   );
-  const defectNotes = (data.defects || []).filter((d) => !acceptedIds.has(d.id));
-  document.getElementById('jira-defects').innerHTML = defectNotes
-    .map((d) => {
-      const link = d.jiraUrl
-        ? `<a href="${d.jiraUrl}" target="_blank" rel="noopener noreferrer">${d.jiraKey}</a>`
+  document.getElementById('jira-defects').innerHTML = unexpected
+    .map((c) => {
+      const defect = defectById[c.changeId];
+      const copy = pageFieldCopy(c);
+      const before = labelFromFingerprint(c.baselineValue);
+      const after = labelFromFingerprint(c.currentValue);
+      const link = defect?.jiraUrl
+        ? `<a href="${defect.jiraUrl}" target="_blank" rel="noopener noreferrer">${defect.jiraKey}</a>`
         : '—';
-      const action = d.jiraKey
+      const action = defect?.jiraKey
         ? ''
-        : `<button type="button" class="ghost" data-jira="${d.id}" ${jira.configured ? '' : 'disabled'}>Create</button>`;
-      return `<tr>
-        <td><strong>${d.id}</strong></td>
+        : `<button type="button" class="ghost" data-jira="${c.changeId}" ${jira.configured ? '' : 'disabled'}>Create</button>`;
+      return `<tr class="row-unexpected" data-id="${c.changeId}" data-page="${c.page}">
+        <td><strong>${c.changeId}</strong></td>
+        <td><strong>${escapeHtml(copy.page)}</strong><br><span class="meta">${escapeHtml(copy.detail)}</span></td>
+        <td>${c.changeType}</td>
+        <td>${c.severity || '—'}</td>
+        <td><span class="diff"><span class="from">${before}</span><span class="to">${after}</span></span></td>
         <td>${link}</td>
         <td>${action}</td>
       </tr>`;
     })
-    .join('') || '<tr><td colspan="3"><p class="empty">No unexpected defect notes. Accepted heals stay out of this list.</p></td></tr>';
+    .join('') || '<tr><td colspan="7"><p class="empty">No unexpected defects in the latest Detect report. Accepted heals stay out of this list.</p></td></tr>';
 
-  document.getElementById('defects').innerHTML = defectNotes
-    .map((d) => `<article class="defect">${d.body.replace(/</g, '&lt;')}</article>`)
+  document.getElementById('defects').innerHTML = unexpected
+    .map((c) => {
+      const copy = pageFieldCopy(c);
+      const explained = explainChange(c);
+      const shot = evidenceHref(c.evidenceScreenshot);
+      const facts = explained.facts
+        .map((f) => `<dt>${escapeHtml(f.term)}</dt><dd>${escapeHtml(f.value)}</dd>`)
+        .join('');
+      const paras = explained.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+      const img = shot
+        ? `<img class="defect-shot" src="${shot}" alt="Live evidence for ${c.changeId}">`
+        : '';
+      return `<article class="defect" data-id="${c.changeId}">
+        <h3>${c.changeId} · ${escapeHtml(copy.page)}</h3>
+        <p><strong>${escapeHtml(copy.detail)}</strong></p>
+        ${paras}
+        <dl>${facts}</dl>
+        <p class="meta">${escapeHtml(explained.aside)}</p>
+        ${img}
+      </article>`;
+    })
     .join('') || '';
 
   if (data.job?.running) pollJob();
 }
 
 function selectedHeal() {
+  syncVisibleAccept();
   const accept = [];
   const reject = [];
-  document.querySelectorAll('.chg').forEach((box) => {
-    const id = box.dataset.id;
-    if (box.checked) accept.push(id);
-    else reject.push(id);
+  changeItems.forEach((row) => {
+    if (changeAccept.get(row.id)) accept.push(row.id);
+    else reject.push(row.id);
   });
   return { accept, reject };
 }
@@ -359,7 +463,8 @@ document.querySelectorAll('.tabs [data-panel]').forEach((tab) => {
 document.querySelectorAll('.filter').forEach((btn) => {
   btn.addEventListener('click', () => {
     changeFilter = btn.dataset.filter;
-    applyChangeFilter();
+    chgPage = 1;
+    renderChangesPage();
   });
 });
 const initialPanel = (location.hash || '#changes').replace('#', '');
@@ -384,7 +489,9 @@ document.getElementById('export-pdf').addEventListener('click', () => window.pri
 
 async function fileJira(changeIds) {
   const status = document.getElementById('jira-status');
+  const statusDefects = document.getElementById('jira-status-defects');
   status.textContent = 'Creating in Jira…';
+  if (statusDefects) statusDefects.textContent = 'Creating in Jira…';
   const res = await fetch('/api/jira', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -392,7 +499,9 @@ async function fileJira(changeIds) {
   });
   const body = await res.json();
   if (!res.ok) {
-    status.textContent = body.error || 'Jira create failed';
+    const msg = body.error || 'Jira create failed';
+    status.textContent = msg;
+    if (statusDefects) statusDefects.textContent = msg;
     return;
   }
   const errors = (body.results || []).filter((r) => r.error);
@@ -407,27 +516,59 @@ async function fileJira(changeIds) {
           return `${r.key} (no PNG — run Detect live first)`;
         })
         .join(', ');
+  if (statusDefects) statusDefects.textContent = status.textContent;
   await refreshDashboard();
 }
 
 document.getElementById('jira-file-missing').addEventListener('click', () => fileJira([]));
 document.getElementById('jira-create-report').addEventListener('click', () => {
-  const unexpected = [...document.querySelectorAll('.chg')]
-    .filter((box) => box.dataset.class === 'unexpected')
-    .map((box) => box.dataset.id);
-  fileJira(unexpected);
+  fileJira(changeItems.filter((row) => row.classification === 'unexpected').map((row) => row.id));
+});
+document.getElementById('changes').addEventListener('change', (event) => {
+  const box = event.target.closest('.chg');
+  if (!box) return;
+  changeAccept.set(box.dataset.id, box.checked);
 });
 document.getElementById('changes').addEventListener('click', (event) => {
   const btn = event.target.closest('[data-jira]');
-  if (!btn) return;
-  fileJira([btn.dataset.jira]);
+  if (btn) {
+    fileJira([btn.dataset.jira]);
+    return;
+  }
+  if (event.target.closest('input, button, a')) return;
+  const row = event.target.closest('tr[data-id]');
+  if (!row) return;
+  openChangeCompare(row);
 });
 document.getElementById('jira-defects').addEventListener('click', (event) => {
   const btn = event.target.closest('[data-jira]');
-  if (!btn) return;
-  fileJira([btn.dataset.jira]);
+  if (btn) {
+    fileJira([btn.dataset.jira]);
+    return;
+  }
+  if (event.target.closest('a, button')) return;
+  const row = event.target.closest('tr[data-id]');
+  if (row) openChangeCompare(row);
+});
+document.getElementById('defects').addEventListener('click', (event) => {
+  const card = event.target.closest('article[data-id]');
+  if (!card) return;
+  window.open(`/compare.html?id=${encodeURIComponent(card.dataset.id)}`, '_blank', 'noopener');
 });
 
+document.getElementById('changes-prev').addEventListener('click', () => {
+  chgPage -= 1;
+  renderChangesPage();
+});
+document.getElementById('changes-next').addEventListener('click', () => {
+  chgPage += 1;
+  renderChangesPage();
+});
+document.getElementById('changes-page-size').addEventListener('change', (event) => {
+  chgPageSize = Number(event.target.value) || 10;
+  chgPage = 1;
+  renderChangesPage();
+});
 document.getElementById('steps-prev').addEventListener('click', () => {
   covPage -= 1;
   renderCoverageStepsPage();
@@ -445,15 +586,19 @@ let printPanel = 'changes';
 window.addEventListener('beforeprint', () => {
   printPanel = (location.hash || '#changes').replace('#', '');
   covPrintAll = true;
+  chgPrintAll = true;
   document.querySelectorAll('.panel').forEach((panel) => {
     panel.hidden = false;
   });
   renderCoverageStepsPage();
+  renderChangesPage();
 });
 window.addEventListener('afterprint', () => {
   covPrintAll = false;
+  chgPrintAll = false;
   showPanel(['changes', 'coverage', 'baseline', 'defects'].includes(printPanel) ? printPanel : 'changes');
   renderCoverageStepsPage();
+  renderChangesPage();
 });
 
 refreshDashboard().catch((err) => {

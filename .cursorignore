@@ -1,0 +1,13 @@
+# Secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dated baseline dumps (serialized html). Detect uses CURRENT + live npm.
+jackson-tests/tests/data/baselines/baseline-*/
+
+# Generated run artifacts
+jackson-tests/test-results/
+jackson-tests/blob-report/
+jackson-tests/playwright-report/
+jackson-tests/playwright-report-all/

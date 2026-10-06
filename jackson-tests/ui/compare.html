@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Change evidence — Jackson Firelight</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="compare-page">
+    <div class="shell compare-shell">
+      <header class="top">
+        <div>
+          <p class="kicker">Before / after</p>
+          <h1 id="compare-title">Change evidence</h1>
+          <p id="compare-sub" class="meta">Loading…</p>
+        </div>
+        <a class="ghost" href="/#changes">← Change review</a>
+      </header>
+      <p id="compare-diff" class="compare-diff"></p>
+      <p id="compare-note" class="note"></p>
+      <section class="explain" aria-labelledby="explain-heading">
+        <h2 id="explain-heading">What Detect compared</h2>
+        <div id="explain-meaning" class="explain-body"></div>
+        <dl id="explain-facts" class="explain-facts"></dl>
+        <p id="explain-aside" class="note"></p>
+      </section>
+      <div class="compare-grid">
+        <figure class="compare-shot">
+          <figcaption>Before · baseline</figcaption>
+          <img id="compare-before" alt="Baseline screenshot" hidden />
+          <p id="compare-before-missing" class="empty">No baseline PNG. Run <code>npm run baseline:pngs</code> from jackson-tests (renders frozen HTML — do not Capture baseline if the live site already changed).</p>
+        </figure>
+        <figure class="compare-shot">
+          <figcaption>After · live detect</figcaption>
+          <img id="compare-after" alt="Live detect screenshot" hidden />
+          <p id="compare-after-missing" class="empty">No live PNG. Run Detect (live) to capture this page.</p>
+        </figure>
+      </div>
+    </div>
+    <script src="/change-copy.js"></script>
+    <script src="/compare.js"></script>
+  </body>
+</html>

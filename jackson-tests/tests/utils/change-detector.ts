@@ -2,9 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from '@playwright/test';
 import ENV from './env';
+import { writeDefectStub } from './jira-file';
 import {
   captureCurrentPage,
   elementKey,
+  extractInteractiveFromHtml,
   fingerprint,
   hashHtml,
   isScanned,
@@ -13,6 +15,7 @@ import {
   type DomElementSnapshot,
 } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
+import { screenshotWizard } from './wizard-shot';
 import { WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
@@ -111,6 +114,35 @@ function fieldChangeType(baseEl: DomElementSnapshot, currEl: DomElementSnapshot)
   return 'modified';
 }
 
+/** True when baseline copy is still in live HTML (e.g. ITText restyled as a <p>). */
+function textStillInMarkup(html: string, ...parts: Array<string | null | undefined>): boolean {
+  if (!html) return false;
+  const hay = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  return parts
+    .map((p) => (p || '').replace(/\s+/g, ' ').trim())
+    .filter((p) => p.length >= 12)
+    .some((p) => hay.includes(p));
+}
+
+function walkCoveredByInventory(changes: ChangeRecord[], pageKey: string, message: string): ChangeRecord | undefined {
+  const hay = message.toLowerCase();
+  return changes.find((c) => {
+    if (c.page !== pageKey) return false;
+    if (c.classification === 'info') return false;
+    const needles = [c.fieldOrLocator, c.baselineValue, c.currentValue]
+      .filter(Boolean)
+      .map((v) => {
+        try {
+          const parsed = JSON.parse(String(v)) as { label?: string; text?: string };
+          return parsed.label || parsed.text || String(v);
+        } catch {
+          return String(v);
+        }
+      });
+    return needles.some((n) => n.length >= 8 && hay.includes(n.toLowerCase().slice(0, 80)));
+  });
+}
+
 function nextId(counter: { n: number }): string {
   counter.n += 1;
   return `CHG-${String(counter.n).padStart(3, '0')}`;
@@ -134,30 +166,47 @@ export function diffPage(
     currEl: DomElementSnapshot | null,
     description: string,
     values?: { baselineValue: string | null; currentValue: string | null },
+    forced?: { classification: Classification; healAction: ChangeRecord['healAction'] },
   ) => {
-    const labels = [baseEl?.label, currEl?.label, key].filter(Boolean) as string[];
-    const { classification, matchedTicketId } = classify(pageKey, key, tickets, labels);
+    const labels = [baseEl?.label, currEl?.label, baseEl?.text, currEl?.text, key].filter(Boolean) as string[];
+    const classified = classify(pageKey, key, tickets, labels);
+    const classification = forced?.classification ?? classified.classification;
+    const fieldName = (baseEl?.label || currEl?.label || baseEl?.text || currEl?.text || key).trim();
     changes.push({
       changeId: nextId(counter),
       page: pageKey,
-      fieldOrLocator: key,
+      fieldOrLocator: fieldName,
       changeType,
-      severity: severityFor(changeType),
+      severity: forced?.classification === 'info' ? 'low' : severityFor(changeType),
       classification,
-      matchedTicketId,
+      matchedTicketId: classified.matchedTicketId,
       description,
       baselineValue: values?.baselineValue ?? (baseEl ? fingerprint(baseEl) : null),
       currentValue: values?.currentValue ?? (currEl ? fingerprint(currEl) : null),
       evidenceScreenshot: '',
       requiresHumanAcceptance: true,
       acceptanceStatus: 'pending',
-      healAction: classification === 'expected' ? 'update-locator' : 'file-defect',
+      healAction:
+        forced?.healAction ??
+        (classification === 'expected' ? 'update-locator' : classification === 'info' ? 'none' : 'file-defect'),
     });
   };
 
   for (const [key, baseEl] of baseMap) {
     const currEl = currMap.get(key);
     if (!currEl) {
+      if (textStillInMarkup(current.html, baseEl.label, baseEl.text)) {
+        push(
+          'modified',
+          key,
+          baseEl,
+          null,
+          `Inventory node ${key} is gone, but the same wording is still in the live page markup (not a missing field).`,
+          undefined,
+          { classification: 'info', healAction: 'recapture-baseline' },
+        );
+        continue;
+      }
       push('removed', key, baseEl, null, `Element present in baseline missing in current UI: ${key}`);
       continue;
     }
@@ -205,6 +254,26 @@ function evidenceFor(pageKey: string, currentDir: string): string {
   return '';
 }
 
+function stashBeforeScreenshots(baselinePath: string) {
+  const dest = path.join(EVIDENCE_DIR, 'before');
+  fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
+  fs.mkdirSync(dest, { recursive: true });
+  if (fs.existsSync(baselinePath)) {
+    for (const name of fs.readdirSync(baselinePath)) {
+      if (name.endsWith('.png')) {
+        fs.copyFileSync(path.join(baselinePath, name), path.join(dest, name));
+      }
+    }
+  }
+  for (const name of fs.readdirSync(EVIDENCE_DIR)) {
+    const src = path.join(EVIDENCE_DIR, name);
+    if (!fs.statSync(src).isFile() || !name.endsWith('.png')) continue;
+    if (name.includes('walk-error') || name === 'detect-walk-failed.png') continue;
+    const target = path.join(dest, name);
+    if (!fs.existsSync(target)) fs.copyFileSync(src, target);
+  }
+}
+
 function unscannedRecord(
   pageKey: string,
   counter: { n: number },
@@ -234,6 +303,21 @@ function loadSnap(file: string, pageKey: string): PageSnapshot {
   const snap = JSON.parse(fs.readFileSync(file, 'utf8')) as PageSnapshot;
   if (!snap.htmlHash && snap.html) snap.htmlHash = hashHtml(snap.html);
   return snap;
+}
+
+async function refreshInventoryFromHtml(snaps: PageSnapshot[]) {
+  const need = snaps.filter((s) => s.html);
+  if (!need.length) return;
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  try {
+    for (const snap of need) {
+      snap.elements = await extractInteractiveFromHtml(page, snap.html);
+    }
+  } finally {
+    await browser.close();
+  }
 }
 
 async function main() {
@@ -269,6 +353,7 @@ async function main() {
   const allChanges: ChangeRecord[] = [];
   const counter = { n: 0 };
   const currentByPage = new Map<string, PageSnapshot>();
+  const walkErrors: Array<{ pageKey: string; message: string }> = [];
 
   const pageKeys = Array.from(new Set([...(manifest.pages as string[]), ...WIZARD_PAGES]));
   if (currentDir) {
@@ -276,27 +361,49 @@ async function main() {
       currentByPage.set(pageKey, loadSnap(path.join(currentDir, `${pageKey}.json`), pageKey));
     }
   } else if (ENV.FIRELIGHT_USERNAME && fs.existsSync(AUTH)) {
-    const browser = await chromium.launch();
+    const browser = await chromium.launch({ headless: !!process.env.CI });
     const context = await browser.newContext({ storageState: AUTH });
     const page = await context.newPage();
     try {
-      await runFirelightWizard(page, happyPathData, async (pageKey) => {
-        currentByPage.set(pageKey, await captureCurrentPage(page, pageKey));
-        await page.screenshot({ path: path.join(EVIDENCE_DIR, `${pageKey}.png`), fullPage: true });
-        console.log(`Scanned ${pageKey}`);
-      });
+      stashBeforeScreenshots(baselinePath);
+      await runFirelightWizard(
+        page,
+        happyPathData,
+        async (pageKey) => {
+          currentByPage.set(pageKey, await captureCurrentPage(page, pageKey));
+          await screenshotWizard(page, path.join(EVIDENCE_DIR, `${pageKey}.png`));
+          console.log(`Scanned ${pageKey}`);
+        },
+        {
+          continueOnError: true,
+          onStepError: (pageKey, error) => {
+            walkErrors.push({ pageKey, message: error.message });
+            void screenshotWizard(page, path.join(EVIDENCE_DIR, `${pageKey}-walk-error.png`)).catch(() => undefined);
+            console.warn(`Detect fill/nav failed on ${pageKey} (will classify as unexpected and continue):`, error.message);
+          },
+        },
+      );
     } catch (err) {
+      await page.screenshot({ path: path.join(EVIDENCE_DIR, 'detect-walk-failed.png'), fullPage: true }).catch(() => undefined);
       console.warn('Detect wizard walk stopped early:', err);
     } finally {
       await browser.close();
     }
+  } else {
+    console.error('Live detect needs FIRELIGHT_USERNAME and .auth/firelight-state.json. Run: npm run auth:setup');
+    process.exit(1);
   }
 
+  const pairs: Array<{ pageKey: string; baselineSnap: PageSnapshot; current: PageSnapshot }> = [];
   for (const pageKey of pageKeys) {
     const baselineFile = path.join(baselinePath, `${pageKey}.json`);
     const baselineSnap = loadSnap(baselineFile, pageKey);
     const current = currentByPage.get(pageKey) || unscannedSnapshot(pageKey, `(not scanned) ${pageKey}`);
+    pairs.push({ pageKey, baselineSnap, current });
+  }
+  await refreshInventoryFromHtml(pairs.flatMap((p) => [p.baselineSnap, p.current]));
 
+  for (const { pageKey, baselineSnap, current } of pairs) {
     if (!isScanned(current)) {
       allChanges.push(unscannedRecord(pageKey, counter, baselineSnap, currentDir));
       continue;
@@ -307,6 +414,36 @@ async function main() {
       c.evidenceScreenshot = evidenceFor(pageKey, currentDir);
     }
     allChanges.push(...pageChanges);
+  }
+
+  for (const fail of walkErrors) {
+    const labeled = fail.message.match(/labeled "([^"]+)"/);
+    const field = labeled?.[1] || fail.message.slice(0, 120);
+    const covered = walkCoveredByInventory(allChanges, fail.pageKey, fail.message);
+    if (covered) {
+      covered.description += ` Detect walk also missed the old locator (${field}); that is the same change, not a second defect.`;
+      continue;
+    }
+    const { classification, matchedTicketId } = classify(fail.pageKey, field, tickets, [field]);
+    const walkPng = path.join(EVIDENCE_DIR, `${fail.pageKey}-walk-error.png`);
+    allChanges.push({
+      changeId: nextId(counter),
+      page: fail.pageKey,
+      fieldOrLocator: field,
+      changeType: labeled ? 'label-changed' : 'modified',
+      severity: 'high',
+      classification: classification === 'expected' ? 'expected' : 'unexpected',
+      matchedTicketId,
+      description: `Fill/nav failed; detect continued to later pages. ${fail.message}`,
+      baselineValue: labeled?.[1] || null,
+      currentValue: null,
+      evidenceScreenshot: fs.existsSync(walkPng)
+        ? path.relative(ROOT, walkPng)
+        : evidenceFor(fail.pageKey, currentDir),
+      requiresHumanAcceptance: true,
+      acceptanceStatus: 'pending',
+      healAction: classification === 'expected' ? 'update-locator' : 'file-defect',
+    });
   }
 
   const report: ChangeReport = {
@@ -332,10 +469,20 @@ async function main() {
   );
   fs.writeFileSync(outFile, JSON.stringify(report, null, 2));
   fs.writeFileSync(stamped, JSON.stringify(report, null, 2));
+  for (const c of allChanges.filter((row) => row.classification === 'unexpected')) {
+    writeDefectStub(c);
+  }
   console.log(`Change report written: ${outFile}`);
   console.log(
     `Summary: total=${report.summary.total} expected=${report.summary.expected} unexpected=${report.summary.unexpected}`,
   );
+  const scanned = [...currentByPage.values()].filter((s) => isScanned(s)).length;
+  if (!currentDir && scanned === 0) {
+    console.error(
+      'Live detect scanned 0 wizard pages. Session may have expired or Start New was not visible. Run npm run auth:setup and retry. Screenshot: tests/reports/changes/evidence/detect-walk-failed.png',
+    );
+    process.exit(1);
+  }
   for (const c of allChanges) {
     console.log(`  ${c.changeId} ${c.classification} ${c.changeType} ${c.page} ${c.fieldOrLocator}`);
   }

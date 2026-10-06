@@ -1,0 +1,22 @@
+---
+description: Keep Firelight POC agent context small (token optimization)
+alwaysApply: true
+---
+
+# Token optimization
+
+Do not dump the repo into context.
+
+1. Prefer root `AGENTS.md`, then the nested `AGENTS.md` for the folder you are editing.
+2. Copy `playwright-agent/templates/` instead of free-form specs/POMs.
+3. Reuse `jackson-tests/tests/data/.snapshots/<page>.json` for POM/heal. Dated `baselines/baseline-*/` JSON is `.cursorignore`d; do not load `html` unless you need `htmlHash`.
+4. Fast model for mechanical POM extraction; reasoning for `/detect-changes` and `/heal`.
+5. Detect still walks live Firelight vs `tests/data/baselines/CURRENT`. Snapshots are a cache, not a substitute.
+
+```text
+# BAD
+Read every file under jackson-tests/tests/data/baselines/baseline-*/ then invent a POM.
+
+# GOOD
+Read playwright-agent/templates/page-object.template.ts + .snapshots/owner.json, then write jackson-tests/tests/pages/firelight/ownerPage.ts.
+```

@@ -9,7 +9,7 @@ Jackson Firelight handover: Cursor config, two wizard scripts, **DOM** baseline 
 - [x] `jackson-tests/` Playwright package (Elite Access II / Colorado / Boun)
 - [x] Agent prompts for Firelight FLQANEXT
 - [x] `/automate`, `/detect-changes`, `/heal`, `/file-jira`, `/iterate-script1`, `/iterate-script2`
-- [x] `.cursor/` rules + commands
+- [x] `.cursor/` rules + commands + skills + hooks
 - [x] Script 1 + Script 2 against live Firelight (Wet Signature + DATA ENTRY 100%; primary Proceeds 100%)
 - [x] Baseline capture stores serialized page DOM (`html` / `htmlHash`) plus interactive inventory
 - [x] Change detector walks all wizard pages

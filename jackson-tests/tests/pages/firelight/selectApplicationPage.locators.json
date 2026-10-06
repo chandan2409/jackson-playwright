@@ -7,9 +7,11 @@
       "name": "startApplication",
       "page": "select-application",
       "strategies": [
-        { "type": "id", "value": "startNew__103", "confidence": 0.95 },
-        { "type": "css", "value": "a.homeButton#startNew__103", "confidence": 0.9 },
-        { "type": "role", "value": "link[name='Application']", "confidence": 0.7 }
+        { "type": "text", "value": "Application", "confidence": 0.99 },
+        { "type": "role", "value": "link[name='Application']", "confidence": 0.8 },
+        { "type": "role", "value": "button[name='Application']", "confidence": 0.75 },
+        { "type": "id", "value": "startNew__103", "confidence": 0.4 },
+        { "type": "css", "value": "a.homeButton#startNew__103", "confidence": 0.35 }
       ]
     },
     "newActivity": {

@@ -2,6 +2,8 @@
 
 Runnable Playwright suite for the Jackson Firelight POC.
 
+Folder agent notes: `AGENTS.md` in this directory.
+
 ## Scripts
 
 | npm script | Purpose |
