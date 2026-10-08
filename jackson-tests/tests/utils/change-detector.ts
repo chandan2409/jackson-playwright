@@ -16,7 +16,8 @@ import {
 } from './dom-snapshot';
 import { happyPathData, runFirelightWizard } from './wizard-flow';
 import { screenshotWizard } from './wizard-shot';
-import { WIZARD_PAGES } from './wizard-pages';
+import { filledPageKey, isFilledPageKey, WIZARD_PAGES } from './wizard-pages';
+import { probeFilledAgainstLocators } from './locator-probe';
 
 const ROOT = path.resolve(__dirname, '../..');
 const BASELINE_ROOT = path.join(ROOT, 'tests/data/baselines');
@@ -83,7 +84,15 @@ function classify(
   const match = (tickets.announcedChanges || []).find((t) => {
     const pageMatch =
       t.page.toLowerCase() === page.toLowerCase() || page.toLowerCase().includes(t.page.toLowerCase());
-    const fieldMatch = !t.field || hay.includes(t.field.toLowerCase());
+    const tokens = t.ticketId
+      .toLowerCase()
+      .split(/[_\s-]+/)
+      .filter((w) => w.length > 4);
+    const fieldMatch =
+      !t.field ||
+      hay.includes(t.field.toLowerCase()) ||
+      hay.includes(t.ticketId.toLowerCase()) ||
+      (tokens.length > 0 && tokens.every((w) => hay.includes(w)));
     return pageMatch && fieldMatch;
   });
   if (match) return { classification: 'expected', matchedTicketId: match.ticketId };
@@ -355,7 +364,9 @@ async function main() {
   const currentByPage = new Map<string, PageSnapshot>();
   const walkErrors: Array<{ pageKey: string; message: string }> = [];
 
-  const pageKeys = Array.from(new Set([...(manifest.pages as string[]), ...WIZARD_PAGES]));
+  const pageKeys = Array.from(new Set([...(manifest.pages as string[]), ...WIZARD_PAGES])).filter(
+    (k) => !isFilledPageKey(k),
+  );
   if (currentDir) {
     for (const pageKey of pageKeys) {
       currentByPage.set(pageKey, loadSnap(path.join(currentDir, `${pageKey}.json`), pageKey));
@@ -414,6 +425,46 @@ async function main() {
       c.evidenceScreenshot = evidenceFor(pageKey, currentDir);
     }
     allChanges.push(...pageChanges);
+  }
+
+  const filledSnaps = [...currentByPage.entries()]
+    .filter(([key]) => isFilledPageKey(key))
+    .map(([, snap]) => snap);
+  await refreshInventoryFromHtml(filledSnaps);
+  const locatorsDir = path.join(ROOT, 'tests/pages/firelight');
+  for (const drift of probeFilledAgainstLocators(filledSnaps, locatorsDir)) {
+    const covered = allChanges.find((c) => {
+      if (c.page !== drift.page) return false;
+      const hay = [c.fieldOrLocator, c.baselineValue, c.currentValue, c.description].join(' ').toLowerCase();
+      return drift.labels.some((label) => label.length >= 8 && hay.includes(label.toLowerCase().slice(0, 80)));
+    });
+    if (covered) {
+      covered.description += ` Locator probe saw the same drift (${drift.fieldOrLocator}).`;
+      continue;
+    }
+    const classified = classify(drift.page, drift.fieldOrLocator, tickets, drift.labels);
+    const filledPng = evidenceFor(filledPageKey(drift.page), currentDir);
+    allChanges.push({
+      changeId: nextId(counter),
+      page: drift.page,
+      fieldOrLocator: drift.fieldOrLocator,
+      changeType: drift.changeType,
+      severity: 'medium',
+      classification: classified.classification,
+      matchedTicketId: classified.matchedTicketId,
+      description: drift.description,
+      baselineValue: drift.baselineValue,
+      currentValue: drift.currentValue,
+      evidenceScreenshot: filledPng || evidenceFor(drift.page, currentDir),
+      requiresHumanAcceptance: true,
+      acceptanceStatus: 'pending',
+      healAction:
+        classified.classification === 'expected'
+          ? 'update-locator'
+          : classified.classification === 'info'
+            ? 'none'
+            : 'file-defect',
+    });
   }
 
   for (const fail of walkErrors) {

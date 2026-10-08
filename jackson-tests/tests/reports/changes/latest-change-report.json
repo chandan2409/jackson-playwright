@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-10-06T07:23:43.559Z",
+  "generatedAt": "2026-10-08T16:50:23.340Z",
   "baselineId": "baseline-2026-10-05",
   "baselinePath": "tests/data/baselines/baseline-2026-10-05",
   "product": "Elite Access II",
   "jurisdiction": "Colorado",
   "caseName": "Boun",
   "summary": {
-    "total": 4,
-    "expected": 0,
-    "unexpected": 2,
-    "info": 2
+    "total": 5,
+    "expected": 1,
+    "unexpected": 1,
+    "info": 3
   },
   "changes": [
     {
@@ -25,7 +25,7 @@
       "currentValue": "aecf86df9a8254b82f68d513326fcb88d34303ff67eea061141b099f85c42c69",
       "evidenceScreenshot": "tests/reports/changes/evidence/new-application-information.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "recapture-baseline"
     },
     {
@@ -34,18 +34,34 @@
       "fieldOrLocator": "Are you an active military member?",
       "changeType": "label-changed",
       "severity": "medium",
-      "classification": "unexpected",
-      "matchedTicketId": null,
+      "classification": "expected",
+      "matchedTicketId": "Owner_Active_Military_YN",
       "description": "Element changed on owner: Active_Military_Question Detect walk also missed the old locator (Are you an active military member?); that is the same change, not a second defect.",
       "baselineValue": "{\"tag\":\"div\",\"label\":\"Are you an active military member?\",\"type\":null,\"text\":\"Are you an active military member?\"}",
       "currentValue": "{\"tag\":\"div\",\"label\":\"Is this client an active military member?\",\"type\":null,\"text\":\"Is this client an active military member?\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/owner.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
-      "healAction": "file-defect"
+      "acceptanceStatus": "accepted",
+      "healAction": "update-locator"
     },
     {
       "changeId": "CHG-003",
+      "page": "initial-allocations",
+      "fieldOrLocator": "initial-allocations#dom",
+      "changeType": "dom-changed",
+      "severity": "low",
+      "classification": "info",
+      "matchedTicketId": null,
+      "description": "Page markup changed with no field inventory diff (ddff2caf → 97a0741a). Recapture baseline after HITL; do not patch locators from the hash.",
+      "baselineValue": "ddff2caf815d8c818fe9eae0be188520648811b5a695aac12bed8c2b47dce934",
+      "currentValue": "97a0741a0984d32c81d9df6f21e947becd8dca7abf50cbddac3116895581482e",
+      "evidenceScreenshot": "tests/reports/changes/evidence/initial-allocations.png",
+      "requiresHumanAcceptance": true,
+      "acceptanceStatus": "rejected",
+      "healAction": "recapture-baseline"
+    },
+    {
+      "changeId": "CHG-004",
       "page": "signing-process",
       "fieldOrLocator": "Wet Signature",
       "changeType": "label-changed",
@@ -57,11 +73,11 @@
       "currentValue": "{\"tag\":\"div\",\"label\":\"E-signature\",\"type\":\"checkbox\",\"text\":\"\"}",
       "evidenceScreenshot": "tests/reports/changes/evidence/signing-process.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "file-defect"
     },
     {
-      "changeId": "CHG-004",
+      "changeId": "CHG-005",
       "page": "signing-process",
       "fieldOrLocator": "Which method will be used to collect signatures?",
       "changeType": "modified",
@@ -73,7 +89,7 @@
       "currentValue": null,
       "evidenceScreenshot": "tests/reports/changes/evidence/signing-process.png",
       "requiresHumanAcceptance": true,
-      "acceptanceStatus": "pending",
+      "acceptanceStatus": "rejected",
       "healAction": "recapture-baseline"
     }
   ]

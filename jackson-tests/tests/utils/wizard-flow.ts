@@ -12,6 +12,7 @@ import { AddOnBenefitsPage } from '../pages/firelight/addOnBenefitsPage';
 import { PaymentDetailPage } from '../pages/firelight/paymentDetailPage';
 import { SigningProcessPage } from '../pages/firelight/signingProcessPage';
 import { happyPathData, variantPathData } from '../data/fixtures/case-data';
+import { filledPageKey } from './wizard-pages';
 
 type CaseData = typeof happyPathData;
 
@@ -82,8 +83,19 @@ export async function runFirelightWizard(
   await snapshot?.('select-application');
   await select.confirmCreate(data.caseName);
 
+  /**
+   * Landing snapshot matches CURRENT freeze. Filled snapshot (`page__filled`) is
+   * locator-probe only so Detect does not report false "added" vs an empty freeze.
+   */
+  const scanLanding = async (pageKey: string) => {
+    if (snapshot) await snapshot(pageKey);
+  };
+  const scanFilled = async (pageKey: string) => {
+    if (snapshot) await snapshot(filledPageKey(pageKey));
+  };
+
   const appInfo = new NewApplicationInformationPage(page);
-  await snapshot?.('new-application-information');
+  await scanLanding('new-application-information');
   try {
     await appInfo.fill({
       ownershipType: data.ownershipType,
@@ -92,58 +104,70 @@ export async function runFirelightWizard(
       taxQualificationType: data.taxQualificationType,
       qualifiedAccountType: data.qualifiedAccountType,
     });
+    await scanFilled('new-application-information');
     await appInfo.next();
   } catch (err) {
+    await scanFilled('new-application-information').catch(() => undefined);
     await recover('new-application-information', 'owner', err);
   }
 
   const owner = new OwnerPage(page);
-  await snapshot?.('owner');
+  await scanLanding('owner');
   try {
     await owner.fill(data.owner);
+    await scanFilled('owner');
     await owner.next();
   } catch (err) {
+    await scanFilled('owner').catch(() => undefined);
     await recover('owner', 'beneficiaries', err);
   }
 
   const beneficiaries = new BeneficiariesPage(page);
-  await snapshot?.('beneficiaries');
+  await scanLanding('beneficiaries');
   try {
     await beneficiaries.fillPrimary(data.primaryBeneficiary);
     await beneficiaries.addContingent(data.contingentBeneficiary);
+    await scanFilled('beneficiaries');
     await beneficiaries.next();
   } catch (err) {
+    await scanFilled('beneficiaries').catch(() => undefined);
     await recover('beneficiaries', 'agent', err);
   }
 
   const agent = new AgentPage(page);
-  await snapshot?.('agent');
+  await scanLanding('agent');
   try {
     await agent.fill(data.agent);
+    await scanFilled('agent');
     await agent.next();
   } catch (err) {
+    await scanFilled('agent').catch(() => undefined);
     await recover('agent', 'systematic-investment', err);
   }
 
   const systematic = new SystematicInvestmentPage(page);
-  await snapshot?.('systematic-investment');
+  await scanLanding('systematic-investment');
   try {
     await systematic.fillIfPresent();
+    await scanFilled('systematic-investment');
   } catch (err) {
+    await scanFilled('systematic-investment').catch(() => undefined);
     await recover('systematic-investment', 'initial-allocations', err);
   }
 
   const allocations = new InitialAllocationsPage(page);
-  await snapshot?.('initial-allocations');
+  await scanLanding('initial-allocations');
   try {
     await allocations.selectInvestmentOption();
+    await scanFilled('initial-allocations');
     await allocations.next();
   } catch (err) {
+    await scanFilled('initial-allocations').catch(() => undefined);
     await recover('initial-allocations', 'add-on-benefits', err);
   }
 
   const addOns = new AddOnBenefitsPage(page);
-  await snapshot?.('add-on-benefits');
+  await scanLanding('add-on-benefits');
   try {
     await addOns.continueIfPresent();
   } catch (err) {
@@ -155,23 +179,27 @@ export async function runFirelightWizard(
   } catch (err) {
     await recover('payment-detail', 'payment-detail', err);
   }
-  await snapshot?.('payment-detail');
+  await scanLanding('payment-detail');
 
   const payment = new PaymentDetailPage(page);
   try {
     await payment.fill(data.payment);
+    await scanFilled('payment-detail');
     await payment.next();
   } catch (err) {
+    await scanFilled('payment-detail').catch(() => undefined);
     await recover('payment-detail', 'signing-process', err);
   }
 
   const signing = new SigningProcessPage(page);
-  await snapshot?.('signing-process');
+  await scanLanding('signing-process');
   try {
     await signing.selectSigningMethod(data.signingMethod);
+    await scanFilled('signing-process');
     await signing.assertOnSigningPage();
     await signing.assertDataEntryComplete();
   } catch (err) {
+    await scanFilled('signing-process').catch(() => undefined);
     await recover('signing-process', null, err);
   }
 }

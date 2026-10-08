@@ -6,7 +6,7 @@ import { captureCurrentPage, unscannedSnapshot, type PageSnapshot } from './dom-
 import { happyPathData, runFirelightWizard } from './wizard-flow';
 import { screenshotWizard } from './wizard-shot';
 import { snapshotScriptPack } from './script-bundle';
-import { WIZARD_PAGES } from './wizard-pages';
+import { isFilledPageKey, WIZARD_PAGES } from './wizard-pages';
 
 const ROOT = path.resolve(__dirname, '../..');
 const BASELINE_DIR = path.join(ROOT, 'tests/data/baselines');
@@ -68,7 +68,7 @@ async function main() {
       const snap = await captureCurrentPage(page, pageKey);
       writeSnap(outDir, snap);
       await screenshotWizard(page, path.join(outDir, `${pageKey}.png`));
-      if (!manifest.pages.includes(pageKey)) manifest.pages.push(pageKey);
+      if (!isFilledPageKey(pageKey) && !manifest.pages.includes(pageKey)) manifest.pages.push(pageKey);
       console.log(`Captured ${pageKey} (dom ${snap.html.length} chars, ${snap.elements.length} interactive)`);
     });
   } catch (err) {

@@ -1,5 +1,27 @@
 {
-  "announcedChanges": [],
+  "announcedChanges": [
+    {
+      "ticketId": "Owner_Active_Military_YN",
+      "page": "owner",
+      "description": "Jackson inject: Owner active military question",
+      "field": "Owner_Active_Military_YN",
+      "severity": "medium"
+    },
+    {
+      "ticketId": "Owner_ResidentialAddress1",
+      "page": "owner",
+      "description": "Jackson inject: Owner residential address line 1",
+      "field": "Owner_ResidentialAddress1",
+      "severity": "medium"
+    },
+    {
+      "ticketId": "PrimaryBeneficiary1_Relationship",
+      "page": "beneficiaries",
+      "description": "Jackson inject: Primary beneficiary relationship",
+      "field": "PrimaryBeneficiary1_Relationship",
+      "severity": "medium"
+    }
+  ],
   "_comment": "Day 7: Jackson provides change tickets. Add announced (expected) changes here for Day 8 classification.",
   "example": [
     {

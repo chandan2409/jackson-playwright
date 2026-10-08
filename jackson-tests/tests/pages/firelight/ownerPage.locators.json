@@ -367,7 +367,7 @@
         },
         {
           "type": "label",
-          "value": "Are you an active military member?",
+          "value": "Is this client an active military member?",
           "confidence": 0.8
         }
       ]
